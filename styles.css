@@ -9,9 +9,9 @@
   --gold-bright:#efc568;
   --line:rgba(214,166,67,.35);
   --line-soft:rgba(255,255,255,.10);
-  --portal:url("assets/portal.jpg");
-  --volshi:url("assets/volshi-wordmark.webp");
-  --archetron:url("assets/archetron-lockup.webp");
+  --portal:url("assets/portal.svg");
+  --volshi:url("assets/volshi-wordmark.svg");
+  --archetron:url("assets/archetron-lockup.svg");
 }
 *{box-sizing:border-box}
 html{background:var(--ink);color:var(--white);scroll-behavior:smooth}
