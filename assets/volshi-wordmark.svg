@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" role="img" aria-label="VOLSHi">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#a87829"/><stop offset=".5" stop-color="#f0c86a"/><stop offset="1" stop-color="#a87829"/></linearGradient></defs>
+<rect width="760" height="190" fill="none"/>
+<text x="18" y="112" fill="#f4f3ef" font-family="Arial,Helvetica,sans-serif" font-size="96" font-weight="300" letter-spacing="18">VOLSHi</text>
+<path d="M21 34l26 0-10 20zM644 33h21v22l-13 0z" fill="url(#g)"/>
+<path d="M105 152H300M460 152H655" stroke="url(#g)" stroke-width="3"/>
+<path d="M365 140l16 0-8 14z" fill="url(#g)"/>
+</svg>
