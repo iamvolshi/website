@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Abstract VOLSHi intelligence landscape">
+<defs>
+  <radialGradient id="glow" cx="50%" cy="63%" r="48%"><stop offset="0" stop-color="#ffd77b" stop-opacity=".95"/><stop offset=".16" stop-color="#d9a441" stop-opacity=".58"/><stop offset=".48" stop-color="#6b471e" stop-opacity=".14"/><stop offset="1" stop-color="#050505" stop-opacity="0"/></radialGradient>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#020202"/><stop offset=".58" stop-color="#0a0907"/><stop offset="1" stop-color="#030303"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#8f6324"/><stop offset=".5" stop-color="#f1c96b"/><stop offset="1" stop-color="#8f6324"/></linearGradient>
+  <linearGradient id="monolith" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#191815"/><stop offset=".5" stop-color="#050505"/><stop offset="1" stop-color="#11100e"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+<ellipse cx="800" cy="640" rx="570" ry="330" fill="url(#glow)" filter="url(#blur)"/>
+<path d="M0 690L105 625 180 660 255 610 340 665 435 610 520 650 600 600 690 660 760 620 840 652 930 610 1010 662 1100 615 1180 650 1270 605 1360 655 1450 615 1600 690V1000H0Z" fill="#0a0908" stroke="#5e4320" stroke-opacity=".38"/>
+<path d="M0 740C240 720 360 755 530 730S875 735 1040 720s320 8 560 15V1000H0Z" fill="#050505"/>
+<g stroke="#d6a643" stroke-opacity=".22" fill="none">
+  <path d="M800 700L210 1000M800 700L340 1000M800 700L470 1000M800 700L600 1000M800 700L720 1000M800 700L880 1000M800 700L1000 1000M800 700L1130 1000M800 700L1260 1000M800 700L1390 1000"/>
+  <path d="M120 760H1480M80 810H1520M45 870H1555M15 940H1585"/>
+</g>
+<g fill="none" stroke="#d6a643">
+  <circle cx="800" cy="455" r="110" stroke-opacity=".14"/>
+  <circle cx="800" cy="455" r="165" stroke-opacity=".2"/>
+  <circle cx="800" cy="455" r="225" stroke-opacity=".24"/>
+  <circle cx="800" cy="455" r="285" stroke-opacity=".28" stroke-dasharray="2 9"/>
+  <path d="M800 20V660" stroke="url(#gold)" stroke-width="1.5"/>
+  <path d="M515 455H1085" stroke-opacity=".28"/>
+  <path d="M800 155v22M800 248v12M800 335v10M570 455h28M1002 455h28" stroke-width="2"/>
+</g>
+<g fill="#e4b753"><circle cx="800" cy="155" r="3"/><circle cx="800" cy="248" r="3"/><circle cx="570" cy="455" r="3"/><circle cx="1030" cy="455" r="3"/></g>
+<path d="M800 470L700 715H900Z" fill="url(#monolith)" stroke="#8f672d" stroke-opacity=".55"/>
+<path d="M800 470V662" stroke="#f0c86b" stroke-width="2"/>
+<path d="M782 652H818V715H782Z" fill="#f3cf7a" filter="url(#soft)" opacity=".75"/>
+<path d="M786 657H814V715H786Z" fill="#fff2c4"/>
+<ellipse cx="800" cy="710" rx="160" ry="25" fill="#e8b456" opacity=".12" filter="url(#blur)"/>
+<path d="M800 470V340" stroke="#ffe19a" stroke-width="3" filter="url(#soft)" opacity=".75"/>
+<path d="M800 470V20" stroke="#d6a643" stroke-width="1"/>
+</svg>
