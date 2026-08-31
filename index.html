@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080809">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080808">
   <meta name="description" content="VOLSHi builds infrastructure for trustworthy autonomous intelligence.">
   <title>VOLSHi — Intelligence Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,52 +12,129 @@
   <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-    <header>
-      <div class="header-logo">
-        <a href="/" aria-label="VOLSHi home">
-          <img src="assets/volshilogowhite.png" alt="VOLSHi">
-        </a>
-      </div>
-
-      <nav id="main-nav" aria-label="Primary navigation">
-        <a href="#">Technology</a>
-        <a href="#">ARCHETRON</a>
-        <a href="#">Research</a>
-        <a href="#">Company</a>
-        <a href="#">Contact</a>
-      </nav>
-
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
-
-    <main class="hero-content">
-      <div>
-        <div class="eyebrow">VOLSHi&nbsp;/&nbsp;Intelligence Infrastructure</div>
-        <h1>Intelligence<br>Requires<br><span class="gold">Trust.</span></h1>
-        <p class="subline">We build the infrastructure that earns it.</p>
-        <a href="#" class="cta">Explore ARCHETRON <span aria-hidden="true">→</span></a>
-      </div>
-    </main>
-
-    <div class="system-line" aria-label="VOLSHi operating sequence">
-      <span class="sys-step">Observe</span>
-      <span class="sys-sep" aria-hidden="true"></span>
-      <span class="sys-step">Understand</span>
-      <span class="sys-sep" aria-hidden="true"></span>
-      <span class="sys-step">Decide</span>
-      <span class="sys-sep" aria-hidden="true"></span>
-      <span class="sys-step">Act</span>
-      <span class="sys-sep" aria-hidden="true"></span>
-      <span class="sys-step">Account</span>
+<header id="hdr">
+  <div class="logo"><img id="wlogo" alt="VOLSHi" src="assets/volshilogowhite.png"></div>
+  <nav id="nav">
+    <a data-to="1">Technology</a>
+    <a data-to="2">ARCHETRON</a>
+    <a data-to="3">Research</a>
+    <a data-to="4">Company</a>
+    <a data-to="5">Contact</a>
+  </nav>
+  <button class="mbtn" id="mbtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+<div id="stage">
+<!-- SLIDE 0: HOME -->
+<div class="slide" id="s0">
+  <div class="sbg" id="bg0"></div>
+  <div class="hov"></div>
+  <div class="home-col">
+    <div class="ey sa">VOLSHi&nbsp;/&nbsp;Intelligence Infrastructure</div>
+    <h1 class="sb">Intelligence<br>Requires<br><span class="g">Trust.</span></h1>
+    <p class="home-sub sc">We build the infrastructure that earns it.</p>
+    <a class="cta se" data-to="2">Explore ARCHETRON &nbsp;→</a>
+  </div>
+  <div class="sbar sd">
+    <span class="st">Observe</span><div class="ss"></div>
+    <span class="st">Understand</span><div class="ss"></div>
+    <span class="st">Decide</span><div class="ss"></div>
+    <span class="st">Act</span><div class="ss"></div>
+    <span class="st">Account</span>
+  </div>
+</div>
+<!-- SLIDE 1: TECHNOLOGY -->
+<div class="slide" id="s1">
+  <div class="sbg" id="bg1"></div>
+  <div class="scrim"></div>
+  <div class="ed-col">
+    <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Technology</div>
+    <h2 class="sb">Trust Is A<br>Systems Problem.</h2>
+    <p class="ed-sub sc">A model is a component.<br>Autonomy is a system.</p>
+  </div>
+  <div class="ibar sd">
+    <span class="in">Evidence</span><div class="il"></div><span class="ia">→</span><div class="il"></div>
+    <span class="in">State</span><div class="il"></div><span class="ia">→</span><div class="il"></div>
+    <span class="in">Cognition</span><div class="il"></div><span class="ia">→</span><div class="il"></div>
+    <span class="in">Authority</span><div class="il"></div><span class="ia">→</span><div class="il"></div>
+    <span class="in">Action</span><div class="il"></div><span class="ia">→</span><div class="il"></div>
+    <span class="in">Observation</span>
+  </div>
+</div>
+<!-- SLIDE 2: ARCHETRON -->
+<div class="slide" id="s2">
+  <div class="sbg" id="bg2"></div>
+  <div class="scrim"></div>
+  <div class="ed-col">
+    <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;ARCHETRON Intelligence</div>
+    <img class="arc-logo sb" id="alogo" alt="ARCHETRON Intelligence" src="assets/volshimainlogo.png">
+    <h2 class="sc" style="font-size:clamp(1.2rem,2vw,2.2rem)">Architecture For<br>Accountable Intelligence.</h2>
+    <p class="ed-sub sd" style="max-width:340px;font-size:.72rem">ARCHETRON is the systems architecture beneath VOLSHi's work.</p>
+    <div class="arc-pipe sd">
+      <span class="ap">Sense</span><span class="ap-arrow">→</span>
+      <span class="ap">Understand</span><span class="ap-arrow">→</span>
+      <span class="ap">Decide</span><span class="ap-arrow">→</span>
+      <span class="ap">Authorize</span><span class="ap-arrow">→</span>
+      <span class="ap">Act</span><span class="ap-arrow">→</span>
+      <span class="ap">Account</span>
     </div>
-  </section>
-
-  <script src="src/site.js" defer></script>
+    <a class="arc-cta se">Explore The Architecture &nbsp;→</a>
+  </div>
+</div>
+<!-- SLIDE 3: RESEARCH -->
+<div class="slide" id="s3">
+  <div class="sbg" id="bg3"></div>
+  <div class="scrim scrim-narrow"></div>
+  <div class="ed-col">
+    <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Research</div>
+    <h2 class="sb" style="font-size:clamp(1.5rem,2.4vw,2.6rem);margin-bottom:10px">The Work Ahead.</h2>
+    <p class="ed-sub sc" style="font-size:.70rem;margin-bottom:18px;max-width:300px">Intelligence is moving faster than the systems required to trust it.</p>
+    <div class="ri sd">
+      <div class="rr"><span class="rn">01</span><span class="rl">Epistemic Systems</span><div class="re"></div></div>
+      <div class="rr"><span class="rn">02</span><span class="rl">Temporal Reasoning</span><div class="re"></div></div>
+      <div class="rr"><span class="rn">03</span><span class="rl">Attention</span><div class="re"></div></div>
+      <div class="rr"><span class="rn">04</span><span class="rl">Human Authority</span><div class="re"></div></div>
+      <div class="rr"><span class="rn">05</span><span class="rl">Provenance</span><div class="re"></div></div>
+      <div class="rr"><span class="rn">06</span><span class="rl">Autonomous Execution</span><div class="re"></div></div>
+    </div>
+  </div>
+</div>
+<!-- SLIDE 4: COMPANY -->
+<div class="slide" id="s4">
+  <div class="sbg" id="bg4"></div>
+  <div class="scrim"></div>
+  <div class="ed-col">
+    <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div>
+    <h2 class="sb" style="font-size:clamp(1.4rem,2.2vw,2.5rem)">We Build Infrastructure<br>For Intelligence.</h2>
+    <p class="ed-sub sc">VOLSHi builds systems for trustworthy autonomous intelligence.</p>
+    <p class="cap-line sd">Capability is not trust.</p>
+  </div>
+  <div class="ibar se">
+    <span class="in">Systems</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div>
+    <span class="in">Research</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div>
+    <span class="in">Infrastructure</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div>
+    <span class="in">Governance</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div>
+    <span class="in">Autonomy</span>
+  </div>
+  <img class="inst-mark" id="imark" alt="VOLSHi" src="assets/volshilogowhite.png">
+</div>
+<!-- SLIDE 5: CONTACT -->
+<div class="slide" id="s5">
+  <div class="sbg" id="bg5"></div>
+  <div class="scrim scrim-contact"></div>
+  <div class="ed-col">
+    <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div>
+    <h2 class="sb">Intelligence Is<br>Learning To Act.</h2>
+    <p class="contact-secondary sc">Trust has to catch up.</p>
+    <!-- TODO: Replace CONTACT_EMAIL_HERE with authorized contact address -->
+    <a class="contact-link sd" href="mailto:CONTACT_EMAIL_HERE">Contact VOLSHi &nbsp;→</a>
+    <div class="close-seq se">
+      <div class="ci">Observe</div><div class="ci">Understand</div>
+      <div class="ci">Decide</div><div class="ci">Act</div><div class="ci">Account</div>
+    </div>
+  </div>
+  <img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
+</div>
+</div>
+<script src="src/site.js" defer></script>
 </body>
 </html>
