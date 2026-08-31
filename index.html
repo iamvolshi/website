@@ -15,24 +15,24 @@
 <header id="hdr">
   <div class="logo"><img id="wlogo" alt="VOLSHi" src="assets/volshilogowhite.png"></div>
   <nav id="nav">
-    <a data-to="1">Technology</a>
-    <a data-to="2">ARCHETRON</a>
-    <a data-to="3">Research</a>
-    <a data-to="4">Company</a>
-    <a data-to="5">Contact</a>
+    <a href="#technology" data-to="1">Technology</a>
+    <a href="#archetron" data-to="2">ARCHETRON</a>
+    <a href="#research" data-to="3">Research</a>
+    <a href="#company" data-to="4">Company</a>
+    <a href="#contact" data-to="5">Contact</a>
   </nav>
-  <button class="mbtn" id="mbtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="mbtn" id="mbtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 <div id="stage">
 <!-- SLIDE 0: HOME -->
 <div class="slide" id="s0">
-  <div class="sbg" id="bg0"></div>
+  <div class="sbg" id="bg0" style="background-image:url('assets/volshibkgd.png');background-position:center center"></div>
   <div class="hov"></div>
   <div class="home-col">
     <div class="ey sa">VOLSHi&nbsp;/&nbsp;Intelligence Infrastructure</div>
     <h1 class="sb">Intelligence<br>Requires<br><span class="g">Trust.</span></h1>
     <p class="home-sub sc">We build the infrastructure that earns it.</p>
-    <a class="cta se" data-to="2">Explore ARCHETRON &nbsp;→</a>
+    <a class="cta se" href="#archetron" data-to="2">Explore ARCHETRON &nbsp;→</a>
   </div>
   <div class="sbar sd">
     <span class="st">Observe</span><div class="ss"></div>
@@ -44,7 +44,7 @@
 </div>
 <!-- SLIDE 1: TECHNOLOGY -->
 <div class="slide" id="s1">
-  <div class="sbg" id="bg1"></div>
+  <div class="sbg" id="bg1" style="background-image:url('assets/volshitechbkgd.png');background-position:center center"></div>
   <div class="scrim"></div>
   <div class="ed-col">
     <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Technology</div>
@@ -62,7 +62,7 @@
 </div>
 <!-- SLIDE 2: ARCHETRON -->
 <div class="slide" id="s2">
-  <div class="sbg" id="bg2"></div>
+  <div class="sbg" id="bg2" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
   <div class="scrim"></div>
   <div class="ed-col">
     <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;ARCHETRON Intelligence</div>
@@ -82,7 +82,7 @@
 </div>
 <!-- SLIDE 3: RESEARCH -->
 <div class="slide" id="s3">
-  <div class="sbg" id="bg3"></div>
+  <div class="sbg" id="bg3" style="background-image:url('assets/volshistarbkgd.png');background-position:center center"></div>
   <div class="scrim scrim-narrow"></div>
   <div class="ed-col">
     <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Research</div>
@@ -100,7 +100,7 @@
 </div>
 <!-- SLIDE 4: COMPANY -->
 <div class="slide" id="s4">
-  <div class="sbg" id="bg4"></div>
+  <div class="sbg" id="bg4" style="background-image:url('assets/volshitechbkgd.png');background-position:65% 28%"></div>
   <div class="scrim"></div>
   <div class="ed-col">
     <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div>
@@ -119,7 +119,7 @@
 </div>
 <!-- SLIDE 5: CONTACT -->
 <div class="slide" id="s5">
-  <div class="sbg" id="bg5"></div>
+  <div class="sbg" id="bg5" style="background-image:url('assets/volshiswirlbkgd.png');background-position:60% 55%"></div>
   <div class="scrim scrim-contact"></div>
   <div class="ed-col">
     <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div>
@@ -134,6 +134,164 @@
   <img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
 </div>
 </div>
-<script src="src/site.js" defer></script>
+<script>
+(() => {
+  'use strict';
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const navLinks = Array.from(document.querySelectorAll('#nav a[data-to]'));
+  const header = document.getElementById('hdr');
+  const nav = document.getElementById('nav');
+  const menuButton = document.getElementById('mbtn');
+  const logo = document.querySelector('.logo');
+  const hashes = ['home','technology','archetron','research','company','contact'];
+  const duration = 750;
+  let current = 0;
+  let locked = false;
+
+  function indexFromHash() {
+    const hash = location.hash.replace('#','').toLowerCase();
+    const index = hashes.indexOf(hash);
+    return index >= 0 ? index : 0;
+  }
+
+  function setNavState(index) {
+    navLinks.forEach((link, i) => link.classList.toggle('on', i === index - 1));
+    if (header) header.classList.toggle('solid', index > 0);
+  }
+
+  function closeMenu() {
+    if (nav) nav.classList.remove('open');
+    if (menuButton) menuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function normalizePositions(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) return;
+      slide.style.transition = 'none';
+      slide.style.transform = i < index ? 'translateX(-100%)' : 'translateX(100%)';
+      slide.classList.remove('active');
+    });
+  }
+
+  function goTo(index, pushHistory = true, animate = true) {
+    index = Number(index);
+    if (!Number.isInteger(index) || index < 0 || index >= slides.length || index === current || locked) return;
+
+    const from = current;
+    const direction = index > from ? 1 : -1;
+    const outgoing = slides[from];
+    const incoming = slides[index];
+
+    locked = true;
+    outgoing.classList.remove('active');
+
+    if (animate) {
+      incoming.style.transition = 'none';
+      incoming.style.transform = `translateX(${100 * direction}%)`;
+      void incoming.offsetWidth;
+      outgoing.style.transition = `transform ${duration}ms cubic-bezier(0.76,0,0.24,1)`;
+      incoming.style.transition = `transform ${duration}ms cubic-bezier(0.76,0,0.24,1)`;
+      outgoing.style.transform = `translateX(${-100 * direction}%)`;
+      incoming.style.transform = 'translateX(0)';
+    } else {
+      incoming.style.transition = 'none';
+      incoming.style.transform = 'translateX(0)';
+      outgoing.style.transition = 'none';
+      outgoing.style.transform = direction > 0 ? 'translateX(-100%)' : 'translateX(100%)';
+    }
+
+    incoming.classList.add('active');
+    current = index;
+    setNavState(index);
+    closeMenu();
+
+    if (pushHistory) {
+      const nextHash = index === 0 ? location.pathname + location.search : `#${hashes[index]}`;
+      history.pushState({ slide: index }, '', nextHash);
+    }
+
+    window.setTimeout(() => {
+      normalizePositions(current);
+      slides[current].style.transition = 'none';
+      slides[current].style.transform = 'translateX(0)';
+      locked = false;
+    }, animate ? duration + 80 : 0);
+  }
+
+  const initial = indexFromHash();
+  current = initial;
+  slides.forEach((slide, i) => {
+    slide.style.transition = 'none';
+    slide.style.transform = i < initial ? 'translateX(-100%)' : i > initial ? 'translateX(100%)' : 'translateX(0)';
+    slide.classList.toggle('active', i === initial);
+  });
+  setNavState(initial);
+  history.replaceState({ slide: initial }, '', location.href);
+
+  document.addEventListener('click', event => {
+    const target = event.target.closest('[data-to]');
+    if (!target) return;
+    const index = Number(target.dataset.to);
+    if (!Number.isInteger(index)) return;
+    event.preventDefault();
+    goTo(index, true, true);
+  });
+
+  if (logo) {
+    logo.addEventListener('click', () => goTo(0, true, true));
+  }
+
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight') goTo(current + 1, true, true);
+    if (event.key === 'ArrowLeft') goTo(current - 1, true, true);
+  });
+
+  let wheelAccum = 0;
+  let wheelReset;
+  document.addEventListener('wheel', event => {
+    const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+    if (!delta) return;
+    event.preventDefault();
+    wheelAccum += delta;
+    clearTimeout(wheelReset);
+    wheelReset = setTimeout(() => { wheelAccum = 0; }, 180);
+    if (Math.abs(wheelAccum) > 80) {
+      const direction = wheelAccum > 0 ? 1 : -1;
+      wheelAccum = 0;
+      goTo(current + direction, true, true);
+    }
+  }, { passive: false });
+
+  let touchX = 0;
+  let touchY = 0;
+  document.addEventListener('touchstart', event => {
+    if (!event.touches.length) return;
+    touchX = event.touches[0].clientX;
+    touchY = event.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', event => {
+    if (!event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touchX;
+    const dy = event.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      goTo(current + (dx < 0 ? 1 : -1), true, true);
+    }
+  }, { passive: true });
+
+  window.addEventListener('popstate', () => {
+    const index = indexFromHash();
+    if (index !== current) goTo(index, false, true);
+  });
+})();
+</script>
 </body>
 </html>
