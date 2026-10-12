@@ -101,6 +101,9 @@
     .callout-num{font:600 24px 'IBM Plex Mono',monospace;color:var(--red)}
     .callout p{margin:2px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
     .note{font-size:11px;line-height:1.5;color:var(--muted);margin:14px 0 0}
+    .site-footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+    .site-footer .mono{font-family:'IBM Plex Mono',monospace;font-size:10px}
+    .site-footer a{color:inherit;text-underline-offset:3px}
     @media(max-width:800px){
       .topline{display:block}.intro{margin-top:14px}.engine-grid,.lab-grid{grid-template-columns:1fr}.control-panel,.lab-controls{position:static}
       .record-row{grid-template-columns:52px 1fr 66px;gap:7px 10px}.record-row .subject{grid-column:2/4}.record-row .supersedes{display:none}
@@ -233,6 +236,10 @@
     </div>
   </section>
 </main>
+<footer class="site-footer">
+  <span>© 2026 VOLSHi · All rights reserved</span>
+  <span class="mono">Candidate computational law · Foundation published October 2026 · <a href="https://zenodo.org/records/23173644">DOI 10.5281/zenodo.23173644</a></span>
+</footer>
 <script>
 (function(){
   var tabs=document.querySelectorAll('.tab');
