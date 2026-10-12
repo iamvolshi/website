@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>KATIE Interactive Visualization</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap');
+    :root{
+      --bg:#f2f0ea;--panel:#fffdf8;--panel-2:#e8e5dc;--ink:#171916;--muted:#60645e;
+      --line:#c9c6bc;--strong:#858a82;--amber:#d46a18;--amber-soft:#f5d9bf;--teal:#087f79;
+      --teal-soft:#c9ebe5;--red:#b83b35;--red-soft:#f2d4d0;--blue:#25648b;--shadow:0 10px 30px rgba(26,29,24,.08);
+      --radius:14px;
+    }
+    @media(prefers-color-scheme:dark){
+      :root{--bg:#101210;--panel:#181b18;--panel-2:#222620;--ink:#f2f0e8;--muted:#abb0a8;
+      --line:#383d37;--strong:#717970;--amber:#f08a3c;--amber-soft:#4c2b18;--teal:#57c7bd;
+      --teal-soft:#173d39;--red:#ee7770;--red-soft:#4a2422;--blue:#73b5dc;--shadow:0 12px 34px rgba(0,0,0,.28)}
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;min-height:100vh}
+    button,input,select{font:inherit}
+    button{color:inherit}
+    .page{max-width:1280px;margin:0 auto;padding:clamp(18px,3vw,42px)}
+    .topline{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+    h1{font-size:clamp(30px,5vw,58px);line-height:.97;letter-spacing:-.055em;margin:0;max-width:690px;font-weight:800}
+    .intro{max-width:430px;color:var(--muted);font-size:15px;line-height:1.55;margin:0}
+    .tabs{display:inline-grid;grid-template-columns:1fr 1fr;background:var(--panel-2);border:1px solid var(--line);padding:4px;border-radius:11px;margin-bottom:18px}
+    .tab{border:0;background:transparent;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:700;font-size:14px}
+    .tab.active{background:var(--panel);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .view{display:none}.view.active{display:block}
+    .engine-grid{display:grid;grid-template-columns:minmax(235px,.7fr) minmax(0,1.55fr);gap:16px;align-items:start}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .control-panel{padding:20px;position:sticky;top:16px}
+    .panel-title,.eyebrow{font:600 11px/1.2 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.11em;color:var(--muted)}
+    .panel-title{margin-bottom:15px}
+    label{display:block;font-size:12px;font-weight:700;margin:14px 0 7px}
+    select,.text-input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--ink)}
+    .event-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .event-type{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:10px 8px;text-align:left;cursor:pointer;font-size:12px;font-weight:700;min-height:46px}
+    .event-type:hover,.event-type.selected{border-color:var(--amber);background:var(--amber-soft)}
+    .event-type small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
+    .fire{width:100%;border:0;background:var(--ink);color:var(--panel);padding:13px 15px;border-radius:9px;font-weight:800;margin-top:16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+    .fire:hover{background:var(--amber);color:#fff}
+    .micro{color:var(--muted);font-size:11px;line-height:1.45;margin:10px 0 0}
+    .stage{display:grid;gap:16px}
+    .belief{padding:22px;overflow:hidden}
+    .belief-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+    .k-badge{font:600 12px 'IBM Plex Mono',monospace;border:1px solid var(--line);padding:7px 9px;border-radius:7px;color:var(--muted);white-space:nowrap}
+    .belief h2{font-size:clamp(23px,4vw,40px);letter-spacing:-.04em;line-height:1;margin:7px 0 8px}
+    .state-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+    .state{font:600 12px 'IBM Plex Mono',monospace;padding:6px 9px;border-radius:6px;background:var(--teal-soft);color:var(--teal)}
+    .authority{font:600 13px 'IBM Plex Mono',monospace}
+    .authority-bar{height:10px;background:var(--panel-2);margin-top:22px;border-radius:3px;overflow:hidden}
+    .authority-fill{height:100%;background:var(--teal);transition:width .25s ease}
+    .scrubber{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}
+    .scrub-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px}
+    input[type=range]{width:100%;accent-color:var(--amber)}
+    .ticks{display:flex;justify-content:space-between;color:var(--muted);font:10px 'IBM Plex Mono',monospace}
+    .timeline-panel{padding:20px;overflow:hidden}
+    .timeline{position:relative;height:82px;margin-top:18px}
+    .rail{position:absolute;left:0;right:0;top:34px;height:2px;background:var(--line)}
+    .timeline-mark{position:absolute;top:23px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--panel);border:3px solid var(--strong);cursor:pointer}
+    .timeline-mark.past{border-color:var(--teal);background:var(--teal-soft)}
+    .timeline-mark.current{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 5px var(--amber-soft)}
+    .timeline-label{position:absolute;top:53px;transform:translateX(-50%);font:10px 'IBM Plex Mono',monospace;color:var(--muted);white-space:nowrap}
+    .record{overflow:hidden}
+    .record-head{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+    .reset{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+    .record-list{max-height:360px;overflow:auto}
+    .record-row{display:grid;grid-template-columns:60px 95px minmax(120px,1fr) 100px 72px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid var(--line);font-size:12px;transition:opacity .2s}
+    .record-row:last-child{border-bottom:0}.record-row.future{opacity:.3}.record-row.active-row{background:var(--amber-soft)}
+    .mono{font-family:'IBM Plex Mono',monospace}.op{font-weight:800}.subject{font-weight:700}.supersedes{color:var(--muted)}
+    .empty-state{padding:36px 20px;text-align:center;color:var(--muted)}
+    .lab-grid{display:grid;grid-template-columns:minmax(240px,.62fr) minmax(0,1.4fr);gap:16px;align-items:start}
+    .lab-controls{padding:20px;position:sticky;top:16px}
+    .slider-group{padding:14px 0;border-bottom:1px solid var(--line)}
+    .slider-group:last-of-type{border-bottom:0}
+    .slider-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
+    .slider-label label{margin:0}.slider-value{font:600 16px 'IBM Plex Mono',monospace;color:var(--amber)}
+    .readouts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+    .readout{background:var(--panel-2);padding:12px;border-radius:8px}
+    .readout strong{display:block;font:600 19px 'IBM Plex Mono',monospace;margin-top:5px}
+    .viz-stack{display:grid;gap:16px}
+    .chart-panel{padding:20px;overflow:hidden}
+    .chart-title{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}
+    .chart-title h2{font-size:20px;letter-spacing:-.025em;margin:3px 0 0}
+    .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
+    .key{display:flex;align-items:center;gap:6px}.key i{width:18px;height:3px;border-radius:2px;display:block}
+    svg{display:block;width:100%;height:auto;overflow:visible}
+    .axis{stroke:var(--line);stroke-width:1}.grid-line{stroke:var(--line);stroke-width:1;opacity:.55;stroke-dasharray:3 4}
+    .axis-text{fill:var(--muted);font:10px 'IBM Plex Mono',monospace}
+    .path-fast,.path-slow,.path-control,.curve-hump{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:d .16s ease}
+    .path-fast{stroke:var(--amber)}.path-slow{stroke:var(--teal)}.path-control{stroke:var(--blue);stroke-dasharray:7 5}.curve-hump{stroke:var(--red)}
+    .scar-area{fill:var(--red-soft);opacity:.78;transition:d .16s ease}.phase-band{fill:var(--amber-soft);opacity:.55}
+    .threshold{stroke:var(--strong);stroke-dasharray:5 4}.marker{fill:var(--panel);stroke:var(--red);stroke-width:3}
+    .callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:16px 18px;background:var(--panel-2);border-radius:10px;margin-top:14px}
+    .callout-num{font:600 24px 'IBM Plex Mono',monospace;color:var(--red)}
+    .callout p{margin:2px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+    .note{font-size:11px;line-height:1.5;color:var(--muted);margin:14px 0 0}
+    @media(max-width:800px){
+      .topline{display:block}.intro{margin-top:14px}.engine-grid,.lab-grid{grid-template-columns:1fr}.control-panel,.lab-controls{position:static}
+      .record-row{grid-template-columns:52px 1fr 66px;gap:7px 10px}.record-row .subject{grid-column:2/4}.record-row .supersedes{display:none}
+      .tabs{width:100%}.event-grid{grid-template-columns:1fr 1fr}.timeline-label{display:none}
+    }
+    @media(max-width:480px){.page{padding:16px}.event-grid{grid-template-columns:1fr}.belief-head{display:block}.k-badge{display:inline-block;margin-top:14px}.legend{gap:8px}.chart-title{display:block}.legend{margin-top:10px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <header class="topline">
+    <h1>Knowledge, as it changes.</h1>
+    <p class="intro">Fire events into the record, move backward through <em>k</em>, and inspect what the system was justified in believing at that exact knowledge-time.</p>
+  </header>
+
+  <nav class="tabs" aria-label="Visualization views">
+    <button class="tab active" data-view="engine" aria-selected="true">01 · Full engine</button>
+    <button class="tab" data-view="lab" aria-selected="false">02 · Scar lab</button>
+  </nav>
+
+  <section id="engine" class="view active" aria-label="Full engine view">
+    <div class="engine-grid">
+      <aside class="panel control-panel">
+        <div class="panel-title">Event console</div>
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option>Bridge status</option>
+          <option>Sensor A</option>
+          <option>Response policy</option>
+        </select>
+        <label>Deposit type</label>
+        <div class="event-grid" id="eventTypes">
+          <button class="event-type selected" data-type="unknown">Unknown report<small>assert · WILD</small></button>
+          <button class="event-type" data-type="known">Known event<small>assert · preset</small></button>
+          <button class="event-type" data-type="policy">Policy<small>assert · preset</small></button>
+          <button class="event-type" data-type="promote">Confirm<small>re-grade ↑</small></button>
+          <button class="event-type" data-type="challenge">Challenge<small>re-grade ↓</small></button>
+          <button class="event-type" data-type="revoke">Revoke<small>authority → 0</small></button>
+        </div>
+        <button class="fire" id="fire"><span>Fire event</span><span class="mono">↳ k+</span></button>
+        <p class="micro">First encounter only: unknowns enter WILD. Recognized events and policies take their preset.</p>
+      </aside>
+
+      <div class="stage">
+        <section class="panel belief" aria-live="polite">
+          <div class="belief-head">
+            <div>
+              <div class="eyebrow">Belief at selected knowledge-time</div>
+              <h2 id="beliefSubject">Bridge status</h2>
+              <div class="state-row"><span class="state" id="beliefState">TRUSTED</span><span class="authority" id="beliefAuthority">authority 0.80</span></div>
+            </div>
+            <span class="k-badge" id="kBadge">k = 40</span>
+          </div>
+          <div class="authority-bar" aria-hidden="true"><div class="authority-fill" id="authorityFill" style="width:80%"></div></div>
+          <div class="scrubber">
+            <div class="scrub-head"><strong>Scrub the K-record</strong><span class="mono" id="rangeText">k 1 — 61</span></div>
+            <input id="kScrubber" type="range" min="1" max="61" value="61" aria-label="Knowledge time" />
+            <div class="ticks"><span>FIRST DEPOSIT</span><span>NOW</span></div>
+          </div>
+        </section>
+
+        <section class="panel timeline-panel">
+          <div class="panel-title">Supersedes chain</div>
+          <div class="timeline" id="timeline"><div class="rail"></div></div>
+        </section>
+
+        <section class="panel record">
+          <div class="record-head"><div><div class="eyebrow">Append-only ledger</div><strong>K-record</strong></div><button class="reset" id="reset">Reset sample</button></div>
+          <div class="record-list" id="recordList"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="lab" class="view" aria-label="Scar laboratory view">
+    <div class="lab-grid">
+      <aside class="panel lab-controls">
+        <div class="panel-title">Signal controls</div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
+          <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="duration">Duration · injury deposits</label><span class="slider-value" id="durationValue">27</span></div>
+          <input id="duration" type="range" min="1" max="60" value="27" step="1" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="decay">DECAY · forgetting rate</label><span class="slider-value" id="decayValue">0.70</span></div>
+          <input id="decay" type="range" min="0.05" max="1.50" value="0.70" step="0.01" />
+          <p class="micro" id="decayHint">Higher DECAY = faster washout · τ 19.3</p>
+        </div>
+        <div class="readouts">
+          <div class="readout"><span class="eyebrow">Time constant τ</span><strong id="tauValue">19.3</strong></div>
+          <div class="readout"><span class="eyebrow">Scar · ticks</span><strong id="scarValue">12.8</strong></div>
+        </div>
+        <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
+      </aside>
+
+      <div class="viz-stack">
+        <section class="panel chart-panel">
+          <div class="chart-title">
+            <div><div class="eyebrow">Deposit sequence</div><h2>Fast trace, slow kernel, residual scar</h2></div>
+            <div class="legend"><span class="key"><i style="background:var(--amber)"></i>fast · injured</span><span class="key"><i style="background:var(--teal)"></i>slow · injured</span><span class="key"><i style="background:var(--blue)"></i>slow · control</span><span class="key"><i style="background:var(--red-soft);height:8px"></i>scar gap</span></div>
+          </div>
+          <svg id="traceChart" viewBox="0 0 720 330" role="img" aria-label="Real scalar v1.8 fast and slow traces for injured and control arms">
+            <line class="grid-line" x1="48" y1="62" x2="700" y2="62"/><line class="grid-line" x1="48" y1="142" x2="700" y2="142"/><line class="grid-line" x1="48" y1="222" x2="700" y2="222"/>
+            <line class="axis" x1="48" y1="282" x2="700" y2="282"/><line class="axis" x1="48" y1="24" x2="48" y2="282"/>
+            <text class="axis-text" x="48" y="305">800 CLEAN</text><text class="axis-text" id="injuryLabel" x="381" y="305">INJURY</text><text class="axis-text" x="645" y="305">RECOVERY</text><text class="axis-text" x="10" y="67">1.0</text><text class="axis-text" x="15" y="227">0.3</text><text class="axis-text" x="24" y="286">0</text>
+            <rect class="phase-band" id="injuryBand" x="0" y="24" width="0" height="258"/>
+            <path class="scar-area" id="scarArea" d=""/><path class="path-control" id="controlPath" d=""/><path class="path-slow" id="slowPath" d=""/><path class="path-fast" id="fastPath" d=""/>
+          </svg>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="chart-title"><div><div class="eyebrow">Cross-section · v1.8 closed form</div><h2>The hump across DECAY</h2></div><span class="k-badge" id="decayBadge">DECAY .70</span></div>
+          <svg id="humpChart" viewBox="0 0 720 250" role="img" aria-label="Validated closed-form scar response across DECAY">
+            <line class="axis" x1="48" y1="205" x2="700" y2="205"/><line class="axis" x1="48" y1="25" x2="48" y2="205"/>
+            <line class="threshold" id="decayGuide" x1="340" y1="25" x2="340" y2="205"/>
+            <text class="axis-text" x="48" y="228">.05</text><text class="axis-text" x="250" y="228">.50</text><text class="axis-text" x="474" y="228">1.0</text><text class="axis-text" x="674" y="228">1.5</text>
+            <text class="axis-text" x="9" y="30" id="humpMaxLabel">MAX</text><text class="axis-text" x="24" y="209">0</text>
+            <path class="curve-hump" id="humpPath" d=""/><circle class="marker" id="humpMarker" cx="340" cy="40" r="7"/>
+          </svg>
+          <div class="callout"><span class="callout-num" id="humpReadout">12.8</span><p>Return-tick difference between the injured arm (authority .3) and control (authority 1.0). Duration sets the injury length; G stays fixed at .70.</p></div>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){
+    tabs.forEach(function(t){t.classList.toggle('active',t===tab);t.setAttribute('aria-selected',t===tab?'true':'false')});
+    document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===tab.dataset.view)});
+  })});
+
+  var seed=[
+    {id:1,kStart:1,kEnd:12,subject:'Bridge status',op:'ASSERT',state:'WILD',authority:.2,supersedes:null},
+    {id:2,kStart:12,kEnd:24,subject:'Bridge status',op:'RE-GRADE',state:'CONTESTED',authority:.4,supersedes:1},
+    {id:3,kStart:24,kEnd:40,subject:'Bridge status',op:'RE-GRADE',state:'VALIDATED',authority:.7,supersedes:2},
+    {id:4,kStart:40,kEnd:null,subject:'Bridge status',op:'RE-GRADE',state:'TRUSTED',authority:.8,supersedes:3}
+  ];
+  var records=[],nextId=5,currentType='unknown';
+  var scrub=document.getElementById('kScrubber'),subject=document.getElementById('subject');
+  function cloneSeed(){records=seed.map(function(x){return Object.assign({},x)});nextId=5;scrub.max=61;scrub.value=61;render()}
+  function maxK(){return Number(scrub.max)}
+  function liveFor(name){for(var i=records.length-1;i>=0;i--){if(records[i].subject===name&&records[i].kEnd===null)return records[i]}return null}
+  function atK(name,k){var found=null;records.forEach(function(r){if(r.subject===name&&r.kStart<=k&&(r.kEnd===null||k<r.kEnd))found=r});return found}
+  function selectedFallback(k){var direct=atK(subject.value,k);if(direct)return direct;for(var i=records.length-1;i>=0;i--){var r=records[i];if(r.kStart<=k&&(r.kEnd===null||k<r.kEnd))return r}return null}
+  document.querySelectorAll('.event-type').forEach(function(btn){btn.addEventListener('click',function(){currentType=btn.dataset.type;document.querySelectorAll('.event-type').forEach(function(b){b.classList.toggle('selected',b===btn)})})});
+  document.getElementById('fire').addEventListener('click',function(){
+    var name=subject.value,live=liveFor(name),newK=maxK()+7,state='WILD',auth=.2,op='ASSERT';
+    var map={unknown:['WILD',.2],known:['VALIDATED',.7],policy:['ADOPTED',.9],promote:['TRUSTED',.8],challenge:['CONTESTED',.4],revoke:['REVOKED',0]};
+    state=map[currentType][0];auth=map[currentType][1];
+    if(live){live.kEnd=newK;op=currentType==='revoke'?'REVOKE':'RE-GRADE'}
+    records.push({id:nextId++,kStart:newK,kEnd:null,subject:name,op:op,state:state,authority:auth,supersedes:live?live.id:null});
+    scrub.max=newK;scrub.value=newK;render();
+  });
+  scrub.addEventListener('input',render);subject.addEventListener('change',render);document.getElementById('reset').addEventListener('click',cloneSeed);
+  function render(){
+    var k=Number(scrub.value),r=selectedFallback(k),name=subject.value;
+    document.getElementById('kBadge').textContent='k = '+k;document.getElementById('rangeText').textContent='k 1 — '+maxK();
+    document.getElementById('beliefSubject').textContent=r?r.subject:name;
+    document.getElementById('beliefState').textContent=r?r.state:'NOT YET KNOWN';
+    document.getElementById('beliefAuthority').textContent='authority '+(r?r.authority.toFixed(2):'0.00');
+    document.getElementById('authorityFill').style.width=((r?r.authority:0)*100)+'%';
+    var list=document.getElementById('recordList');list.innerHTML='';
+    records.slice().reverse().forEach(function(row){var div=document.createElement('div');var active=r&&row.id===r.id;
+      div.className='record-row'+(row.kStart>k?' future':'')+(active?' active-row':'');
+      div.innerHTML='<span class="mono">k '+row.kStart+'</span><span class="op">'+row.op+'</span><span class="subject">'+row.subject+'</span><span class="mono">'+row.state+'</span><span class="supersedes mono">'+(row.supersedes?'← #'+row.supersedes:'origin')+'</span>';list.appendChild(div)});
+    var tl=document.getElementById('timeline');tl.innerHTML='<div class="rail"></div>';var relevant=records.filter(function(x){return x.subject===name});
+    relevant.forEach(function(row){var pct=Math.max(2,Math.min(98,(row.kStart/maxK())*100));var mark=document.createElement('button');mark.className='timeline-mark'+(row.kStart<=k?' past':'')+(r&&r.id===row.id?' current':'');mark.style.left=pct+'%';mark.title='k '+row.kStart+' · '+row.state;mark.setAttribute('aria-label',mark.title);mark.addEventListener('click',function(){scrub.value=row.kStart;render()});tl.appendChild(mark);
+      var lab=document.createElement('span');lab.className='timeline-label';lab.style.left=pct+'%';lab.textContent='k'+row.kStart;tl.appendChild(lab)});
+  }
+  cloneSeed();
+
+  var intensity=document.getElementById('intensity'),duration=document.getElementById('duration'),decay=document.getElementById('decay');
+  var TAU_C=13.5,G=.70,KAPPA=.095,SLOW_W=8,WIN=500,THR=5*Math.PI/180,N_A=800,SLOW_LAMBDA=.002;
+  function linePath(points,w,h,x0,y0,yMax){return points.map(function(v,i){var x=x0+i*(w/(points.length-1));var y=y0-(v/yMax)*h;return(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ')}
+  function areaPath(top,bottom,w,h,x0,y0,yMax){var a=top.map(function(v,i){return[(x0+i*w/(top.length-1)),(y0-v/yMax*h)]});var b=bottom.map(function(v,i){return[(x0+i*w/(bottom.length-1)),(y0-v/yMax*h)]}).reverse();return a.concat(b).map(function(p,i){return(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' ')+' Z'}
+  function closedFormScar(dec,L){
+    var tau=TAU_C/dec,expK=Math.exp(KAPPA),betas=[],sumSin=0,sumCos=0,k;
+    for(k=0;k<L;k++){
+      var recency=Math.exp(-k/tau),z=recency+expK*(1-recency),fkx=recency/z,fky=expK*(1-recency)/z;
+      var beta=Math.atan2(1+G*(fky+SLOW_W*(sumSin/WIN)),G*fkx);
+      betas.push(beta);sumSin+=Math.sin(beta);sumCos+=Math.cos(beta);
+    }
+    var aSum=0;for(var a=L+1;a<=L+N_A;a++)aSum+=Math.exp(-a/tau);
+    var bw=0,bx=0,by=0;
+    for(k=0;k<L;k++){
+      var w=Math.exp(-(L-k)/tau)*Math.exp(KAPPA*Math.cos(betas[k]));
+      bw+=w;bx+=w*Math.cos(betas[k]);by+=w*Math.sin(betas[k]);
+    }
+    var wTot=expK*aSum+bw,fy0=by/wTot,fx0=(expK*aSum+bx)/wTot;
+    function returnTicks(authority){
+      var sx=((WIN-L)*authority+sumCos)/WIN,d=1+G*(fx0+SLOW_W*sx),arg=G*fy0/(THR*d);
+      return arg>1?tau*Math.log(arg):0;
+    }
+    return Math.max(0,returnTicks(.3))-Math.max(0,returnTicks(1));
+  }
+  function scalarTraces(i,L,dec){
+    var tau=TAU_C/dec,alpha=Math.exp(-1/tau),fastI=0,fastC=0,slowI=0,slowC=0,fastPoints=[],controlFastPoints=[],slowPoints=[],controlPoints=[];
+    var recovery=800,total=800+L+recovery;
+    for(var n=0;n<=total;n++){
+      var inInjury=n>=800&&n<800+L,authorityI=inInjury?.3:1,sI=i*authorityI,sC=i;
+      fastI=alpha*fastI+(1-alpha)*sI;fastC=alpha*fastC+(1-alpha)*sC;
+      slowI=(1-SLOW_LAMBDA)*slowI+SLOW_LAMBDA*(authorityI*sI);
+      slowC=(1-SLOW_LAMBDA)*slowC+SLOW_LAMBDA*sC;
+      fastPoints.push(fastI);controlFastPoints.push(fastC);slowPoints.push(slowI);controlPoints.push(slowC);
+    }
+    return{fast:fastPoints,controlFast:controlFastPoints,slow:slowPoints,control:controlPoints,total:total};
+  }
+  function updateLab(){
+    var i=Number(intensity.value),L=Number(duration.value),dec=Number(decay.value),tau=TAU_C/dec,scar=closedFormScar(dec,L);
+    document.getElementById('intensityValue').textContent=i.toFixed(2);document.getElementById('durationValue').textContent=L.toFixed(0);document.getElementById('decayValue').textContent=dec.toFixed(2);
+    document.getElementById('decayHint').textContent='Higher DECAY = faster washout · τ '+tau.toFixed(1);
+    document.getElementById('tauValue').textContent=tau.toFixed(1);document.getElementById('scarValue').textContent=scar.toFixed(1);document.getElementById('humpReadout').textContent=scar.toFixed(1);document.getElementById('decayBadge').textContent='DECAY '+dec.toFixed(2);
+
+    var traces=scalarTraces(i,L,dec),traceMax=1,chartW=652,chartH=220,x0=48,y0=282;
+    document.getElementById('scarArea').setAttribute('d',areaPath(traces.control,traces.slow,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('controlPath').setAttribute('d',linePath(traces.control,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('slowPath').setAttribute('d',linePath(traces.slow,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('fastPath').setAttribute('d',linePath(traces.fast,chartW,chartH,x0,y0,traceMax));
+    var injuryX=x0+800/traces.total*chartW,injuryW=L/traces.total*chartW;
+    document.getElementById('injuryBand').setAttribute('x',injuryX.toFixed(1));document.getElementById('injuryBand').setAttribute('width',Math.max(2,injuryW).toFixed(1));
+    document.getElementById('injuryLabel').setAttribute('x',Math.max(330,injuryX-8).toFixed(1));
+
+    var dMin=Number(decay.min),dMax=Number(decay.max),steps=Math.round((dMax-dMin)/.01),humpValues=[];
+    for(var m=0;m<=steps;m++)humpValues.push(closedFormScar(dMin+m*.01,L));
+    var humpMax=Math.max.apply(null,humpValues.concat([.001])),plotMax=humpMax*1.08;
+    document.getElementById('humpPath').setAttribute('d',linePath(humpValues,652,155,48,205,plotMax));
+    var mx=48+(dec-dMin)/(dMax-dMin)*652,my=205-scar/plotMax*155;
+    document.getElementById('humpMarker').setAttribute('cx',mx.toFixed(1));document.getElementById('humpMarker').setAttribute('cy',my.toFixed(1));
+    document.getElementById('decayGuide').setAttribute('x1',mx.toFixed(1));document.getElementById('decayGuide').setAttribute('x2',mx.toFixed(1));
+    document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
+  }
+  [intensity,duration,decay].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
+})();
+</script>
+</body>
+</html>
