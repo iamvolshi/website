@@ -85,9 +85,11 @@
     .chart-panel svg{width:100%;height:auto;display:block}
     .lab-controls{padding:20px}
     .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px;display:flex;align-items:center;justify-content:space-between}
-    .collapse-btn{border:1px solid var(--line);background:var(--panel-2);color:var(--ink);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer}
-    .lab-controls.collapsed .slider-group,.lab-controls.collapsed .readouts,.lab-controls.collapsed .note{display:none}
-    .lab-controls.collapsed{padding:12px 20px}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(10,12,16,.55);backdrop-filter:blur(2px);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:6vh 16px}
+    .modal-backdrop.open{display:flex}
+    .modal-panel{width:min(880px,94vw);max-height:88vh;overflow:auto}
+    .modal-close{border:1px solid var(--line);background:var(--panel-2);color:var(--ink);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer}
+    .dials-fab{position:fixed;right:18px;bottom:18px;z-index:55;border:1px solid var(--line);background:var(--ink);color:var(--bg);border-radius:999px;padding:12px 22px;font:600 13px Manrope,sans-serif;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     .slider-group{padding:14px 0;border-bottom:1px solid var(--line)}
     .slider-group:last-of-type{border-bottom:0}
     .slider-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
@@ -194,9 +196,10 @@
   </section>
 
   <section id="lab" class="view" aria-label="Scar laboratory view">
-    <div class="lab-grid">
-      <aside class="panel lab-controls" id="labControls">
-        <div class="panel-title">Signal controls <button class="collapse-btn" id="controlsToggle" aria-label="Collapse controls">–</button></div>
+    <button class="dials-fab" id="dialsFab">Dials</button>
+    <div class="modal-backdrop" id="controlsModal">
+      <aside class="panel lab-controls modal-panel" id="labControls">
+        <div class="panel-title">Signal controls <button class="modal-close" id="controlsClose" aria-label="Close controls">×</button></div>
         <div class="slider-group">
           <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
           <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
@@ -228,6 +231,7 @@
         </div>
         <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
       </aside>
+    </div>
 
       <div class="viz-stack">
         <section class="panel chart-panel">
@@ -373,7 +377,11 @@
     document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
   }
   [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
-  (function(){var p=document.getElementById('labControls'),b=document.getElementById('controlsToggle');b.addEventListener('click',function(){var c=p.classList.toggle('collapsed');b.textContent=c?'+':'–';b.setAttribute('aria-label',c?'Expand controls':'Collapse controls')})})();
+  (function(){var m=document.getElementById('controlsModal'),o=document.getElementById('dialsFab'),c=document.getElementById('controlsClose');
+  function open(){m.classList.add('open')}function close(){m.classList.remove('open')}
+  o.addEventListener('click',open);c.addEventListener('click',close);
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();
 })();
 </script>
 </body>
