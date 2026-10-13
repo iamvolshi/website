@@ -87,7 +87,8 @@
     .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px;display:flex;align-items:center;justify-content:space-between}
     .modal-backdrop{position:fixed;inset:0;background:rgba(10,12,16,.55);backdrop-filter:blur(2px);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:6vh 16px}
     .modal-backdrop.open{display:flex}
-    .modal-panel{width:min(880px,94vw);max-height:88vh;overflow:auto}
+    .modal-panel{width:min(880px,94vw);max-height:88vh;overflow:auto;resize:both}
+    .modal-panel .panel-title{cursor:move;user-select:none}
     .modal-close{border:1px solid var(--line);background:var(--panel-2);color:var(--ink);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer}
     .dials-fab{position:fixed;right:18px;bottom:18px;z-index:55;border:1px solid var(--line);background:var(--ink);color:var(--bg);border-radius:999px;padding:12px 22px;font:600 13px Manrope,sans-serif;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     .slider-group{padding:14px 0;border-bottom:1px solid var(--line)}
@@ -382,6 +383,20 @@
   o.addEventListener('click',open);c.addEventListener('click',close);
   m.addEventListener('click',function(e){if(e.target===m)close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();
+  (function(){var panel=document.getElementById('labControls'),head=panel.querySelector('.panel-title'),sx,sy,ox,oy,dragging=false;
+  head.addEventListener('mousedown',function(e){
+    if(e.target.closest('.modal-close'))return;
+    dragging=true;var r=panel.getBoundingClientRect();
+    panel.style.position='fixed';panel.style.margin='0';
+    panel.style.left=r.left+'px';panel.style.top=r.top+'px';panel.style.width=r.width+'px';
+    sx=e.clientX;sy=e.clientY;ox=r.left;oy=r.top;e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!dragging)return;
+    panel.style.left=Math.max(0,ox+e.clientX-sx)+'px';
+    panel.style.top=Math.max(0,oy+e.clientY-sy)+'px';
+  });
+  document.addEventListener('mouseup',function(){dragging=false})})();
 })();
 </script>
 </body>
