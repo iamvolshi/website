@@ -83,7 +83,11 @@
     .lab-controls .readout{min-width:110px}
     .lab-controls .note{flex:1 1 100%;margin:2px 0 0}
     .chart-panel svg{width:100%;height:auto;display:block}
-    .lab-controls{padding:20px;position:sticky;top:16px}
+    .lab-controls{padding:20px}
+    .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px;display:flex;align-items:center;justify-content:space-between}
+    .collapse-btn{border:1px solid var(--line);background:var(--panel-2);color:var(--ink);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer}
+    .lab-controls.collapsed .slider-group,.lab-controls.collapsed .readouts,.lab-controls.collapsed .note{display:none}
+    .lab-controls.collapsed{padding:12px 20px}
     .slider-group{padding:14px 0;border-bottom:1px solid var(--line)}
     .slider-group:last-of-type{border-bottom:0}
     .slider-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
@@ -191,8 +195,8 @@
 
   <section id="lab" class="view" aria-label="Scar laboratory view">
     <div class="lab-grid">
-      <aside class="panel lab-controls">
-        <div class="panel-title">Signal controls</div>
+      <aside class="panel lab-controls" id="labControls">
+        <div class="panel-title">Signal controls <button class="collapse-btn" id="controlsToggle" aria-label="Collapse controls">–</button></div>
         <div class="slider-group">
           <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
           <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
@@ -369,6 +373,7 @@
     document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
   }
   [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
+  (function(){var p=document.getElementById('labControls'),b=document.getElementById('controlsToggle');b.addEventListener('click',function(){var c=p.classList.toggle('collapsed');b.textContent=c?'+':'–';b.setAttribute('aria-label',c?'Expand controls':'Collapse controls')})})();
 })();
 </script>
 </body>
