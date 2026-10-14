@@ -73,8 +73,8 @@ def s_cover(c):
     body_center(c, ["Accountable intelligence — systems you can inspect,",
                     "memories you can trust, machines that show their work."], H - 360)
     # proof strip: THEIR numbers — what investors care about
-    stats = [("~$1T", "family-of-domains TAM"), ("46%", "agent segment growth"),
-             ("€35M", "EU AI Act max fine"), ("99%", "of enterprises lost $ on AI risk")]
+    stats = [("$60B+", "TAM · trusted AI infra"), ("$20B", "SAM"),
+             ("$100M", "SOM · ARR target"), ("€35M", "EU AI Act max fine")]
     x0 = W / 2 - 300
     y = 110
     for i, (num, label) in enumerate(stats):
@@ -128,6 +128,40 @@ def s_science(c):
         "",
         "Memory as an attractor in a pressure landscape — not a row in a database.",
     ], H - 250, size=13)
+
+
+def s_market(c):
+    kicker(c, "The market")
+    title(c, "The trusted layer beneath it all.")
+    gold_rule(c, H - 200)
+    tiers = [
+        ("TAM", "$60B+", "Trusted AI infrastructure — governance, orchestration, memory."),
+        ("SAM", "$20B", "The serviceable slice: VOLSHi's capabilities, VOLSHi's customers."),
+        ("SOM", "$100M ARR", "The obtainable target — 0.5% of SAM."),
+    ]
+    y = H - 260
+    for tier, num, desc in tiers:
+        c.setFillColor(GOLD)
+        c.setFont("Helvetica-Bold", 13)
+        c.drawString(120, y, tier)
+        c.setFillColor(WHITE)
+        c.setFont("Helvetica-Bold", 22)
+        c.drawString(190, y - 4, num)
+        c.setFillColor(MUTED)
+        c.setFont("Helvetica", 12)
+        c.drawString(330, y, desc)
+        y -= 52
+    y -= 10
+    c.setFillColor(GOLD)
+    c.setFont("Helvetica", 10)
+    c.drawCentredString(W / 2, y, "BOTTOM-UP · THREE PATHS TO $100M")
+    y -= 28
+    paths = ["100 customers × $1M ARR", "500 customers × $200K ARR", "1,000 customers × $100K ARR"]
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 12)
+    for p in paths:
+        c.drawCentredString(W / 2, y, p)
+        y -= 24
 
 
 def s_field(c):
@@ -238,7 +272,7 @@ def s_ask(c):
     ], H - 250, size=14, color=WHITE)
 
 
-SLIDES = [s_cover, s_problem, s_thesis, s_science, s_field,
+SLIDES = [s_cover, s_problem, s_thesis, s_market, s_science, s_field,
           s_archetron, s_ask]
 
 if __name__ == "__main__":
