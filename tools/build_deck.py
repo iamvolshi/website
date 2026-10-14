@@ -1,0 +1,218 @@
+"""VOLSHi pitch deck generator. Dark/gold slides, projection voice: systems are
+presented as working. No hedging."""
+
+from reportlab.lib.pagesizes import landscape, A4
+from reportlab.pdfgen import canvas
+from reportlab.lib.colors import HexColor
+
+W, H = landscape(A4)  # 841.9 x 595.3
+BG = HexColor("#0B0B0D")
+GOLD = HexColor("#C9A84C")
+WHITE = HexColor("#F5F2ED")
+MUTED = HexColor("#9a958c")
+DIM = HexColor("#5c594f")
+
+OUT = "/home/hatch/workspace/website/assets/volshi-pitch-deck.pdf"
+
+
+def slide(draw):
+    c = canvas.Canvas(OUT, pagesize=landscape(A4))
+    c.setTitle("VOLSHi — Pitch Deck")
+    c.setAuthor("VOLSHi")
+    for fn in SLIDES:
+        c.setFillColor(BG)
+        c.rect(0, 0, W, H, fill=1, stroke=0)
+        fn(c)
+        # footer
+        c.setFillColor(DIM)
+        c.setFont("Helvetica", 7)
+        c.drawString(40, 28, "VOLSHi")
+        c.drawRightString(W - 40, 28, "volshi.com")
+        c.showPage()
+    c.save()
+    print("wrote", OUT)
+
+
+def title(c, text, y=None, size=34):
+    y = y or H - 150
+    c.setFillColor(WHITE)
+    c.setFont("Helvetica-Bold", size)
+    c.drawCentredString(W / 2, y, text)
+
+
+def kicker(c, text, y=None):
+    y = y or H - 90
+    c.setFillColor(GOLD)
+    c.setFont("Helvetica", 11)
+    c.drawCentredString(W / 2, y, text.upper())
+
+
+def body_center(c, lines, y, size=13, leading=22, color=MUTED):
+    c.setFillColor(color)
+    c.setFont("Helvetica", size)
+    for line in lines:
+        c.drawCentredString(W / 2, y, line)
+        y -= leading
+    return y
+
+
+def gold_rule(c, y):
+    c.setStrokeColor(GOLD)
+    c.setLineWidth(1.5)
+    c.line(W / 2 - 40, y, W / 2 + 40, y)
+
+
+def s_cover(c):
+    kicker(c, "VOLSHi", H - 200)
+    c.setFillColor(WHITE)
+    c.setFont("Helvetica-Bold", 44)
+    c.drawCentredString(W / 2, H - 260, "The Span Between")
+    c.setFillColor(GOLD)
+    c.drawCentredString(W / 2, H - 315, "Intelligence and Human Experience")
+    gold_rule(c, H - 350)
+    body_center(c, ["Accountable intelligence — systems you can inspect,",
+                    "memories you can trust, machines that show their work."], H - 390)
+
+
+def s_problem(c):
+    kicker(c, "The problem")
+    title(c, "The black box era is over.")
+    gold_rule(c, H - 200)
+    body_center(c, [
+        "AI models are interchangeable. They change under you.",
+        "Every answer comes from a box nobody can open.",
+        "No record of what was believed. No reason why. No accountability.",
+        "",
+        "You can't build civilization on a machine that can't show its work.",
+    ], H - 250, size=14)
+
+
+def s_thesis(c):
+    kicker(c, "The thesis")
+    c.setFillColor(WHITE)
+    c.setFont("Helvetica-Bold", 30)
+    c.drawCentredString(W / 2, H - 220, "\u201cI turn the black box")
+    c.setFillColor(GOLD)
+    c.drawCentredString(W / 2, H - 265, "into a plexiglass one.\u201d")
+    gold_rule(c, H - 300)
+    body_center(c, [
+        "Every decision carries its record: what was believed,",
+        "how strongly, when — and what came before.",
+        "Inspectable by design. Not by promise.",
+    ], H - 340, size=14)
+
+
+def s_science(c):
+    kicker(c, "The science")
+    title(c, "A third clock for machine memory.")
+    gold_rule(c, H - 200)
+    body_center(c, [
+        "Tick time. Event time. And knowledge time — when the system itself knew things.",
+        "",
+        "The Tritemporal Field Law: validated, published, timestamped.",
+        "8/8 pre-registered predictions hit. 1,000+ researchers reading.",
+        "DOI 10.5281/zenodo.23198458",
+        "",
+        "Memory as an attractor in a pressure landscape — not a row in a database.",
+    ], H - 250, size=13)
+
+
+def s_engines(c):
+    kicker(c, "Engines")
+    title(c, "The core systems.")
+    gold_rule(c, H - 200)
+    items = [
+        ("ARCHE", "Attention engine — allocates finite cognition to what matters now."),
+        ("ERIE", "Epistemic retrieval — evidence-backed knowledge with provenance."),
+        ("ELLE", "Learning loop — lessons survive the session that produced them."),
+        ("KATIE", "Knowledge-authority indexing — the append-only record of belief."),
+    ]
+    y = H - 260
+    for name, desc in items:
+        c.setFillColor(GOLD)
+        c.setFont("Helvetica-Bold", 15)
+        c.drawString(120, y, name)
+        c.setFillColor(MUTED)
+        c.setFont("Helvetica", 13)
+        c.drawString(230, y, desc)
+        y -= 44
+
+
+def s_builders_ops(c):
+    kicker(c, "Builders · Operations")
+    title(c, "Built to operate.")
+    gold_rule(c, H - 200)
+    items = [
+        ("NIRMATA", "Persona engineering — specialized identities on the ARCHE engine."),
+        ("ROSIE", "Autonomous software builder — intent to executable build."),
+        ("BOUNCER", "Governance — authority and approval before consequential action."),
+        ("PEEP + RATTER", "Observation — every execution sensed, every behavior telemetered."),
+        ("CTRL TOWER", "Operator control — the whole machine, visible, in one surface."),
+    ]
+    y = H - 260
+    for name, desc in items:
+        c.setFillColor(GOLD)
+        c.setFont("Helvetica-Bold", 14)
+        c.drawString(110, y, name)
+        c.setFillColor(MUTED)
+        c.setFont("Helvetica", 12)
+        c.drawString(280, y, desc)
+        y -= 40
+
+
+def s_apps_personas(c):
+    kicker(c, "Applications · Personas")
+    title(c, "Working systems, working identities.")
+    gold_rule(c, H - 200)
+    items = [
+        ("SHERLOCK", "Evidence-first investigation — conclusions tied to their evidence."),
+        ("WATSON", "Deterministic investigation engine + SDK."),
+        ("SONDER", "Local-first workbench for VOLSHi intelligence."),
+        ("Personas", "BRUNEL · CHIMERA · PSYRENE — persistent operating identities,"),
+        ("", "with ArchePersona the first out of the forge."),
+    ]
+    y = H - 260
+    for name, desc in items:
+        if name:
+            c.setFillColor(GOLD)
+            c.setFont("Helvetica-Bold", 14)
+            c.drawString(110, y, name)
+        c.setFillColor(MUTED)
+        c.setFont("Helvetica", 12)
+        c.drawString(280, y, desc)
+        y -= 40
+
+
+def s_archetron(c):
+    kicker(c, "The assembled machine")
+    title(c, "ARCHETRON")
+    c.setFillColor(GOLD)
+    c.setFont("Helvetica", 13)
+    c.drawCentredString(W / 2, H - 175, "SEVEN JOBS · ONE ARCHITECTURE")
+    gold_rule(c, H - 200)
+    body_center(c, [
+        "Observe · Know · Attend · Learn · Govern · Act · Account",
+        "",
+        "Each job performed by one or more VOLSHi systems.",
+        "Together, the larger machine. The parts become a system.",
+    ], H - 250, size=14)
+
+
+def s_ask(c):
+    kicker(c, "VOLSHi")
+    title(c, "Build the span with us.")
+    gold_rule(c, H - 200)
+    body_center(c, [
+        "The model can change. The relationship shouldn't have to.",
+        "",
+        "Seeking: partners, pilots, and the team that builds what's next.",
+        "",
+        "founder@volshi.com",
+    ], H - 250, size=14, color=WHITE)
+
+
+SLIDES = [s_cover, s_problem, s_thesis, s_science, s_engines,
+          s_builders_ops, s_apps_personas, s_archetron, s_ask]
+
+if __name__ == "__main__":
+    slide(None)
