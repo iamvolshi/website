@@ -75,7 +75,7 @@
     .record-row:last-child{border-bottom:0}.record-row.future{opacity:.3}.record-row.active-row{background:var(--amber-soft)}
     .mono{font-family:'IBM Plex Mono',monospace}.op{font-weight:800}.subject{font-weight:700}.supersedes{color:var(--muted)}
     .empty-state{padding:36px 20px;text-align:center;color:var(--muted)}
-    .lab-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+    .lab-grid{display:grid;grid-template-columns:290px minmax(0,1fr);gap:14px;align-items:start}#lab .lab-controls{position:sticky;top:12px;padding:16px;max-height:calc(100vh - 140px);overflow:auto}#lab .lab-controls .panel-title{margin-bottom:6px}#lab .slider-group{padding:10px 0}#lab .slider-label{margin-bottom:6px}#lab .readouts{margin-top:12px}#lab .note{margin:10px 0 0}#lab .viz-stack{display:grid;gap:12px}#lab .chart-panel{padding:12px 16px}#lab .chart-title{margin-bottom:6px}#lab .chart-title h2{font-size:17px}#lab #traceChart{max-height:36vh;margin:0 auto}#lab #humpChart{max-height:24vh;margin:0 auto}#lab .callout{padding:10px 14px;margin-top:10px}#lab .callout-num{font-size:20px}.dials-fab,.modal-backdrop{display:none!important}
     .lab-controls{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-end}
     .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px}
     .lab-controls .slider-group{flex:1 1 170px;min-width:150px}
@@ -83,7 +83,7 @@
     .lab-controls .readout{min-width:110px}
     .lab-controls .note{flex:1 1 100%;margin:2px 0 0}
     .chart-panel svg{width:100%;height:auto;display:block}
-    .lab-controls{padding:20px}
+    .lab-controls{padding:16px}
     .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px;display:flex;align-items:center;justify-content:space-between}
     .modal-backdrop{position:fixed;inset:0;background:rgba(10,12,16,.18);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:6vh 16px}
     .modal-backdrop.open{display:flex}
@@ -197,10 +197,9 @@
   </section>
 
   <section id="lab" class="view" aria-label="Scar laboratory view">
-    <button class="dials-fab" id="dialsFab">Dials</button>
-    <div class="modal-backdrop" id="controlsModal">
-      <aside class="panel lab-controls modal-panel" id="labControls">
-        <div class="panel-title">Signal controls <button class="modal-close" id="controlsClose" aria-label="Close controls">×</button></div>
+    <div class="lab-grid">
+      <aside class="panel lab-controls" id="labControls">
+        <div class="panel-title">Signal controls</div>
         <div class="slider-group">
           <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
           <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
@@ -232,7 +231,6 @@
         </div>
         <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
       </aside>
-    </div>
 
       <div class="viz-stack">
         <section class="panel chart-panel">
@@ -378,25 +376,8 @@
     document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
   }
   [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
-  (function(){var m=document.getElementById('controlsModal'),o=document.getElementById('dialsFab'),c=document.getElementById('controlsClose');
-  function open(){m.classList.add('open')}function close(){m.classList.remove('open')}
-  o.addEventListener('click',open);c.addEventListener('click',close);
-  m.addEventListener('click',function(e){if(e.target===m)close()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()})})();
-  (function(){var panel=document.getElementById('labControls'),head=panel.querySelector('.panel-title'),sx,sy,ox,oy,dragging=false;
-  head.addEventListener('mousedown',function(e){
-    if(e.target.closest('.modal-close'))return;
-    dragging=true;var r=panel.getBoundingClientRect();
-    panel.style.position='fixed';panel.style.margin='0';
-    panel.style.left=r.left+'px';panel.style.top=r.top+'px';panel.style.width=r.width+'px';
-    sx=e.clientX;sy=e.clientY;ox=r.left;oy=r.top;e.preventDefault();
-  });
-  document.addEventListener('mousemove',function(e){
-    if(!dragging)return;
-    panel.style.left=Math.max(0,ox+e.clientX-sx)+'px';
-    panel.style.top=Math.max(0,oy+e.clientY-sy)+'px';
-  });
-  document.addEventListener('mouseup',function(){dragging=false})})();
+
+
 })();
 </script>
 </body>
