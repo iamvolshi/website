@@ -63,15 +63,28 @@ def gold_rule(c, y):
 
 
 def s_cover(c):
-    kicker(c, "VOLSHi", H - 200)
+    kicker(c, "VOLSHi", H - 170)
     c.setFillColor(WHITE)
     c.setFont("Helvetica-Bold", 44)
-    c.drawCentredString(W / 2, H - 260, "The Span Between")
+    c.drawCentredString(W / 2, H - 230, "The Span Between")
     c.setFillColor(GOLD)
-    c.drawCentredString(W / 2, H - 315, "Intelligence and Human Experience")
-    gold_rule(c, H - 350)
+    c.drawCentredString(W / 2, H - 285, "Intelligence and Human Experience")
+    gold_rule(c, H - 320)
     body_center(c, ["Accountable intelligence — systems you can inspect,",
-                    "memories you can trust, machines that show their work."], H - 390)
+                    "memories you can trust, machines that show their work."], H - 360)
+    # proof strip: numbers in the first slide
+    stats = [("8/8", "predictions hit"), ("41", "experiments"),
+             ("1,000+", "researcher views"), ("2026", "priority timestamp")]
+    x0 = W / 2 - 300
+    y = 110
+    for i, (num, label) in enumerate(stats):
+        x = x0 + i * 200
+        c.setFillColor(GOLD)
+        c.setFont("Helvetica-Bold", 22)
+        c.drawCentredString(x, y, num)
+        c.setFillColor(MUTED)
+        c.setFont("Helvetica", 9)
+        c.drawCentredString(x, y - 18, label)
 
 
 def s_problem(c):
