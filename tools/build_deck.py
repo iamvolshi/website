@@ -117,6 +117,20 @@ def s_science(c):
     ], H - 250, size=13)
 
 
+def s_field(c):
+    kicker(c, "The mechanism")
+    title(c, "The event field.")
+    gold_rule(c, H - 200)
+    body_center(c, [
+        "Every event leaves pressure. Pressure shapes the landscape.",
+        "The landscape pulls attention. Attention becomes behavior.",
+        "",
+        "Memory is not a row in a database —",
+        "it is an attractor in the pressure landscape.",
+        "The things attention cannot escape.",
+    ], H - 250, size=14)
+
+
 def s_engines(c):
     kicker(c, "Engines")
     title(c, "The core systems.")
@@ -211,7 +225,7 @@ def s_ask(c):
     ], H - 250, size=14, color=WHITE)
 
 
-SLIDES = [s_cover, s_problem, s_thesis, s_science, s_engines,
+SLIDES = [s_cover, s_problem, s_thesis, s_science, s_field, s_engines,
           s_builders_ops, s_apps_personas, s_archetron, s_ask]
 
 if __name__ == "__main__":
