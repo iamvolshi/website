@@ -26,7 +26,7 @@
     .bento-hero .bento-name{font-size:clamp(1.9rem,3.2vw,2.9rem)}
     .bento-greek{font-size:.62em;font-weight:400;letter-spacing:.04em;color:var(--gold);vertical-align:.08em}
     .bento-origin{color:var(--gold);letter-spacing:.06em}
-    .bento-type{font-size:10.5px;line-height:1.5;letter-spacing:.03em;color:rgba(245,242,237,.52)}
+    .bento-type{font-size:10.5px;line-height:1.5;letter-spacing:.03em;color:rgba(245,242,237,.52);min-height:3em}
     .bento-hero .bento-type{font-size:12px;max-width:30ch}
     .tech-hint{margin-top:13px;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.24)}
     .tech-modal{position:fixed;inset:0;z-index:700;visibility:hidden;pointer-events:none}
@@ -147,7 +147,7 @@
         <button class="bento-tile" data-tech="rosie"><span class="bento-cat">Builders</span><span class="bento-name">ROSIE</span><span class="bento-type">Autonomous Software Builder</span></button>
         <button class="bento-tile" data-tech="bouncer"><span class="bento-cat">Operations</span><span class="bento-name">BOUNCER</span><span class="bento-type">Authority &amp; Governance Engine</span></button>
         <button class="bento-tile" data-tech="peep"><span class="bento-cat">Operations</span><span class="bento-name">PEEP</span><span class="bento-type">Execution Observation Bridge</span></button>
-        <button class="bento-tile" data-tech="ratter"><span class="bento-cat">Operations</span><span class="bento-name">RATTER</span><span class="bento-type">Telemetry Engine</span></button>
+        <button class="bento-tile" data-tech="ratter"><span class="bento-cat">Operations</span><span class="bento-name">RATR</span><span class="bento-type">Telemetry Engine</span></button>
         <button class="bento-tile" data-tech="tower"><span class="bento-cat">Operations</span><span class="bento-name">CTRL TOWER</span><span class="bento-type">Operator Control</span></button>
         <button class="bento-tile" data-tech="sherlock"><span class="bento-cat">Applications</span><span class="bento-name">SHERLOCK</span><span class="bento-type">Evidence Investigation Application</span></button>
         <button class="bento-tile" data-tech="watson"><span class="bento-cat">Applications</span><span class="bento-name">WATSON</span><span class="bento-type">Deterministic Investigation Engine &amp; SDK</span></button>
@@ -236,7 +236,7 @@
     rosie:{category:'Builders',name:'ROSIE',type:'Autonomous Software Builder',what:'A software-building system designed to move from intent through planning and implementation.',does:'Coordinates the work required to turn a product objective into an executable build while preserving the surrounding architecture, evidence, and control boundaries.'},
     bouncer:{category:'Operations',name:'BOUNCER',type:'Authority & Governance Engine',what:'The authority layer governing consequential crossings inside autonomous systems.',does:'Approves, denies, pauses, resumes, escalates, revokes, or requires human authorization before controlled actions are allowed to proceed.'},
     peep:{category:'Operations',name:'PEEP',type:'Execution Observation Bridge',what:'The sensing bridge between execution environments and the wider VOLSHi system.',does:'Observes execution sources such as shells, runtimes, browsers, IDEs, and CI, then publishes normalized operational events without reasoning about them.'},
-    ratter:{category:'Operations',name:'RATTER',type:'Telemetry Engine',what:'The observation and telemetry engine for live system behavior.',does:'Collects and exposes structured operational telemetry so system state, activity, and behavior can be inspected rather than inferred.'},
+    ratter:{category:'Operations',name:'RATR',type:'Telemetry Engine',what:'The observation and telemetry engine for live system behavior.',does:'Collects and exposes structured operational telemetry so system state, activity, and behavior can be inspected rather than inferred.'},
     tower:{category:'Operations',name:'CTRL TOWER',type:'Operator Control',what:'The operator-facing control application for the VOLSHi ecosystem.',does:'Presents live system state, execution streams, telemetry, governance decisions, evidence, costs, and controls in one operational surface.'},
     sherlock:{category:'Applications',name:'SHERLOCK',type:'Evidence Investigation Application',what:'An evidence-first investigation system built around traceable reconstruction.',does:'Ingests evidence, reconstructs events and relationships, and produces conclusions that remain tied to the evidence and provenance supporting them.'},
     watson:{category:'Applications',name:'WATSON',type:'Deterministic Investigation Engine & SDK',what:'A certified investigation engine and SDK implementing the native SHERLOCK–Watson protocol.',does:'Defines deterministic investigation lifecycles for creating investigations, submitting evidence, reaching conclusions, and replaying results.'},
@@ -253,7 +253,7 @@
   if(techDetail){techDetail.addEventListener('mouseenter',()=>clearTimeout(techTimer));techDetail.addEventListener('mouseleave',scheduleHide);}if(techClose)techClose.addEventListener('click',()=>hideTech(true));var tb=document.getElementById('techBackdrop');if(tb)tb.addEventListener('click',()=>hideTech(true));
 
   const arcData={
-    observe:{job:'OBSERVE',systems:'PEEP + RATTER',copy:'Sense execution and expose live operational state without pretending observation is reasoning.'},
+    observe:{job:'OBSERVE',systems:'PEEP + RATR',copy:'Sense execution and expose live operational state without pretending observation is reasoning.'},
     know:{job:'KNOW',systems:'ERIE',copy:'Establish evidence, knowledge, relationships, and provenance so the system can ground what it claims to know.'},
     attend:{job:'ATTEND',systems:'ARCHE',copy:'Allocate finite cognition toward what matters now, using pressure, consequence, and user cost.'},
     learn:{job:'LEARN',systems:'ELLE',copy:'Carry lessons forward across interactions and models so useful learning survives the session that produced it.'},
