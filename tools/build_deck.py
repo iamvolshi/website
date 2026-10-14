@@ -72,9 +72,9 @@ def s_cover(c):
     gold_rule(c, H - 320)
     body_center(c, ["Accountable intelligence — systems you can inspect,",
                     "memories you can trust, machines that show their work."], H - 360)
-    # proof strip: numbers in the first slide
-    stats = [("8/8", "predictions hit"), ("41", "experiments"),
-             ("1,000+", "researcher views"), ("2026", "priority timestamp")]
+    # proof strip: THEIR numbers — what investors care about
+    stats = [("$52.6B", "agent market by 2030"), ("46%", "annual growth"),
+             ("€35M", "EU AI Act max fine"), ("99%", "of enterprises lost $ on AI risk")]
     x0 = W / 2 - 300
     y = 110
     for i, (num, label) in enumerate(stats):
