@@ -133,13 +133,13 @@ def s_field(c):
 
 def s_engines(c):
     kicker(c, "Engines")
-    title(c, "The core systems.")
+    title(c, "The family.")
     gold_rule(c, H - 200)
     items = [
-        ("ARCHE", "Attention engine — allocates finite cognition to what matters now."),
-        ("ERIE", "Epistemic retrieval — evidence-backed knowledge with provenance."),
-        ("ELLE", "Learning loop — lessons survive the session that produced them."),
-        ("KATIE", "Knowledge-authority indexing — the append-only record of belief."),
+        ("ARCHE", "The dad — attention engine. Allocates finite cognition to what matters now."),
+        ("ERIE", "Triplet — epistemic retrieval. Evidence-backed knowledge with provenance."),
+        ("ELLE", "Triplet — learning loop. Lessons survive the session that produced them."),
+        ("KATIE", "Triplet — knowledge-authority indexing. The append-only record of belief."),
     ]
     y = H - 260
     for name, desc in items:
