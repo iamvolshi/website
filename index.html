@@ -27,7 +27,7 @@
 
     #s2 .scrim{background:linear-gradient(to right,rgba(4,4,4,.94) 0%,rgba(4,4,4,.70) 34%,rgba(4,4,4,.18) 61%,rgba(4,4,4,0) 100%)}
     .arc-layout{position:relative;z-index:2;height:100%;padding:96px 5vw 54px 7vw;display:grid;grid-template-columns:minmax(320px,36vw) minmax(440px,1fr);gap:4vw;align-items:center}
-    .arc-intro{align-self:center;max-width:500px}.arc-intro .arc-logo{width:min(330px,78%);margin:0 0 24px}.arc-title{font-size:clamp(1.45rem,2.35vw,2.55rem);font-weight:300;letter-spacing:.055em;line-height:1.08;text-transform:uppercase;margin-bottom:14px;text-shadow:0 1px 18px rgba(0,0,0,.75)}.arc-title .g{color:var(--gold)}
+    .arc-intro{align-self:center;max-width:500px}.arc-intro .arc-logo{width:min(330px,78%);margin:0 0 24px;filter:invert(1)}.arc-title{font-size:clamp(1.45rem,2.35vw,2.55rem);font-weight:300;letter-spacing:.055em;line-height:1.08;text-transform:uppercase;margin-bottom:14px;text-shadow:0 1px 18px rgba(0,0,0,.75)}.arc-title .g{color:var(--gold)}
     .arc-lede{max-width:420px;font-size:.68rem;line-height:1.75;letter-spacing:.035em;color:rgba(245,242,237,.56)}.arc-hint{margin-top:20px;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.25)}
     .arc-stage{position:relative;min-width:0;height:min(72vh,650px);display:flex;align-items:center;justify-content:center}
     .arc-orbit{position:relative;width:min(560px,48vw);aspect-ratio:1;border:1px solid rgba(201,168,76,.13);border-radius:50%;box-shadow:inset 0 0 90px rgba(201,168,76,.025),0 0 90px rgba(0,0,0,.22)}.arc-orbit::before,.arc-orbit::after{content:'';position:absolute;border-radius:50%;pointer-events:none}.arc-orbit::before{inset:12%;border:1px solid rgba(255,255,255,.055)}.arc-orbit::after{inset:28%;border:1px solid rgba(201,168,76,.12);box-shadow:0 0 35px rgba(201,168,76,.04)}
@@ -39,6 +39,23 @@
     .arc-job[data-arc-job="govern"]{left:7%;bottom:3%}.arc-job[data-arc-job="act"]{left:-30px;top:50%;transform:translateY(-50%)}.arc-job[data-arc-job="act"]:hover,.arc-job[data-arc-job="act"].active{transform:translateY(-50%) translateY(-2px)}
     .arc-job[data-arc-job="account"]{left:6%;top:8%}
     .arc-assembly-label{position:absolute;right:-12px;bottom:5px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.18);writing-mode:vertical-rl}
+    .flip-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:min(640px,100%);perspective:1200px}
+    .flip-card{appearance:none;border:0;background:none;padding:0;cursor:pointer;height:190px}
+    .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1)}
+    .flip-card:hover .flip-inner,.flip-card:focus-visible .flip-inner,.flip-card.pinned .flip-inner{transform:rotateY(180deg)}
+    .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .flip-front{background:linear-gradient(150deg,#0b0b0d,#050506);border:1px solid rgba(255,255,255,.09);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+    .flip-front .ff-job{font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .flip-front .ff-tag{margin-top:10px;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,242,237,.22)}
+    .flip-back{transform:rotateY(180deg);background:linear-gradient(150deg,rgba(20,19,15,.96),rgba(8,8,10,.94));border:1px solid rgba(201,168,76,.45);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 26px rgba(201,168,76,.08);padding:12px;text-align:center}
+    .flip-back .fb-gears{width:64px;height:44px;margin-bottom:8px}
+    .flip-back .fb-systems{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .flip-back .fb-copy{font-size:9.5px;line-height:1.5;letter-spacing:.02em;color:rgba(245,242,237,.6);max-width:100%}
+    .flip-back .fb-stamp{margin-top:8px;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.55)}
+    .gear-spin{transform-origin:center;transform-box:fill-box;animation:gearrot 9s linear infinite}
+    .gear-spin.rev{animation-direction:reverse;animation-duration:12s}
+    @keyframes gearrot{to{transform:rotate(360deg)}}
+    @media(max-width:768px){.flip-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.flip-card{height:170px}}
     @media(max-width:1050px){.arc-layout{grid-template-columns:minmax(290px,39vw) 1fr;gap:2vw}.arc-orbit{width:min(500px,49vw)}.arc-job{min-width:76px;padding:9px 10px;font-size:10px}}
     @media(max-width:900px){.tech-layout{grid-template-columns:minmax(300px,46vw) 1fr;padding-left:5vw;padding-right:3vw}.tech-group{grid-template-columns:86px 1fr}.tech-glass{padding:30px}.tech-copy{grid-template-columns:1fr;gap:18px}.tech-detail-name{font-size:clamp(2rem,5.4vw,4rem)}.arc-layout{grid-template-columns:34vw 1fr;padding-left:5vw;padding-right:3vw}.arc-stage{height:min(66vh,540px)}.arc-core-copy{font-size:10px}.arc-job{font-size:10px;letter-spacing:.14em;min-width:68px}.arc-job[data-arc-job="know"]{right:-18px}.arc-job[data-arc-job="attend"]{right:-20px}.arc-job[data-arc-job="act"]{left:-18px}}
     @media(max-width:768px){.tech-layout{display:block;padding:82px 22px 54px;overflow:auto}.tech-index{max-width:none}.tech-title{font-size:clamp(1.5rem,7vw,2.2rem)}.tech-group{grid-template-columns:82px 1fr;padding:10px 0}.tech-stage{position:static}.tech-stage-mark{display:none}.tech-detail{position:fixed;inset:72px 14px 18px;z-index:500;align-items:center}.tech-glass{width:100%;max-height:100%;overflow:auto;min-height:0;padding:28px 22px 24px;background:linear-gradient(145deg,rgba(12,12,14,.91),rgba(6,6,8,.86))}.tech-detail-name{font-size:clamp(2rem,12vw,4rem)}.tech-copy{grid-template-columns:1fr;gap:18px}.tech-hint{margin-bottom:14px}.arc-layout{display:block;padding:80px 20px 42px;overflow:auto}.arc-intro{max-width:none}.arc-intro .arc-logo{width:min(260px,70%);margin-bottom:12px}.arc-title{font-size:clamp(1.3rem,6vw,1.9rem);margin-bottom:9px}.arc-lede{font-size:10px;line-height:1.55}.arc-hint{margin-top:10px}.arc-stage{height:auto;min-height:420px;margin-top:14px}.arc-orbit{width:min(350px,82vw)}.arc-job{font-size:10px;min-width:62px;padding:8px 7px}.arc-job[data-arc-job="know"],.arc-job[data-arc-job="attend"]{right:-10px}.arc-job[data-arc-job="act"]{left:-10px}.arc-core{width:52%;padding:10%}.arc-core-job{font-size:clamp(.86rem,4vw,1.25rem)}.arc-core-systems{font-size:10px}.arc-core-copy{font-size:10px}.arc-assembly-label{display:none}}
@@ -125,25 +142,10 @@
       <img class="arc-logo sb" id="alogo" alt="ARCHETRON Intelligence" src="assets/archetronlogo1.png">
       <h2 class="arc-title sc">The Parts Become<br><span class="g">A System.</span></h2>
       <p class="arc-lede sd">ARCHETRON is the assembled architecture formed when VOLSHi's core systems work together as one. The jobs come first. The technologies performing them reveal themselves when you inspect the machine.</p>
-      <div class="arc-hint se">Hover to inspect · Click to hold</div>
+      <div class="arc-hint se">Hover to reveal · Click to hold</div>
     </section>
     <section class="arc-stage" aria-live="polite">
-      <div class="arc-orbit" id="arcOrbit">
-        <button class="arc-job" type="button" data-arc-job="observe">Observe</button>
-        <button class="arc-job" type="button" data-arc-job="know">Know</button>
-        <button class="arc-job" type="button" data-arc-job="attend">Attend</button>
-        <button class="arc-job" type="button" data-arc-job="learn">Learn</button>
-        <button class="arc-job" type="button" data-arc-job="govern">Govern</button>
-        <button class="arc-job" type="button" data-arc-job="act">Act</button>
-        <button class="arc-job" type="button" data-arc-job="account">Account</button>
-        <div class="arc-core" id="arcCore">
-          <div class="arc-core-kicker" id="arcCoreKicker">Assembled System</div>
-          <div class="arc-core-job" id="arcCoreJob">ARCHETRON</div>
-          <div class="arc-core-systems" id="arcCoreSystems">Seven Jobs · One Architecture</div>
-          <div class="arc-core-copy" id="arcCoreCopy">Each job is performed by one or more VOLSHi technologies. Together they become the larger machine.</div>
-        </div>
-        <div class="arc-assembly-label">Functional Assembly</div>
-      </div>
+      <div class="flip-grid" id="flipGrid"></div>
     </section>
   </div>
 </div>
@@ -214,6 +216,10 @@
     account:{job:'ACCOUNT',systems:'CTRL TOWER + ERIE',copy:'Keep system state, evidence, decisions, and consequences visible to the human operator and tied to their basis.'}
   };
   const arcButtons=Array.from(document.querySelectorAll('.arc-job')),arcCore=document.getElementById('arcCore'),arcCoreKicker=document.getElementById('arcCoreKicker'),arcCoreJob=document.getElementById('arcCoreJob'),arcCoreSystems=document.getElementById('arcCoreSystems'),arcCoreCopy=document.getElementById('arcCoreCopy');let arcPinned=false,activeArc=null,arcTimer=null;
+  // Black-box flip cards: hover reveals the machinery underneath.
+  const flipGrid=document.getElementById('flipGrid');
+  function gearSVG(){return `<svg class="fb-gears" viewBox="0 0 64 44" aria-hidden="true"><g class="gear-spin" stroke="#c9a84c" fill="none"><circle cx="22" cy="22" r="12" stroke-width="7" stroke-dasharray="5 4"/><circle cx="22" cy="22" r="4" stroke-width="2"/></g><g class="gear-spin rev" stroke="#c9a84c" fill="none" opacity=".7"><circle cx="45" cy="22" r="8" stroke-width="5" stroke-dasharray="4 3"/><circle cx="45" cy="22" r="2.5" stroke-width="1.5"/></g></svg>`;}
+  if(flipGrid){Object.keys(arcData).forEach(key=>{const d=arcData[key],card=document.createElement('button');card.className='flip-card';card.type='button';card.setAttribute('aria-label',d.job+' — flip to reveal the machinery');card.innerHTML=`<div class="flip-inner"><div class="flip-face flip-front"><div class="ff-job">${d.job}</div><div class="ff-tag">Black box</div></div><div class="flip-face flip-back">${gearSVG()}<div class="fb-systems">${d.systems}</div><div class="fb-copy">${d.copy}</div><div class="fb-stamp">Plexiglass · revealed</div></div></div>`;card.addEventListener('click',()=>card.classList.toggle('pinned'));flipGrid.appendChild(card);});}
   function resetArc(force=false){if(!force&&arcPinned)return;arcPinned=false;activeArc=null;clearTimeout(arcTimer);arcButtons.forEach(b=>b.classList.remove('active'));if(arcCore)arcCore.classList.remove('active');if(arcCoreKicker)arcCoreKicker.textContent='Assembled System';if(arcCoreJob)arcCoreJob.textContent='ARCHETRON';if(arcCoreSystems)arcCoreSystems.textContent='Seven Jobs · One Architecture';if(arcCoreCopy)arcCoreCopy.textContent='Each job is performed by one or more VOLSHi technologies. Together they become the larger machine.';}
   function showArc(key,pin=false){const d=arcData[key];if(!d)return;clearTimeout(arcTimer);activeArc=key;if(pin)arcPinned=true;arcButtons.forEach(b=>b.classList.toggle('active',b.dataset.arcJob===key));if(arcCore)arcCore.classList.add('active');if(arcCoreKicker)arcCoreKicker.textContent='Functional Job';if(arcCoreJob)arcCoreJob.textContent=d.job;if(arcCoreSystems)arcCoreSystems.textContent=d.systems;if(arcCoreCopy)arcCoreCopy.textContent=d.copy;}
   function scheduleArcReset(){clearTimeout(arcTimer);arcTimer=setTimeout(()=>resetArc(false),110);}
