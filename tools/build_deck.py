@@ -73,7 +73,7 @@ def s_cover(c):
     body_center(c, ["Accountable intelligence — systems you can inspect,",
                     "memories you can trust, machines that show their work."], H - 360)
     # proof strip: THEIR numbers — what investors care about
-    stats = [("$52.6B", "agent market by 2030"), ("46%", "annual growth"),
+    stats = [("~$1T", "family-of-domains TAM"), ("46%", "agent segment growth"),
              ("€35M", "EU AI Act max fine"), ("99%", "of enterprises lost $ on AI risk")]
     x0 = W / 2 - 300
     y = 110
