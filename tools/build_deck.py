@@ -5,7 +5,7 @@ from reportlab.lib.pagesizes import landscape, A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
 
-W, H = landscape(A4)  # 841.9 x 595.3
+W, H = 960, 540  # 16:9 widescreen
 BG = HexColor("#0B0B0D")
 GOLD = HexColor("#C9A84C")
 WHITE = HexColor("#F5F2ED")
@@ -16,7 +16,7 @@ OUT = "/home/hatch/workspace/website/assets/volshi-pitch-deck.pdf"
 
 
 def slide(draw):
-    c = canvas.Canvas(OUT, pagesize=landscape(A4))
+    c = canvas.Canvas(OUT, pagesize=(W, H))
     c.setTitle("VOLSHi — Pitch Deck")
     c.setAuthor("VOLSHi")
     for fn in SLIDES:
