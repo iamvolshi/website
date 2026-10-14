@@ -225,8 +225,8 @@ def s_ask(c):
     ], H - 250, size=14, color=WHITE)
 
 
-SLIDES = [s_cover, s_problem, s_thesis, s_science, s_field, s_engines,
-          s_builders_ops, s_apps_personas, s_archetron, s_ask]
+SLIDES = [s_cover, s_problem, s_thesis, s_science, s_field,
+          s_archetron, s_ask]
 
 if __name__ == "__main__":
     slide(None)
