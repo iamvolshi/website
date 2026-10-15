@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="../assets/assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/assets/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="../assets/assets/apple-touch-icon.png" />
+  <title>KT Scar Lab — VOLSHi</title>
+  <link rel="stylesheet" href="../assets/kt.css" />
+</head>
+<body>
+<main class="page">
+  <header class="topline">
+    <div class="title-block">
+      <div class="eyebrow">Candidate computational law</div>
+      <h1>The Scar Lab</h1>
+    </div>
+    <p class="intro">Fire injuries into the field law and watch the scar form — real v1.8 dynamics.</p>
+  </header>
+
+  <nav class="pagenav" aria-label="KT visuals">
+    <a href="../" class=""><span class="pg-num">01</span>Engine</a>
+    <a href="./" class="current"><span class="pg-num">02</span>Scar lab</a>
+    <a href="../curves/" class=""><span class="pg-num">03</span>Curve bench</a>
+  </nav>
+
+  <section id="lab" class="view" aria-label="Scar laboratory view">
+    <div class="lab-grid">
+      <aside class="panel lab-controls" id="labControls">
+        <div class="panel-title">Signal controls</div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
+          <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="duration">Duration · injury deposits</label><span class="slider-value" id="durationValue">27</span></div>
+          <input id="duration" type="range" min="1" max="450" value="27" step="1" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="decay">DECAY · forgetting rate</label><span class="slider-value" id="decayValue">0.70</span></div>
+          <input id="decay" type="range" min="0.05" max="1.50" value="0.70" step="0.01" />
+          <p class="micro" id="decayHint">Higher DECAY = faster washout · τ 19.3</p>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="recovery">Recovery · tail ticks</label><span class="slider-value" id="recoveryValue">2000</span></div>
+          <input id="recovery" type="range" min="200" max="4000" value="2000" step="50" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="slowtau">Slow τ · consolidation</label><span class="slider-value" id="slowtauValue">500</span></div>
+          <input id="slowtau" type="range" min="100" max="2000" value="500" step="10" />
+        </div>
+        <div class="slider-group">
+          <div class="slider-label"><label for="injauth">Injury authority</label><span class="slider-value" id="injauthValue">0.30</span></div>
+          <input id="injauth" type="range" min="0" max="1" value="0.3" step="0.05" />
+        </div>
+        <div class="readouts">
+          <div class="readout"><span class="eyebrow">Time constant τ</span><strong id="tauValue">19.3</strong></div>
+          <div class="readout"><span class="eyebrow">Scar · ticks</span><strong id="scarValue">12.8</strong></div>
+        </div>
+        <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
+      </aside>
+
+      <div class="viz-stack">
+        <section class="panel chart-panel">
+          <div class="chart-title">
+            <div><div class="eyebrow">Deposit sequence</div><h2>Fast trace, slow kernel, residual scar</h2></div>
+            <div class="legend"><span class="key"><i style="background:var(--amber)"></i>fast · injured</span><span class="key"><i style="background:var(--teal)"></i>slow · injured</span><span class="key"><i style="background:var(--blue)"></i>slow · control</span><span class="key"><i style="background:var(--red-soft);height:8px"></i>scar gap</span></div>
+          </div>
+          <svg id="traceChart" viewBox="0 0 720 460" role="img" aria-label="Real scalar v1.8 fast and slow traces for injured and control arms">
+            <line class="grid-line" x1="48" y1="70" x2="700" y2="70"/><line class="grid-line" x1="48" y1="235" x2="700" y2="235"/>
+            <line class="axis" x1="48" y1="400" x2="700" y2="400"/><line class="axis" x1="48" y1="24" x2="48" y2="400"/>
+            <text class="axis-text" x="48" y="423">800 CLEAN</text><text class="axis-text" id="injuryLabel" x="381" y="423">INJURY</text><text class="axis-text" x="645" y="423">RECOVERY</text><text class="axis-text" x="10" y="75">1.0</text><text class="axis-text" x="15" y="240">0.5</text><text class="axis-text" x="24" y="404">0</text>
+            <rect class="phase-band" id="injuryBand" x="0" y="24" width="0" height="376"/>
+            <path class="scar-area" id="scarArea" d=""/><path class="path-control" id="controlPath" d=""/><path class="path-slow" id="slowPath" d=""/><path class="path-fast" id="fastPath" d=""/>
+          </svg>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="chart-title"><div><div class="eyebrow">Cross-section · v1.8 closed form</div><h2>The hump across DECAY</h2></div><span class="k-badge" id="decayBadge">DECAY .70</span></div>
+          <svg id="humpChart" viewBox="0 0 720 250" role="img" aria-label="Validated closed-form scar response across DECAY">
+            <line class="axis" x1="48" y1="205" x2="700" y2="205"/><line class="axis" x1="48" y1="25" x2="48" y2="205"/>
+            <line class="threshold" id="decayGuide" x1="340" y1="25" x2="340" y2="205"/>
+            <text class="axis-text" x="48" y="228">.05</text><text class="axis-text" x="250" y="228">.50</text><text class="axis-text" x="474" y="228">1.0</text><text class="axis-text" x="674" y="228">1.5</text>
+            <text class="axis-text" x="9" y="30" id="humpMaxLabel">MAX</text><text class="axis-text" x="24" y="209">0</text>
+            <path class="curve-hump" id="humpPath" d=""/><circle class="marker" id="humpMarker" cx="340" cy="40" r="7"/>
+          </svg>
+          <div class="callout"><span class="callout-num" id="humpReadout">12.8</span><p>Return-tick difference between the injured arm (authority .3) and control (authority 1.0). Duration sets the injury length; G stays fixed at .70.</p></div>
+        </section>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>&copy; 2026 VOLSHi &middot; All rights reserved</span>
+  <span class="mono">Candidate computational law &middot; Foundation published October 2026 &middot; <a href="https://zenodo.org/records/23198458">DOI 10.5281/zenodo.23198458</a></span>
+</footer>
+<script>
+(function(){
+var intensity=document.getElementById('intensity'),duration=document.getElementById('duration'),decay=document.getElementById('decay'),recovery=document.getElementById('recovery'),slowtau=document.getElementById('slowtau'),injauth=document.getElementById('injauth');
+  var TAU_C=13.5,G=.70,KAPPA=.095,SLOW_W=8,WIN=500,THR=5*Math.PI/180,N_A=800,SLOW_LAMBDA=.002;
+  function linePath(points,w,h,x0,y0,yMax){return points.map(function(v,i){var x=x0+i*(w/(points.length-1));var y=y0-(v/yMax)*h;return(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ')}
+  function areaPath(top,bottom,w,h,x0,y0,yMax){var a=top.map(function(v,i){return[(x0+i*w/(top.length-1)),(y0-v/yMax*h)]});var b=bottom.map(function(v,i){return[(x0+i*w/(bottom.length-1)),(y0-v/yMax*h)]}).reverse();return a.concat(b).map(function(p,i){return(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' ')+' Z'}
+  function closedFormScar(dec,L){
+    var tau=TAU_C/dec,expK=Math.exp(KAPPA),betas=[],sumSin=0,sumCos=0,k;
+    for(k=0;k<L;k++){
+      var recency=Math.exp(-k/tau),z=recency+expK*(1-recency),fkx=recency/z,fky=expK*(1-recency)/z;
+      var beta=Math.atan2(1+G*(fky+SLOW_W*(sumSin/WIN)),G*fkx);
+      betas.push(beta);sumSin+=Math.sin(beta);sumCos+=Math.cos(beta);
+    }
+    var aSum=0;for(var a=L+1;a<=L+N_A;a++)aSum+=Math.exp(-a/tau);
+    var bw=0,bx=0,by=0;
+    for(k=0;k<L;k++){
+      var w=Math.exp(-(L-k)/tau)*Math.exp(KAPPA*Math.cos(betas[k]));
+      bw+=w;bx+=w*Math.cos(betas[k]);by+=w*Math.sin(betas[k]);
+    }
+    var wTot=expK*aSum+bw,fy0=by/wTot,fx0=(expK*aSum+bx)/wTot;
+    function returnTicks(authority){
+      var sx=((WIN-L)*authority+sumCos)/WIN,d=1+G*(fx0+SLOW_W*sx),arg=G*fy0/(THR*d);
+      return arg>1?tau*Math.log(arg):0;
+    }
+    return Math.max(0,returnTicks(.3))-Math.max(0,returnTicks(1));
+  }
+  function scalarTraces(i,L,dec,recTicks,slowTau,injAuth){
+    var tau=TAU_C/dec,alpha=Math.exp(-1/tau),sl=1-Math.exp(-1/slowTau),fastI=0,fastC=0,slowI=0,slowC=0,fastPoints=[],controlFastPoints=[],slowPoints=[],controlPoints=[];
+    var clean=800,total=clean+L+recTicks;
+    for(var n=0;n<=total;n++){
+      var inInjury=n>=clean&&n<clean+L,authorityI=inInjury?injAuth:1,sI=i*authorityI,sC=i;
+      fastI=alpha*fastI+(1-alpha)*sI;fastC=alpha*fastC+(1-alpha)*sC;
+      slowI=(1-sl)*slowI+sl*(authorityI*sI);
+      slowC=(1-sl)*slowC+sl*sC;
+      fastPoints.push(fastI);controlFastPoints.push(fastC);slowPoints.push(slowI);controlPoints.push(slowC);
+    }
+    return{fast:fastPoints,controlFast:controlFastPoints,slow:slowPoints,control:controlPoints,total:total,clean:clean};
+  }
+  function updateLab(){
+    var i=Number(intensity.value),L=Number(duration.value),dec=Number(decay.value),rec=Number(recovery.value),stau=Number(slowtau.value),ia=Number(injauth.value),tau=TAU_C/dec,scar=closedFormScar(dec,L);
+    document.getElementById('intensityValue').textContent=i.toFixed(2);document.getElementById('durationValue').textContent=L.toFixed(0);document.getElementById('decayValue').textContent=dec.toFixed(2);
+    document.getElementById('recoveryValue').textContent=rec.toFixed(0);document.getElementById('slowtauValue').textContent=stau.toFixed(0);document.getElementById('injauthValue').textContent=ia.toFixed(2);
+    document.getElementById('decayHint').textContent='Higher DECAY = faster washout · τ '+tau.toFixed(1);
+    document.getElementById('tauValue').textContent=tau.toFixed(1);document.getElementById('scarValue').textContent=scar.toFixed(1);document.getElementById('humpReadout').textContent=scar.toFixed(1);document.getElementById('decayBadge').textContent='DECAY '+dec.toFixed(2);
+
+    var traces=scalarTraces(i,L,dec,rec,stau,ia),traceMax=1,chartW=652,chartH=330,x0=48,y0=400;
+    document.getElementById('scarArea').setAttribute('d',areaPath(traces.control,traces.slow,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('controlPath').setAttribute('d',linePath(traces.control,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('slowPath').setAttribute('d',linePath(traces.slow,chartW,chartH,x0,y0,traceMax));
+    document.getElementById('fastPath').setAttribute('d',linePath(traces.fast,chartW,chartH,x0,y0,traceMax));
+    var injuryX=x0+traces.clean/traces.total*chartW,injuryW=L/traces.total*chartW;
+    document.getElementById('injuryBand').setAttribute('x',injuryX.toFixed(1));document.getElementById('injuryBand').setAttribute('width',Math.max(2,injuryW).toFixed(1));
+    document.getElementById('injuryLabel').setAttribute('x',Math.max(330,injuryX-8).toFixed(1));
+
+    var dMin=Number(decay.min),dMax=Number(decay.max),steps=Math.round((dMax-dMin)/.01),humpValues=[];
+    for(var m=0;m<=steps;m++)humpValues.push(closedFormScar(dMin+m*.01,L));
+    var humpMax=Math.max.apply(null,humpValues.concat([.001])),plotMax=humpMax*1.08;
+    document.getElementById('humpPath').setAttribute('d',linePath(humpValues,652,155,48,205,plotMax));
+    var mx=48+(dec-dMin)/(dMax-dMin)*652,my=205-scar/plotMax*155;
+    document.getElementById('humpMarker').setAttribute('cx',mx.toFixed(1));document.getElementById('humpMarker').setAttribute('cy',my.toFixed(1));
+    document.getElementById('decayGuide').setAttribute('x1',mx.toFixed(1));document.getElementById('decayGuide').setAttribute('x2',mx.toFixed(1));
+    document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
+  }
+  [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
+
+
+
+})();
+</script>
+</body>
+</html>

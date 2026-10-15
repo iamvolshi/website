@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <title>KT Curve Bench — VOLSHi</title>
+  <link rel="stylesheet" href="../assets/kt.css" />
+</head>
+<body>
+<main class="page">
+  <header class="topline">
+    <div class="title-block">
+      <div class="eyebrow">KT visuals · 03</div>
+      <h1>The Curve Bench</h1>
+    </div>
+    <p class="intro">Every pool gets its own curve. Insults and compliments don't scar the same — drag the control points and watch the grudge respond. Curves are illustrative of the walkthrough design (variable nudge, dynamic tail, per-pool curves); depth decay uses the validated v1.8 slow rate.</p>
+  </header>
+
+  <nav class="pagenav" aria-label="KT visuals">
+    <a href="../" class=""><span class="pg-num">01</span>Engine</a>
+    <a href="../scar/" class=""><span class="pg-num">02</span>Scar lab</a>
+    <a href="./" class="current"><span class="pg-num">03</span>Curve bench</a>
+  </nav>
+
+  <div class="pool-tabs" role="tablist" aria-label="Event pools">
+    <button class="pool-tab active-insults" data-pool="insults" role="tab" aria-selected="true">Insults</button>
+    <button class="pool-tab" data-pool="compliments" role="tab" aria-selected="false">Compliments</button>
+  </div>
+
+  <div class="bench-grid">
+    <section class="panel chart-panel" aria-label="Curve editor">
+      <div class="chart-title">
+        <div><div class="eyebrow" id="curveEyebrow">Pool · insults</div><h2 id="curveTitle">Nudge per consecutive insult</h2></div>
+        <div class="legend"><span class="key"><i id="curveKey" style="background:var(--red)"></i><span id="curveKeyLabel">ticks added</span></span></div>
+      </div>
+      <svg id="curveSvg" class="curve-svg" viewBox="0 0 660 380" role="img" aria-label="Draggable pool curve editor">
+        <line class="grid-line" x1="56" y1="95" x2="640" y2="95"/><line class="grid-line" x1="56" y1="170" x2="640" y2="170"/><line class="grid-line" x1="56" y1="245" x2="640" y2="245"/>
+        <line class="axis" x1="56" y1="330" x2="640" y2="330"/><line class="axis" x1="56" y1="20" x2="56" y2="330"/>
+        <text class="axis-text" x="56" y="353">0</text><text class="axis-text" x="190" y="353">5</text><text class="axis-text" x="336" y="353">10</text><text class="axis-text" x="482" y="353">15</text><text class="axis-text" x="622" y="353">20</text>
+        <text class="axis-text" x="330" y="372">consecutive events</text>
+        <text class="axis-text" x="8" y="335">0</text><text class="axis-text" x="2" y="250">25</text><text class="axis-text" x="2" y="175">50</text><text class="axis-text" x="2" y="100">75</text>
+        <text class="axis-text" x="8" y="30">90</text>
+        <line class="pos-line" id="posLine" x1="56" y1="20" x2="56" y2="330"/>
+        <path class="curve-path" id="curvePath" d="" style="stroke:var(--red)"/>
+        <circle class="pos-dot" id="posDot" r="6" cx="56" cy="330" style="fill:var(--red)"/>
+        <g id="pointsG"></g>
+      </svg>
+      <p class="note" id="curveNote">Drag the points. X is the consecutive-insult count, Y is the ticks each insult adds to the grudge. Steeper = the grudge deepens faster the longer it goes on.</p>
+      <div class="bench-actions" style="grid-template-columns:1fr 1fr">
+        <button class="bench-btn ghost" id="resetCurve">Reset this curve</button>
+        <button class="bench-btn ghost" id="resetSim">Reset grudge</button>
+      </div>
+    </section>
+
+    <section class="panel chart-panel" aria-label="Grudge simulator">
+      <div class="chart-title"><div><div class="eyebrow">Simulator</div><h2>The grudge</h2></div></div>
+      <div class="grudge-num"><span id="depthNum">0</span><span style="font-size:15px;color:var(--muted)"> ticks</span></div>
+      <p class="micro" id="simLine">No grudge held. Offend to start one.</p>
+      <div class="bench-actions">
+        <button class="bench-btn offend" id="offendBtn">Offend</button>
+        <button class="bench-btn mend" id="mendBtn">Make right</button>
+        <button class="bench-btn ghost" id="tickBtn">Let 100 ticks pass</button>
+      </div>
+      <div class="split-bars">
+        <div class="split-row"><span>Surface · what it shows</span><div class="split-track"><div class="split-fill" id="surfaceFill" style="width:0%;background:var(--amber)"></div></div><span class="mono" id="surfaceNum">0</span></div>
+        <div class="split-row"><span>Depth · what it holds</span><div class="split-track"><div class="split-fill" id="depthFill" style="width:0%;background:var(--red)"></div></div><span class="mono" id="depthNum2">0</span></div>
+      </div>
+      <p class="note">Surface clears in a handful of ticks — depth decays at the validated slow rate (λ = 0.002, ~500 ticks to turn over). Apology fixes what it shows fast; what it holds takes ~80× longer. That's the v1.8 debt finding, running live.</p>
+      <div class="eyebrow" style="margin-top:14px">Action history</div>
+      <div class="hist-strip" id="histStrip"><span class="micro" style="margin:auto">offend or make right to begin</span></div>
+    </section>
+  </div>
+</main>
+<footer class="site-footer">
+  <span>© 2026 VOLSHi · All rights reserved</span>
+  <span class="mono">Candidate computational law · Foundation published October 2026 · <a href="https://zenodo.org/records/23198458">DOI 10.5281/zenodo.23198458</a></span>
+</footer>
+<script>
+(function(){
+  var XMAX=20, YMAX=90, W=660, H=380, X0=56, Y0=330, PW=584, PH=310;
+  var DEFAULTS={
+    insults:{label:'insults', color:'var(--red)', tab:'active-insults',
+      title:'Nudge per consecutive insult', key:'ticks added',
+      note:'Drag the points. X is the consecutive-insult count, Y is the ticks each insult adds to the grudge. Steeper = the grudge deepens faster the longer it goes on.',
+      points:[[0,2],[1,5],[2,9],[4,16],[7,28],[11,45],[16,65],[20,80]]},
+    compliments:{label:'compliments', color:'var(--teal)', tab:'active-compliments',
+      title:'Relief per consecutive make-right', key:'ticks removed',
+      note:'Drag the points. X is the consecutive make-right count, Y is the ticks each one removes from the grudge. Front-loaded = the first apology counts most.',
+      points:[[0,12],[1,9],[2,7],[4,5],[8,3],[14,1]]}
+  };
+  var pools={insults:DEFAULTS.insults.points.map(function(p){return p.slice()}),
+             compliments:DEFAULTS.compliments.points.map(function(p){return p.slice()})};
+  var active='insults';
+
+  function x2px(x){return X0+x/XMAX*PW}
+  function y2py(y){return Y0-y/YMAX*PH}
+  function px2x(px){return Math.max(0,Math.min(XMAX,(px-X0)/PW*XMAX))}
+  function py2y(py){return Math.max(0,Math.min(YMAX,(Y0-py)/PH*YMAX))}
+
+  function at(pts,x){
+    if(x<=pts[0][0])return pts[0][1];
+    for(var i=1;i<pts.length;i++){
+      if(x<=pts[i][0]){var a=pts[i-1],b=pts[i],t=(x-a[0])/Math.max(1e-9,b[0]-a[0]);return a[1]+t*(b[1]-a[1])}
+    }
+    return pts[pts.length-1][1];
+  }
+
+  var svg=document.getElementById('curveSvg'), g=document.getElementById('pointsG'),
+      path=document.getElementById('curvePath'), posLine=document.getElementById('posLine'),
+      posDot=document.getElementById('posDot');
+
+  function drawCurve(){
+    var pts=pools[active], col=DEFAULTS[active].color;
+    path.setAttribute('d', pts.map(function(p,i){return (i?'L':'M')+x2px(p[0]).toFixed(1)+' '+y2py(p[1]).toFixed(1)}).join(' '));
+    path.style.stroke=col;
+    g.innerHTML='';
+    pts.forEach(function(p,idx){
+      var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',x2px(p[0]));c.setAttribute('cy',y2py(p[1]));c.setAttribute('r',8);
+      c.setAttribute('class','curve-point');c.style.stroke=col;
+      c.addEventListener('pointerdown',function(ev){ev.preventDefault();c.setPointerCapture(ev.pointerId);dragIdx=idx;});
+      g.appendChild(c);
+    });
+    document.getElementById('curveEyebrow').textContent='Pool · '+active;
+    document.getElementById('curveTitle').textContent=DEFAULTS[active].title;
+    document.getElementById('curveKeyLabel').textContent=DEFAULTS[active].key;
+    document.getElementById('curveKey').style.background=col;
+    document.getElementById('curveNote').textContent=DEFAULTS[active].note;
+    posDot.style.fill=col;
+  }
+
+  var dragIdx=-1;
+  function svgPt(ev){var r=svg.getBoundingClientRect();return [(ev.clientX-r.left)/r.width*W,(ev.clientY-r.top)/r.height*H];}
+  svg.addEventListener('pointermove',function(ev){
+    if(dragIdx<0)return;
+    var pts=pools[active], sp=svgPt(ev), nx=px2x(sp[0]), ny=Math.round(py2y(sp[1]));
+    var lo=idx=>idx>0?pts[idx-1][0]+0.5:0, hi=idx=>idx<pts.length-1?pts[idx+1][0]-0.5:XMAX;
+    pts[dragIdx][0]=Math.max(lo(dragIdx),Math.min(hi(dragIdx),Math.round(nx*2)/2));
+    pts[dragIdx][1]=ny;
+    drawCurve();drawMarker();
+  });
+  svg.addEventListener('pointerup',function(){dragIdx=-1;});
+  svg.addEventListener('pointercancel',function(){dragIdx=-1;});
+
+  document.querySelectorAll('.pool-tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      active=t.dataset.pool;
+      document.querySelectorAll('.pool-tab').forEach(function(x){
+        var on=x===t;
+        x.classList.toggle('active-insults',on&&active==='insults');
+        x.classList.toggle('active-compliments',on&&active==='compliments');
+        x.setAttribute('aria-selected',on?'true':'false');
+      });
+      drawCurve();drawMarker();
+    });
+  });
+  document.getElementById('resetCurve').addEventListener('click',function(){
+    pools[active]=DEFAULTS[active].points.map(function(p){return p.slice()});drawCurve();drawMarker();
+  });
+
+  // ---- grudge simulator ----
+  var depth=0, surface=0, consecI=0, consecC=0, hist=[];
+  var depthNum=document.getElementById('depthNum'), surfaceNum=document.getElementById('surfaceNum'),
+      depthNum2=document.getElementById('depthNum2'), simLine=document.getElementById('simLine'),
+      surfaceFill=document.getElementById('surfaceFill'), depthFill=document.getElementById('depthFill'),
+      histStrip=document.getElementById('histStrip');
+
+  function drawMarker(){
+    var pts=pools[active], n=active==='insults'?consecI:consecC, v=at(pts,n);
+    posLine.setAttribute('x1',x2px(n));posLine.setAttribute('x2',x2px(n));
+    posDot.setAttribute('cx',x2px(n));posDot.setAttribute('cy',y2py(v));
+  }
+  function renderSim(){
+    depthNum.textContent=Math.round(depth);
+    surfaceNum.textContent=Math.round(surface);
+    depthNum2.textContent=Math.round(depth);
+    var cap=Math.max(depth,surface,1);
+    surfaceFill.style.width=(surface/cap*100)+'%';
+    depthFill.style.width=(depth/cap*100)+'%';
+    if(depth<=0.5&&surface<=0.5){simLine.textContent='No grudge held. Offend to start one.';}
+    else{simLine.textContent='Consecutive offenses: '+consecI+' · next insult adds '+Math.round(at(pools.insults,consecI+1))+' ticks.';}
+    histStrip.innerHTML=hist.length?'':'<span class="micro" style="margin:auto">offend or make right to begin</span>';
+    hist.slice(-40).forEach(function(h){
+      var b=document.createElement('div');b.className='hist-bar '+(h.dir>0?'up':(h.dir<0?'down':''));
+      b.style.height=Math.max(6,Math.min(100,Math.abs(h.dir)/80*100))+'%';b.title=h.label;histStrip.appendChild(b);
+    });
+    drawMarker();
+  }
+  document.getElementById('offendBtn').addEventListener('click',function(){
+    consecI++;consecC=0;
+    var add=at(pools.insults,consecI);
+    depth+=add;surface=depth;
+    hist.push({dir:add,label:'insult #'+consecI+' +'+Math.round(add)+' ticks'});
+    renderSim();
+  });
+  document.getElementById('mendBtn').addEventListener('click',function(){
+    if(depth<=0.5&&surface<=0.5)return;
+    consecC++;consecI=0;
+    var rel=Math.min(depth,at(pools.compliments,consecC));
+    depth-=rel;surface=depth;
+    hist.push({dir:-rel,label:'make-right #'+consecC+' −'+Math.round(rel)+' ticks'});
+    renderSim();
+  });
+  document.getElementById('tickBtn').addEventListener('click',function(){
+    surface*=Math.exp(-100/3);       /* behavioral: clears in a handful of ticks */
+    depth*=Math.exp(-100/500);       /* v1.8 slow rate: λ = 0.002 */
+    if(surface<0.5)surface=0;if(depth<0.5)depth=0;
+    hist.push({dir:0,label:'100 ticks passed'});
+    renderSim();
+  });
+  document.getElementById('resetSim').addEventListener('click',function(){
+    depth=0;surface=0;consecI=0;consecC=0;hist=[];renderSim();
+  });
+
+  drawCurve();renderSim();
+})();
+</script>
+</body>
+</html>

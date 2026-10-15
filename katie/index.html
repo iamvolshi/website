@@ -4,130 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <link rel="icon" href="assets/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <title>The Tritemporal Field Law — Candidate</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap');
-    :root{
-      --bg:#f2f0ea;--panel:#fffdf8;--panel-2:#e8e5dc;--ink:#171916;--muted:#60645e;
-      --line:#c9c6bc;--strong:#858a82;--amber:#d46a18;--amber-soft:#f5d9bf;--teal:#087f79;
-      --teal-soft:#c9ebe5;--red:#b83b35;--red-soft:#f2d4d0;--blue:#25648b;--shadow:0 10px 30px rgba(26,29,24,.08);
-      --radius:14px;
-    }
-    @media(prefers-color-scheme:dark){
-      :root{--bg:#101210;--panel:#181b18;--panel-2:#222620;--ink:#f2f0e8;--muted:#abb0a8;
-      --line:#383d37;--strong:#717970;--amber:#f08a3c;--amber-soft:#4c2b18;--teal:#57c7bd;
-      --teal-soft:#173d39;--red:#ee7770;--red-soft:#4a2422;--blue:#73b5dc;--shadow:0 12px 34px rgba(0,0,0,.28)}
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;min-height:100vh}
-    button,input,select{font:inherit}
-    button{color:inherit}
-    .page{max-width:1280px;margin:0 auto;padding:clamp(12px,2vw,24px)}
-    .topline{margin-bottom:14px}
-    .title-block .eyebrow{margin-bottom:6px}
-    h1{font-size:clamp(22px,3.2vw,36px);line-height:1;letter-spacing:-.04em;margin:0;max-width:none;font-weight:800;text-wrap:balance}
-    .intro{max-width:none;color:var(--muted);font-size:13px;line-height:1.45;margin:8px 0 0}
-    .tabs{display:inline-grid;grid-template-columns:1fr 1fr;background:var(--panel-2);border:1px solid var(--line);padding:3px;border-radius:10px;margin-bottom:12px}
-    .tab{border:0;background:transparent;padding:7px 14px;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px}
-    .tab.active{background:var(--panel);box-shadow:0 2px 8px rgba(0,0,0,.08)}
-    .view{display:none}.view.active{display:block}
-    .engine-grid{display:grid;grid-template-columns:minmax(235px,.7fr) minmax(0,1.55fr);gap:12px;align-items:start}
-    .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .control-panel{padding:14px;position:sticky;top:12px}
-    .panel-title,.eyebrow{font:600 11px/1.2 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.11em;color:var(--muted)}
-    .panel-title{margin-bottom:10px}
-    label{display:block;font-size:12px;font-weight:700;margin:10px 0 5px}
-    select,.text-input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--ink)}
-    .event-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .event-type{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:8px 8px;text-align:left;cursor:pointer;font-size:12px;font-weight:700;min-height:42px}
-    .event-type:hover,.event-type.selected{border-color:var(--amber);background:var(--amber-soft)}
-    .event-type small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
-    .fire{width:100%;border:0;background:var(--ink);color:var(--panel);padding:10px 14px;border-radius:9px;font-weight:800;margin-top:12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
-    .fire:hover{background:var(--amber);color:#fff}
-    .micro{color:var(--muted);font-size:10px;line-height:1.4;margin:8px 0 0}
-    .stage{display:grid;gap:12px}
-    .belief{padding:14px 16px;overflow:hidden}
-    .belief-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
-    .k-badge{font:600 11px 'IBM Plex Mono',monospace;border:1px solid var(--line);padding:5px 8px;border-radius:6px;color:var(--muted);white-space:nowrap}
-    .belief h2{font-size:clamp(20px,3vw,30px);letter-spacing:-.03em;line-height:1;margin:5px 0 6px}
-    .state-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-    .state{font:600 12px 'IBM Plex Mono',monospace;padding:6px 9px;border-radius:6px;background:var(--teal-soft);color:var(--teal)}
-    .authority{font:600 13px 'IBM Plex Mono',monospace}
-    .authority-bar{height:8px;background:var(--panel-2);margin-top:14px;border-radius:3px;overflow:hidden}
-    .authority-fill{height:100%;background:var(--teal);transition:width .25s ease}
-    .scrubber{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
-    .scrub-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:12px}
-    input[type=range]{width:100%;accent-color:var(--amber)}
-    .ticks{display:flex;justify-content:space-between;color:var(--muted);font:10px 'IBM Plex Mono',monospace}
-    .timeline-panel{padding:12px 16px;overflow:hidden}
-    .timeline{position:relative;height:70px;margin-top:10px}
-    .rail{position:absolute;left:0;right:0;top:34px;height:2px;background:var(--line)}
-    .timeline-mark{position:absolute;top:23px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--panel);border:3px solid var(--strong);cursor:pointer}
-    .timeline-mark.past{border-color:var(--teal);background:var(--teal-soft)}
-    .timeline-mark.current{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 5px var(--amber-soft)}
-    .timeline-label{position:absolute;top:53px;transform:translateX(-50%);font:10px 'IBM Plex Mono',monospace;color:var(--muted);white-space:nowrap}
-    .record{overflow:hidden}
-    .record-head{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
-    .reset{border:0;background:transparent;color:var(--muted);font-weight:700;font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-    .record-list{max-height:220px;overflow:auto}
-    .record-row{display:grid;grid-template-columns:60px 95px minmax(120px,1fr) 100px 72px;gap:12px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line);font-size:12px;transition:opacity .2s}
-    .record-row:last-child{border-bottom:0}.record-row.future{opacity:.3}.record-row.active-row{background:var(--amber-soft)}
-    .mono{font-family:'IBM Plex Mono',monospace}.op{font-weight:800}.subject{font-weight:700}.supersedes{color:var(--muted)}
-    .empty-state{padding:36px 20px;text-align:center;color:var(--muted)}
-    .lab-grid{display:grid;grid-template-columns:290px minmax(0,1fr);gap:14px;align-items:start}#lab .lab-controls{position:sticky;top:12px;padding:16px;max-height:calc(100vh - 140px);overflow:auto}#lab .lab-controls .panel-title{margin-bottom:6px}#lab .slider-group{padding:10px 0}#lab .slider-label{margin-bottom:6px}#lab .readouts{margin-top:12px}#lab .note{margin:10px 0 0}#lab .viz-stack{display:grid;gap:12px}#lab .chart-panel{padding:12px 16px}#lab .chart-title{margin-bottom:6px}#lab .chart-title h2{font-size:17px}#lab #traceChart{max-height:36vh;margin:0 auto}#lab #humpChart{max-height:24vh;margin:0 auto}#lab .callout{padding:10px 14px;margin-top:10px}#lab .callout-num{font-size:20px}.dials-fab,.modal-backdrop{display:none!important}
-    .lab-controls{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-end}
-    .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px}
-    .lab-controls .slider-group{flex:1 1 170px;min-width:150px}
-    .lab-controls .readouts{display:flex;gap:9px;margin-top:0;flex:0 0 auto}
-    .lab-controls .readout{min-width:110px}
-    .lab-controls .note{flex:1 1 100%;margin:2px 0 0}
-    .chart-panel svg{width:100%;height:auto;display:block}
-    .lab-controls{padding:16px}
-    .lab-controls .panel-title{flex:1 1 100%;margin-bottom:2px;display:flex;align-items:center;justify-content:space-between}
-    .modal-backdrop{position:fixed;inset:0;background:rgba(10,12,16,.18);display:none;align-items:flex-start;justify-content:center;z-index:60;padding:6vh 16px}
-    .modal-backdrop.open{display:flex}
-    .modal-panel{width:min(880px,94vw);max-height:88vh;overflow:auto;resize:both}
-    .modal-panel .panel-title{cursor:move;user-select:none}
-    .modal-close{border:1px solid var(--line);background:var(--panel-2);color:var(--ink);border-radius:8px;width:28px;height:28px;font-size:16px;line-height:1;cursor:pointer}
-    .dials-fab{position:fixed;right:18px;bottom:18px;z-index:55;border:1px solid var(--line);background:var(--ink);color:var(--bg);border-radius:999px;padding:12px 22px;font:600 13px Manrope,sans-serif;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.25)}
-    .slider-group{padding:14px 0;border-bottom:1px solid var(--line)}
-    .slider-group:last-of-type{border-bottom:0}
-    .slider-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:8px}
-    .slider-label label{margin:0}.slider-value{font:600 16px 'IBM Plex Mono',monospace;color:var(--amber)}
-    .readouts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
-    .readout{background:var(--panel-2);padding:12px;border-radius:8px}
-    .readout strong{display:block;font:600 19px 'IBM Plex Mono',monospace;margin-top:5px}
-    .viz-stack{display:grid;gap:16px}
-    .chart-panel{padding:20px;overflow:hidden}
-    .chart-title{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px}
-    .chart-title h2{font-size:20px;letter-spacing:-.025em;margin:3px 0 0}
-    .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted)}
-    .key{display:flex;align-items:center;gap:6px}.key i{width:18px;height:3px;border-radius:2px;display:block}
-    svg{display:block;width:100%;height:auto;overflow:visible}
-    .axis{stroke:var(--line);stroke-width:1}.grid-line{stroke:var(--line);stroke-width:1;opacity:.55;stroke-dasharray:3 4}
-    .axis-text{fill:var(--muted);font:10px 'IBM Plex Mono',monospace}
-    .path-fast,.path-slow,.path-control,.curve-hump{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:d .16s ease}
-    .path-fast{stroke:var(--amber)}.path-slow{stroke:var(--teal)}.path-control{stroke:var(--blue);stroke-dasharray:7 5}.curve-hump{stroke:var(--red)}
-    .scar-area{fill:var(--red-soft);opacity:.78;transition:d .16s ease}.phase-band{fill:var(--amber-soft);opacity:.55}
-    .threshold{stroke:var(--strong);stroke-dasharray:5 4}.marker{fill:var(--panel);stroke:var(--red);stroke-width:3}
-    .callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:16px 18px;background:var(--panel-2);border-radius:10px;margin-top:14px}
-    .callout-num{font:600 24px 'IBM Plex Mono',monospace;color:var(--red)}
-    .callout p{margin:2px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
-    .note{font-size:11px;line-height:1.5;color:var(--muted);margin:14px 0 0}
-    .site-footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;color:var(--muted);font-size:11px}
-    .site-footer .mono{font-family:'IBM Plex Mono',monospace;font-size:10px}
-    .site-footer a{color:inherit;text-underline-offset:3px}
-    @media(max-width:800px){
-      .topline{display:block}.intro{margin-top:14px}.engine-grid,.lab-grid{grid-template-columns:1fr}.control-panel,.lab-controls{position:static}
-      .record-row{grid-template-columns:52px 1fr 66px;gap:7px 10px}.record-row .subject{grid-column:2/4}.record-row .supersedes{display:none}
-      .tabs{width:100%}.event-grid{grid-template-columns:1fr 1fr}.timeline-label{display:none}
-    }
-    @media(max-width:480px){.page{padding:16px}.event-grid{grid-template-columns:1fr}.belief-head{display:block}.k-badge{display:inline-block;margin-top:14px}.legend{gap:8px}.chart-title{display:block}.legend{margin-top:10px}}
-    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-  </style>
+  <link rel="icon" href="assets/assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/assets/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="assets/assets/apple-touch-icon.png" />
+  <title>KT Engine — VOLSHi</title>
+  <link rel="stylesheet" href="assets/kt.css" />
 </head>
 <body>
 <main class="page">
@@ -139,12 +20,13 @@
     <p class="intro">Authority-graded consolidation leaves a slow-trace deficit that persists after trust is restored.</p>
   </header>
 
-  <nav class="tabs" aria-label="Visualization views">
-    <button class="tab active" data-view="engine" aria-selected="true">01 · Full engine</button>
-    <button class="tab" data-view="lab" aria-selected="false">02 · Scar lab</button>
+  <nav class="pagenav" aria-label="KT visuals">
+    <a href="./" class="current"><span class="pg-num">01</span>Engine</a>
+    <a href="scar/" class=""><span class="pg-num">02</span>Scar lab</a>
+    <a href="curves/" class=""><span class="pg-num">03</span>Curve bench</a>
   </nav>
 
-  <section id="engine" class="view active" aria-label="Full engine view">
+  <section id="engine" aria-label="Full engine view">
     <div class="engine-grid">
       <aside class="panel control-panel">
         <div class="panel-title">Event console</div>
@@ -197,86 +79,14 @@
       </div>
     </div>
   </section>
-
-  <section id="lab" class="view" aria-label="Scar laboratory view">
-    <div class="lab-grid">
-      <aside class="panel lab-controls" id="labControls">
-        <div class="panel-title">Signal controls</div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
-          <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
-        </div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="duration">Duration · injury deposits</label><span class="slider-value" id="durationValue">27</span></div>
-          <input id="duration" type="range" min="1" max="450" value="27" step="1" />
-        </div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="decay">DECAY · forgetting rate</label><span class="slider-value" id="decayValue">0.70</span></div>
-          <input id="decay" type="range" min="0.05" max="1.50" value="0.70" step="0.01" />
-          <p class="micro" id="decayHint">Higher DECAY = faster washout · τ 19.3</p>
-        </div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="recovery">Recovery · tail ticks</label><span class="slider-value" id="recoveryValue">2000</span></div>
-          <input id="recovery" type="range" min="200" max="4000" value="2000" step="50" />
-        </div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="slowtau">Slow τ · consolidation</label><span class="slider-value" id="slowtauValue">500</span></div>
-          <input id="slowtau" type="range" min="100" max="2000" value="500" step="10" />
-        </div>
-        <div class="slider-group">
-          <div class="slider-label"><label for="injauth">Injury authority</label><span class="slider-value" id="injauthValue">0.30</span></div>
-          <input id="injauth" type="range" min="0" max="1" value="0.3" step="0.05" />
-        </div>
-        <div class="readouts">
-          <div class="readout"><span class="eyebrow">Time constant τ</span><strong id="tauValue">19.3</strong></div>
-          <div class="readout"><span class="eyebrow">Scar · ticks</span><strong id="scarValue">12.8</strong></div>
-        </div>
-        <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
-      </aside>
-
-      <div class="viz-stack">
-        <section class="panel chart-panel">
-          <div class="chart-title">
-            <div><div class="eyebrow">Deposit sequence</div><h2>Fast trace, slow kernel, residual scar</h2></div>
-            <div class="legend"><span class="key"><i style="background:var(--amber)"></i>fast · injured</span><span class="key"><i style="background:var(--teal)"></i>slow · injured</span><span class="key"><i style="background:var(--blue)"></i>slow · control</span><span class="key"><i style="background:var(--red-soft);height:8px"></i>scar gap</span></div>
-          </div>
-          <svg id="traceChart" viewBox="0 0 720 460" role="img" aria-label="Real scalar v1.8 fast and slow traces for injured and control arms">
-            <line class="grid-line" x1="48" y1="70" x2="700" y2="70"/><line class="grid-line" x1="48" y1="235" x2="700" y2="235"/>
-            <line class="axis" x1="48" y1="400" x2="700" y2="400"/><line class="axis" x1="48" y1="24" x2="48" y2="400"/>
-            <text class="axis-text" x="48" y="423">800 CLEAN</text><text class="axis-text" id="injuryLabel" x="381" y="423">INJURY</text><text class="axis-text" x="645" y="423">RECOVERY</text><text class="axis-text" x="10" y="75">1.0</text><text class="axis-text" x="15" y="240">0.5</text><text class="axis-text" x="24" y="404">0</text>
-            <rect class="phase-band" id="injuryBand" x="0" y="24" width="0" height="376"/>
-            <path class="scar-area" id="scarArea" d=""/><path class="path-control" id="controlPath" d=""/><path class="path-slow" id="slowPath" d=""/><path class="path-fast" id="fastPath" d=""/>
-          </svg>
-        </section>
-
-        <section class="panel chart-panel">
-          <div class="chart-title"><div><div class="eyebrow">Cross-section · v1.8 closed form</div><h2>The hump across DECAY</h2></div><span class="k-badge" id="decayBadge">DECAY .70</span></div>
-          <svg id="humpChart" viewBox="0 0 720 250" role="img" aria-label="Validated closed-form scar response across DECAY">
-            <line class="axis" x1="48" y1="205" x2="700" y2="205"/><line class="axis" x1="48" y1="25" x2="48" y2="205"/>
-            <line class="threshold" id="decayGuide" x1="340" y1="25" x2="340" y2="205"/>
-            <text class="axis-text" x="48" y="228">.05</text><text class="axis-text" x="250" y="228">.50</text><text class="axis-text" x="474" y="228">1.0</text><text class="axis-text" x="674" y="228">1.5</text>
-            <text class="axis-text" x="9" y="30" id="humpMaxLabel">MAX</text><text class="axis-text" x="24" y="209">0</text>
-            <path class="curve-hump" id="humpPath" d=""/><circle class="marker" id="humpMarker" cx="340" cy="40" r="7"/>
-          </svg>
-          <div class="callout"><span class="callout-num" id="humpReadout">12.8</span><p>Return-tick difference between the injured arm (authority .3) and control (authority 1.0). Duration sets the injury length; G stays fixed at .70.</p></div>
-        </section>
-      </div>
-    </div>
-  </section>
 </main>
 <footer class="site-footer">
-  <span>© 2026 VOLSHi · All rights reserved</span>
-  <span class="mono">Candidate computational law · Foundation published October 2026 · <a href="https://zenodo.org/records/23198458">DOI 10.5281/zenodo.23198458</a></span>
+  <span>&copy; 2026 VOLSHi &middot; All rights reserved</span>
+  <span class="mono">Candidate computational law &middot; Foundation published October 2026 &middot; <a href="https://zenodo.org/records/23198458">DOI 10.5281/zenodo.23198458</a></span>
 </footer>
 <script>
 (function(){
-  var tabs=document.querySelectorAll('.tab');
-  tabs.forEach(function(tab){tab.addEventListener('click',function(){
-    tabs.forEach(function(t){t.classList.toggle('active',t===tab);t.setAttribute('aria-selected',t===tab?'true':'false')});
-    document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===tab.dataset.view)});
-  })});
-
-  var seed=[
+var seed=[
     {id:1,kStart:1,kEnd:12,subject:'Bridge status',op:'ASSERT',state:'WILD',authority:.2,supersedes:null},
     {id:2,kStart:12,kEnd:24,subject:'Bridge status',op:'RE-GRADE',state:'CONTESTED',authority:.4,supersedes:1},
     {id:3,kStart:24,kEnd:40,subject:'Bridge status',op:'RE-GRADE',state:'VALIDATED',authority:.7,supersedes:2},
@@ -315,71 +125,6 @@
       var lab=document.createElement('span');lab.className='timeline-label';lab.style.left=pct+'%';lab.textContent='k'+row.kStart;tl.appendChild(lab)});
   }
   cloneSeed();
-
-  var intensity=document.getElementById('intensity'),duration=document.getElementById('duration'),decay=document.getElementById('decay'),recovery=document.getElementById('recovery'),slowtau=document.getElementById('slowtau'),injauth=document.getElementById('injauth');
-  var TAU_C=13.5,G=.70,KAPPA=.095,SLOW_W=8,WIN=500,THR=5*Math.PI/180,N_A=800,SLOW_LAMBDA=.002;
-  function linePath(points,w,h,x0,y0,yMax){return points.map(function(v,i){var x=x0+i*(w/(points.length-1));var y=y0-(v/yMax)*h;return(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ')}
-  function areaPath(top,bottom,w,h,x0,y0,yMax){var a=top.map(function(v,i){return[(x0+i*w/(top.length-1)),(y0-v/yMax*h)]});var b=bottom.map(function(v,i){return[(x0+i*w/(bottom.length-1)),(y0-v/yMax*h)]}).reverse();return a.concat(b).map(function(p,i){return(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' ')+' Z'}
-  function closedFormScar(dec,L){
-    var tau=TAU_C/dec,expK=Math.exp(KAPPA),betas=[],sumSin=0,sumCos=0,k;
-    for(k=0;k<L;k++){
-      var recency=Math.exp(-k/tau),z=recency+expK*(1-recency),fkx=recency/z,fky=expK*(1-recency)/z;
-      var beta=Math.atan2(1+G*(fky+SLOW_W*(sumSin/WIN)),G*fkx);
-      betas.push(beta);sumSin+=Math.sin(beta);sumCos+=Math.cos(beta);
-    }
-    var aSum=0;for(var a=L+1;a<=L+N_A;a++)aSum+=Math.exp(-a/tau);
-    var bw=0,bx=0,by=0;
-    for(k=0;k<L;k++){
-      var w=Math.exp(-(L-k)/tau)*Math.exp(KAPPA*Math.cos(betas[k]));
-      bw+=w;bx+=w*Math.cos(betas[k]);by+=w*Math.sin(betas[k]);
-    }
-    var wTot=expK*aSum+bw,fy0=by/wTot,fx0=(expK*aSum+bx)/wTot;
-    function returnTicks(authority){
-      var sx=((WIN-L)*authority+sumCos)/WIN,d=1+G*(fx0+SLOW_W*sx),arg=G*fy0/(THR*d);
-      return arg>1?tau*Math.log(arg):0;
-    }
-    return Math.max(0,returnTicks(.3))-Math.max(0,returnTicks(1));
-  }
-  function scalarTraces(i,L,dec,recTicks,slowTau,injAuth){
-    var tau=TAU_C/dec,alpha=Math.exp(-1/tau),sl=1-Math.exp(-1/slowTau),fastI=0,fastC=0,slowI=0,slowC=0,fastPoints=[],controlFastPoints=[],slowPoints=[],controlPoints=[];
-    var clean=800,total=clean+L+recTicks;
-    for(var n=0;n<=total;n++){
-      var inInjury=n>=clean&&n<clean+L,authorityI=inInjury?injAuth:1,sI=i*authorityI,sC=i;
-      fastI=alpha*fastI+(1-alpha)*sI;fastC=alpha*fastC+(1-alpha)*sC;
-      slowI=(1-sl)*slowI+sl*(authorityI*sI);
-      slowC=(1-sl)*slowC+sl*sC;
-      fastPoints.push(fastI);controlFastPoints.push(fastC);slowPoints.push(slowI);controlPoints.push(slowC);
-    }
-    return{fast:fastPoints,controlFast:controlFastPoints,slow:slowPoints,control:controlPoints,total:total,clean:clean};
-  }
-  function updateLab(){
-    var i=Number(intensity.value),L=Number(duration.value),dec=Number(decay.value),rec=Number(recovery.value),stau=Number(slowtau.value),ia=Number(injauth.value),tau=TAU_C/dec,scar=closedFormScar(dec,L);
-    document.getElementById('intensityValue').textContent=i.toFixed(2);document.getElementById('durationValue').textContent=L.toFixed(0);document.getElementById('decayValue').textContent=dec.toFixed(2);
-    document.getElementById('recoveryValue').textContent=rec.toFixed(0);document.getElementById('slowtauValue').textContent=stau.toFixed(0);document.getElementById('injauthValue').textContent=ia.toFixed(2);
-    document.getElementById('decayHint').textContent='Higher DECAY = faster washout · τ '+tau.toFixed(1);
-    document.getElementById('tauValue').textContent=tau.toFixed(1);document.getElementById('scarValue').textContent=scar.toFixed(1);document.getElementById('humpReadout').textContent=scar.toFixed(1);document.getElementById('decayBadge').textContent='DECAY '+dec.toFixed(2);
-
-    var traces=scalarTraces(i,L,dec,rec,stau,ia),traceMax=1,chartW=652,chartH=330,x0=48,y0=400;
-    document.getElementById('scarArea').setAttribute('d',areaPath(traces.control,traces.slow,chartW,chartH,x0,y0,traceMax));
-    document.getElementById('controlPath').setAttribute('d',linePath(traces.control,chartW,chartH,x0,y0,traceMax));
-    document.getElementById('slowPath').setAttribute('d',linePath(traces.slow,chartW,chartH,x0,y0,traceMax));
-    document.getElementById('fastPath').setAttribute('d',linePath(traces.fast,chartW,chartH,x0,y0,traceMax));
-    var injuryX=x0+traces.clean/traces.total*chartW,injuryW=L/traces.total*chartW;
-    document.getElementById('injuryBand').setAttribute('x',injuryX.toFixed(1));document.getElementById('injuryBand').setAttribute('width',Math.max(2,injuryW).toFixed(1));
-    document.getElementById('injuryLabel').setAttribute('x',Math.max(330,injuryX-8).toFixed(1));
-
-    var dMin=Number(decay.min),dMax=Number(decay.max),steps=Math.round((dMax-dMin)/.01),humpValues=[];
-    for(var m=0;m<=steps;m++)humpValues.push(closedFormScar(dMin+m*.01,L));
-    var humpMax=Math.max.apply(null,humpValues.concat([.001])),plotMax=humpMax*1.08;
-    document.getElementById('humpPath').setAttribute('d',linePath(humpValues,652,155,48,205,plotMax));
-    var mx=48+(dec-dMin)/(dMax-dMin)*652,my=205-scar/plotMax*155;
-    document.getElementById('humpMarker').setAttribute('cx',mx.toFixed(1));document.getElementById('humpMarker').setAttribute('cy',my.toFixed(1));
-    document.getElementById('decayGuide').setAttribute('x1',mx.toFixed(1));document.getElementById('decayGuide').setAttribute('x2',mx.toFixed(1));
-    document.getElementById('humpMaxLabel').textContent=humpMax.toFixed(1);
-  }
-  [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
-
-
 })();
 </script>
 </body>
