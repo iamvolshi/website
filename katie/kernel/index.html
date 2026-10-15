@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>KT Engine Infographic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper:#edf1ef;
+      --ink:#101716;
+      --muted:#4f5f5a;
+      --line:#a8b6b1;
+      --panel:#f8faf8;
+      --panel-2:#e2e9e6;
+      --lime:#a8e349;
+      --lime-ink:#314a08;
+      --orange:#f08a4b;
+      --orange-soft:#ffe0cc;
+      --orange-ink:#6b2b08;
+      --cyan:#48bdd0;
+      --cyan-soft:#d7f4f8;
+      --cyan-ink:#075563;
+      --deep:#14201e;
+      --white:#ffffff;
+      --shadow:0 18px 50px rgba(15,30,25,.10);
+      --radius:18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper:#0c1211;
+        --ink:#edf6f2;
+        --muted:#9eafa9;
+        --line:#33443f;
+        --panel:#131d1b;
+        --panel-2:#1b2a26;
+        --lime:#b8ef55;
+        --lime-ink:#101d03;
+        --orange:#ff9b5c;
+        --orange-soft:#3b251a;
+        --orange-ink:#ffc9a8;
+        --cyan:#59d0e3;
+        --cyan-soft:#14333a;
+        --cyan-ink:#a8edf6;
+        --deep:#09100f;
+        --white:#ffffff;
+        --shadow:0 22px 60px rgba(0,0,0,.32);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",sans-serif;line-height:1.45}
+    button{font:inherit}
+    main{width:min(1240px,calc(100% - 32px));margin:0 auto;padding:clamp(30px,5vw,72px) 0 64px}
+    .mast{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:38px}
+    .eyebrow{font:600 12px/1.2 "IBM Plex Mono",monospace;letter-spacing:.13em;color:var(--muted);text-transform:uppercase;margin:0 0 14px}
+    h1{font-size:clamp(36px,6.2vw,78px);line-height:.98;letter-spacing:-.055em;margin:0;max-width:920px}
+    h1 span{display:block;color:var(--lime-ink);background:var(--lime);width:max-content;max-width:100%;padding:5px 12px 9px;margin-top:8px;transform:rotate(-.7deg)}
+    .lede{font-size:clamp(17px,2vw,22px);line-height:1.45;margin:0 0 4px;color:var(--muted);max-width:470px}
+    .quote{margin:0 0 34px;padding:20px clamp(18px,3vw,32px);background:var(--deep);color:var(--white);border-radius:4px 18px 4px 18px;font:500 clamp(18px,2.3vw,26px)/1.35 "IBM Plex Mono",monospace;box-shadow:var(--shadow)}
+    .quote em{font-style:normal;color:var(--lime)}
+
+    .diagram{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:26px;padding:clamp(18px,3vw,34px);box-shadow:var(--shadow);overflow:hidden}
+    .diagram:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:26px 26px;opacity:.16;pointer-events:none}
+    .diagram-head{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px}
+    .diagram-head h2{font-size:clamp(24px,3vw,38px);line-height:1.06;letter-spacing:-.035em;margin:0}
+    .legend{display:flex;gap:14px;flex-wrap:wrap;font:500 11px/1.2 "IBM Plex Mono",monospace;color:var(--muted)}
+    .key{display:flex;align-items:center;gap:6px}.dot{width:9px;height:9px;border-radius:50%}.dot.fast{background:var(--orange)}.dot.slow{background:var(--cyan)}
+
+    .registry{position:relative;display:grid;grid-template-columns:minmax(220px,.68fr) 42px minmax(0,1.32fr);gap:12px;align-items:stretch;margin-bottom:18px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+    .engine{background:var(--deep);color:var(--white);border-radius:13px;padding:17px 18px;display:flex;flex-direction:column;justify-content:center;min-height:142px}
+    .engine-tag,.shelf-label{font:600 10px/1.2 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.11em}
+    .engine-tag{color:var(--lime);margin-bottom:8px}.engine strong{font-size:26px;letter-spacing:-.035em}.engine p{margin:5px 0 0;color:#b7c5c0;font-size:12px}
+    .assign-line{display:grid;place-items:center;color:var(--muted);font:600 19px/1 "IBM Plex Mono",monospace}.assign-line span{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:var(--paper)}
+    .kid-library{border:1px solid var(--line);border-radius:13px;background:color-mix(in srgb,var(--panel) 94%,transparent);padding:14px}
+    .library-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px}.library-head strong{font-size:16px}.library-head span{font:500 9px/1.2 "IBM Plex Mono",monospace;color:var(--muted);text-align:right}
+    .shelves{display:grid;grid-template-columns:1fr 1fr;gap:9px}.shelf{background:var(--panel-2);border-radius:8px;padding:10px}.shelf.experimental{border:1px dashed var(--line);background:transparent}
+    .shelf-label{color:var(--muted);margin-bottom:8px}.kid-row{display:flex;gap:6px;flex-wrap:wrap}
+    .kid-chip{position:relative;border:1px solid var(--line);background:var(--panel);border-radius:5px;padding:6px 8px 6px 17px;font:600 9px/1 "IBM Plex Mono",monospace;white-space:nowrap}.kid-chip:before{content:"";position:absolute;left:7px;top:50%;translate:0 -50%;width:5px;height:5px;border-radius:50%;background:var(--lime)}
+    .watching{margin-top:9px;font:500 10px/1.35 "IBM Plex Mono",monospace;color:var(--muted)}.watching b{color:var(--ink)}
+
+    .flow{position:relative;display:grid;grid-template-columns:minmax(180px,.72fr) 28px minmax(430px,1.65fr) 28px minmax(180px,.72fr);gap:10px;align-items:stretch}
+    .port{border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 94%,transparent);border-radius:14px;padding:18px;display:flex;flex-direction:column;min-height:100%}
+    .port-tag{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+    .port h3{font-size:20px;margin:0 0 6px}.port p{font-size:13px;color:var(--muted);margin:0 0 15px}
+    .socket-list{display:grid;gap:8px;margin-top:auto}
+    .socket{position:relative;padding:10px 12px 10px 28px;background:var(--panel-2);border-radius:8px;font:500 12px/1.35 "IBM Plex Mono",monospace}
+    .socket:before{content:"";position:absolute;left:10px;top:50%;translate:0 -50%;width:8px;height:8px;border:2px solid var(--ink);border-radius:50%;background:var(--panel)}
+    .socket.more{color:var(--muted);background:transparent;border:1px dashed var(--line)}
+    .arrow{display:grid;place-items:center;color:var(--muted);font:600 22px/1 "IBM Plex Mono",monospace}
+    .arrow span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--paper)}
+
+    .kernel{position:relative;border:2px solid var(--ink);border-radius:18px;background:color-mix(in srgb,var(--panel) 86%,transparent);padding:16px;box-shadow:inset 0 0 0 6px color-mix(in srgb,var(--panel-2) 70%,transparent)}
+    .kernel-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:4px 5px 14px}
+    .kernel-title{display:flex;align-items:baseline;gap:9px}.kernel-title strong{font-size:24px;letter-spacing:-.04em}.kernel-title span{font:500 11px/1 "IBM Plex Mono",monospace;color:var(--muted)}
+    .status{font:600 10px/1 "IBM Plex Mono",monospace;color:var(--lime-ink);background:var(--lime);padding:7px 9px;border-radius:999px;white-space:nowrap}
+    .kernel-grid{display:grid;grid-template-columns:minmax(165px,.8fr) minmax(240px,1.2fr);gap:12px}
+    .rack,.trace-stage{border:1px solid var(--line);background:var(--panel);border-radius:11px;padding:13px}
+    .rack-label,.trace-label{font:600 10px/1.2 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:11px}
+    .controls{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .control{padding:9px;border-radius:7px;background:var(--panel-2);min-width:0}
+    .control b{display:block;font:600 9px/1.2 "IBM Plex Mono",monospace;color:var(--muted);white-space:normal}
+    .control span{display:block;font:600 14px/1.25 "IBM Plex Mono",monospace;margin-top:5px;color:var(--ink)}
+    .control.shape{grid-column:1/-1;background:var(--deep);color:var(--white);display:flex;align-items:center;justify-content:space-between;gap:10px}.control.shape b{color:#9fb0aa}.control.shape span{color:var(--lime);margin:0;text-align:right}
+    .trace-stage{display:grid;gap:10px}
+    .trace{position:relative;border-radius:8px;padding:10px 10px 8px;overflow:hidden}
+    .trace.fast{background:var(--orange-soft)}.trace.slow{background:var(--cyan-soft)}
+    .trace-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+    .trace-head strong{font-size:13px}.trace.fast strong{color:var(--orange-ink)}.trace.slow strong{color:var(--cyan-ink)}
+    .trace-head span{font:500 9px/1 "IBM Plex Mono",monospace;color:var(--muted)}
+    .trace svg{display:block;width:100%;height:62px;overflow:visible}
+    .gridline{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4;opacity:.6}
+    .impact-path{fill:none;stroke:var(--orange);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .influence-path{fill:none;stroke:var(--cyan);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .fill-fast{fill:var(--orange);opacity:.12}.fill-slow{fill:var(--cyan);opacity:.12}
+    .record-strip{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:var(--deep);color:var(--white);padding:12px 14px;border-radius:9px}
+    .record-glyph{width:33px;height:33px;border:1px solid #72847e;border-radius:50%;display:grid;place-items:center;font:600 12px/1 "IBM Plex Mono",monospace;color:var(--lime)}
+    .record-strip strong{display:block;font-size:13px}.record-strip span{display:block;font-size:11px;color:#b7c5c0;margin-top:2px}
+
+    .natural-record{position:relative;margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border-top:1px dashed var(--line);padding-top:18px}
+    .natural-record .stamp{font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.09em;color:var(--lime-ink);background:var(--lime);padding:8px 10px;border-radius:3px;transform:rotate(-1deg)}
+    .natural-record p{margin:0;font-size:clamp(14px,1.7vw,17px)}
+    .natural-record strong{font-weight:700}
+
+    .lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.9fr);gap:24px;margin-top:30px}
+    .section{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,3vw,30px)}
+    .section h2{font-size:clamp(24px,3vw,34px);line-height:1.08;letter-spacing:-.035em;margin:0 0 9px}.section>p{color:var(--muted);margin:0 0 20px;max-width:680px}
+    .presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+    .preset{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 12px;border-radius:999px;cursor:pointer;font:600 12px/1 "IBM Plex Mono",monospace}
+    .preset[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+    .preset:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+    .profile{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .profile-item{border-top:1px solid var(--line);padding-top:10px}.profile-item span{display:block;font:500 10px/1.2 "IBM Plex Mono",monospace;color:var(--muted);text-transform:uppercase}.profile-item strong{display:block;font-size:17px;margin-top:4px}
+    .profile-note{grid-column:1/-1;background:var(--panel-2);padding:12px;border-radius:8px;font-size:13px;color:var(--muted)}
+    .profile-note b{color:var(--ink)}
+
+    .uses{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+    .use{display:grid;grid-template-columns:32px 1fr;gap:11px;padding:14px;background:var(--panel);align-items:start}.use-num{font:600 11px/1 "IBM Plex Mono",monospace;color:var(--muted);padding-top:4px}.use strong{display:block;font-size:15px}.use p{font-size:13px;color:var(--muted);margin:3px 0 0}
+
+    .bottom-line{margin-top:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+    .bottom-line>div{padding:clamp(22px,3vw,34px);background:var(--deep);color:var(--white)}
+    .bottom-line h2{margin:0;font-size:clamp(27px,3.7vw,46px);line-height:1.02;letter-spacing:-.04em}.bottom-line p{margin:0;color:#b9c7c2;font-size:16px;align-self:center}.bottom-line strong{color:var(--lime)}
+
+    @media (max-width:900px){
+      .mast{grid-template-columns:1fr;gap:18px}.mast .lede{max-width:760px}
+      .registry{grid-template-columns:1fr}.assign-line{height:30px}.assign-line span{transform:rotate(90deg)}
+      .flow{grid-template-columns:1fr}.arrow{height:28px}.arrow span{transform:rotate(90deg)}
+      .port{min-height:auto}.socket-list{margin-top:8px}
+      .kernel-grid{grid-template-columns:1fr 1.2fr}
+      .lab{grid-template-columns:1fr}.bottom-line{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){
+      main{width:min(100% - 20px,1240px);padding-top:22px}
+      h1 span{width:auto;display:inline-block}
+      .quote{font-size:17px;margin-bottom:20px}
+      .diagram{padding:13px;border-radius:18px}.diagram-head{align-items:flex-start;flex-direction:column;gap:10px}
+      .shelves{grid-template-columns:1fr}.library-head{align-items:flex-start;flex-direction:column;gap:4px}.library-head span{text-align:left}
+      .flow{gap:8px}.port,.kernel{padding:13px}.kernel-grid{grid-template-columns:1fr}.kernel-title{display:block}.kernel-title span{display:block;margin-top:5px}.status{font-size:9px}
+      .natural-record{grid-template-columns:1fr}.natural-record .stamp{width:max-content}
+      .section{padding:18px}.profile{grid-template-columns:1fr}.profile-note{grid-column:auto}.bottom-line{border-radius:13px}
+    }
+    @media (prefers-reduced-motion:no-preference){
+      .impact-path,.influence-path{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.5s ease .25s forwards}
+      @keyframes draw{to{stroke-dashoffset:0}}
+    }
+  </style>
+</head>
+<body>
+<p style="margin:14px auto 0;padding:0 22px;max-width:1180px;font:500 13px 'IBM Plex Sans',system-ui,sans-serif;"><a href="../" style="color:#4f5f5a;text-decoration:none;">&larr; KT visuals</a></p>
+
+<main>
+  <section class="mast">
+    <div>
+      <p class="eyebrow">KATIE engine / KID architecture</p>
+      <h1>Everything I/O, with a <span>KID in the middle.</span></h1>
+    </div>
+    <p class="lede"><strong>KATIE assigns every Kernel ID.</strong> Each KID is a live kernel instance: a portable signal path that runs the math assigned to its Knowledge Data object and emits a result with its record already inside it.</p>
+  </section>
+
+  <blockquote class="quote">“<em>Math in, math out</em> — but what object is the math assigned to? That’s the thing.”</blockquote>
+
+  <section class="diagram" aria-labelledby="flow-title">
+    <div class="diagram-head">
+      <h2 id="flow-title">One shell. Assignable behavior.</h2>
+      <div class="legend" aria-label="Trace legend">
+        <span class="key"><i class="dot fast"></i>fast / tick</span>
+        <span class="key"><i class="dot slow"></i>slow / history</span>
+      </div>
+    </div>
+
+    <div class="registry" aria-label="KATIE assigns and watches a growing collection of live KID kernels">
+      <section class="engine">
+        <span class="engine-tag">The engine · watches the collection</span>
+        <strong>KATIE</strong>
+        <p>Assigns each KID at birth, registers it, and pays attention as the collection grows.</p>
+      </section>
+      <div class="assign-line" aria-hidden="true"><span>→</span></div>
+      <section class="kid-library">
+        <div class="library-head"><strong>KID library</strong><span>Kernel ID = one live kernel instance</span></div>
+        <div class="shelves">
+          <div class="shelf">
+            <div class="shelf-label">Default KIDs</div>
+            <div class="kid-row">
+              <span class="kid-chip">EVENT</span>
+              <span class="kid-chip">JUDGMENT</span>
+              <span class="kid-chip">MODE</span>
+            </div>
+          </div>
+          <div class="shelf experimental">
+            <div class="shelf-label">Experimental KIDs</div>
+            <div class="kid-row">
+              <span class="kid-chip">THEORY</span>
+              <span class="kid-chip">EFFORT</span>
+              <span class="kid-chip">FUTURE</span>
+            </div>
+          </div>
+        </div>
+        <div class="watching"><b>KATIE watches the shelf:</b> defaults stay available; experimental kernels have room to prove what they can do.</div>
+      </section>
+    </div>
+
+    <div class="flow">
+      <article class="port">
+        <span class="port-tag">Input socket</span>
+        <h3>Anything in</h3>
+        <p>Examples, not limits:</p>
+        <div class="socket-list">
+          <div class="socket">Agent-pair signals</div>
+          <div class="socket">Events / event groupings</div>
+          <div class="socket">User / world-model input</div>
+          <div class="socket more">+ any future signal</div>
+        </div>
+      </article>
+
+      <div class="arrow" aria-hidden="true"><span>→</span></div>
+
+      <article class="kernel">
+        <div class="kernel-top">
+          <div class="kernel-title"><strong>One KID</strong><span>live kernel instance · assigned by KATIE</span></div>
+          <span class="status">REGISTERED</span>
+        </div>
+
+        <div class="kernel-grid">
+          <section class="rack" aria-label="Assignable parameter boxes">
+            <div class="rack-label">Parameter boxes · per KD</div>
+            <div class="controls">
+              <div class="control"><b>THRESHOLD</b><span id="threshold">0.35</span></div>
+              <div class="control"><b>ATTACK</b><span id="attack">Fast</span></div>
+              <div class="control"><b>RATIO</b><span id="ratio">3:1</span></div>
+              <div class="control"><b>RELEASE</b><span id="release">Medium</span></div>
+              <div class="control"><b>WINDOW</b><span id="window">12 ticks</span></div>
+              <div class="control"><b>AUTHORITY</b><span id="authority">0.70</span></div>
+              <div class="control shape"><b>KNEE / CURVE</b><span id="shape">Soft exponential</span></div>
+            </div>
+          </section>
+
+          <section class="trace-stage" aria-label="Impact and Influence traces">
+            <div class="trace fast">
+              <div class="trace-head"><strong>IMPACT TRACE</strong><span>fast · what hits now</span></div>
+              <svg viewBox="0 0 260 62" preserveAspectRatio="none" aria-hidden="true">
+                <path class="gridline" d="M0 51H260M0 31H260M0 11H260"/>
+                <path class="fill-fast" d="M0 51 C35 51 48 49 64 44 C77 39 82 8 100 8 C119 8 118 45 141 47 C166 49 173 23 191 25 C210 27 214 50 260 51 L260 62 L0 62Z"/>
+                <path class="impact-path" d="M0 51 C35 51 48 49 64 44 C77 39 82 8 100 8 C119 8 118 45 141 47 C166 49 173 23 191 25 C210 27 214 50 260 51"/>
+              </svg>
+            </div>
+            <div class="trace slow">
+              <div class="trace-head"><strong>INFLUENCE TRACE</strong><span>slow · what history says matters</span></div>
+              <svg viewBox="0 0 260 62" preserveAspectRatio="none" aria-hidden="true">
+                <path class="gridline" d="M0 51H260M0 31H260M0 11H260"/>
+                <path class="fill-slow" d="M0 51 C38 51 55 48 78 41 C100 34 119 22 140 24 C163 26 177 35 198 36 C220 37 237 32 260 29 L260 62 L0 62Z"/>
+                <path class="influence-path" d="M0 51 C38 51 55 48 78 41 C100 34 119 22 140 24 C163 26 177 35 198 36 C220 37 237 32 260 29"/>
+              </svg>
+            </div>
+          </section>
+
+          <div class="record-strip">
+            <div class="record-glyph">KID</div>
+            <div><strong>Registered kernel → read, run, write</strong><span>KID + assigned object + input + math + trace state + result</span></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="arrow" aria-hidden="true"><span>→</span></div>
+
+      <article class="port">
+        <span class="port-tag">Output socket</span>
+        <h3>Record out</h3>
+        <p>Examples, not limits:</p>
+        <div class="socket-list">
+          <div class="socket">Rulings</div>
+          <div class="socket">K-record entries</div>
+          <div class="socket">Assignments / state updates</div>
+          <div class="socket more">+ any next system</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="natural-record">
+      <span class="stamp">BORN REGISTERED</span>
+      <p><strong>No KID, no read, no write.</strong> KATIE assigns the Kernel ID before a kernel enters the signal path. From there, the record is a natural byproduct of running the math on whatever its KD represents.</p>
+    </div>
+  </section>
+
+  <section class="lab">
+    <article class="section">
+      <h2>Same KID shell. Different assignment.</h2>
+      <p>Swap the preset and the live kernel behaves differently. The values below are illustrative — KATIE can assign every box per KD.</p>
+      <div class="presets" role="group" aria-label="Example parameter presets">
+        <button class="preset" type="button" aria-pressed="true" data-preset="event">Event</button>
+        <button class="preset" type="button" aria-pressed="false" data-preset="topic">Topic</button>
+        <button class="preset" type="button" aria-pressed="false" data-preset="sentinel">Sentinel</button>
+      </div>
+      <div class="profile" aria-live="polite">
+        <div class="profile-item"><span>Assigned to</span><strong id="assigned">A single event</strong></div>
+        <div class="profile-item"><span>Response shape</span><strong id="response">Fast impact, measured release</strong></div>
+        <div class="profile-note" id="profile-note"><b>Why:</b> capture the immediate hit without losing its longer influence.</div>
+      </div>
+    </article>
+
+    <article class="section">
+      <h2>Where a KD can sit</h2>
+      <p>The unit of meaning can change without changing the kernel.</p>
+      <div class="uses">
+        <div class="use"><span class="use-num">01</span><div><strong>Event</strong><p>Measure what hit now and what remains.</p></div></div>
+        <div class="use"><span class="use-num">02</span><div><strong>Judgment</strong><p>Carry a ruling and the authority behind it.</p></div></div>
+        <div class="use"><span class="use-num">03</span><div><strong>Theory</strong><p>If action does not close it out, its tail keeps working the greybox.</p></div></div>
+        <div class="use"><span class="use-num">04</span><div><strong>Effort</strong><p>An unresolved attempt leaves debt: pressure still in the signal.</p></div></div>
+        <div class="use"><span class="use-num">05</span><div><strong>Grouping, topic, mode—or more</strong><p>The kernel tracks whatever object its math is assigned to, each with its own traces.</p></div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="bottom-line">
+    <div><h2>KATIE grows the library.<br>Every KID keeps <strong>its own signal.</strong></h2></div>
+    <div><p>She assigns and watches the kernels. Each registered KID tracks Impact now, Influence through history, and the K-record formed by the math.</p></div>
+  </section>
+</main>
+<script>
+(function(){
+  var presets={
+    event:{threshold:'0.35',attack:'Fast',ratio:'3:1',release:'Medium',window:'12 ticks',authority:'0.70',shape:'Soft exponential',assigned:'A single event',response:'Fast impact, measured release',note:'capture the immediate hit without losing its longer influence.'},
+    topic:{threshold:'0.20',attack:'Medium',ratio:'2:1',release:'Long',window:'Open',authority:'0.60',shape:'Wide knee',assigned:'A topic / event grouping',response:'Aggregated influence',note:'many related events can accumulate into one historical pressure.'},
+    sentinel:{threshold:'0.55',attack:'Immediate',ratio:'8:1',release:'Full tick',window:'1 cycle',authority:'0.90',shape:'Hard knee',assigned:'A held system mode',response:'Snap on, stand down slowly',note:'once the threshold is crossed, slow release keeps the state from dropping too quickly.'}
+  };
+  var fields=['threshold','attack','ratio','release','window','authority','shape','assigned','response'];
+  document.querySelectorAll('.preset').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var p=presets[btn.dataset.preset];
+      document.querySelectorAll('.preset').forEach(function(other){other.setAttribute('aria-pressed',String(other===btn));});
+      fields.forEach(function(id){document.getElementById(id).textContent=p[id];});
+      document.getElementById('profile-note').innerHTML='<b>Why:</b> '+p.note;
+    });
+  });
+})();
+</script>
+</body>
+</html>
