@@ -111,6 +111,32 @@
     #s4 .ed-col{max-width:min(64vw,620px);justify-content:flex-start}#s4 h2{font-size:clamp(2rem,2.15vw,2.4rem);letter-spacing:.045em;line-height:1.1;margin-bottom:30px}#s4 .ed-sub{max-width:460px;font-size:clamp(.9rem,.95vw,1.05rem);font-weight:300;line-height:1.85;letter-spacing:.02em;text-transform:none;color:rgba(245,242,237,.85);text-shadow:0 1px 12px rgba(0,0,0,.7)}
     .hero-sub{margin:18px 0 26px;max-width:440px;font-size:clamp(.95rem,1vw,1.1rem);font-weight:300;line-height:1.7;letter-spacing:.02em;color:rgba(245,242,237,.62)}#s4 .cap-line{font-size:.72rem;letter-spacing:.2em;line-height:1.9;font-weight:500;max-width:520px;margin-top:auto;margin-bottom:0}@media(max-width:768px){#s4 .ed-col{max-width:none}#s4 h2{font-size:clamp(1.4rem,5.5vw,1.9rem);margin-bottom:22px}#s4 .ed-sub{font-size:clamp(.9rem,3.4vw,1rem)}}
     @media(max-width:768px){.res-modal{padding:16px}.res-glass{right:50%;width:min(560px,calc(100vw - 40px));max-height:86vh;padding:30px 22px 26px;transform:translate(50%,-50%) translateY(14px)}.res-modal.open .res-glass{transform:translate(50%,-50%)}.res-name{font-size:clamp(1.3rem,6vw,1.9rem)}.res-link{font-size:.6rem;letter-spacing:.1em}}
+    .hero-turn{margin:-8px 0 0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+    .prob-nudge{appearance:none;border:0;background:none;font:inherit;display:block;margin-top:22px;font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(245,242,237,.55);cursor:pointer;padding:0 0 6px;position:relative;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .5s ease,visibility .5s ease,transform .5s ease,color .2s}
+    .prob-nudge.show{opacity:1;visibility:visible;transform:none;animation:pnudge 2.6s ease-in-out 0.6s infinite}
+    .prob-nudge:hover,.prob-nudge:focus-visible{color:var(--gold);outline:none}
+    @keyframes pnudge{0%,100%{transform:none}50%{transform:translateY(-3px)}}
+    .prob-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:48px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 260ms ease,visibility 260ms ease}
+    .prob-modal.open{opacity:1;visibility:visible;pointer-events:auto}
+    .prob-backdrop{position:absolute;inset:0;background:rgba(2,2,3,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .prob-panel{position:relative;width:min(620px,94vw);max-height:88vh;overflow:auto;background:linear-gradient(145deg,rgba(12,12,14,.97),rgba(6,6,8,.95));border:1px solid rgba(201,168,76,.22);box-shadow:0 30px 90px rgba(0,0,0,.6);padding:46px 48px 34px}
+    .prob-panel::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,.04),transparent 30%),radial-gradient(circle at 88% 8%,rgba(201,168,76,.10),transparent 26%)}
+    .prob-close{position:absolute;right:20px;top:16px;z-index:2;border:0;background:none;color:rgba(245,242,237,.4);font-size:1.7rem;font-weight:300;line-height:1;cursor:pointer}
+    .prob-close:hover,.prob-close:focus-visible{color:var(--gold)}
+    .prob-kicker{position:relative;z-index:1;font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gd);margin-bottom:20px}
+    .prob-title{position:relative;z-index:1;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;line-height:1.15;letter-spacing:.01em;margin-bottom:18px;max-width:20ch}
+    .prob-copy{position:relative;z-index:1;font-size:.95rem;font-weight:300;line-height:1.75;letter-spacing:.02em;color:rgba(245,242,237,.66);margin-bottom:34px;max-width:44ch}
+    .prob-nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid rgba(201,168,76,.14);padding-top:22px}
+    .prob-prev,.prob-next{appearance:none;border:0;background:none;font:inherit;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.55);cursor:pointer;padding:6px 0;transition:color .2s}
+    .prob-prev:hover,.prob-next:hover,.prob-prev:focus-visible,.prob-next:focus-visible{color:var(--gold);outline:none}
+    .prob-prev[disabled]{opacity:.25;cursor:default;pointer-events:none}
+    .prob-dots{display:flex;gap:8px}
+    .prob-dots i{width:5px;height:5px;border-radius:50%;background:rgba(245,242,237,.22);transition:background .2s}
+    .prob-dots i.on{background:var(--gold)}
+    .prob-cta{display:none;position:relative;z-index:1;margin-top:6px}
+    .prob-cta.show{display:inline-flex}
+    @media(max-width:768px){.prob-modal{padding:16px}.prob-panel{width:100%;max-height:92vh;padding:36px 24px 28px}.prob-title{font-size:clamp(1.35rem,6.4vw,1.9rem)}}
+    @media(prefers-reduced-motion:reduce){.prob-nudge.show{animation:none}}
   </style>
 </head>
 <body>
@@ -131,10 +157,12 @@
   <div class="hov"></div>
   <div class="home-col">
     <div class="hero-card">
-    <div class="ey sa">VOLSHi&nbsp;/&nbsp;Human + Machine</div>
-    <h1 class="sb">The Origin<br>of <span class="g">Identity.</span></h1>
-    <p class="hero-sub sc">Building the span between machine intelligence and human experience.</p>
+    <div class="ey sa">VOLSHi&nbsp;/&nbsp;The Problem</div>
+    <h1 class="sb">The machine<br>can't <span class="g">show its work.</span></h1>
+    <p class="hero-sub sc">Every AI agent makes decisions it can't account for — no record of what it believed, when it believed it, or why. Logs get rewritten. Memory gets wiped. There is no past the machine can't outrun, and without one, there's no accountability.</p>
+    <p class="hero-turn sc">We're building that past.</p>
     <a class="cta se" href="#technology" data-to="1">Explore The Span &nbsp;→</a>
+    <button class="prob-nudge" id="probNudge" type="button">Walk through the problem &nbsp;→</button>
     </div>
   </div>
   <div class="sbar sd"><span class="st">Human Experience</span><div class="ss"></div><span class="st">Understand</span><div class="ss"></div><span class="st">Learn</span><div class="ss"></div><span class="st">Authorize</span><div class="ss"></div><span class="st">Machine Intelligence</span></div>
@@ -232,6 +260,22 @@
 </div>
 </div>
 
+<div class="prob-modal" id="probModal" aria-hidden="true">
+  <div class="prob-backdrop" id="probBackdrop"></div>
+  <div class="prob-panel" id="probPanel" role="dialog" aria-modal="true" aria-labelledby="probTitle" tabindex="-1">
+    <button class="prob-close" id="probClose" type="button" aria-label="Close problem walkthrough">×</button>
+    <div class="prob-kicker">The problem · <span id="probStep">1 / 6</span></div>
+    <h2 class="prob-title" id="probTitle"></h2>
+    <p class="prob-copy" id="probCopy"></p>
+    <div class="prob-nav">
+      <button class="prob-prev" id="probPrev" type="button">← Back</button>
+      <div class="prob-dots" id="probDots" aria-hidden="true"></div>
+      <button class="prob-next" id="probNext" type="button">Next →</button>
+    </div>
+    <a class="cta prob-cta" id="probCta" href="#technology" data-to="1">Explore The Span &nbsp;→</a>
+  </div>
+</div>
+
 <script>
 (() => {
   'use strict';
@@ -304,6 +348,87 @@
   document.addEventListener('click',event=>{const target=event.target.closest('[data-to]');if(!target)return;const index=Number(target.dataset.to);if(!Number.isInteger(index))return;event.preventDefault();goTo(index,true,true)});if(logo)logo.addEventListener('click',()=>goTo(0,true,true));if(menuButton&&nav)menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&techDetail&&techDetail.classList.contains('open')){hideTech(true);return}if(event.key==='Escape'&&activeArc){resetArc(true);return}if(event.key==='Escape'&&resOpen){closeRes(true);return}if(event.key==='ArrowRight')goTo(current+1,true,true);if(event.key==='ArrowLeft')goTo(current-1,true,true)});
   let wheelAccum=0,wheelReset;document.addEventListener('wheel',event=>{const delta=Math.abs(event.deltaY)>=Math.abs(event.deltaX)?event.deltaY:event.deltaX;if(!delta)return;event.preventDefault();wheelAccum+=delta;clearTimeout(wheelReset);wheelReset=setTimeout(()=>{wheelAccum=0},180);if(Math.abs(wheelAccum)>80){const direction=wheelAccum>0?1:-1;wheelAccum=0;goTo(current+direction,true,true)}},{passive:false});let touchX=0,touchY=0;document.addEventListener('touchstart',event=>{if(!event.touches.length)return;touchX=event.touches[0].clientX;touchY=event.touches[0].clientY},{passive:true});document.addEventListener('touchend',event=>{if(!event.changedTouches.length)return;const dx=event.changedTouches[0].clientX-touchX,dy=event.changedTouches[0].clientY-touchY;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50)goTo(current+(dx<0?1:-1),true,true)},{passive:true});window.addEventListener('popstate',()=>{const index=indexFromHash();if(index!==current)goTo(index,false,true)});
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var steps=[
+    {k:'01 · The problem',t:'AI makes decisions it can\u2019t account for.',c:'No record of what it believed, when it believed it, or why. The machine acts, and the reasoning behind the act is gone the moment it happens.'},
+    {k:'02 · The customer',t:'Anyone who puts an agent near anything real.',c:'Real money. Real safety. Real people. When an autonomous system touches something that matters, someone needs to ask it why — and get an answer.'},
+    {k:'03 · The frequency',t:'Every decision the machine makes.',c:'Not edge cases. Not incidents. Every single decision an agent takes is a decision nobody can audit.'},
+    {k:'04 · The current solution',t:'Logs and version control.',c:'Both rewritable. Both silent on the only question that matters: what was the machine justified in believing at the time it acted?'},
+    {k:'05 · The gap',t:'There is no past the machine can\u2019t outrun.',c:'So there is no accountability. You cannot hold a system responsible for a history it is free to rewrite.'},
+    {k:'06 · The answer',t:'We\u2019re building that past.',c:'A memory the machine can\u2019t rewrite — every belief timestamped with what it knew and what justified it. That is the span VOLSHi is building.',cta:true}
+  ];
+  var modal=document.getElementById('probModal'),panel=document.getElementById('probPanel'),
+      kicker=document.querySelector('.prob-kicker'),title=document.getElementById('probTitle'),
+      copy=document.getElementById('probCopy'),stepEl=document.getElementById('probStep'),
+      prev=document.getElementById('probPrev'),next=document.getElementById('probNext'),
+      cta=document.getElementById('probCta'),dots=document.getElementById('probDots'),
+      nudge=document.getElementById('probNudge');
+  if(!modal||!panel)return;
+  var idx=0,opened=false,nudgeShown=false,nudgeTimer=null,lastFocus=null;
+  steps.forEach(function(_,i){var d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d);});
+  var dotEls=Array.from(dots.children);
+  function render(){
+    var s=steps[idx];
+    stepEl.textContent=(idx+1)+' / '+steps.length;
+    title.textContent=s.t;copy.textContent=s.c;
+    prev.disabled=idx===0;
+    var last=idx===steps.length-1;
+    next.style.display=last?'none':'';
+    cta.classList.toggle('show',!!(last&&s.cta));
+    dotEls.forEach(function(d,i){d.classList.toggle('on',i===idx);});
+  }
+  function open(){
+    if(opened)return;opened=true;idx=0;render();
+    lastFocus=document.activeElement;
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+    if(nudge)nudge.classList.remove('show');
+    document.body.classList.add('modal-open');
+    setTimeout(function(){panel.focus({preventScroll:true});},60);
+  }
+  function close(){
+    if(!opened)return;opened=false;
+    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
+  }
+  function go(d){idx=Math.max(0,Math.min(steps.length-1,idx+d));render();}
+  document.getElementById('probClose').addEventListener('click',close);
+  document.getElementById('probBackdrop').addEventListener('click',close);
+  prev.addEventListener('click',function(){go(-1);});
+  next.addEventListener('click',function(){go(1);});
+  if(cta)cta.addEventListener('click',function(){close();});
+  if(nudge)nudge.addEventListener('click',open);
+  // Keep slide-deck gestures from firing while the walkthrough is open.
+  ['wheel','touchstart','touchend'].forEach(function(ev){
+    modal.addEventListener(ev,function(e){if(opened)e.stopPropagation();},{passive:true});
+  });
+  modal.addEventListener('keydown',function(e){
+    if(!opened)return;
+    if(e.key==='Escape'){e.stopPropagation();close();}
+    else if(e.key==='ArrowRight'){e.stopPropagation();go(1);}
+    else if(e.key==='ArrowLeft'){e.stopPropagation();go(-1);}
+  });
+  document.addEventListener('keydown',function(e){
+    if(opened&&e.key==='Escape'&&!modal.contains(e.target))close();
+  });
+  // Soft nudge: 5s after load, only if the visitor is still on the hero.
+  function armNudge(){
+    clearTimeout(nudgeTimer);
+    nudgeTimer=setTimeout(function(){
+      var s0=document.getElementById('s0');
+      if(s0&&s0.classList.contains('active')&&!opened&&!nudgeShown&&nudge){
+        nudgeShown=true;nudge.classList.add('show');
+      }
+    },5000);
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('[data-to]')&&nudge)nudge.classList.remove('show');
+  });
+  armNudge();
 })();
 </script>
 <script>
