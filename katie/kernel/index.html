@@ -159,6 +159,20 @@
     .proof-shot img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #2a3a36}
     .proof-shot figcaption{font:500 11px/1.5 "IBM Plex Mono",monospace;color:#9fb0aa;margin-top:10px}
 
+    .promises{margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,34px);box-shadow:var(--shadow)}
+    .promises .proof-eyebrow{color:var(--muted)}
+    .promises h2{font-size:clamp(26px,3.4vw,44px);line-height:1.04;letter-spacing:-.04em;margin:0 0 8px}
+    .promises h2 em{font-style:normal;color:var(--lime-ink);background:var(--lime);padding:2px 10px 5px;transform:rotate(-.7deg);display:inline-block}
+    .promises>p{color:var(--muted);margin:0 0 20px;max-width:640px}
+    .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+    .promise{display:flex;gap:11px;align-items:flex-start;background:var(--panel-2);border-radius:10px;padding:12px 14px;font-size:14px}
+    .promise .check{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font:700 13px/1 "IBM Plex Mono",monospace}
+    .promise code{font:600 11px/1.4 "IBM Plex Mono",monospace;color:var(--muted);display:block;margin-top:3px}
+    .caught{background:var(--deep);color:var(--white);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+    .caught .bug{flex:none;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.09em;color:var(--lime-ink);background:var(--lime);padding:8px 10px;border-radius:3px;transform:rotate(-1deg);margin-top:2px}
+    .caught p{margin:0;font-size:14px;color:#b9c7c2}
+    .caught strong{color:var(--white)}
+
     @media (max-width:900px){
       .mast{grid-template-columns:1fr;gap:18px}.mast .lede{max-width:760px}
       .registry{grid-template-columns:1fr}.assign-line{height:30px}.assign-line span{transform:rotate(90deg)}
@@ -167,6 +181,7 @@
       .kernel-grid{grid-template-columns:1fr 1.2fr}
       .lab{grid-template-columns:1fr}.bottom-line{grid-template-columns:1fr}
       .proof{grid-template-columns:1fr}.proof-stats{grid-template-columns:repeat(2,1fr)}
+      .promise-grid{grid-template-columns:1fr}
     }
     @media (max-width:620px){
       main{width:min(100% - 20px,1240px);padding-top:22px}
@@ -369,6 +384,30 @@
       <img src="phone-bench.png" alt="KATIE kernel bench output in Termux on a phone: 27,074 asserts/sec" />
       <figcaption>Moto G Play 2024 · Snapdragon 680 · KATIE kernel v0.1, built from source in Termux. Same boxes in, same numbers out — diagnostics identical across chips.</figcaption>
     </figure>
+  </section>
+
+  <section class="promises" aria-label="v1.0 test promises">
+    <p class="proof-eyebrow">v1.0 &middot; test suite</p>
+    <h2>Sixteen promises. <em>All kept.</em></h2>
+    <p>Before anything new gets built, the kernel's behavior is pinned by sixteen tests. Each one is a plain sentence about what the machine guarantees.</p>
+    <div class="promise-grid">
+      <div class="promise"><span class="check">✓</span><div>Birth starts at zero with nothing known<code>k = 0, no entries, no subjects</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>A deposit opens a WILD entry and moves k forward<code>first encounter, stamped and live</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Depositing the same thing twice is rejected<code>use regrade or revoke instead</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Reading never moves k<code>known_at, biography, authority_at</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Actions never move k, but are remembered<code>what was done, under which belief</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>A regrade closes one interval, opens another<code>history stays, exactly one live</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>known_at is a true as-of<code>the past stays queryable</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Revoking collapses authority to zero, keeps history<code>the lie stays; trust dies</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Regrading to REVOKED is rejected<code>revoke() is the only door</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Authority is 0–9, never 10<code>the tens place is the escape bit</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>A wrong KID is rejected<code>no KID, no read, no write</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Impact is clamped, never fatal<code>out-of-range input can't break it</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Every record carries its TEK stamp<code>t, e, k — the object is the link</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>A nudge can move k by more than one<code>variable step, per write</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Traces feed from deposits<code>pools move with the record</code></div></div>
+      <div class="promise"><span class="check">✓</span><div>Per-pool parameters are independent<code>each pool its own boxes</code></div></div>
+    </div>
   </section>
 
   <section class="bottom-line">
