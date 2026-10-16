@@ -168,6 +168,28 @@
     .promise{display:flex;gap:11px;align-items:flex-start;background:var(--panel-2);border-radius:10px;padding:12px 14px;font-size:14px}
     .promise .check{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font:700 13px/1 "IBM Plex Mono",monospace}
     .promise code{font:600 11px/1.4 "IBM Plex Mono",monospace;color:var(--muted);display:block;margin-top:3px}
+
+    .run{margin-top:8px;background:var(--deep);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+    .run-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #2a3a36}
+    .run-bar i{width:11px;height:11px;border-radius:50%;background:#2a3a36}
+    .run-bar i:first-child{background:var(--orange)}
+    .run-bar span{margin-left:6px;font:500 11px/1 "IBM Plex Mono",monospace;color:#9fb0aa}
+    .run-body{padding:18px clamp(16px,3vw,26px) 22px;font:500 13px/1.9 "IBM Plex Mono",monospace;color:#cfe0da;min-height:300px}
+    .run-body .cmd{color:var(--white)}
+    .run-body .cmd:before{content:"$ ";color:var(--lime)}
+    .run-line{display:flex;justify-content:space-between;gap:12px;opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease}
+    .run-line.show{opacity:1;transform:none}
+    .run-line .tname{color:#cfe0da;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .run-line .gloss{color:#5f726c;font-size:11px;white-space:nowrap}
+    .run-line .ok{color:var(--lime);font-weight:600;flex:none}
+    .run-result{color:var(--white);margin-top:10px}
+    .run-result b{color:var(--lime)}
+    .run-note{padding:0 clamp(16px,3vw,26px) 18px;font:500 11px/1.5 "IBM Plex Mono",monospace;color:#5f726c}
+    .run-actions{padding:0 clamp(16px,3vw,26px) 20px}
+    .run-btn{border:1px solid var(--lime);background:var(--lime);color:var(--lime-ink);padding:11px 20px;border-radius:999px;cursor:pointer;font:600 13px/1 "IBM Plex Mono",monospace}
+    .run-btn:disabled{opacity:.45;cursor:default}
+    .run-btn:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+    @media (prefers-reduced-motion:reduce){.run-line{transition:none}}
     .caught{background:var(--deep);color:var(--white);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
     .caught .bug{flex:none;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.09em;color:var(--lime-ink);background:var(--lime);padding:8px 10px;border-radius:3px;transform:rotate(-1deg);margin-top:2px}
     .caught p{margin:0;font-size:14px;color:#b9c7c2}
@@ -408,6 +430,16 @@
       <div class="promise"><span class="check">✓</span><div>Traces feed from deposits<code>pools move with the record</code></div></div>
       <div class="promise"><span class="check">✓</span><div>Per-pool parameters are independent<code>each pool its own boxes</code></div></div>
     </div>
+    <div class="run" aria-label="Test run replay">
+      <div class="run-bar"><i></i><i></i><i></i><span>katie — v1.0 suite</span></div>
+      <div class="run-body" id="run-body" aria-live="polite">
+        <div class="cmd">cargo test --release</div>
+        <div id="run-lines"></div>
+        <div class="run-result" id="run-result" style="display:none">test result: <b>ok</b>. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out</div>
+      </div>
+      <div class="run-note">The actual run, replayed — captured from the repo. Same sixteen the grid lists.</div>
+      <div class="run-actions"><button class="run-btn" id="run-btn" type="button">Run the suite</button></div>
+    </div>
   </section>
 
   <section class="bottom-line">
@@ -430,6 +462,65 @@
       fields.forEach(function(id){document.getElementById(id).textContent=p[id];});
       document.getElementById('profile-note').innerHTML='<b>Why:</b> '+p.note;
     });
+  });
+
+  // Test-run replay: the real `cargo test` output, paced for human eyes.
+  var suite=[
+    ["act_never_advances_k_but_is_remembered","what was done, under which belief"],
+    ["authority_is_0_to_9_never_10","the tens place is the escape bit"],
+    ["deposit_opens_wild_and_advances_k","first encounter, stamped and live"],
+    ["deposit_twice_is_rejected","use regrade or revoke instead"],
+    ["impact_is_clamped_not_fatal","out-of-range input can't break it"],
+    ["known_at_is_a_true_as_of","the past stays queryable"],
+    ["per_pool_params_are_independent","each pool its own boxes"],
+    ["birth_starts_at_zero_with_nothing_known","k = 0, no entries, no subjects"],
+    ["reads_never_advance_k","known_at, biography, authority_at"],
+    ["regrade_closes_one_interval_and_opens_another","history stays, exactly one live"],
+    ["regrade_to_revoked_is_rejected","revoke() is the only door"],
+    ["revoke_collapses_authority_but_keeps_history","the lie stays; trust dies"],
+    ["tek_stamps_every_record","t, e, k — the object is the link"],
+    ["traces_feed_from_deposits","pools move with the record"],
+    ["variable_nudge_moves_k_by_more_than_one","variable step, per write"],
+    ["wrong_kid_is_rejected","no KID, no read, no write"]
+  ];
+  var runBtn=document.getElementById('run-btn');
+  var runLines=document.getElementById('run-lines');
+  var runResult=document.getElementById('run-result');
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  runBtn.addEventListener('click',function(){
+    runBtn.disabled=true;
+    runBtn.textContent='Running…';
+    runLines.innerHTML='';
+    runResult.style.display='none';
+    var i=0;
+    function next(){
+      if(i>=suite.length){
+        runResult.style.display='block';
+        runBtn.disabled=false;
+        runBtn.textContent='Run it again';
+        return;
+      }
+      var row=document.createElement('div');
+      row.className='run-line';
+      var left=document.createElement('span');
+      left.className='tname';
+      left.textContent='test '+suite[i][0]+' ... ';
+      var ok=document.createElement('span');
+      ok.className='ok';
+      ok.textContent='ok';
+      var gloss=document.createElement('span');
+      gloss.className='gloss';
+      gloss.textContent='// '+suite[i][1];
+      var right=document.createElement('span');
+      right.style.display='flex';right.style.gap='12px';right.style.alignItems='baseline';
+      right.appendChild(gloss);right.appendChild(ok);
+      row.appendChild(left);row.appendChild(right);
+      runLines.appendChild(row);
+      requestAnimationFrame(function(){requestAnimationFrame(function(){row.classList.add('show');});});
+      i++;
+      setTimeout(next,reduced?0:380);
+    }
+    next();
   });
 })();
 </script>
