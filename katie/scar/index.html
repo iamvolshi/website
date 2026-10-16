@@ -32,7 +32,8 @@
   <section id="lab" class="view active" aria-label="Scar laboratory view">
     <div class="lab-grid">
       <aside class="panel lab-controls" id="labControls">
-        <div class="panel-title">Signal controls</div>
+        <button class="panel-title controls-toggle" id="controlsToggle" aria-expanded="false" aria-controls="controlsBody"><span>Signal controls</span><span class="toggle-chev" aria-hidden="true">▾</span></button>
+        <div class="controls-body" id="controlsBody">
         <div class="slider-group">
           <div class="slider-label"><label for="intensity">Intensity</label><span class="slider-value" id="intensityValue">0.80</span></div>
           <input id="intensity" type="range" min="0" max="1" value="0.8" step="0.01" />
@@ -63,6 +64,7 @@
           <div class="readout"><span class="eyebrow">Scar · ticks</span><strong id="scarValue">12.8</strong></div>
         </div>
         <p class="note">Real v1.8 dynamics (scalar content). The hump is the validated closed-form formula; the angular geometry of the original battery is not shown.</p>
+        </div>
       </aside>
 
       <div class="viz-stack">
@@ -164,7 +166,8 @@ var intensity=document.getElementById('intensity'),duration=document.getElementB
   }
   [intensity,duration,decay,recovery,slowtau,injauth].forEach(function(el){el.addEventListener('input',updateLab)});updateLab();
 
-
+  var ct=document.getElementById('controlsToggle'),lc=document.getElementById('labControls');
+  if(ct&&lc){ct.addEventListener('click',function(){if(!window.matchMedia('(max-width:800px)').matches)return;var o=lc.classList.toggle('open');ct.setAttribute('aria-expanded',o?'true':'false')});}
 
 })();
 </script>

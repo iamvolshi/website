@@ -114,7 +114,16 @@
       .topline{display:block}.intro{margin-top:14px}.engine-grid,.lab-grid{grid-template-columns:1fr}.control-panel,.lab-controls{position:static}
       .record-row{grid-template-columns:52px 1fr 66px;gap:7px 10px}.record-row .subject{grid-column:2/4}.record-row .supersedes{display:none}
       .tabs{width:100%}.event-grid{grid-template-columns:1fr 1fr}.timeline-label{display:none}
+      #lab .lab-controls{padding:12px}
+      #lab .controls-toggle{width:100%}
+      #lab .controls-toggle .toggle-chev{display:inline-block;transition:transform .2s}
+      #lab .controls-body{display:none}
+      #lab .lab-controls.open .controls-body{display:flex;flex-wrap:wrap;gap:10px 22px;flex:1 1 100%}
+      #lab .lab-controls.open .controls-body .slider-group{padding:8px 0}
+      #lab .lab-controls.open .toggle-chev{transform:rotate(180deg)}
     }
+    .controls-toggle{background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer;text-align:left}
+    .controls-toggle .toggle-chev{display:none}
     @media(max-width:480px){.page{padding:16px}.event-grid{grid-template-columns:1fr}.belief-head{display:block}.k-badge{display:inline-block;margin-top:14px}.legend{gap:8px}.chart-title{display:block}.legend{margin-top:10px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   
