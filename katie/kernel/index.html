@@ -146,6 +146,19 @@
     .bottom-line>div{padding:clamp(22px,3vw,34px);background:var(--deep);color:var(--white)}
     .bottom-line h2{margin:0;font-size:clamp(27px,3.7vw,46px);line-height:1.02;letter-spacing:-.04em}.bottom-line p{margin:0;color:#b9c7c2;font-size:16px;align-self:center}.bottom-line strong{color:var(--lime)}
 
+    .proof{margin-top:30px;background:var(--deep);color:var(--white);border-radius:var(--radius);padding:clamp(22px,3vw,34px);box-shadow:var(--shadow);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:clamp(20px,3vw,36px);align-items:center}
+    .proof-eyebrow{font:600 12px/1.2 "IBM Plex Mono",monospace;letter-spacing:.13em;color:var(--lime);text-transform:uppercase;margin:0 0 12px}
+    .proof h2{font-size:clamp(26px,3.4vw,44px);line-height:1.04;letter-spacing:-.04em;margin:0 0 12px}
+    .proof h2 em{font-style:normal;color:var(--lime)}
+    .proof>p,.proof>div>p{color:#b9c7c2;margin:0 0 20px;max-width:560px}
+    .proof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .proof-stat{background:rgba(255,255,255,.05);border:1px solid #2a3a36;border-radius:10px;padding:12px}
+    .proof-stat b{display:block;font:600 20px/1.1 "IBM Plex Mono",monospace;color:var(--lime)}
+    .proof-stat span{display:block;font:500 10px/1.3 "IBM Plex Mono",monospace;color:#9fb0aa;margin-top:5px;text-transform:uppercase;letter-spacing:.06em}
+    .proof-shot{margin:0}
+    .proof-shot img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #2a3a36}
+    .proof-shot figcaption{font:500 11px/1.5 "IBM Plex Mono",monospace;color:#9fb0aa;margin-top:10px}
+
     @media (max-width:900px){
       .mast{grid-template-columns:1fr;gap:18px}.mast .lede{max-width:760px}
       .registry{grid-template-columns:1fr}.assign-line{height:30px}.assign-line span{transform:rotate(90deg)}
@@ -153,6 +166,7 @@
       .port{min-height:auto}.socket-list{margin-top:8px}
       .kernel-grid{grid-template-columns:1fr 1.2fr}
       .lab{grid-template-columns:1fr}.bottom-line{grid-template-columns:1fr}
+      .proof{grid-template-columns:1fr}.proof-stats{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width:620px){
       main{width:min(100% - 20px,1240px);padding-top:22px}
@@ -335,6 +349,26 @@
         <div class="use"><span class="use-num">05</span><div><strong>Grouping, topic, mode—or more</strong><p>The kernel tracks whatever object its math is assigned to, each with its own traces.</p></div></div>
       </div>
     </article>
+  </section>
+
+  <section class="proof" aria-label="Field proof">
+    <div>
+      <p class="proof-eyebrow">Field proof</p>
+      <h2>It runs on a <em>phone.</em></h2>
+      <p>The whole KATIE kernel — record, both traces, scar and debt diagnostics — built from source on a budget phone and benched there. No Pi, no datacenter, no excuses.</p>
+      <div class="proof-stats">
+        <div class="proof-stat"><b>27,074</b><span>asserts / sec</span></div>
+        <div class="proof-stat"><b>14,434</b><span>promotions / sec</span></div>
+        <div class="proof-stat"><b>&lt;0.5ms</b><span>as-of reads</span></div>
+        <div class="proof-stat"><b>0</b><span>dependencies</span></div>
+        <div class="proof-stat"><b>987 / 39</b><span>debt deep / surface</span></div>
+        <div class="proof-stat"><b>2 chips</b><span>identical diagnostics</span></div>
+      </div>
+    </div>
+    <figure class="proof-shot">
+      <img src="phone-bench.png" alt="KATIE kernel bench output in Termux on a phone: 27,074 asserts/sec" />
+      <figcaption>Moto G Play 2024 · Snapdragon 680 · KATIE kernel v0.1, built from source in Termux. Same boxes in, same numbers out — diagnostics identical across chips.</figcaption>
+    </figure>
   </section>
 
   <section class="bottom-line">
