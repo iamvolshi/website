@@ -10,8 +10,8 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <meta name="description" content="VOLSHi builds the span between machine intelligence and human experience.">
-  <title>VOLSHi — The Span Between Intelligence and Human Experience</title>
+  <meta name="description" content="VOLSHi builds compliance infrastructure for AI agents — audit trails, evidence, and accountability for autonomous systems.">
+  <title>VOLSHi — Compliance Infrastructure for AI Agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -130,6 +130,28 @@
     .prob-dots i.on{background:var(--gold)}
     .prob-cta{display:none;position:relative;z-index:1;margin-top:6px}
     .prob-cta.show{display:inline-flex}
+    .krec-wrap{margin-top:44px;max-width:1180px;padding:34px 30px;background:linear-gradient(150deg,rgba(18,18,20,.72),rgba(8,8,10,.5));border:1px solid rgba(201,168,76,.22);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .krec-eyebrow{font-size:10px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .krec-title{font-size:clamp(1.4rem,2.4vw,2.2rem);font-weight:300;letter-spacing:.05em;line-height:1.1;text-transform:uppercase;margin-bottom:10px}
+    .krec-sub{font-size:.72rem;line-height:1.6;letter-spacing:.03em;color:rgba(245,242,237,.7);margin-bottom:26px;max-width:60ch}
+    .krec-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
+    @media(max-width:768px){.krec-grid{grid-template-columns:1fr}}
+    .krec-card{background:rgba(4,4,6,.5);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px}
+    .krec-field{display:flex;flex-direction:column;gap:4px}
+    .krec-label{font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.7)}
+    .krec-val{font-size:.85rem;letter-spacing:.02em;color:var(--w)}
+    .krec-hint{cursor:help;border-bottom:1px dotted rgba(201,168,76,.6);position:relative}
+    .krec-hint:hover::after{content:attr(data-hint);position:absolute;left:0;bottom:130%;width:220px;background:#141416;border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:10px 12px;font-size:.68rem;font-weight:400;letter-spacing:.02em;text-transform:none;color:rgba(245,242,237,.9);z-index:50;line-height:1.5}
+    .krec-bar{height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin:6px 0}
+    .krec-fill{height:100%;width:90%;background:linear-gradient(90deg,#c9a84c,#e8c96a);border-radius:4px;transition:width .25s ease,background .25s ease}
+    .krec-status{margin-top:6px;padding:12px 16px;border-radius:8px;font-size:.78rem;letter-spacing:.03em;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);color:rgba(245,242,237,.9)}
+    .krec-status.dead{background:rgba(180,60,60,.08);border-color:rgba(180,60,60,.3)}
+    .krec-controls{display:flex;flex-direction:column;gap:22px;justify-content:center}
+    .krec-slider-row{display:flex;flex-direction:column;gap:8px}
+    .krec-slider-row label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,242,237,.75)}
+    .krec-slider-row input[type=range]{width:100%;accent-color:#c9a84c;cursor:pointer}
+    .krec-slider-row span:last-child{font-size:.8rem;color:var(--gold);letter-spacing:.05em}
+    .krec-note{font-size:.72rem;line-height:1.6;letter-spacing:.03em;color:rgba(245,242,237,.55);border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
     @media(max-width:768px){.prob-modal{padding:16px}.prob-panel{width:100%;max-height:92vh;padding:36px 24px 28px}.prob-title{font-size:clamp(1.35rem,6.4vw,1.9rem)}}
   </style>
 </head>
@@ -137,8 +159,8 @@
 <header id="hdr">
   <div class="logo"><img id="wlogo" alt="VOLSHi" src="assets/volshilogowhite.png"></div>
   <nav id="nav">
-    <a href="#technology" data-to="1">Technology</a>
-    <a href="#archetron" data-to="2">ARCHETRON</a>
+    <a href="#problem" data-to="1">Problem</a>
+    <a href="#technology" data-to="2">Technology</a>
     <a href="#research" data-to="3">Research</a>
     <a href="#company" data-to="4">Company</a>
     <a href="#contact" data-to="5">Contact</a>
@@ -151,9 +173,9 @@
   <div class="hov"></div>
   <div class="home-col">
     <div class="hero-card">
-    <div class="ey sa">VOLSHi&nbsp;/&nbsp;Human + Machine</div>
-    <h1 class="sb">The Origin<br>of <span class="g">Identity.</span></h1>
-    <p class="hero-sub sc">Building the span between machine intelligence and human experience.</p>
+    <div class="ey sa">VOLSHi&nbsp;/&nbsp;Compliance Infrastructure</div>
+    <h1 class="sb">Every Agent Action.<br><span class="g">On the Record.</span></h1>
+    <p class="hero-sub sc">Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.</p>
     <a class="cta se" id="exploreSpan" href="#technology" data-to="1">Explore The Span &nbsp;→</a>
     </div>
   </div>
@@ -161,32 +183,73 @@
 </div>
 
 <div class="slide" id="s1">
-  <div class="sbg" id="bg1" style="background-image:url('assets/tech-glass-machine.webp')"></div>
+  <div class="sbg" id="bg1" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
+  <div class="scrim"></div>
+  <div class="arc-layout">
+    <section class="arc-intro">
+      <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;The Problem</div>
+      <h2 class="arc-title sc">AI Makes Decisions<br><span class="g">It Can't Account For.</span></h2>
+      <p class="arc-lede sd">No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Flip the cards — the black box becomes plexiglass.</p>
+      <div class="arc-hint se">Hover to reveal · Click to hold</div>
+    </section>
+    <section class="arc-stage" aria-live="polite">
+      <div class="flip-grid" id="flipGrid"></div>
+    </section>
+  </div>
+</div>
+<div class="slide" id="s2">
+  <div class="sbg" id="bg2" style="background-image:url('assets/tech-glass-machine.webp')"></div>
   <div class="scrim"></div>
   <div class="tech-layout">
     <section class="tech-index">
       <div class="tech-eyebrow sa">VOLSHi&nbsp;/&nbsp;Technology</div>
-      <h2 class="tech-title sb">The Systems<br><span style="color:var(--gold)">Inside The Span.</span></h2>
-      <p class="tech-lede sc">Durable capabilities between the model and the human.</p>
+      <h2 class="tech-title sb">Compliance,<br><span style="color:var(--gold)">Built Into The Stack.</span></h2>
+      <p class="tech-lede sc">What every AI agent deployment will need before regulators mandate it.</p>
       <div class="bento sd">
-        <button class="bento-tile bento-hero" data-tech="arche"><span class="bento-cat">Engines</span><span class="bento-name">ARCHE <span class="bento-greek">ἀρχή</span></span><span class="bento-type">Adaptive Relational Cognitive Human Emulator<br><span class="bento-origin">ἀρχή &mdash; the Origin of Identity</span></span></button>
-        <button class="bento-tile" data-tech="erie"><span class="bento-cat">Engines</span><span class="bento-name">ERIE</span><span class="bento-type">Epistemic Retrieval &amp; Intelligence Engine</span></button>
-        <button class="bento-tile" data-tech="elle"><span class="bento-cat">Engines</span><span class="bento-name">ELLE</span><span class="bento-type">External Learning Loop Engine</span></button>
-        <button class="bento-tile" data-tech="nirmata"><span class="bento-cat">Builders</span><span class="bento-name">NIRMATA</span><span class="bento-type">Persona Engineering System</span></button>
-        <button class="bento-tile" data-tech="rosie"><span class="bento-cat">Builders</span><span class="bento-name">ROSIE</span><span class="bento-type">Autonomous Software Builder</span></button>
-        <button class="bento-tile" data-tech="bouncer"><span class="bento-cat">Operations</span><span class="bento-name">BOUNCER</span><span class="bento-type">Authority &amp; Governance Engine</span></button>
-        <button class="bento-tile" data-tech="peep"><span class="bento-cat">Operations</span><span class="bento-name">PEEP</span><span class="bento-type">Execution Observation Bridge</span></button>
-        <button class="bento-tile" data-tech="ratter"><span class="bento-cat">Operations</span><span class="bento-name">RATR</span><span class="bento-type">Telemetry Engine</span></button>
-        <button class="bento-tile" data-tech="tower"><span class="bento-cat">Operations</span><span class="bento-name">CTRL TOWER</span><span class="bento-type">Operator Control</span></button>
-        <button class="bento-tile" data-tech="sherlock"><span class="bento-cat">Applications</span><span class="bento-name">SHERLOCK</span><span class="bento-type">Evidence Investigation Application</span></button>
-        <button class="bento-tile" data-tech="watson"><span class="bento-cat">Applications</span><span class="bento-name">WATSON</span><span class="bento-type">Deterministic Investigation Engine</span></button>
-        <button class="bento-tile" data-tech="sonder"><span class="bento-cat">Applications</span><span class="bento-name">SONDER</span><span class="bento-type">Local-First Workbench</span></button>
-        <button class="bento-tile" data-tech="brunel"><span class="bento-cat">Personas</span><span class="bento-name">BRUNEL</span><span class="bento-type">Operational Persona</span></button>
-        <button class="bento-tile" data-tech="chimera"><span class="bento-cat">Personas</span><span class="bento-name">CHIMERA</span><span class="bento-type">Apex Persona</span></button>
-        <button class="bento-tile" data-tech="psyrene"><span class="bento-cat">Personas</span><span class="bento-name">PSYRENE</span><span class="bento-type">Creative Persona</span></button>
-        <button class="bento-tile bento-cta" data-to="2"><span class="bento-cat">Assembled</span><span class="bento-name">ARCHETRON&nbsp;→</span><span class="bento-type">Seven jobs. One architecture.</span></button>
+        <button class="bento-tile bento-hero" data-tech="audit"><span class="bento-cat">Core</span><span class="bento-name">Audit Trail</span><span class="bento-type">Append-only record of every agent action<br><span class="bento-origin">What it did, when, and why</span></span></button>
+        <button class="bento-tile" data-tech="beliefs"><span class="bento-cat">Core</span><span class="bento-name">Belief Record</span><span class="bento-type">What the agent believed when it acted</span></button>
+        <button class="bento-tile" data-tech="evidence"><span class="bento-cat">Core</span><span class="bento-name">Evidence Chain</span><span class="bento-type">Every claim tied to its evidence</span></button>
+        <button class="bento-tile" data-tech="policy"><span class="bento-cat">Enforcement</span><span class="bento-name">Policy Gates</span><span class="bento-type">Human authorization before consequential actions</span></button>
+        <button class="bento-tile" data-tech="provenance"><span class="bento-cat">Enforcement</span><span class="bento-name">Provenance</span><span class="bento-type">Where every input came from, tracked</span></button>
+        <button class="bento-tile" data-tech="replay"><span class="bento-cat">Review</span><span class="bento-name">Replay</span><span class="bento-type">Reconstruct any decision after the fact</span></button>
+        <button class="bento-tile" data-tech="export"><span class="bento-cat">Review</span><span class="bento-name">Regulator Export</span><span class="bento-type">Compliance reports on demand</span></button>
+        <button class="bento-tile bento-cta" onclick="location.href='/invest/'"><span class="bento-cat">Raise</span><span class="bento-name">$250K&nbsp;→</span><span class="bento-type">Angel checks welcome.</span></button>
       </div>
       <div class="tech-hint se">Hover to inspect · Click to hold</div>
+      <!-- KATIE K-Record interactive -->
+      <div class="krec-wrap sd" id="krecWrap">
+        <div class="krec-head">
+          <div class="krec-eyebrow">Interactive · The K-Record</div>
+          <div class="krec-title">What the agent believed,<br><span style="color:var(--gold)">on the record.</span></div>
+          <p class="krec-sub">Drag the sliders. This is a live K-record entry — the same structure KATIE writes for every agent action.</p>
+        </div>
+        <div class="krec-grid">
+          <div class="krec-card">
+            <div class="krec-field"><span class="krec-label">Belief</span><span class="krec-val" id="kBelief">"The supplier invoice is legitimate."</span></div>
+            <div class="krec-field"><span class="krec-label">Held at <span class="krec-hint" data-hint="t = when it happened in the world">tⓘ</span></span><span class="krec-val" id="kT">2026-10-16 14:32:08 UTC</span></div>
+            <div class="krec-field"><span class="krec-label">Recorded at <span class="krec-hint" data-hint="k = when the system learned it — knowledge time">kⓘ</span></span><span class="krec-val" id="kK">k = 1042</span></div>
+            <div class="krec-field"><span class="krec-label">Authority <span class="krec-hint" data-hint="How much weight this belief carries. 100% = full trust. 0% = disproven — but it stays in the record.">ⓘ</span></span>
+              <div class="krec-bar"><div class="krec-fill" id="kFill"></div></div>
+              <span class="krec-val" id="kAuth">90%</span>
+            </div>
+            <div class="krec-field"><span class="krec-label">Action taken</span><span class="krec-val" id="kAction">Wired the payment.</span></div>
+            <div class="krec-status" id="kStatus">✓ Belief holds — action was justified.</div>
+          </div>
+          <div class="krec-controls">
+            <div class="krec-slider-row">
+              <label>Authority <span class="krec-hint" data-hint="Drag down to disprove the belief. Watch what happens to the record.">ⓘ</span></label>
+              <input type="range" id="kAuthSlider" min="0" max="100" value="90" step="10">
+              <span id="kAuthSliderVal">90%</span>
+            </div>
+            <div class="krec-slider-row">
+              <label>Knowledge time <span class="krec-hint" data-hint="Scrub through k. The record shows what was believed at every point — history doesn't move.">ⓘ</span></label>
+              <input type="range" id="kTimeSlider" min="1042" max="1050" value="1042" step="1">
+              <span id="kTimeSliderVal">k = 1042</span>
+            </div>
+            <div class="krec-note" id="kNote">This entry is append-only. Nothing here can be edited or deleted — only superseded.</div>
+          </div>
+        </div>
+      </div>
     </section>
     <div class="tech-modal" id="techModal" aria-hidden="true">
       <div class="tech-modal-backdrop" id="techBackdrop"></div>
@@ -203,22 +266,6 @@
   </div>
 </div>
 
-<div class="slide" id="s2">
-  <div class="sbg" id="bg2" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
-  <div class="scrim"></div>
-  <div class="arc-layout">
-    <section class="arc-intro">
-      <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;ARCHETRON</div>
-      <img class="arc-logo sb" id="alogo" alt="ARCHETRON Intelligence" src="assets/archetronlogo1.png">
-      <h2 class="arc-title sc">The Parts Become<br><span class="g">A System.</span></h2>
-      <p class="arc-lede sd">ARCHETRON is the assembled architecture formed when VOLSHi's core systems work together as one. The jobs come first. The technologies performing them reveal themselves when you inspect the machine.</p>
-      <div class="arc-hint se">Hover to reveal · Click to hold</div>
-    </section>
-    <section class="arc-stage" aria-live="polite">
-      <div class="flip-grid" id="flipGrid"></div>
-    </section>
-  </div>
-</div>
 <div class="slide" id="s3">
   <div class="sbg" id="bg3" style="background-image:url('assets/volshistarbkgd.png');background-position:center center"></div><div class="scrim scrim-narrow"></div>
   <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Research</div><h2 class="sb" style="font-size:clamp(1.5rem,2.4vw,2.6rem);margin-bottom:10px">The Work Ahead.</h2><p class="ed-sub sc" style="font-size:.70rem;margin-bottom:18px;max-width:300px">Intelligence is moving faster than the systems required to trust it.</p><div class="ri sd"><div class="rr" role="button" tabindex="0" data-res="1"><span class="rn">01</span><span class="rl">Temporal Memory</span><span class="rs">Validated</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="2"><span class="rn">02</span><span class="rl">Time-Addressed Storage</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="3"><span class="rn">03</span><span class="rl">Triadic Relations</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="4"><span class="rn">04</span><span class="rl">Knowledge Time</span><span class="rs">Validated</span><div class="re"></div></div></div><div class="res-hint se" id="resHint">Click to inspect</div><p class="res-tagline se">We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it’s strange and it matters, we’re already there.</p></div>
@@ -242,13 +289,13 @@
 </div>
 <div class="slide" id="s4">
   <div class="sbg" id="bg4" style="background-image:url('assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp');background-position:70% 40%"></div><div class="scrim"></div>
-  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div><h2 class="sb">THE ORIGIN<br>OF <span style="color:var(--gold)">IDENTITY.</span></h2><p class="ed-sub sc">VOLSHi is the origin of identity for machine intelligence. We build the span between machine intelligence and human experience — persistent identity that accumulates history, earns trust, and carries the relationship across every model change.</p><p class="ed-sub sc">Intelligence without identity is just computation: a black box with no past and no accountability. The model can change. The relationship shouldn’t have to.</p><p class="ed-sub sc">VOLSHi is nestled in the heart of North Carolina’s Research Triangle — in the orbit of Duke, UNC, and NC State, three powerhouse universities turning out the minds that will build what comes next.</p><p class="cap-line sd">VOLSHi builds the span between machine intelligence and human experience.</p></div>
+  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div><h2 class="sb">COMPLIANCE<br>FOR <span style="color:var(--gold)">AI AGENTS.</span></h2><p class="ed-sub sc">VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.</p><p class="ed-sub sc">Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act is live, US regulation is coming, and every enterprise deploying agents is about to need the same thing: show your work.</p><p class="ed-sub sc">VOLSHi is nestled in the heart of North Carolina's Research Triangle — in the orbit of Duke, UNC, and NC State, three powerhouse universities turning out the minds that will build what comes next.</p><p class="cap-line sd">VOLSHi builds compliance infrastructure for AI agents.</p></div>
   <div class="ibar se"><span class="in">Systems</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Research</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Infrastructure</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Governance</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Autonomy</span></div>
 <div class="deck-dl se"><span class="deck-label">Pitch deck</span><a class="deck-btn" href="assets/volshi-pitch-deck.pdf" download>Download PDF</a></div><img class="inst-mark" id="imark" alt="VOLSHi" src="assets/volshilogowhite.png">
 </div>
 <div class="slide" id="s5">
   <div class="sbg" id="bg5" style="background-image:url('assets/volshiswirlbkgd.png');background-position:60% 55%"></div><div class="scrim scrim-contact"></div>
-  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div><h2 class="sb">Build The<br>Span With Us.</h2><p class="contact-secondary sc">Intelligence is only one side of the system.</p><a class="contact-link sd" href="mailto:founder@volshi.com">Contact VOLSHi &nbsp;→</a><a class="contact-link invest-link sd" href="/invest/">Invest &nbsp;→</a><div class="close-seq se"><button class="ci" type="button"><span>Observe</span><em>We sense your systems as they are — execution, telemetry, evidence.</em></button><button class="ci" type="button"><span>Understand</span><em>Observation becomes traceable knowledge — every claim tied to its evidence.</em></button><button class="ci" type="button"><span>Decide</span><em>Attention and authority decide what deserves action — and what needs a human.</em></button><button class="ci" type="button"><span>Act</span><em>The system acts within its authority. Every action recorded, every crossing governed.</em></button><button class="ci" type="button"><span>Account</span><em>Everything is accounted for — what was believed, when, and why.</em></button></div></div><img class="contact-logo sd" src="assets/volshi-logo-clear.webp" alt="VOLSHi"><div class="legal sd">© 2026 VOLSHi. All rights reserved. &nbsp;·&nbsp; Research Triangle Park, North Carolina</div><img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
+  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div><h2 class="sb">Make Agents<br>Accountable.</h2><p class="contact-secondary sc">The compliance layer the industry is about to need.</p><a class="contact-link sd" href="mailto:founder@volshi.com">Contact VOLSHi &nbsp;→</a><a class="contact-link invest-link sd" href="/invest/">Invest &nbsp;→</a><div class="close-seq se"><button class="ci" type="button"><span>Observe</span><em>We sense your systems as they are — execution, telemetry, evidence.</em></button><button class="ci" type="button"><span>Understand</span><em>Observation becomes traceable knowledge — every claim tied to its evidence.</em></button><button class="ci" type="button"><span>Decide</span><em>Attention and authority decide what deserves action — and what needs a human.</em></button><button class="ci" type="button"><span>Act</span><em>The system acts within its authority. Every action recorded, every crossing governed.</em></button><button class="ci" type="button"><span>Account</span><em>Everything is accounted for — what was believed, when, and why.</em></button></div></div><img class="contact-logo sd" src="assets/volshi-logo-clear.webp" alt="VOLSHi"><div class="legal sd">© 2026 VOLSHi. All rights reserved. &nbsp;·&nbsp; Research Triangle Park, North Carolina</div><img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
 </div>
 </div>
 
@@ -272,23 +319,15 @@
 (() => {
   'use strict';
   const slides=Array.from(document.querySelectorAll('.slide')),navLinks=Array.from(document.querySelectorAll('#nav a[data-to]')),header=document.getElementById('hdr'),nav=document.getElementById('nav'),menuButton=document.getElementById('mbtn'),logo=document.querySelector('.logo');
-  const hashes=['home','technology','archetron','research','company','contact'],duration=750;let current=0,locked=false;
+  const hashes=['home','problem','technology','research','company','contact'],duration=750;let current=0,locked=false;
   const techData={
-    arche:{category:'Engines',name:'ARCHE',type:'Adaptive Relational Cognitive Human Emulator',what:'From the Greek ἀρχή \u2014 the Origin, the first principle. The core attention architecture for autonomous intelligence.',does:'Allocates finite cognition by evaluating system state, accumulated pressure, anticipated consequence, and user cost so the system can determine what deserves attention now.'},
-    erie:{category:'Engines',name:'ERIE',type:'Epistemic Retrieval & Intelligence Engine',what:'A reusable epistemic engine for evidence, knowledge, claims, entities, relationships, and provenance.',does:'Turns retrieved information into traceable, evidence-backed knowledge and preserves the basis for what the system says it knows.'},
-    elle:{category:'Engines',name:'ELLE',type:'External Learning Loop Engine',what:'A portable, model-agnostic learning layer that persists outside any single model session.',does:'Carries lessons and improvement forward across interactions and models so useful learning survives the conversation that produced it.'},
-    nirmata:{category:'Builders',name:'NIRMATA',type:'Persona Engineering System',what:'The system for creating and shaping specialized ARCHE personas.',does:'Packages roles, behaviors, capabilities, and operating constraints into reusable persona implementations built on the wider VOLSHi architecture.'},
-    rosie:{category:'Builders',name:'ROSIE',type:'Autonomous Software Builder',what:'A software-building system designed to move from intent through planning and implementation.',does:'Coordinates the work required to turn a product objective into an executable build while preserving the surrounding architecture, evidence, and control boundaries.'},
-    bouncer:{category:'Operations',name:'BOUNCER',type:'Authority & Governance Engine',what:'The authority layer governing consequential crossings inside autonomous systems.',does:'Approves, denies, pauses, resumes, escalates, revokes, or requires human authorization before controlled actions are allowed to proceed.'},
-    peep:{category:'Operations',name:'PEEP',type:'Execution Observation Bridge',what:'The sensing bridge between execution environments and the wider VOLSHi system.',does:'Observes execution sources such as shells, runtimes, browsers, IDEs, and CI, then publishes normalized operational events without reasoning about them.'},
-    ratter:{category:'Operations',name:'RATR',type:'Telemetry Engine',what:'The observation and telemetry engine for live system behavior.',does:'Collects and exposes structured operational telemetry so system state, activity, and behavior can be inspected rather than inferred.'},
-    tower:{category:'Operations',name:'CTRL TOWER',type:'Operator Control',what:'The operator-facing control application for the VOLSHi ecosystem.',does:'Presents live system state, execution streams, telemetry, governance decisions, evidence, costs, and controls in one operational surface.'},
-    sherlock:{category:'Applications',name:'SHERLOCK',type:'Evidence Investigation Application',what:'An evidence-first investigation system built around traceable reconstruction.',does:'Ingests evidence, reconstructs events and relationships, and produces conclusions that remain tied to the evidence and provenance supporting them.'},
-    watson:{category:'Applications',name:'WATSON',type:'Deterministic Investigation Engine',what:'A certified investigation engine and SDK implementing the native SHERLOCK–Watson protocol.',does:'Defines deterministic investigation lifecycles for creating investigations, submitting evidence, reaching conclusions, and replaying results.'},
-    sonder:{category:'Applications',name:'SONDER',type:'Local-First Workbench',what:'A local-first workbench for working with VOLSHi intelligence systems.',does:'Provides a human-facing workspace where intelligence capabilities can be used without making a remote service the center of the operating model.'},
-    brunel:{category:'Personas',name:'BRUNEL',type:'Operational Persona',what:'A deployed ARCHE persona — a concrete operating identity built from the persona architecture.',does:'Demonstrates how the underlying engines become a persistent, specialized persona rather than remaining an abstract framework.'},
-    chimera:{category:'Personas',name:'CHIMERA',type:'Apex Persona',what:'The apex persona in the ARCHE persona family.',does:'Combines broad system capabilities into a high-capability operating identity designed to work across demanding cognitive and operational contexts.'},
-    psyrene:{category:'Personas',name:'PSYRENE',type:'Creative Persona',what:'A specialized ARCHE persona oriented toward creative cognition.',does:'Shows how the same underlying architecture can be shaped around a distinct creative role while retaining the larger system boundaries.'}
+    audit:{category:'Core',name:'Audit Trail',type:'Append-Only Action Record',what:'Every action an AI agent takes is written to an immutable record — what it did, when it did it, and what it knew at the time.',does:'Gives enterprises and regulators a complete, tamper-proof history of agent behavior. No more "the model changed" as an excuse.'},
+    beliefs:{category:'Core',name:'Belief Record',type:'Knowledge-State Capture',what:'Captures what the agent believed when it acted — its confidence, its justifications, and what evidence it was working from.',does:'Lets auditors reconstruct not just what happened, but why the agent thought it was the right call.'},
+    evidence:{category:'Core',name:'Evidence Chain',type:'Claim-to-Evidence Linking',what:'Every claim the system makes stays tied to the evidence supporting it, across sessions and model changes.',does:'Turns AI output from assertion into something auditable — the basis for every decision is preserved.'},
+    policy:{category:'Enforcement',name:'Policy Gates',type:'Pre-Action Authorization',what:'Consequential actions require approval — from policy rules, human operators, or both — before they execute.',does:'Stops the agent before it does something irreversible, not after. Prevention, not forensics.'},
+    provenance:{category:'Enforcement',name:'Provenance',type:'Input Lineage Tracking',what:'Tracks where every piece of input came from — which data, which source, which prior decision.',does:'When something goes wrong, you can trace it back to the root instead of guessing.'},
+    replay:{category:'Review',name:'Replay',type:'Decision Reconstruction',what:'Reconstruct any past decision in full — the inputs, the beliefs, the evidence, the action taken.',does:'Incident review becomes investigation instead of speculation. Show your work, retroactively.'},
+    export:{category:'Review',name:'Regulator Export',type:'Compliance Reporting',what:'Generate compliance reports on demand — formatted for auditors, regulators, and enterprise legal teams.',does:'Turns the audit trail into the paperwork regulators actually ask for. EU AI Act ready.'}
   };
   const techDetail=document.getElementById('techDetail'),techClose=document.getElementById('techClose'),techButtons=Array.from(document.querySelectorAll('.bento-tile[data-tech]')),techEls={category:document.getElementById('techCategory'),name:document.getElementById('techName'),type:document.getElementById('techType'),what:document.getElementById('techWhat'),does:document.getElementById('techDoes')};let techPinned=false,techTimer=null,activeTech=null;
   function showTech(key,pin=false){const d=techData[key];if(!d||!techDetail)return;clearTimeout(techTimer);activeTech=key;if(pin)techPinned=true;techEls.category.textContent=d.category;techEls.name.textContent=d.name;techEls.type.textContent=d.type;techEls.what.textContent=d.what;techEls.does.textContent=d.does;techButtons.forEach(b=>b.classList.toggle('active',b.dataset.tech===key));techDetail.classList.add('open');techDetail.setAttribute('aria-hidden','false');document.getElementById('techModal').classList.add('open');document.getElementById('techModal').setAttribute('aria-hidden','false');}
@@ -298,21 +337,21 @@
   if(techDetail){techDetail.addEventListener('mouseenter',()=>clearTimeout(techTimer));techDetail.addEventListener('mouseleave',scheduleHide);}if(techClose)techClose.addEventListener('click',()=>hideTech(true));var tb=document.getElementById('techBackdrop');if(tb)tb.addEventListener('click',()=>hideTech(true));
 
   const arcData={
-    observe:{job:'OBSERVE',systems:'PEEP + RATR',copy:'Sense execution and expose live operational state without pretending observation is reasoning.'},
-    know:{job:'KNOW',systems:'ERIE',copy:'Establish evidence, knowledge, relationships, and provenance so the system can ground what it claims to know.'},
-    attend:{job:'ATTEND',systems:'ARCHE',copy:'Allocate finite cognition toward what matters now, using pressure, consequence, and user cost.'},
-    learn:{job:'LEARN',systems:'ELLE',copy:'Carry lessons forward across interactions and models so useful learning survives the session that produced it.'},
-    govern:{job:'GOVERN',systems:'BOUNCER',copy:'Apply policy, limits, and human authority before consequential work is allowed to proceed.'},
-    act:{job:'ACT',systems:'ROSIE + NIRMATA',copy:'Turn intent into built software and engineered operating personas inside the larger controlled system.'},
-    account:{job:'ACCOUNT',systems:'CTRL TOWER + ERIE',copy:'Keep system state, evidence, decisions, and consequences visible to the human operator and tied to their basis.'},
-    aware:{job:'AWARE',systems:'KATIE',copy:'Index knowledge-authority over time \u2014 what was believed, when, and why \u2014 so the past stays on the record.'}
+    observe:{job:'OBSERVE',systems:'Execution Monitoring',copy:'See what agents are doing in real time — every action captured as it happens.'},
+    know:{job:'KNOW',systems:'Belief Capture',copy:'Record what the agent believed when it acted — confidence, justification, evidence.'},
+    attend:{job:'GATE',systems:'Policy Enforcement',copy:'Consequential actions require approval before they execute. Prevention, not forensics.'},
+    learn:{job:'TRACK',systems:'Provenance',copy:'Trace every input to its source. When something goes wrong, find the root.'},
+    govern:{job:'PROVE',systems:'Evidence Chain',copy:'Every claim stays tied to its evidence — across sessions, across models.'},
+    act:{job:'REPLAY',systems:'Reconstruction',copy:'Rebuild any past decision in full. Incident review becomes investigation.'},
+    account:{job:'REPORT',systems:'Regulator Export',copy:'Compliance reports on demand. EU AI Act ready, US regulation coming.'},
+    aware:{job:'RETAIN',systems:'Immutable Record',copy:'The past stays on the record. What was believed, when, and why — unerasable.'}
   };
   const arcButtons=Array.from(document.querySelectorAll('.arc-job')),arcCore=document.getElementById('arcCore'),arcCoreKicker=document.getElementById('arcCoreKicker'),arcCoreJob=document.getElementById('arcCoreJob'),arcCoreSystems=document.getElementById('arcCoreSystems'),arcCoreCopy=document.getElementById('arcCoreCopy');let arcPinned=false,activeArc=null,arcTimer=null;
   // Black-box flip cards: hover reveals the machinery underneath.
   const flipGrid=document.getElementById('flipGrid');
   function gearSVG(){return `<svg class="fb-gears" viewBox="0 0 64 44" aria-hidden="true"><g class="gear-spin" stroke="#c9a84c" fill="none"><circle cx="22" cy="22" r="12" stroke-width="7" stroke-dasharray="5 4"/><circle cx="22" cy="22" r="4" stroke-width="2"/></g><g class="gear-spin rev" stroke="#c9a84c" fill="none" opacity=".7"><circle cx="45" cy="22" r="8" stroke-width="5" stroke-dasharray="4 3"/><circle cx="45" cy="22" r="2.5" stroke-width="1.5"/></g></svg>`;}
   if(flipGrid){Object.keys(arcData).forEach(key=>{const d=arcData[key],card=document.createElement('button');card.className='flip-card';card.type='button';card.setAttribute('aria-label',d.job+' — flip to reveal the machinery');card.innerHTML=`<div class="flip-inner"><div class="flip-face flip-front"><div class="ff-job">${d.job}</div><div class="ff-tag">Black box</div></div><div class="flip-face flip-back">${gearSVG()}<div class="fb-systems">${d.systems}</div><div class="fb-copy">${d.copy}</div><div class="fb-stamp">Plexiglass · revealed</div></div></div>`;card.addEventListener('click',()=>{card.classList.toggle('pinned');card.blur()});flipGrid.appendChild(card);});}
-  function resetArc(force=false){if(!force&&arcPinned)return;arcPinned=false;activeArc=null;clearTimeout(arcTimer);arcButtons.forEach(b=>b.classList.remove('active'));if(arcCore)arcCore.classList.remove('active');if(arcCoreKicker)arcCoreKicker.textContent='Assembled System';if(arcCoreJob)arcCoreJob.textContent='ARCHETRON';if(arcCoreSystems)arcCoreSystems.textContent='Seven Jobs · One Architecture';if(arcCoreCopy)arcCoreCopy.textContent='Each job is performed by one or more VOLSHi technologies. Together they become the larger machine.';}
+  function resetArc(force=false){if(!force&&arcPinned)return;arcPinned=false;activeArc=null;clearTimeout(arcTimer);arcButtons.forEach(b=>b.classList.remove('active'));if(arcCore)arcCore.classList.remove('active');if(arcCoreKicker)arcCoreKicker.textContent='Compliance Infrastructure';if(arcCoreJob)arcCoreJob.textContent='VOLSHi';if(arcCoreSystems)arcCoreSystems.textContent='Every Action · On The Record';if(arcCoreCopy)arcCoreCopy.textContent='Each capability serves one purpose: making AI agent behavior auditable, accountable, and regulator-ready.';}
   function showArc(key,pin=false){const d=arcData[key];if(!d)return;clearTimeout(arcTimer);activeArc=key;if(pin)arcPinned=true;arcButtons.forEach(b=>b.classList.toggle('active',b.dataset.arcJob===key));if(arcCore)arcCore.classList.add('active');if(arcCoreKicker)arcCoreKicker.textContent='Functional Job';if(arcCoreJob)arcCoreJob.textContent=d.job;if(arcCoreSystems)arcCoreSystems.textContent=d.systems;if(arcCoreCopy)arcCoreCopy.textContent=d.copy;}
   function scheduleArcReset(){clearTimeout(arcTimer);arcTimer=setTimeout(()=>resetArc(false),110);}
   arcButtons.forEach(b=>{b.addEventListener('mouseenter',()=>showArc(b.dataset.arcJob,false));b.addEventListener('focus',()=>showArc(b.dataset.arcJob,false));b.addEventListener('mouseleave',scheduleArcReset);b.addEventListener('click',e=>{e.preventDefault();const same=activeArc===b.dataset.arcJob&&arcPinned;if(same)resetArc(true);else showArc(b.dataset.arcJob,true);});});
@@ -407,6 +446,40 @@
   document.addEventListener('keydown',function(e){
     if(opened&&e.key==='Escape'&&!modal.contains(e.target))close();
   });
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  var authSlider=document.getElementById('kAuthSlider'),timeSlider=document.getElementById('kTimeSlider');
+  if(!authSlider||!timeSlider)return;
+  var authVal=document.getElementById('kAuthSliderVal'),timeVal=document.getElementById('kTimeSliderVal'),
+      fill=document.getElementById('kFill'),auth=document.getElementById('kAuth'),
+      kK=document.getElementById('kK'),status=document.getElementById('kStatus'),note=document.getElementById('kNote');
+  function render(){
+    var a=parseInt(authSlider.value,10),k=parseInt(timeSlider.value,10);
+    authVal.textContent=a+'%';timeVal.textContent='k = '+k;
+    auth.textContent=a+'%';kK.textContent='k = '+k;
+    fill.style.width=a+'%';
+    if(a===0){fill.style.background='rgba(180,60,60,.7)';}
+    else if(a<50){fill.style.background='linear-gradient(90deg,#a8823c,#c9a84c)';}
+    else{fill.style.background='linear-gradient(90deg,#c9a84c,#e8c96a)';}
+    if(a===0){
+      status.textContent='✕ Belief disproven — authority is zero. The record keeps it as history. The action taken while it held is still on the record.';
+      status.classList.add('dead');
+      note.textContent='This is the whole point: the rumor was false, but the wire already happened. Without this record, there is no accountability. With it, there is.';
+    }else if(a<50){
+      status.textContent='⚠ Authority collapsing — the belief is losing weight. If it hits zero, the record keeps it as disproven history.';
+      status.classList.remove('dead');
+      note.textContent='Authority is graded, not binary. A belief can weaken before it dies — and every step is timestamped.';
+    }else{
+      status.textContent='✓ Belief holds — action was justified.';
+      status.classList.remove('dead');
+      note.textContent='This entry is append-only. Nothing here can be edited or deleted — only superseded.';
+    }
+  }
+  authSlider.addEventListener('input',render);timeSlider.addEventListener('input',render);
+  render();
 })();
 </script>
 <script>
