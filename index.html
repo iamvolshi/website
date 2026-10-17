@@ -22,8 +22,8 @@
     .tech-index{align-self:center;max-width:560px}.tech-eyebrow{font-size:10px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--gd);margin-bottom:18px;display:flex;align-items:center;gap:10px;text-shadow:0 1px 10px rgba(0,0,0,.8)}.tech-eyebrow::before{content:'';width:14px;height:1px;background:var(--gd)}
     .tech-title{font-size:clamp(1.6rem,2.6vw,2.8rem);font-weight:300;letter-spacing:.06em;line-height:1.05;text-transform:uppercase;margin-bottom:9px;text-shadow:0 1px 18px rgba(0,0,0,.75)}
     .tech-lede{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,237,.62);margin-bottom:24px}
-    .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px;max-width:1180px}
-    .bento-tile{appearance:none;font:inherit;text-align:left;cursor:pointer;position:relative;min-height:128px;padding:18px 16px 15px;display:flex;flex-direction:column;justify-content:flex-end;gap:7px;color:var(--w);background:linear-gradient(150deg,rgba(18,18,20,.62),rgba(8,8,10,.42));border:1px solid rgba(255,255,255,.08);border-radius:14px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px;max-width:1180px}
+    .bento-tile{appearance:none;font:inherit;text-align:left;cursor:pointer;position:relative;min-height:108px;padding:14px 14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;color:var(--w);background:linear-gradient(150deg,rgba(18,18,20,.62),rgba(8,8,10,.42));border:1px solid rgba(255,255,255,.08);border-radius:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
     .bento-tile:hover,.bento-tile:focus-visible,.bento-tile.active{outline:none;transform:translateY(-3px);border-color:rgba(201,168,76,.55);box-shadow:0 18px 44px rgba(0,0,0,.5),0 0 24px rgba(201,168,76,.08)}
     .bento-hero{grid-column:span 2;grid-row:span 2;min-height:266px;background:linear-gradient(150deg,rgba(201,168,76,.16),rgba(10,10,12,.55) 62%);border-color:rgba(201,168,76,.28)}
     .bento-cta{border-style:dashed}
@@ -152,6 +152,7 @@
     .krec-slider-row input[type=range]{width:100%;accent-color:#c9a84c;cursor:pointer}
     .krec-slider-row span:last-child{font-size:.8rem;color:var(--gold);letter-spacing:.05em}
     .krec-note{font-size:.72rem;line-height:1.6;letter-spacing:.03em;color:rgba(245,242,237,.55);border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
+    .krec-demo-slot{margin-top:28px;padding:28px;border:1px dashed rgba(201,168,76,.35);border-radius:12px;text-align:center;color:rgba(245,242,237,.4);font-size:.75rem;letter-spacing:.08em}
     @media(max-width:768px){.prob-modal{padding:16px}.prob-panel{width:100%;max-height:92vh;padding:36px 24px 28px}.prob-title{font-size:clamp(1.35rem,6.4vw,1.9rem)}}
   </style>
 </head>
@@ -161,9 +162,10 @@
   <nav id="nav">
     <a href="#problem" data-to="1">Problem</a>
     <a href="#technology" data-to="2">Technology</a>
-    <a href="#research" data-to="3">Research</a>
-    <a href="#company" data-to="4">Company</a>
-    <a href="#contact" data-to="5">Contact</a>
+    <a href="#krecord" data-to="3">K-Record</a>
+    <a href="#research" data-to="4">Research</a>
+    <a href="#company" data-to="5">Company</a>
+    <a href="#contact" data-to="6">Contact</a>
   </nav>
   <button class="mbtn" id="mbtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
@@ -216,8 +218,28 @@
         <button class="bento-tile bento-cta" onclick="location.href='/invest/'"><span class="bento-cat">Raise</span><span class="bento-name">$250K&nbsp;→</span><span class="bento-type">Angel checks welcome.</span></button>
       </div>
       <div class="tech-hint se">Hover to inspect · Click to hold</div>
-      <!-- KATIE K-Record interactive -->
-      <div class="krec-wrap sd" id="krecWrap">
+    </section>
+    <div class="tech-modal" id="techModal" aria-hidden="true">
+      <div class="tech-modal-backdrop" id="techBackdrop"></div>
+      <div class="tech-detail" id="techDetail" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="tech-glass">
+          <button class="tech-close" id="techClose" type="button" aria-label="Close technology detail">×</button>
+          <div class="tech-detail-category" id="techCategory"></div>
+          <div class="tech-detail-name" id="techName"></div>
+          <div class="tech-detail-type" id="techType"></div>
+          <div class="tech-copy"><div><h3>What is it?</h3><p id="techWhat"></p></div><div><h3>What does it do?</h3><p id="techDoes"></p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s3">
+  <div class="sbg" id="bg3" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
+  <div class="scrim"></div>
+  <div class="tech-layout">
+    <section class="tech-index" style="max-width:1240px">
+      <div class="krec-wrap sd" id="krecWrap" style="margin-top:0">
         <div class="krec-head">
           <div class="krec-eyebrow">Interactive · The K-Record</div>
           <div class="krec-title">What the agent believed,<br><span style="color:var(--gold)">on the record.</span></div>
@@ -249,25 +271,15 @@
             <div class="krec-note" id="kNote">This entry is append-only. Nothing here can be edited or deleted — only superseded.</div>
           </div>
         </div>
+        <!-- Live demo embeds here when ready -->
+        <div class="krec-demo-slot" id="krecDemoSlot" style="display:none"></div>
       </div>
     </section>
-    <div class="tech-modal" id="techModal" aria-hidden="true">
-      <div class="tech-modal-backdrop" id="techBackdrop"></div>
-      <div class="tech-detail" id="techDetail" aria-hidden="true" role="dialog" aria-modal="true">
-        <div class="tech-glass">
-          <button class="tech-close" id="techClose" type="button" aria-label="Close technology detail">×</button>
-          <div class="tech-detail-category" id="techCategory"></div>
-          <div class="tech-detail-name" id="techName"></div>
-          <div class="tech-detail-type" id="techType"></div>
-          <div class="tech-copy"><div><h3>What is it?</h3><p id="techWhat"></p></div><div><h3>What does it do?</h3><p id="techDoes"></p></div></div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
-<div class="slide" id="s3">
-  <div class="sbg" id="bg3" style="background-image:url('assets/volshistarbkgd.png');background-position:center center"></div><div class="scrim scrim-narrow"></div>
+<div class="slide" id="s4">
+  <div class="sbg" id="bg4" style="background-image:url('assets/volshistarbkgd.png');background-position:center center"></div><div class="scrim scrim-narrow"></div>
   <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Research</div><h2 class="sb" style="font-size:clamp(1.5rem,2.4vw,2.6rem);margin-bottom:10px">The Work Ahead.</h2><p class="ed-sub sc" style="font-size:.70rem;margin-bottom:18px;max-width:300px">Intelligence is moving faster than the systems required to trust it.</p><div class="ri sd"><div class="rr" role="button" tabindex="0" data-res="1"><span class="rn">01</span><span class="rl">Temporal Memory</span><span class="rs">Validated</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="2"><span class="rn">02</span><span class="rl">Time-Addressed Storage</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="3"><span class="rn">03</span><span class="rl">Triadic Relations</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="4"><span class="rn">04</span><span class="rl">Knowledge Time</span><span class="rs">Validated</span><div class="re"></div></div></div><div class="res-hint se" id="resHint">Click to inspect</div><p class="res-tagline se">We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it’s strange and it matters, we’re already there.</p></div>
 <div class="res-modal" id="resModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="resName" aria-describedby="resBlurb">
   <div class="res-backdrop"></div>
@@ -287,14 +299,14 @@
   </div>
 </div>
 </div>
-<div class="slide" id="s4">
-  <div class="sbg" id="bg4" style="background-image:url('assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp');background-position:70% 40%"></div><div class="scrim"></div>
+<div class="slide" id="s5">
+  <div class="sbg" id="bg5" style="background-image:url('assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp');background-position:70% 40%"></div><div class="scrim"></div>
   <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div><h2 class="sb">COMPLIANCE<br>FOR <span style="color:var(--gold)">AI AGENTS.</span></h2><p class="ed-sub sc">VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.</p><p class="ed-sub sc">Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act is live, US regulation is coming, and every enterprise deploying agents is about to need the same thing: show your work.</p><p class="ed-sub sc">VOLSHi is nestled in the heart of North Carolina's Research Triangle — in the orbit of Duke, UNC, and NC State, three powerhouse universities turning out the minds that will build what comes next.</p><p class="cap-line sd">VOLSHi builds compliance infrastructure for AI agents.</p></div>
   <div class="ibar se"><span class="in">Systems</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Research</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Infrastructure</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Governance</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Autonomy</span></div>
 <div class="deck-dl se"><span class="deck-label">Pitch deck</span><a class="deck-btn" href="assets/volshi-pitch-deck.pdf" download>Download PDF</a></div><img class="inst-mark" id="imark" alt="VOLSHi" src="assets/volshilogowhite.png">
 </div>
-<div class="slide" id="s5">
-  <div class="sbg" id="bg5" style="background-image:url('assets/volshiswirlbkgd.png');background-position:60% 55%"></div><div class="scrim scrim-contact"></div>
+<div class="slide" id="s6">
+  <div class="sbg" id="bg6" style="background-image:url('assets/volshiswirlbkgd.png');background-position:60% 55%"></div><div class="scrim scrim-contact"></div>
   <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div><h2 class="sb">Make Agents<br>Accountable.</h2><p class="contact-secondary sc">The compliance layer the industry is about to need.</p><a class="contact-link sd" href="mailto:founder@volshi.com">Contact VOLSHi &nbsp;→</a><a class="contact-link invest-link sd" href="/invest/">Invest &nbsp;→</a><div class="close-seq se"><button class="ci" type="button"><span>Observe</span><em>We sense your systems as they are — execution, telemetry, evidence.</em></button><button class="ci" type="button"><span>Understand</span><em>Observation becomes traceable knowledge — every claim tied to its evidence.</em></button><button class="ci" type="button"><span>Decide</span><em>Attention and authority decide what deserves action — and what needs a human.</em></button><button class="ci" type="button"><span>Act</span><em>The system acts within its authority. Every action recorded, every crossing governed.</em></button><button class="ci" type="button"><span>Account</span><em>Everything is accounted for — what was believed, when, and why.</em></button></div></div><img class="contact-logo sd" src="assets/volshi-logo-clear.webp" alt="VOLSHi"><div class="legal sd">© 2026 VOLSHi. All rights reserved. &nbsp;·&nbsp; Research Triangle Park, North Carolina</div><img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
 </div>
 </div>
@@ -319,7 +331,7 @@
 (() => {
   'use strict';
   const slides=Array.from(document.querySelectorAll('.slide')),navLinks=Array.from(document.querySelectorAll('#nav a[data-to]')),header=document.getElementById('hdr'),nav=document.getElementById('nav'),menuButton=document.getElementById('mbtn'),logo=document.querySelector('.logo');
-  const hashes=['home','problem','technology','research','company','contact'],duration=750;let current=0,locked=false;
+  const hashes=['home','problem','technology','krecord','research','company','contact'],duration=750;let current=0,locked=false;
   const techData={
     audit:{category:'Core',name:'Audit Trail',type:'Append-Only Action Record',what:'Every action an AI agent takes is written to an immutable record — what it did, when it did it, and what it knew at the time.',does:'Gives enterprises and regulators a complete, tamper-proof history of agent behavior. No more "the model changed" as an excuse.'},
     beliefs:{category:'Core',name:'Belief Record',type:'Knowledge-State Capture',what:'Captures what the agent believed when it acted — its confidence, its justifications, and what evidence it was working from.',does:'Lets auditors reconstruct not just what happened, but why the agent thought it was the right call.'},
