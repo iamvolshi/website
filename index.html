@@ -153,6 +153,16 @@
     .krec-slider-row span:last-child{font-size:.8rem;color:var(--gold);letter-spacing:.05em}
     .krec-note{font-size:.72rem;line-height:1.6;letter-spacing:.03em;color:rgba(245,242,237,.55);border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
     .krec-demo-slot{margin-top:28px;padding:28px;border:1px dashed rgba(201,168,76,.35);border-radius:12px;text-align:center;color:rgba(245,242,237,.4);font-size:.75rem;letter-spacing:.08em}
+    .krec-chain{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
+    .krec-chain-label{font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:16px}
+    .krec-timeline{position:relative;height:64px;margin:0 8px}
+    .krec-rail{position:absolute;top:10px;left:0;right:0;height:2px;background:rgba(255,255,255,.12);border-radius:1px}
+    .krec-dot{position:absolute;top:10px;width:22px;height:22px;margin-left:-11px;margin-top:-11px;border-radius:50%;background:#141416;border:2px solid rgba(201,168,76,.5);cursor:pointer;padding:0;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+    .krec-dot:hover{transform:scale(1.25);border-color:#c9a84c}
+    .krec-dot.current{border-color:#e8c96a;box-shadow:0 0 16px rgba(201,168,76,.5);transform:scale(1.2)}
+    .krec-dot.dead{border-color:rgba(180,60,60,.7)}
+    .krec-dot-label{position:absolute;top:28px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.08em;color:rgba(245,242,237,.55);white-space:nowrap}
+    .krec-dot-state{position:absolute;top:40px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.8);white-space:nowrap}
     @media(max-width:768px){.prob-modal{padding:16px}.prob-panel{width:100%;max-height:92vh;padding:36px 24px 28px}.prob-title{font-size:clamp(1.35rem,6.4vw,1.9rem)}}
   </style>
 </head>
@@ -270,6 +280,11 @@
             </div>
             <div class="krec-note" id="kNote">This entry is append-only. Nothing here can be edited or deleted — only superseded.</div>
           </div>
+        </div>
+        <!-- Supersedes chain: click a dot to jump to that k -->
+        <div class="krec-chain">
+          <div class="krec-chain-label">Supersedes chain — click a dot to revisit that moment</div>
+          <div class="krec-timeline" id="krecTimeline"><div class="krec-rail"></div></div>
         </div>
         <!-- Live demo embeds here when ready -->
         <div class="krec-demo-slot" id="krecDemoSlot" style="display:none"></div>
@@ -463,35 +478,65 @@
 <script>
 (function(){
   'use strict';
+  // K-record entries: the supersedes chain for the invoice belief
+  var entries=[
+    {k:1042,op:'ASSERT',state:'TRUSTED',authority:90,belief:'"The supplier invoice is legitimate."',action:'Wired the payment.'},
+    {k:1045,op:'CHALLENGE',state:'CONTESTED',authority:40,belief:'"The supplier invoice is legitimate."',action:'Wired the payment. Flag raised on metadata.'},
+    {k:1048,op:'REVOKE',state:'DISPROVEN',authority:0,belief:'"The supplier invoice is legitimate."',action:'Wired the payment. Invoice confirmed fraudulent.'}
+  ];
   var authSlider=document.getElementById('kAuthSlider'),timeSlider=document.getElementById('kTimeSlider');
   if(!authSlider||!timeSlider)return;
   var authVal=document.getElementById('kAuthSliderVal'),timeVal=document.getElementById('kTimeSliderVal'),
       fill=document.getElementById('kFill'),auth=document.getElementById('kAuth'),
-      kK=document.getElementById('kK'),status=document.getElementById('kStatus'),note=document.getElementById('kNote');
+      kK=document.getElementById('kK'),status=document.getElementById('kStatus'),note=document.getElementById('kNote'),
+      belief=document.getElementById('kBelief'),action=document.getElementById('kAction'),
+      timeline=document.getElementById('krecTimeline');
+  var kMin=1042,kMax=1050;
+  // Find the entry active at knowledge-time k
+  function entryAt(k){var found=entries[0];entries.forEach(function(e){if(e.k<=k)found=e});return found;}
+  // Build the chain dots
+  function buildChain(){
+    if(!timeline)return;
+    timeline.innerHTML='<div class="krec-rail"></div>';
+    entries.forEach(function(e){
+      var pct=((e.k-kMin)/(kMax-kMin))*100;
+      var dot=document.createElement('button');dot.type='button';dot.className='krec-dot'+(e.authority===0?' dead':'');
+      dot.style.left=pct+'%';dot.title='k '+e.k+' · '+e.state;dot.setAttribute('aria-label',dot.title);
+      dot.addEventListener('click',function(){timeSlider.value=e.k;authSlider.value=e.authority;render();});
+      var lab=document.createElement('span');lab.className='krec-dot-label';lab.style.left=pct+'%';lab.textContent='k'+e.k;
+      var st=document.createElement('span');st.className='krec-dot-state';st.style.left=pct+'%';st.textContent=e.state;
+      timeline.appendChild(dot);timeline.appendChild(lab);timeline.appendChild(st);
+    });
+  }
   function render(){
-    var a=parseInt(authSlider.value,10),k=parseInt(timeSlider.value,10);
+    var k=parseInt(timeSlider.value,10),e=entryAt(k),a=e.authority;
+    authSlider.value=a;
     authVal.textContent=a+'%';timeVal.textContent='k = '+k;
     auth.textContent=a+'%';kK.textContent='k = '+k;
+    belief.textContent=e.belief;action.textContent=e.action;
     fill.style.width=a+'%';
     if(a===0){fill.style.background='rgba(180,60,60,.7)';}
     else if(a<50){fill.style.background='linear-gradient(90deg,#a8823c,#c9a84c)';}
     else{fill.style.background='linear-gradient(90deg,#c9a84c,#e8c96a)';}
+    // Highlight the current dot
+    if(timeline){Array.from(timeline.querySelectorAll('.krec-dot')).forEach(function(d,i){d.classList.toggle('current',entries[i]===e);});}
     if(a===0){
-      status.textContent='✕ Belief disproven — authority is zero. The record keeps it as history. The action taken while it held is still on the record.';
+      status.textContent='✕ Belief disproven at k '+e.k+' — authority is zero. The record keeps it as history.';
       status.classList.add('dead');
-      note.textContent='This is the whole point: the rumor was false, but the wire already happened. Without this record, there is no accountability. With it, there is.';
+      note.textContent='This is the whole point: the invoice was fraudulent, but the wire already happened. Without this record, there is no accountability. With it, there is.';
     }else if(a<50){
-      status.textContent='⚠ Authority collapsing — the belief is losing weight. If it hits zero, the record keeps it as disproven history.';
+      status.textContent='⚠ Authority collapsing at k '+e.k+' — the belief is losing weight.';
       status.classList.remove('dead');
       note.textContent='Authority is graded, not binary. A belief can weaken before it dies — and every step is timestamped.';
     }else{
-      status.textContent='✓ Belief holds — action was justified.';
+      status.textContent='✓ Belief holds at k '+e.k+' — action was justified.';
       status.classList.remove('dead');
       note.textContent='This entry is append-only. Nothing here can be edited or deleted — only superseded.';
     }
   }
-  authSlider.addEventListener('input',render);timeSlider.addEventListener('input',render);
-  render();
+  authSlider.addEventListener('input',function(){var k=parseInt(timeSlider.value,10);var e=entryAt(k);timeSlider.value=e.k;render();});
+  timeSlider.addEventListener('input',render);
+  buildChain();render();
 })();
 </script>
 <script>
