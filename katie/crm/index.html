@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="A CRM that can't rewrite history. Every field carries a Kernel ID and a K-record: every value it ever held, at what knowledge-time, at what authority, and why it changed. Live demo of KATIE, the accountability layer." />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-kt-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="../../assets/favicon-kt-64.png">
+  <title>CRM Demo — KATIE | VOLSHi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper:#edf1ef; --ink:#101716; --muted:#4f5f5a; --line:#a8b6b1;
+      --panel:#f8faf8; --panel-2:#e2e9e6;
+      --lime:#a8e349; --lime-ink:#314a08;
+      --orange:#f08a4b; --orange-soft:#ffe0cc; --orange-ink:#6b2b08;
+      --cyan:#48bdd0; --cyan-soft:#d7f4f8; --cyan-ink:#075563;
+      --deep:#14201e; --white:#ffffff;
+      --shadow:0 18px 50px rgba(15,30,25,.10); --radius:18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper:#0c1211; --ink:#edf6f2; --muted:#9eafa9; --line:#33443f;
+        --panel:#131d1b; --panel-2:#1b2a26;
+        --lime:#b8ef55; --lime-ink:#101d03;
+        --orange:#ff9b5c; --orange-soft:#3b251a; --orange-ink:#ffc9a8;
+        --cyan:#59d0e3; --cyan-soft:#14333a; --cyan-ink:#a8edf6;
+        --deep:#09100f; --shadow:0 22px 60px rgba(0,0,0,.32);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",sans-serif;line-height:1.5}
+    button{font:inherit;cursor:pointer}
+    main{width:min(1240px,calc(100% - 32px));margin:0 auto;padding:clamp(28px,4vw,64px) 0 80px}
+    .crumb{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted);margin-bottom:18px}
+    .crumb a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+    .crumb a:hover{color:var(--ink)}
+    .hero h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;margin:0 0 14px;font-weight:700;letter-spacing:-.02em}
+    .hero h1 .strike{color:var(--muted);text-decoration:line-through;text-decoration-thickness:.08em}
+    .hero h1 .good{color:var(--lime-ink);background:var(--lime);padding:0 .18em;border-radius:.25em}
+    @media (prefers-color-scheme: dark){.hero h1 .good{color:var(--lime-ink)}}
+    .hero p.lede{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--muted);max-width:640px;margin:0 0 8px}
+    .hero p.lede strong{color:var(--ink)}
+    .genuine{display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;padding:8px 14px;border:1px solid var(--line);
+      border-radius:999px;font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--muted);background:var(--panel)}
+    .genuine .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px color-mix(in srgb,var(--lime) 25%,transparent)}
+    section{margin-top:clamp(40px,6vw,72px)}
+    .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    h2.st{font-size:clamp(1.4rem,2.8vw,2.1rem);margin:0 0 10px;letter-spacing:-.01em}
+    .sub{color:var(--muted);max-width:660px;margin:0 0 22px}
+    .sub strong{color:var(--ink)}
+    .acct-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .acct-tab{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;
+      padding:9px 18px;font-weight:600;font-size:.9rem}
+    .acct-tab[aria-selected="true"]{background:var(--deep);color:var(--white);border-color:var(--deep)}
+    .tri{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:14px}
+    @media (max-width:960px){.tri{grid-template-columns:1fr}}
+    .pane{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:20px;min-height:420px;display:flex;flex-direction:column}
+    .pane-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+    .pane-num{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted)}
+    .pane h3{margin:2px 0 4px;font-size:1.05rem}
+    .pane .hint{font-size:.82rem;color:var(--muted);margin:0 0 14px}
+    .field-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;
+      border:1px solid transparent;margin-bottom:6px;width:100%;background:transparent;color:var(--ink);text-align:left}
+    .field-row:hover{border-color:var(--line);background:var(--panel-2)}
+    .field-row.sel{border-color:var(--deep);background:var(--panel-2);box-shadow:inset 3px 0 0 var(--lime)}
+    .field-row .fn{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted)}
+    .field-row .fv{font-weight:600;font-size:.92rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60%}
+    .kid-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;margin-bottom:6px;
+      font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted);border:1px solid transparent}
+    .kid-row.sel{background:var(--cyan-soft);border-color:var(--cyan);color:var(--cyan-ink)}
+    .kid-row .kt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .kid-row .kk{flex-shrink:0;color:var(--muted)}
+    .kid-row.sel .kk{color:var(--cyan-ink)}
+    .rec-kid{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-family:"IBM Plex Mono",monospace;
+      font-size:.72rem;color:var(--muted);word-break:break-all}
+    .rec-kid b{color:var(--ink)}
+    .interval{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:var(--panel)}
+    .interval.live{border-color:var(--lime);box-shadow:0 0 0 1px var(--lime)}
+    .interval .ik{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+    .kbadge{font-family:"IBM Plex Mono",monospace;font-size:.74rem;font-weight:600;background:var(--deep);color:var(--white);
+      border-radius:6px;padding:2px 8px}
+    .sbadge{font-family:"IBM Plex Mono",monospace;font-size:.72rem;border-radius:6px;padding:2px 8px;border:1px solid var(--line);color:var(--muted)}
+    .interval.live .sbadge{border-color:var(--lime);color:var(--lime-ink)}
+    .interval .ival{font-size:1.02rem;font-weight:600;margin:2px 0 8px;word-break:break-word}
+    .ameter{height:8px;border-radius:99px;background:var(--panel-2);overflow:hidden;margin-bottom:8px}
+    .ameter i{display:block;height:100%;background:var(--cyan);border-radius:99px}
+    .interval .imeta{font-size:.8rem;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+    .interval .imeta .rsn{color:var(--orange-ink);background:var(--orange-soft);border-radius:6px;padding:1px 7px;font-weight:600}
+    .frozen{font-size:.78rem;color:var(--muted);margin-top:10px;padding:9px 12px;border:1px dashed var(--line);border-radius:10px}
+    .frozen b{color:var(--ink)}
+    .sig{background:var(--deep);color:var(--white);border-radius:var(--radius);padding:clamp(24px,4vw,44px);
+      box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .sig .eyebrow{color:#9eafa9}
+    .sig h2{margin:0 0 10px;font-size:clamp(1.5rem,3vw,2.3rem);letter-spacing:-.01em}
+    .sig h2 em{font-style:normal;color:var(--lime)}
+    .sig p{color:#c8d4cf;max-width:620px;margin:0 0 18px}
+    .sig p strong{color:#fff}
+    .replay-btn{background:var(--lime);color:var(--lime-ink);border:none;border-radius:999px;padding:12px 26px;
+      font-weight:700;font-size:.95rem}
+    .replay-btn:hover{filter:brightness(1.05)}
+    .replay-btn:disabled{opacity:.55;cursor:default}
+    .term{margin-top:20px;background:#0a0f0e;border-radius:14px;padding:18px;font-family:"IBM Plex Mono",monospace;
+      font-size:.78rem;line-height:1.65;color:#c9d6d1;max-height:380px;overflow-y:auto;display:none}
+    .term.on{display:block}
+    .term .ln{white-space:pre-wrap;word-break:break-word}
+    .term .c-k{color:var(--lime)} .term .c-dim{color:#7b8b86} .term .c-o{color:var(--orange)}
+    .term .cursor{display:inline-block;width:8px;height:14px;background:var(--lime);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    @media (max-width:860px){.how{grid-template-columns:1fr}}
+    .how-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .how-card .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted)}
+    .how-card h4{margin:6px 0 8px;font-size:1rem}
+    .how-card p{margin:0;font-size:.9rem;color:var(--muted)}
+    .how-card p strong{color:var(--ink)}
+    .cta{margin-top:clamp(40px,6vw,72px);text-align:center}
+    .cta h2{font-size:clamp(1.6rem,3.4vw,2.6rem);margin:0 0 10px;letter-spacing:-.01em}
+    .cta p{color:var(--muted);max-width:560px;margin:0 auto 22px}
+    .cta a.btn{display:inline-block;background:var(--deep);color:var(--white);text-decoration:none;border-radius:999px;
+      padding:14px 34px;font-weight:700}
+    footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);
+      font-size:.78rem;font-family:"IBM Plex Mono",monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    footer a{color:var(--muted)}
+  </style>
+</head>
+<body>
+<main>
+  <div class="crumb"><a href="../../">VOLSHi</a> / <a href="../">KATIE</a> / CRM demo</div>
+
+  <div class="hero">
+    <h1>Your CRM <span class="strike">rewrites history.</span><br><span class="good">This one can't.</span></h1>
+    <p class="lede">Every CRM on earth lets a field's past get overwritten. Ours keeps it — <strong>every value a field ever held, at what knowledge-time, at what authority, and why it changed.</strong> That's the K-record, and it's the difference between a database and an accountable one.</p>
+    <span class="genuine"><span class="dot"></span>genuine run — KATIE middleman → Postgres, replayed exactly</span>
+  </div>
+
+  <section id="triplet">
+    <div class="eyebrow">The demo · three is the secret</div>
+    <h2 class="st">One account, three views.</h2>
+    <p class="sub">The business sees <strong>the Record</strong> — same CRM screen as always. Under it, every field carries <strong>a KID</strong>, its Kernel ID, bound to the account. And every KID owns <strong>a K-record</strong>: the field's whole past. Click any field.</p>
+    <div class="acct-tabs" role="tablist" aria-label="Accounts">
+      <button class="acct-tab" role="tab" aria-selected="false" data-acct="acct-001">acct-001 · Darren Hall</button>
+      <button class="acct-tab" role="tab" aria-selected="true" data-acct="acct-002">acct-002 · Sofia Bennett</button>
+    </div>
+    <div class="tri">
+      <div class="pane" aria-label="The Record">
+        <div class="pane-head"><span class="pane-num">01</span></div>
+        <h3>The Record</h3>
+        <p class="hint">What the business sees. Their table, updated exactly like always.</p>
+        <div id="recordFields"></div>
+      </div>
+      <div class="pane" aria-label="The KID">
+        <div class="pane-head"><span class="pane-num">02</span></div>
+        <h3>The KID</h3>
+        <p class="hint">Every field is born a kernel. No KID, no read, no write.</p>
+        <div id="kidList"></div>
+        <div class="rec-kid" id="recordKid"></div>
+      </div>
+      <div class="pane" aria-label="The K-record">
+        <div class="pane-head"><span class="pane-num">03</span></div>
+        <h3>The K-record</h3>
+        <p class="hint" id="krecHint">Every value this field ever held — and why each one changed.</p>
+        <div id="krecBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signature">
+    <div class="sig">
+      <div class="eyebrow">The moment it clicks</div>
+      <h2>Show me <em>every name</em> this customer has ever had — <em>and why</em> each one changed.</h2>
+      <p>Sofia got married and took her spouse's name. In a normal CRM, "Sofia Marchetti" is gone — overwritten, unrecoverable. Here, the name changed and <strong>the person didn't</strong>: the old name sits in the record at k1, byte-identical, with the reason <strong>"married"</strong> stamped on the new one. The past didn't move. It never does.</p>
+      <button class="replay-btn" id="replayBtn">▶&nbsp; Replay the actual run</button>
+      <div class="term" id="term" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="eyebrow">How it lands</div>
+    <h2 class="st">No new database. No migration. No rip-and-replace.</h2>
+    <p class="sub">Katie doesn't ask you to move your data. <strong>She moves in with it.</strong></p>
+    <div class="how">
+      <div class="how-card">
+        <div class="n">01</div>
+        <h4>One migration</h4>
+        <p>A single <strong>katie schema</strong> lands next to your tables — three tables: KIDs, entries, actions. Your schema is untouched.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">02</div>
+        <h4>The middleman</h4>
+        <p>KATIE sits <strong>between your app and your rows</strong>. Your writes go through like always — and every field's KID records what was believed, when, at what authority, and why.</p>
+      </div>
+      <div class="how-card">
+        <div class="n">03</div>
+        <h4>Backfill genesis</h4>
+        <p>Existing rows aren't left out. One pass gives every row a record KID, every field a field KID, and a <strong>"value as found"</strong> deposit — your whole history, day one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Accountability is a feature now.</h2>
+    <p>KATIE is the accountability layer for customer data: an unrewritable past for every field in the CRM you already run. No new database. No new religion.</p>
+    <a class="btn" href="../../invest/">Talk to us</a>
+  </section>
+
+  <footer>
+    <span>VOLSHi · KATIE — Knowledge Authority Time Indexing Engine</span>
+    <span>demo data: genuine output of the KATIE middleman, run against Postgres · <a href="../kernel/">the engine</a></span>
+  </footer>
+</main>
+
+<script>
+/* Genuine output of the KATIE middleman, run 2026-10-19 against a real Postgres.
+   KIDs, k-intervals, authorities and reasons below are the actual recorded values. */
+const DEMO = {
+  "acct-001": {
+    label: "Darren Hall — VOLSHi",
+    recordKid: "AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAB",
+    fields: {
+      cust_name:  { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAC", cur:"Darren Hall",
+        h:[{k0:1,k1:null,v:"Darren Hall",a:.89,s:"WILD",ev:"signup form",r:null}] },
+      email:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAD", cur:"darren@volshi.com",
+        h:[{k0:1,k1:null,v:"darren@volshi.com",a:.89,s:"WILD",ev:"signup form",r:null}] },
+      phone:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAE", cur:"919-555-0142",
+        h:[{k0:1,k1:null,v:"919-555-0142",a:.56,s:"WILD",ev:"user provided",r:null}] },
+      company:    { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAF", cur:"VOLSHi",
+        h:[{k0:1,k1:null,v:"VOLSHi",a:.78,s:"WILD",ev:"signup form",r:null}] },
+      title:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAG", cur:"Founder & CEO",
+        h:[{k0:1,k1:2,v:"Founder",a:.67,s:"WILD",ev:"linkedin import",r:null},
+           {k0:2,k1:null,v:"Founder & CEO",a:.78,s:"CANDIDATE",ev:"self reported",r:"self reported"}] },
+      city:       { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAH", cur:"Raleigh",
+        h:[{k0:1,k1:null,v:"Raleigh",a:.56,s:"WILD",ev:"user provided",r:null}] },
+      state:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAI", cur:"NC",
+        h:[{k0:1,k1:null,v:"NC",a:.56,s:"WILD",ev:"user provided",r:null}] },
+      industry:   { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAJ", cur:"AI infrastructure",
+        h:[{k0:1,k1:null,v:"AI infrastructure",a:.44,s:"WILD",ev:"enrichment",r:null}] },
+      acct_status:{ kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAK", cur:"suspended",
+        h:[{k0:1,k1:2,v:"active",a:.67,s:"WILD",ev:"account opened",r:null},
+           {k0:2,k1:null,v:"suspended",a:.22,s:"CANDIDATE",ev:"missed payment",r:"missed payment"}] },
+      lead_source:{ kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAL", cur:"web",
+        h:[{k0:1,k1:null,v:"web",a:.78,s:"WILD",ev:"utm tracking",r:null}] }
+    }
+  },
+  "acct-002": {
+    label: "Sofia Bennett — Durham",
+    recordKid: "AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM",
+    fields: {
+      cust_name:  { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN", cur:"Sofia Bennett",
+        h:[{k0:1,k1:2,v:"Sofia Marchetti",a:.89,s:"WILD",ev:"signup form",r:null},
+           {k0:2,k1:null,v:"Sofia Bennett",a:.89,s:"CANDIDATE",ev:"married",r:"married"}] },
+      email:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO", cur:"sofia.bennett@example.com",
+        h:[{k0:1,k1:2,v:"sofia.m@example.com",a:.78,s:"WILD",ev:"signup form",r:null},
+           {k0:2,k1:null,v:"sofia.bennett@example.com",a:.78,s:"CANDIDATE",ev:"married",r:"married"}] },
+      phone:      { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP", cur:"919-555-0119",
+        h:[{k0:1,k1:null,v:"919-555-0119",a:.56,s:"WILD",ev:"user provided",r:null}] },
+      city:       { kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ", cur:"Durham",
+        h:[{k0:1,k1:null,v:"Durham",a:.56,s:"WILD",ev:"user provided",r:null}] },
+      acct_status:{ kid:"AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR", cur:"active",
+        h:[{k0:1,k1:null,v:"active",a:.67,s:"WILD",ev:"account opened",r:null}] }
+    }
+  }
+};
+const FIELD_ORDER_1 = ["cust_name","email","phone","company","title","city","state","industry","acct_status","lead_source"];
+const FIELD_ORDER_2 = ["cust_name","email","phone","city","acct_status"];
+
+let curAcct = "acct-002", curField = "cust_name";
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+function shortKid(k){ return "…"+k.slice(-10); }
+
+function renderAccount(){
+  const A = DEMO[curAcct];
+  const order = curAcct==="acct-001" ? FIELD_ORDER_1 : FIELD_ORDER_2;
+  document.querySelectorAll(".acct-tab").forEach(t=>t.setAttribute("aria-selected", t.dataset.acct===curAcct ? "true":"false"));
+  $("recordFields").innerHTML = order.map(f=>{
+    const F=A.fields[f];
+    return `<button class="field-row${f===curField?" sel":""}" data-f="${f}">
+      <span class="fn">${f}</span><span class="fv">${esc(F.cur)}</span></button>`;
+  }).join("");
+  $("kidList").innerHTML = order.map(f=>{
+    const F=A.fields[f];
+    return `<div class="kid-row${f===curField?" sel":""}" data-f="${f}" title="${F.kid}">
+      <span class="fn" style="font-family:'IBM Plex Mono',monospace">${f}</span>
+      <span class="kt">${shortKid(F.kid)}</span></div>`;
+  }).join("");
+  $("recordKid").innerHTML = `record KID <b title="${A.recordKid}">${shortKid(A.recordKid)}</b> · every field KID bound to it`;
+  document.querySelectorAll(".field-row").forEach(b=>b.addEventListener("click",()=>{curField=b.dataset.f;renderAccount();}));
+  renderKrec();
+}
+
+function renderKrec(){
+  const F = DEMO[curAcct].fields[curField];
+  const multi = F.h.length>1;
+  $("krecHint").textContent = multi
+    ? `Every value "${curField}" ever held — and why each one changed.`
+    : `Every value "${curField}" ever held. Only one so far — it has never changed.`;
+  $("krecBody").innerHTML = F.h.map(e=>{
+    const live = e.k1===null;
+    const krange = live ? `k${e.k0} → live` : `k${e.k0} → k${e.k1}`;
+    const pct = Math.round(e.a*100);
+    const rsn = e.r ? `<span class="rsn">why: ${esc(e.r)}</span>` : "";
+    return `<div class="interval${live?" live":""}">
+      <div class="ik"><span class="kbadge">${krange}</span><span class="sbadge">${e.s}</span>${live?'<span class="sbadge">current</span>':""}</div>
+      <div class="ival">${esc(e.v)}</div>
+      <div class="ameter"><i style="width:${pct}%"></i></div>
+      <div class="imeta">authority ${pct}% · evidence: value=${esc(e.v)} · ${esc(e.ev)} ${rsn}</div>
+    </div>`;
+  }).join("") + (multi
+    ? `<div class="frozen"><b>Frozen.</b> Closed intervals are byte-identical to the day they were written — only the live one can ever be superseded.</div>`
+    : `<div class="frozen">Append-only: this interval can only ever be <b>superseded</b>, never edited or deleted.</div>`);
+}
+
+/* --- the replay: genuine middleman output, paced --- */
+const REPLAY = [
+  ["$ katie-middleman --demo crm","c-dim"],
+  ["[middleman] opened acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (katie tables assimilated)",""],
+  ["[middleman] acct-002.cust_name = \"Sofia Marchetti\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (deposit, auth 8)",""],
+  ["[middleman] acct-002.email = \"sofia.m@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (deposit, auth 7)",""],
+  ["[middleman] acct-002.phone = \"919-555-0119\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP (deposit, auth 5)",""],
+  ["[middleman] acct-002.city = \"Durham\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ (deposit, auth 5)",""],
+  ["[middleman] acct-002.acct_status = \"active\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR (deposit, auth 6)",""],
+  ["# …she gets married, takes her spouse's name…","c-dim"],
+  ["[middleman] acct-002.cust_name = \"Sofia Bennett\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (re-grade, auth 8)","c-k"],
+  ["[middleman] acct-002.email = \"sofia.bennett@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (re-grade, auth 7)","c-k"],
+  ["",""],
+  ["=== acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (read back from pg) ===","c-o"],
+  ["  +- cust_name  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN",""],
+  ["     [k1..k2] WILD auth=0.89 [\"value=Sofia Marchetti\", \"signup form\"] reason=None",""],
+  ["     [k2..live] CANDIDATE auth=0.89 [\"value=Sofia Bennett\", \"married\"] reason=Some(\"married\")","c-k"],
+  ["  +- email  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO",""],
+  ["     [k1..k2] WILD auth=0.78 [\"value=sofia.m@example.com\", \"signup form\"] reason=None",""],
+  ["     [k2..live] CANDIDATE auth=0.78 [\"value=sofia.bennett@example.com\", \"married\"] reason=Some(\"married\")","c-k"],
+  ["",""],
+  ["# the name changed. the person didn't. k1 sits byte-identical.","c-dim"]
+];
+let replaying=false;
+function replay(){
+  if(replaying) return; replaying=true;
+  const btn=$("replayBtn"), term=$("term");
+  btn.disabled=true; term.classList.add("on"); term.innerHTML="";
+  const cur=document.createElement("span"); cur.className="cursor";
+  let i=0;
+  function step(){
+    if(i>=REPLAY.length){
+      const done=document.createElement("div"); done.className="ln c-dim";
+      done.textContent="# end of genuine run — 15 fields, 15 KIDs, 15 independent histories";
+      term.appendChild(done); term.scrollTop=term.scrollHeight;
+      btn.disabled=false; replaying=false; return;
+    }
+    const [txt,cls]=REPLAY[i++];
+    const d=document.createElement("div"); d.className="ln "+cls; d.textContent=txt;
+    term.appendChild(d); term.scrollTop=term.scrollHeight;
+    setTimeout(step, txt.startsWith("#")?650:300);
+  }
+  step();
+}
+$("replayBtn").addEventListener("click",replay);
+document.querySelectorAll(".acct-tab").forEach(t=>t.addEventListener("click",()=>{
+  curAcct=t.dataset.acct; curField="cust_name"; renderAccount();
+}));
+renderAccount();
+</script>
+</body>
+</html>
