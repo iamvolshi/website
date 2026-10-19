@@ -24,7 +24,7 @@
     .tech-lede{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,237,.62);margin-bottom:24px}
     .trifecta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;max-width:1180px}
     @media(max-width:768px){.trifecta{grid-template-columns:1fr}}
-    .tri-card{padding:32px 28px;background:linear-gradient(150deg,rgba(18,18,20,.72),rgba(8,8,10,.5));border:1px solid rgba(201,168,76,.22);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .22s ease,border-color .22s ease}
+    .tri-card{padding:32px 28px;display:block;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(18,18,20,.72),rgba(8,8,10,.5));border:1px solid rgba(201,168,76,.22);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .22s ease,border-color .22s ease}
     .tri-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.5)}
     .tri-num{font-size:10px;font-weight:600;letter-spacing:.30em;color:rgba(201,168,76,.6);margin-bottom:14px}
     .tri-name{font-size:clamp(1.8rem,2.6vw,2.6rem);font-weight:600;letter-spacing:.08em;line-height:1;margin-bottom:6px}
@@ -226,24 +226,24 @@
       <h2 class="tech-title sb">The Perfecta<br><span style="color:var(--gold)">Trifecta.</span></h2>
       <p class="tech-lede sc">Three systems. One compliance story.</p>
       <div class="trifecta sd">
-        <div class="tri-card">
+        <a class="tri-card" href="katie/">
           <div class="tri-num">01</div>
           <div class="tri-name">KATIE</div>
           <div class="tri-role">Watches</div>
           <p class="tri-copy">Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.</p>
-        </div>
-        <div class="tri-card">
+        </a>
+        <a class="tri-card" href="erie/">
           <div class="tri-num">02</div>
           <div class="tri-name">ERIE</div>
           <div class="tri-role">Verifies</div>
           <p class="tri-copy">Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.</p>
-        </div>
-        <div class="tri-card">
+        </a>
+        <a class="tri-card" href="elle/">
           <div class="tri-num">03</div>
           <div class="tri-name">ELLE</div>
           <div class="tri-role">Persists</div>
           <p class="tri-copy">The external learning loop that follows the user into whatever model they interact with. You never start from zero again.</p>
-        </div>
+        </a>
       </div>
       <div class="tech-hint se">Next: see the K-record in action →</div>
     </section>

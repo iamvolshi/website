@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="ARCHE — the Adaptive Relational Cognitive Human Emulator. The architecture the engines run on: it emulates how humans function, with memory as part of the design. Personas are built on ARCHE." />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-kt-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-kt-64.png">
+  <title>ARCHE — Adaptive Relational Cognitive Human Emulator | VOLSHi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper:#edf1ef; --ink:#101716; --muted:#4f5f5a; --line:#a8b6b1;
+      --panel:#f8faf8; --panel-2:#e2e9e6;
+      --lime:#a8e349; --lime-ink:#314a08;
+      --orange:#f08a4b; --orange-soft:#ffe0cc; --orange-ink:#6b2b08;
+      --cyan:#48bdd0; --cyan-soft:#d7f4f8; --cyan-ink:#075563;
+      --deep:#14201e; --white:#ffffff;
+      --shadow:0 18px 50px rgba(15,30,25,.10); --radius:18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper:#0c1211; --ink:#edf6f2; --muted:#9eafa9; --line:#33443f;
+        --panel:#131d1b; --panel-2:#1b2a26;
+        --lime:#b8ef55; --lime-ink:#101d03;
+        --orange:#ff9b5c; --orange-soft:#3b251a; --orange-ink:#ffc9a8;
+        --cyan:#59d0e3; --cyan-soft:#14333a; --cyan-ink:#a8edf6;
+        --deep:#09100f; --shadow:0 22px 60px rgba(0,0,0,.32);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",sans-serif;line-height:1.5}
+    main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:clamp(28px,4vw,64px) 0 80px}
+    .crumb{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted);margin-bottom:18px}
+    .crumb a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+    .crumb a:hover{color:var(--ink)}
+    .hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:0 0 14px;font-weight:700;letter-spacing:-.02em}
+    .hero h1 .hl{background:var(--orange);color:var(--orange-ink);padding:0 .18em;border-radius:.25em}
+    .hero p.lede{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--muted);max-width:640px;margin:0}
+    .hero p.lede strong{color:var(--ink)}
+    section{margin-top:clamp(36px,5vw,60px)}
+    .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    h2.st{font-size:clamp(1.4rem,2.8vw,2rem);margin:0 0 10px;letter-spacing:-.01em}
+    .sub{color:var(--muted);max-width:660px;margin:0 0 20px}
+    .sub strong{color:var(--ink)}
+    .layers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width:860px){.layers{grid-template-columns:1fr}}
+    .layer{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .layer .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted)}
+    .layer h4{margin:6px 0 8px;font-size:1rem}
+    .layer p{margin:0;font-size:.9rem;color:var(--muted)}
+    .layer p strong{color:var(--ink)}
+    .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    @media (max-width:860px){.trio{grid-template-columns:1fr}}
+    .tri{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-decoration:none;color:var(--ink);display:block}
+    .tri:hover{border-color:var(--ink)}
+    .tri .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted)}
+    .tri h4{margin:6px 0 6px}
+    .tri p{margin:0;font-size:.88rem;color:var(--muted)}
+    .cta{margin-top:clamp(40px,6vw,72px);text-align:center}
+    .cta h2{font-size:clamp(1.6rem,3.4vw,2.4rem);margin:0 0 10px;letter-spacing:-.01em}
+    .cta p{color:var(--muted);max-width:560px;margin:0 auto 22px}
+    .cta a.btn{display:inline-block;background:var(--deep);color:var(--white);text-decoration:none;border-radius:999px;padding:14px 34px;font-weight:700}
+    footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;
+      font-family:"IBM Plex Mono",monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    footer a{color:var(--muted)}
+  </style>
+</head>
+<body>
+<main>
+  <div class="crumb"><a href="../">VOLSHi</a> / ARCHE</div>
+
+  <div class="hero">
+    <h1>Built like a mind. <span class="hl">Not like a database.</span></h1>
+    <p class="lede"><strong>ARCHE</strong> — the Adaptive Relational Cognitive Human Emulator. The architecture doesn't store intelligence and bolt memory on afterward. It <strong>emulates how humans function</strong> — interaction, behavior, and memory as one design. The engines run on ARCHE. The personas are built on it.</p>
+  </div>
+
+  <section>
+    <div class="eyebrow">The architecture</div>
+    <h2 class="st">Memory isn't a feature. It's the substrate.</h2>
+    <p class="sub">Most systems treat memory as storage — a place to put things. ARCHE treats it the way humans do: <strong>memory is part of cognition itself</strong>. What the system remembers, how it weighs it, and when it reconsiders — that's not a database layer, that's the mind. The tritemporal work underneath (event time, tick time, knowledge time) is a <strong>cognitive model of human memory</strong>, not a storage optimization.</p>
+    <div class="layers">
+      <div class="layer"><div class="n">01</div><h4>Input</h4><p>The world arrives as <strong>events</strong> — interactions, observations, handoffs. Everything the system will ever know starts here.</p></div>
+      <div class="layer"><div class="n">02</div><h4>Attention</h4><p>Not every event matters equally. ARCHE <strong>decides what deserves weight</strong> — what to record deeply, what to let pass. Attention is the first act of memory.</p></div>
+      <div class="layer"><div class="n">03</div><h4>Record</h4><p>What attention keeps is <strong>recorded with its authority and its moment</strong> — bound by KATIE, retrievable by ERIE, learned from by ELLE.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">What runs on it</div>
+    <h2 class="st">The engines. The personas.</h2>
+    <p class="sub">KATIE, ERIE, and ELLE are <strong>engines that run on the ARCHE architecture</strong> — the accountability layer, the retrieval layer, and the learning loop, all operating on one cognitive substrate. And the personas — built in the forge at <strong>archepersona.online</strong> — run on ARCHE too: shipped to run on the user's own machine, no server bill, no rented inference.</p>
+    <div class="trio">
+      <a class="tri" href="../katie/"><div class="n">01</div><h4>KATIE</h4><p>Watches. Every belief, every decision, every handoff — issued a receipt and written to the K-record.</p></a>
+      <a class="tri" href="../erie/"><div class="n">02</div><h4>ERIE</h4><p>Verifies. Retrieval without hallucination — what comes back is grounded in the record, with provenance.</p></a>
+      <a class="tri" href="../elle/"><div class="n">03</div><h4>ELLE</h4><p>Persists. The external learning loop — experience turned into durable lessons that survive model replacement.</p></a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>The machine remembers.</h2>
+    <p>ARCHE is the foundation: a cognitive architecture with memory at its core, engines for accountability, retrieval, and learning — and personas built to run on it.</p>
+    <a class="btn" href="../invest/">Talk to us</a>
+  </section>
+
+  <footer>
+    <span>VOLSHi · ARCHE — Adaptive Relational Cognitive Human Emulator</span>
+  </footer>
+</main>
+</body>
+</html>
