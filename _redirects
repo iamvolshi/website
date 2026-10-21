@@ -1,0 +1,21 @@
+# Spelling safety net (2026-10-21): any way Darren types the KATIE links lands on the real page.
+/kaite            /katie/kernel/   301
+/kaite/           /katie/kernel/   301
+/kaite/kernel     /katie/kernel/   301
+/kaite/kernel/    /katie/kernel/   301
+/Kaite            /katie/kernel/   301
+/Kaite/           /katie/kernel/   301
+/KAITE             /katie/kernel/   301
+/KAITE/            /katie/kernel/   301
+/Katie            /katie/          301
+/Katie/           /katie/          301
+/Katie/kernel     /katie/kernel/   301
+/Katie/kernel/    /katie/kernel/   301
+/KATIE             /katie/          301
+/KATIE/            /katie/          301
+/KATIE/kernel      /katie/kernel/   301
+/KATIE/kernel/     /katie/kernel/   301
+/Katie/crm        /katie/crm/      301
+/Katie/crm/       /katie/crm/      301
+/KATIE/crm        /katie/crm/      301
+/KATIE/crm/       /katie/crm/      301
