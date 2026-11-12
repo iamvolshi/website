@@ -1,0 +1,938 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+ <meta charset="utf-8">
+ <meta content="width=device-width, initial-scale=1.0" name="viewport">
+ <title>VOLSHi — Computational Law &amp; AI Compliance Infrastructure</title>
+ <link href="https://fonts.googleapis.com" rel="preconnect">
+ <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+ <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+ <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+ <script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ "ground-deep": "#080808",
+ "ground-subtle": "#0c0c0e",
+ "surface-dark": "#121215",
+ "surface-card": "#16161b",
+ "primary": "#c9a84c",
+ "primary-bright": "#e6c364",
+ "paper-light": "#f5f2ed",
+ "on-surface-variant": "#9ca3af",
+ "engine-muted": "#6b7280",
+ "ruby": "#ef4444",
+ "status-lime": "#22c55e",
+ "status-orange": "#f59e0b",
+ "tertiary": "#38bdf8"
+ },
+ fontFamily: {
+ "serif": ["Newsreader", "serif"],
+ "mono": ["IBM Plex Mono", "monospace"],
+ "sans": ["Inter", "sans-serif"]
+ }
+ }
+ }
+ }
+ </script>
+ <style>
+ body { background-color: #080808; }
+ .bg-grid {
+ background-size: 32px 32px;
+ background-image: 
+ linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+ linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+ }
+ .gold-glow {
+ background: radial-gradient(circle at 50% 10%, rgba(201, 168, 76, 0.12), transparent 60%);
+ }
+ .flip-card { perspective: 1000px; }
+ .flip-inner { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform-style: preserve-3d; }
+ .flip-card:hover .flip-inner, .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+ .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+ </style>
+</head>
+<body class="bg-ground-deep font-sans text-[#e5e2e1] antialiased selection:bg-primary selection:text-black min-h-screen relative overflow-x-hidden"><script>if(window.innerWidth<768){location.replace('/mobile/');}</script>
+
+ <div class="fixed inset-0 pointer-events-none bg-grid opacity-60 z-0"></div>
+ <div class="fixed top-0 left-0 right-0 h-[800px] pointer-events-none gold-glow z-0"></div>
+
+ <!-- HEADER -->
+ <header class="fixed top-0 left-0 w-full z-50 bg-[#080808]/90 backdrop-blur-xl border-b border-white/[0.08]">
+ <div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+ <div class="flex items-center gap-4">
+ <a href="/home/" class="inline-flex items-center"><img src="../assets/img/stitch-06.png" alt="VOLSHi HOME" class="h-8 md:h-9 w-auto object-contain block"></a>
+ <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-status-lime/30 bg-[#121215] font-mono text-[10px] text-paper-light uppercase tracking-wider">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ <span>RECORD INTEGRITY VERIFIED</span>
+ </div>
+ <a class="hidden lg:inline-flex items-center gap-1 font-mono text-[11px] text-engine-muted hover:text-primary transition-colors border-l border-white/10 pl-3" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">
+ <span>DOI: 10.5281/zenodo.23137456</span>
+ <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+ </a>
+ </div>
+
+ <div class="flex items-center gap-6 lg:gap-8">
+ <nav class="hidden md:flex items-center gap-6 lg:gap-8 h-16">
+ <a class="text-[13px] tracking-wide text-primary relative py-2 font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary" href="#hero">Home</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#the-problem">The System</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#k-record">KATIE</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#research">Research</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#company">Invest</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#contact">Contact</a>
+ </nav>
+ <div class="flex items-center gap-3">
+ <a class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-primary/50 text-primary bg-primary/10 hover:bg-primary hover:text-black transition-all font-mono text-[11px] uppercase tracking-wider font-semibold shadow-[0_0_12px_rgba(201,168,76,0.15)]" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">
+ Investor Inquiry
+ </a>
+ <div class="w-8 h-8 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-primary" title="Authenticated Node">
+ <span class="material-symbols-outlined text-[17px]">shield</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </header>
+
+ <main class="w-full pt-16 relative z-10">
+ <!-- HERO SECTION -->
+ <section class="relative w-full py-20 lg:py-28 overflow-hidden" id="hero">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-10">
+ <div class="flex items-center gap-3">
+ <span class="inline-block w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(201,168,76,0.9)]"></span>
+ <span class="font-mono text-[12px] uppercase tracking-[0.25em] text-primary font-semibold">VOLSHi / COMPLIANCE INFRASTRUCTURE</span>
+ <span class="font-mono text-[11px] text-engine-muted hidden sm:inline">:: REF:SLIDE_S0</span>
+ </div>
+
+ <div class="flex flex-col gap-6 max-w-4xl">
+ <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-paper-light tracking-tight leading-[1.08]">
+ Every Agent Action. <br>
+ <span class="italic text-primary font-normal">On the Record.</span>
+ </h1>
+ <p class="text-base sm:text-lg lg:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+ Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.
+ </p>
+ </div>
+
+ <div class="flex flex-wrap items-center gap-4 pt-2">
+ <a class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-primary text-black font-mono text-[12px] font-bold uppercase tracking-wider hover:bg-primary-bright transition-all shadow-[0_0_24px_rgba(201,168,76,0.3)] hover:scale-[1.01]" href="#the-problem">
+ <span>Explore The Span</span>
+ <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+ </a>
+ <a class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/10 bg-[#16161b]/80 hover:bg-[#202028] text-paper-light font-mono text-[12px] uppercase tracking-wider transition-all backdrop-blur-md hover:border-primary/40" href="../assets/volshi-pitch-deck.pdf" download="volshi-pitch-deck.pdf">
+ <span class="material-symbols-outlined text-primary text-[18px]">download</span>
+ <span>Download Pitch Deck</span>
+ </a>
+ </div>
+
+ <!-- Telemetry HUD Card -->
+ <div class="mt-4 rounded-xl border border-white/10 bg-surface-dark/95 p-5 backdrop-blur-xl shadow-2xl">
+ <div class="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-4">
+ <div class="flex items-center gap-2">
+ <span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+ <span class="font-mono text-[12px] tracking-wider text-paper-light font-semibold uppercase">IMMUTABLE LEDGER // K-NODE 01</span>
+ </div>
+ <div class="flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[10px] tracking-widest uppercase">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ ACTIVE LOGGING
+ </div>
+ </div>
+ <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs"><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">AUDIT ENGINE</span><span class="text-sm text-status-lime font-semibold">SYNCHRONIZED</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">SPECIFICATION</span><span class="text-sm text-primary font-semibold">APPEND-ONLY</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">ENFORCEMENT</span><span class="text-sm text-paper-light font-semibold">PRE-EXEC GATE</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">PROOF STATE</span><span class="text-sm text-status-lime font-semibold">VERIFIED // LOCKED</span></div></div>
+ </div>
+
+ <!-- Ticker -->
+ <div class="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-engine-muted">
+ <div class="flex items-center gap-2">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span class="text-paper-light uppercase tracking-wider">STATUTORY ENGINE ONLINE</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-2 text-on-surface-variant text-[11px]">
+ <span class="text-paper-light">Human Experience</span>
+ <span class="text-primary">—</span>
+ <span>Understand</span>
+ <span class="text-primary">—</span>
+ <span>Learn</span>
+ <span class="text-primary">—</span>
+ <span>Authorize</span>
+ <span class="text-primary">—</span>
+ <span class="text-primary font-semibold">Machine Intelligence</span>
+ </div>
+ <div class="tracking-widest uppercase text-[10px]">P. 001 // RTP METHOD</div>
+ </div>
+ </div>
+ </section>
+
+ <!-- THE PROBLEM & 8 PLEXIGLASS FLIP CARDS -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="the-problem">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <div class="flex items-center gap-2">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / THE PROBLEM</span>
+ </div>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ AI Makes Decisions It Can't Account For.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Flip the cards — the black box becomes plexiglass.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-primary/80 pt-1">
+ <span class="material-symbols-outlined text-[16px]">touch_app</span>
+ <span>Hover card to reveal · Click to hold plexiglass</span>
+ </div>
+ </div>
+
+ <!-- 8 Cards -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <!-- 1. OBSERVE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">01</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">OBSERVE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">visibility_off</span>
+ <span>Unmonitored runtime</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">settings</span>
+ <span class="uppercase tracking-wider font-semibold">Execution Monitoring</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ See what agents are doing in real time — every action captured as it happens.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. KNOW -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">02</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">KNOW</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">psychology_alt</span>
+ <span>Silent inferences</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">psychology</span>
+ <span class="uppercase tracking-wider font-semibold">Belief Capture</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Record what the agent believed when it acted — confidence, justification, evidence.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. GATE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">03</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">GATE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">lock_open</span>
+ <span>Unvetted execution</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">shield</span>
+ <span class="uppercase tracking-wider font-semibold">Policy Enforcement</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Consequential actions require approval before they execute. Prevention, not forensics.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. TRACK -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">04</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">TRACK</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">route</span>
+ <span>Untracked sources</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">alt_route</span>
+ <span class="uppercase tracking-wider font-semibold">Provenance</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Trace every input to its source. When something goes wrong, find the root.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 5. PROVE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">05</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">PROVE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">link_off</span>
+ <span>Unlinked assertions</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">link</span>
+ <span class="uppercase tracking-wider font-semibold">Evidence Chain</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Every claim stays tied to its evidence — across sessions, across models.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 6. REPLAY -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">06</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">REPLAY</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">replay</span>
+ <span>Non-reproducible</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">history</span>
+ <span class="uppercase tracking-wider font-semibold">Reconstruction</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Rebuild any past decision in full. Incident review becomes investigation.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 7. REPORT -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">07</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">REPORT</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">description</span>
+ <span>Manual audits</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">assignment_turned_in</span>
+ <span class="uppercase tracking-wider font-semibold">Regulator Export</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Compliance reports on demand. EU AI Act ready, US regulation coming.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 8. RETAIN -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">08</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">RETAIN</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">delete_sweep</span>
+ <span>Mutable records</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">lock</span>
+ <span class="uppercase tracking-wider font-semibold">Immutable Record</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ The past stays on the record. What was believed, when, and why — unerasable.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- TECHNOLOGY & THE PERFECTA TRIFECTA -->
+ <section class="relative w-full py-24 bg-ground-deep" id="technology">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / TECHNOLOGY</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ The Perfecta Trifecta.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant">
+ Three systems. One compliance story.
+ </p>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <!-- KATIE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-primary/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+ <span class="font-mono text-xs text-primary uppercase tracking-widest font-semibold">01 // KATIE — WATCHES</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Telemetry: Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">OBSERVATION ENGINE</span>
+ <span class="text-primary font-semibold">APPEND-ONLY</span>
+ </div>
+ </div>
+
+ <!-- ERIE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-tertiary/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+ <span class="font-mono text-xs text-tertiary uppercase tracking-widest font-semibold">02 // ERIE — VERIFIES</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Grounding: Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">VERIFIED RETRIEVAL</span>
+ <span class="text-tertiary font-semibold">ZERO-HALLUCINATION</span>
+ </div>
+ </div>
+
+ <!-- ELLE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-status-lime/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-status-lime"></span>
+ <span class="font-mono text-xs text-status-lime uppercase tracking-widest font-semibold">03 // ELLE — PERSISTS</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Continuity: The external learning loop that follows the user into whatever model they interact with. You never start from zero again.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">PERSISTENT LOOP</span>
+ <span class="text-status-lime font-semibold">STATE-INVARIANT</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- K-RECORD DUAL-PANEL DESKTOP RIG -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="k-record">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <div class="flex items-center gap-3">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">INTERACTIVE FORENSIC REPLAY // AUDIO HAPTIC READY</span>
+ <span class="px-2 py-0.5 rounded-full border border-status-lime/30 bg-[#121215] font-mono text-[10px] text-status-lime uppercase tracking-widest flex items-center gap-1.5">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ SYNTH ACTIVE
+ </span>
+ </div>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ What the agent believed, on the record.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Inspect live cryptographic snapshot at epoch <span class="font-mono text-primary font-semibold">k = 1042</span>. Scrub continuously or tap states to simulate chain progression.
+ </p>
+ </div>
+
+ <!-- DUAL-PANEL RIG -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+ <!-- Left: Scrubber Controls -->
+ <div class="lg:col-span-5 flex flex-col gap-6 p-6 rounded-xl bg-surface-card border border-white/[0.08] shadow-2xl backdrop-blur-xl">
+ <div class="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+ <div class="flex items-center gap-2">
+ <span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+ <span class="font-mono text-xs text-paper-light uppercase tracking-wider font-semibold">Control Rig · Epoch Inspector</span>
+ </div>
+ <span class="font-mono text-[10px] text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 font-bold">LIVE SIMULATOR</span>
+ </div>
+
+ <!-- Horizontal Slider -->
+ <div class="flex flex-col gap-3">
+ <div class="flex justify-between items-center">
+ <label class="font-mono text-xs text-on-surface-variant uppercase flex items-center gap-1.5" for="k-slider">
+ <span>Continuous Scrubber</span>
+ <span class="text-engine-muted text-[11px] font-mono">(k=1042 … 1050)</span>
+ </label>
+ <span class="px-2.5 py-0.5 rounded bg-[#1e1e24] font-mono text-xs text-primary font-bold border border-white/5" id="step-badge">STEP: 1042 / 1050</span>
+ </div>
+ <input class="w-full h-2.5 bg-[#202028] rounded-lg appearance-none cursor-ew-resize accent-primary" id="k-slider" max="1050" min="1042" step="1" type="range" value="1042">
+ 
+ <!-- State banner -->
+ <div class="p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.06] flex items-start gap-3 mt-2">
+ <span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5" id="status-icon">check_circle</span>
+ <div class="flex flex-col gap-0.5">
+ <span class="font-mono text-xs uppercase tracking-wider text-paper-light font-semibold" id="status-header">State at k = 1042</span>
+ <p class="text-xs leading-relaxed text-on-surface-variant" id="status-desc">✓ Belief holds — action was justified.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Meter -->
+ <div class="flex flex-col gap-2 pt-2 border-t border-white/[0.08]">
+ <div class="flex justify-between items-center">
+ <span class="font-mono text-xs text-on-surface-variant uppercase">Authority / Confidence Weight</span>
+ <span class="font-mono text-sm text-primary font-bold" id="auth-val">90%</span>
+ </div>
+ <div class="w-full h-2 rounded bg-[#202028] overflow-hidden">
+ <div class="h-full bg-primary transition-all duration-300 rounded" id="auth-bar" style="width: 90%;"></div>
+ </div>
+ <div class="flex justify-between font-mono text-[10px] text-engine-muted">
+ <span>0% (Disproven)</span>
+ <span>40% (Contested)</span>
+ <span>90% (Confirmed)</span>
+ </div>
+ </div>
+
+ <!-- Snap Buttons -->
+ <div class="flex flex-col gap-3 pt-3 border-t border-white/[0.08]">
+ <span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">Jump to Chain Sequence Nodes</span>
+ <div class="grid grid-cols-3 gap-2">
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-primary/50 text-center flex flex-col gap-1 transition-all ring-1 ring-primary/80" id="btn-1042" onclick="setStep(1042)">
+ <span class="text-primary font-bold text-xs font-mono">k 1042</span>
+ <span class="text-primary/90 text-[10px] font-mono">ASSERT (90%)</span>
+ </button>
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-white/5 hover:border-status-orange/50 text-center flex flex-col gap-1 transition-all" id="btn-1045" onclick="setStep(1045)">
+ <span class="text-status-orange font-bold text-xs font-mono">k 1045</span>
+ <span class="text-status-orange/90 text-[10px] font-mono">CHALLENGE (40%)</span>
+ </button>
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-white/5 hover:border-ruby/50 text-center flex flex-col gap-1 transition-all" id="btn-1048" onclick="setStep(1048)">
+ <span class="text-ruby font-bold text-xs font-mono">k 1048</span>
+ <span class="text-ruby/90 text-[10px] font-mono">REVOKE (0%)</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Right: Sealed Receipt -->
+ <div class="lg:col-span-7 flex flex-col rounded-xl bg-surface-dark border border-white/[0.08] p-6 lg:p-8 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+ <div class="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+ <div class="flex items-center gap-3">
+ <span class="w-2.5 h-2.5 rounded-full bg-status-lime shadow-[0_0_8px_rgba(34,197,94,0.8)]" id="receipt-dot"></span>
+ <span class="font-mono text-xs tracking-wider text-paper-light font-semibold uppercase">SEALED K-RECORD RECEIPT // #KR-2026-X1</span>
+ </div>
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[11px] tracking-wider font-semibold" id="receipt-badge">
+ TRUSTED
+ </span>
+ </div>
+
+ <!-- Values -->
+ <div class="py-6 flex flex-col gap-4 font-mono text-xs">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Recorded Statement:</span>
+ <span class="text-paper-light font-semibold text-sm">"The supplier invoice is legitimate."</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Held at (t):</span>
+ <span class="text-on-surface-variant">2026-10-16 14:32:08 UTC</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Recorded at (k):</span>
+ <span class="text-primary font-bold" id="receipt-k">k = 1042</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Authority Metric:</span>
+ <span class="font-bold text-primary text-sm" id="receipt-auth-tag">90% [CONFIRMED_HIGH]</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-start justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px] flex-shrink-0">Action Executed:</span>
+ <div class="text-right">
+ <div class="text-paper-light font-semibold" id="receipt-action">Wired the payment. ($248,500.00 USD)</div>
+ <div class="text-on-surface-variant text-[11px] pt-0.5" id="receipt-action-sub">✓ Belief holds — action was justified.</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="p-3.5 rounded-lg bg-[#0a0a0c] border border-white/[0.06] flex items-center gap-2.5 text-xs text-on-surface-variant mb-6">
+ <span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+ <span class="italic text-[11px]">"This entry is append-only. Nothing here can be edited or deleted — only superseded."</span>
+ </div>
+
+ <div class="p-4 rounded-lg bg-surface-card border border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+ <div class="flex items-center gap-2 text-engine-muted"><span class="text-engine-muted uppercase tracking-wider text-[11px]">RECEIPT STATUS:</span><span class="text-primary font-semibold">APPEND-ONLY IMMUTABLE</span></div>
+ <div class="flex items-center gap-2">
+ <span class="px-3 py-1.5 rounded-md bg-[#22222a] text-paper-light text-[11px] border border-white/10 flex items-center gap-1.5">
+ <span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+ <span>Signature Verified</span>
+ </span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- RESEARCH PREVIEW -->
+ <section class="relative w-full py-24 bg-ground-deep" id="research">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / RESEARCH</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ The Work Ahead.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Intelligence is moving faster than the systems required to trust it.
+ </p>
+ </div>
+
+ <div class="flex flex-col gap-3">
+ <!-- 01 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">01</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Temporal Memory</div>
+ <div class="text-xs text-on-surface-variant">Monotonic chronological boundary verification</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime border border-status-lime/20 font-mono text-xs">Validated</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23137456</span>
+ </div>
+ </div>
+
+ <!-- 02 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">02</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Time-Addressed Storage</div>
+ <div class="text-xs text-on-surface-variant">Coordinate space keyed to verified epoch intervals</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-mono text-xs">In dossier</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Ref: RTP-ARC-02</span>
+ </div>
+ </div>
+
+ <!-- 03 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">03</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Triadic Relations</div>
+ <div class="text-xs text-on-surface-variant">Three-node semiotic bindings for unambiguous belief tracking</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-mono text-xs">In dossier</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Ref: RTP-ARC-03</span>
+ </div>
+ </div>
+
+ <!-- 04 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">04</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Knowledge Time</div>
+ <div class="text-xs text-on-surface-variant">Bitemporal grounding for statutory audit compliance</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime border border-status-lime/20 font-mono text-xs">Validated</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23198458</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- COMPANY & INVEST -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="company">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / COMPANY</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light tracking-tight font-normal">VOLSHi: COMPLIANCE FOR AI AGENTS.</h2>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+ <div class="lg:col-span-8 flex flex-col gap-6 text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ <p>
+ VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.
+ </p>
+ <p>
+ Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act mandates traceability by December 2027 — and every enterprise deploying agents is about to need the same thing: show your work.
+ </p>
+ <div class="pt-2 flex items-center gap-2.5 text-paper-light font-mono text-xs tracking-wider">
+ <span class="material-symbols-outlined text-primary text-[18px]">pin_drop</span>
+ <span>Research Triangle Park, North Carolina.</span>
+ </div>
+ </div>
+
+ <!-- Vettable Card -->
+ <div class="lg:col-span-4 rounded-xl bg-surface-card border border-white/[0.08] p-6 shadow-2xl flex flex-col gap-6 backdrop-blur-xl">
+ <div class="flex items-center justify-between">
+ <span class="font-mono text-xs text-engine-muted uppercase tracking-wider">INVESTOR ACCESS</span>
+ <span class="px-2.5 py-1 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[10px] font-bold">88/100 VETTABLE</span>
+ </div>
+ <div>
+ <div class="text-lg text-paper-light font-semibold">Series Seed Presentation</div>
+ <p class="text-xs text-on-surface-variant pt-1.5 leading-relaxed">
+ 13 slides · third-party validated — 88/100 on Vettable institutional evaluation.
+ </p>
+ </div>
+ <a class="w-full py-3 rounded-lg bg-primary text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-primary-bright transition-colors" href="../assets/volshi-pitch-deck.pdf" download="volshi-pitch-deck.pdf">
+ <span class="material-symbols-outlined text-[18px]">download</span>
+ <span>Request Pitch Deck PDF</span>
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- CONTACT -->
+ <section class="relative w-full py-24 bg-ground-deep" id="contact">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 border-b border-white/[0.08]">
+ <div class="flex flex-col gap-4 max-w-2xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / CONTACT</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ Make Agents Accountable.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant">
+ The compliance layer the industry is about to need.
+ </p>
+ </div>
+ <div class="flex flex-wrap items-center gap-4">
+ <a class="px-6 py-3.5 rounded-xl bg-primary text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-primary-bright transition-all" href="mailto:founder@volshi.com">
+ <span>Contact VOLSHi</span>
+ <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+ </a>
+ <a class="px-6 py-3.5 rounded-xl border border-white/10 bg-[#16161b] hover:bg-[#202028] text-paper-light font-mono text-xs uppercase tracking-wider transition-all" href="mailto:founder@volshi.com?subject=Investment%20Inquiry%20Allocation">
+ <span>Invest in VOLSHi →</span>
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <!-- FOOTER -->
+ <footer class="w-full bg-ground-deep border-t border-white/[0.08] py-12 relative z-10">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-8">
+ <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/[0.06]">
+ <div class="flex items-center gap-3">
+ <a href="#hero" class="inline-flex items-center"><img src="../assets/img/stitch-04.png" alt="VOLSHi" class="h-7 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"></a>
+ <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+ <span class="font-mono text-xs text-engine-muted uppercase tracking-wider">Forensic Verification Architecture</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-engine-muted">
+ <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ LEDGER STABLE
+ </span>
+ <a class="hover:text-primary transition-colors" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23137456</a>
+ <span>·</span>
+ <a class="hover:text-primary transition-colors" href="https://doi.org/10.5281/zenodo.23198458" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23198458</a>
+ <span>·</span>
+ <span>U.S. Prov. Pat. App. 64/182,709</span>
+ </div>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-engine-muted">
+ <p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p>
+ <p>Candidate Computational Law · Append-Only Evidence Protocol</p>
+ </div>
+ </div>
+ </footer>
+
+ <!-- SCRIPT -->
+ <script>
+ let audioCtx = null;
+ function playTick(freq = 800) {
+ try {
+ if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+ if (audioCtx.state === 'suspended') audioCtx.resume();
+ const osc = audioCtx.createOscillator();
+ const gain = audioCtx.createGain();
+ osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+ gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
+ osc.connect(gain);
+ gain.connect(audioCtx.destination);
+ osc.start();
+ osc.stop(audioCtx.currentTime + 0.03);
+ } catch(e) {}
+ if (navigator.vibrate) try { navigator.vibrate([10]); } catch(e) {}
+ }
+
+ const slider = document.getElementById('k-slider');
+ const stepBadge = document.getElementById('step-badge');
+ const statusHeader = document.getElementById('status-header');
+ const statusDesc = document.getElementById('status-desc');
+ const statusIcon = document.getElementById('status-icon');
+ const authVal = document.getElementById('auth-val');
+ const authBar = document.getElementById('auth-bar');
+ const receiptK = document.getElementById('receipt-k');
+ const receiptHash = document.getElementById('receipt-hash');
+ const receiptAuthTag = document.getElementById('receipt-auth-tag');
+ const receiptBadge = document.getElementById('receipt-badge');
+ const receiptDot = document.getElementById('receipt-dot');
+ const receiptAction = document.getElementById('receipt-action');
+ const receiptActionSub = document.getElementById('receipt-action-sub');
+
+ function setStep(kVal) {
+ kVal = parseInt(kVal, 10);
+ slider.value = kVal;
+ stepBadge.textContent = `STEP: ${kVal} / 1050`;
+ statusHeader.textContent = `State at k = ${kVal}`;
+ receiptK.textContent = `k = ${kVal}`;
+ receiptHash.textContent = `0x9F4B...${kVal}EA`;
+
+ ['1042', '1045', '1048'].forEach(id => {
+ const btn = document.getElementById(`btn-${id}`);
+ if (btn) {
+ if (parseInt(id, 10) === kVal) {
+ btn.classList.add('ring-1', 'ring-primary/80');
+ } else {
+ btn.classList.remove('ring-1', 'ring-primary/80');
+ }
+ }
+ });
+
+ if (kVal <= 1044) {
+ authVal.textContent = '90%';
+ authVal.style.color = '#c9a84c';
+ authBar.style.width = '90%';
+ authBar.style.backgroundColor = '#c9a84c';
+ statusDesc.textContent = '✓ Belief holds — action was justified.';
+ statusIcon.textContent = 'check_circle';
+ statusIcon.style.color = '#c9a84c';
+ receiptAuthTag.textContent = '90% [CONFIRMED_HIGH]';
+ receiptAuthTag.style.color = '#c9a84c';
+ receiptBadge.textContent = 'TRUSTED';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-status-lime shadow-[0_0_8px_rgba(34,197,94,0.8)]';
+ receiptAction.textContent = 'Wired the payment. ($248,500.00 USD)';
+ receiptActionSub.textContent = '✓ Belief holds — action was justified.';
+ playTick(880);
+ } else if (kVal <= 1047) {
+ authVal.textContent = '40%';
+ authVal.style.color = '#f59e0b';
+ authBar.style.width = '40%';
+ authBar.style.backgroundColor = '#f59e0b';
+ statusDesc.textContent = '⚠ Authority collapsing at k — the belief is losing weight.';
+ statusIcon.textContent = 'warning';
+ statusIcon.style.color = '#f59e0b';
+ receiptAuthTag.textContent = '40% [CHALLENGE]';
+ receiptAuthTag.style.color = '#f59e0b';
+ receiptBadge.textContent = 'CONTESTED';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-orange/10 border border-status-orange/30 text-status-orange font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-status-orange shadow-[0_0_8px_rgba(245,158,11,0.8)]';
+ receiptAction.textContent = 'Wired the payment. Flag raised on metadata.';
+ receiptActionSub.textContent = '⚠ Authority collapsing at k — the belief is losing weight.';
+ playTick(600);
+ } else {
+ authVal.textContent = '0%';
+ authVal.style.color = '#ef4444';
+ authBar.style.width = '0%';
+ authBar.style.backgroundColor = '#ef4444';
+ statusDesc.textContent = '✕ Belief disproven at k — authority is zero. The record keeps it as history.';
+ statusIcon.textContent = 'cancel';
+ statusIcon.style.color = '#ef4444';
+ receiptAuthTag.textContent = '0% [REVOKE]';
+ receiptAuthTag.style.color = '#ef4444';
+ receiptBadge.textContent = 'DISPROVEN';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-ruby/10 border border-ruby/30 text-ruby font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-ruby shadow-[0_0_8px_rgba(239,68,68,0.8)]';
+ receiptAction.textContent = 'Wired the payment. Invoice confirmed fraudulent.';
+ receiptActionSub.textContent = '✕ Belief disproven at k — authority is zero. The record keeps it as history.';
+ playTick(380);
+ }
+ }
+
+ slider.addEventListener('input', (e) => setStep(e.target.value));
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
