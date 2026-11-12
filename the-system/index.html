@@ -1,0 +1,448 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>VOLSHi — Computational Law &amp; AI Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"ruby-deep":"#8E072B","ruby":"#EF174C","inverse-surface":"#e5e2e1","primary-container":"#c9a84c","on-primary-fixed":"#241a00","surface-container-highest":"#353534","on-tertiary":"#00363e","engine-line":"#A8B6B1","error-container":"#93000a","surface-container-low":"#1c1b1b","on-background":"#e5e2e1","secondary-fixed":"#ffe084","on-surface-variant":"#d0c5b2","tertiary-container":"#44bacd","surface-variant":"#353534","primary-fixed":"#ffe08f","secondary-container":"#735c00","secondary-fixed-dim":"#e3c466","primary":"#e6c364","on-surface":"#e5e2e1","status-lime":"#A8E349","surface-dim":"#131313","secondary":"#e3c466","engine-muted":"#4F5F5A","surface-container-lowest":"#0e0e0e","status-orange":"#F08A4B","tertiary-fixed":"#9defff","tertiary":"#65d6e9","inverse-on-surface":"#313030","engine-ink":"#101716","on-secondary-fixed":"#231b00","surface-container-high":"#2a2a2a","ruby-hot":"#FF4D70","background":"#131313","on-tertiary-fixed-variant":"#004f59","on-secondary-container":"#f6d675","on-secondary":"#3c2f00","on-tertiary-fixed":"#001f24","engine-deep":"#14201E","on-secondary-fixed-variant":"#574500","inverse-primary":"#755b00","surface-container":"#201f1f","primary-fixed-dim":"#e6c364","on-error":"#690005","on-primary":"#3d2e00","ruby-ground":"#0D090B","on-primary-fixed-variant":"#584400","outline":"#99907e","line-subtle":"#232220","tertiary-fixed-dim":"#65d6e9","outline-variant":"#4d4637","gold-glass-stroke":"rgba(201, 168, 76, 0.2)","ruby-panel":"#171013","surface":"#131313","on-tertiary-container":"#004750","error":"#ffb4ab","on-error-container":"#ffdad6","paper-light":"#F5F2ED","on-primary-container":"#503d00","engine-sheet":"#EDF1EF","ground-deep":"#060607","surface-tint":"#e6c364","surface-bright":"#3a3939"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2.25rem","space-md":"1.125rem",gutter:"1.125rem","space-xs":"0.375rem","space-sm":"0.75rem","space-lg":"1.5rem",margin:"1.5rem"},fontFamily:{"body-md":["Inter"],"telemetry-cell":["IBM Plex Mono"],"telemetry-head":["IBM Plex Mono"],"body-sm":["Inter"],"telemetry-code":["IBM Plex Mono"],"headline-hero-mobile":["Newsreader"],"headline-xl-mobile":["Newsreader"],"headline-lg":["Newsreader"],"headline-hero":["Newsreader"],"body-lg":["Inter"],"headline-md":["IBM Plex Sans"],kicker:["Inter"],"headline-xl":["Newsreader"],"headline-lg-mobile":["Newsreader"]},fontSize:{"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"telemetry-cell":["11px",{lineHeight:"14px",fontWeight:"400"}],"telemetry-head":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"telemetry-code":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-hero-mobile":["34px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-lg":["30px",{lineHeight:"38px",fontWeight:"400"}],"headline-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}],"body-lg":["17px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"600"}],kicker:["11px",{lineHeight:"14px",letterSpacing:"0.12em",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"400"}]}}}}</script></head><body class="bg-ground-deep font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><script>if(window.innerWidth<768){location.replace('/mobile/the-system/');}</script><header class="fixed top-0 left-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl border-b border-gold-glass-stroke"><div class="h-16 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><a class="flex items-center gap-space-sm group text-left" data-path="home" href="/"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ92llrC69EyGcgdBq92ZcxgIsm5v9D1ui81ybmCPKPE9x1ZLaER1-LUzniICt6IdRypEtN3NiVDltUtfzqkWluMj31DF_ruV5YzZ2d5CNuBHbw5ZjnP1bvsDaPYERbyPFHvmulANalu1MeeL1sOZDrgj5klK81vP3in3IUbIenuOJ-PgG_FWdSonLJFXqNcL7dp3QiTM_-e94GC7eUs0wfXg8THc3dQUuwqXfRlboYbN1Sth2SLQ0HQ" class="h-8 md:h-9 w-auto object-contain" alt="VOLSHi Home"></a><div class="flex items-center gap-space-lg"><nav class="hidden md:flex items-center gap-space-lg h-16" data-active-classes="text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary"><a aria-current="page" class="font-body-sm tracking-wide transition-colors py-2 text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary" data-path="the-system" href="/the-system/">The System</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="katie" href="/katie/">KATIE</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="research" href="/research/">Research</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="invest" href="/invest/">Invest</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="contact" href="/#contact">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-md py-1.5 rounded border border-gold-glass-stroke bg-surface-container-lowest font-telemetry-head text-telemetry-head text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200 shadow-[0_0_12px_rgba(201,168,76,0.1)] hover:shadow-[0_0_16px_rgba(201,168,76,0.35)]" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">Investor Inquiry</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_8px_rgba(201,168,76,0.25)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-ground-deep min-h-screen"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO / THE SYSTEM -->
+<section class="relative w-full overflow-hidden bg-ground-deep py-space-xl lg:py-24">
+<!-- Ambient Structural Lighting -->
+<div class="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="pointer-events-none absolute top-1/4 right-[-10%] h-[350px] w-[350px] rounded-full bg-tertiary/5 blur-[100px]"></div>
+<div class="mx-auto w-full max-w-7xl px-6 lg:px-12">
+<!-- Eyebrow Ribbon -->
+<div class="flex items-center gap-space-sm mb-space-md">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-surface-container px-3 py-1 font-telemetry-head text-telemetry-cell text-primary">
+<span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+ VOLSHi / THE SYSTEM
+ </span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase tracking-[0.1em]">ARCHE SUBSTRATE</span>
+</div>
+<!-- Main Headline & Editorial Lede -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end">
+<div class="lg:col-span-8">
+<h1 class="font-headline-hero text-headline-hero text-paper-light tracking-tight">
+ Built like a mind.<br>
+<span class="italic text-primary font-headline-hero">Not like a database.</span>
+</h1>
+</div>
+<div class="lg:col-span-4 pb-2">
+<div class="rounded-lg bg-surface-container/60 backdrop-blur-md p-space-md">
+<span class="font-telemetry-head text-telemetry-cell text-engine-line uppercase tracking-wider block mb-1">State Substrate Model</span>
+<p class="font-telemetry-code text-telemetry-cell text-on-surface-variant leading-relaxed">
+ Tritemporal · Non-Markovian Memory · Provable Epistemic Provenance
+ </p>
+</div>
+</div>
+</div>
+<!-- Lede Paragraph -->
+<div class="mt-space-lg max-w-4xl">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<strong class="text-paper-light font-medium">ARCHE</strong> — the Adaptive Relational Cognitive Human Emulator. The architecture doesn't store intelligence and bolt memory on afterward. It emulates how humans function — interaction, behavior, and memory as one design. The engines run on ARCHE. The personas are built on it.
+ </p>
+</div>
+<!-- Interactive Tritemporal State Vector Inspector -->
+<div class="mt-space-xl rounded-xl bg-surface-container-lowest p-space-md shadow-2xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-status-lime"></span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light">ARCHE ACTIVE COGNITIVE VECTOR</span>
+</div>
+<div class="flex items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line"><span>T_EVENT: <strong class="text-primary font-mono">1773019842.109</strong></span><span>T_KNOWLEDGE: <strong class="text-status-lime font-mono">Δ0.0024ms</strong></span></div>
+</div>
+<!-- 3-Way Tritemporal Visual Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md font-telemetry-code text-telemetry-cell">
+<div class="rounded bg-surface-container-low p-space-sm">
+<div class="text-engine-muted uppercase tracking-widest text-[10px] mb-1">01 / LIVED MOMENT</div>
+<div class="text-paper-light font-medium mb-1">Event Horizon (Phenomenology)</div>
+<p class="text-on-surface-variant text-[12px] leading-snug">Continuous sensory inputs, user intents, streaming transactional signals parsed into typed, immutable events.</p>
+</div>
+<div class="rounded bg-surface-container-low p-space-sm">
+<div class="text-engine-muted uppercase tracking-widest text-[10px] mb-1">02 / LOGICAL REVISION</div>
+<div class="text-paper-light font-medium mb-1">Tick Cadence (Discourse Time)</div>
+<p class="text-on-surface-variant text-[12px] leading-snug">Discrete computational steps. Re-evaluating prior states without overwriting history; forkable deliberation tracks.</p>
+</div>
+<div class="rounded bg-surface-container-low p-space-sm">
+<div class="text-engine-muted uppercase tracking-widest text-[10px] mb-1">03 / EPISTEMIC RECORD</div>
+<div class="text-paper-light font-medium mb-1">Knowledge Time (Assertion)</div>
+<p class="text-on-surface-variant text-[12px] leading-snug">The precise instant an assertion entered the verified ledger, sealed with cryptographic authority indices.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ARCHE ARCHITECTURE DEEP DIVE (§4.0) -->
+<section class="relative w-full bg-surface-dim py-space-xl lg:py-28">
+<div class="mx-auto w-full max-w-7xl px-6 lg:px-12">
+<!-- Section Header -->
+<div class="max-w-3xl mb-space-xl">
+<span class="font-telemetry-head text-telemetry-cell text-primary uppercase tracking-[0.14em] block mb-space-xs">The Architecture</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light mb-space-md">
+ Memory isn't a feature. <span class="italic text-primary font-headline-xl">It's the substrate.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+ Most systems treat memory as storage — a place to put things. ARCHE treats it the way humans do: memory is part of cognition itself. What the system remembers, how it weighs it, and when it reconsiders — that's not a database layer, that's the mind. The tritemporal work underneath (event time, tick time, knowledge time) is a cognitive model of human memory, not a storage optimization.
+ </p>
+</div>
+<!-- 3 Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Pillar 01: Input -->
+<div class="group relative rounded-xl bg-surface-container p-space-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-xl text-headline-xl text-primary/40 font-serif">01</span>
+<span class="material-symbols-outlined text-primary text-[28px]">sensors</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light mb-space-sm">Input</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+ The world arrives as events — interactions, observations, handoffs. Everything the system will ever know starts here.
+ </p>
+<div class="rounded bg-surface-container-lowest p-2.5 font-telemetry-cell text-[11px] text-engine-line">
+ Ingest Protocol: Stream → Packet Hash → Temporal Envelope
+ </div>
+</div>
+<!-- Pillar 02: Attention -->
+<div class="group relative rounded-xl bg-surface-container p-space-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-xl text-headline-xl text-primary/40 font-serif">02</span>
+<span class="material-symbols-outlined text-tertiary text-[28px]">filter_center_focus</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light mb-space-sm">Attention</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+ Not every event matters equally. ARCHE decides what deserves weight — what to record deeply, what to let pass. Attention is the first act of memory.
+ </p>
+<div class="rounded bg-surface-container-lowest p-2.5 font-telemetry-cell text-[11px] text-tertiary">
+ Salience Weighting: Dynamic Decay &amp; Re-Evaluation Matrix
+ </div>
+</div>
+<!-- Pillar 03: Record -->
+<div class="group relative rounded-xl bg-surface-container p-space-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-headline-xl text-headline-xl text-primary/40 font-serif">03</span>
+<span class="material-symbols-outlined text-status-lime text-[28px]">verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light mb-space-sm">Record</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-space-md">
+ What attention keeps is recorded with its authority and its moment — bound by KATIE, retrievable by ERIE, learned from by ELLE.
+ </p>
+<div class="rounded bg-surface-container-lowest p-2.5 font-telemetry-cell text-[11px] text-status-lime">
+ Cryptographic State: Immutable K-Record Receipt Bound
+ </div>
+</div>
+</div>
+<!-- Architectural Schematic Diagram (Inline SVG) -->
+<div class="mt-space-xl rounded-xl bg-surface-container-lowest p-space-lg shadow-xl overflow-x-auto">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<span class="font-telemetry-head text-telemetry-head text-paper-light">FIG 4.1 — ARCHE TRI-TEMPORAL REASONING &amp; SUBSYSTEM TOPOLOGY</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-line">NON-DESTRUCTIVE REPLAY SPEC</span>
+</div>
+<svg class="w-full min-w-[700px] h-48 text-primary" fill="none" viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+<!-- Flow Line -->
+<path d="M 60 80 H 740" stroke="currentColor" stroke-dasharray="4 4" stroke-opacity="0.2" stroke-width="2"></path>
+<!-- Nodes -->
+<g transform="translate(60, 40)">
+<rect class="fill-surface-container" height="80" rx="8" width="140"></rect>
+<text fill="#F5F2ED" font-family="Inter" font-size="13" font-weight="600" text-anchor="middle" x="70" y="36">EVENT STREAM</text>
+<text fill="#d0c5b2" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" x="70" y="54">T_event [Immutable]</text>
+</g>
+<path d="M 200 80 H 260" marker-end="url(#arrow)" stroke="#e6c364" stroke-width="2"></path>
+<g transform="translate(260, 20)">
+<rect class="fill-surface-container-high" height="120" rx="10" stroke="#e6c364" stroke-opacity="0.4" stroke-width="1" width="180"></rect>
+<text fill="#e6c364" font-family="IBM Plex Mono" font-size="11" font-weight="600" text-anchor="middle" x="90" y="32">ARCHE SUBSTRATE</text>
+<text fill="#F5F2ED" font-family="Newsreader" font-size="15" text-anchor="middle" x="90" y="52">Cognitive Weighting</text>
+<rect class="fill-surface-container-lowest" height="20" rx="4" width="140" x="20" y="65"></rect>
+<text fill="#65d6e9" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" x="90" y="79">Attentional Filter</text>
+<text fill="#A8B6B1" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" x="90" y="105">Logical Cadence [Non-destructive]</text>
+</g>
+<path d="M 440 80 H 500" stroke="#e6c364" stroke-width="2"></path>
+<g transform="translate(500, 30)">
+<rect class="fill-surface-container" height="100" rx="8" width="130"></rect>
+<text fill="#A8E349" font-family="IBM Plex Mono" font-size="11" font-weight="600" text-anchor="middle" x="65" y="32">KATIE</text>
+<text fill="#d0c5b2" font-family="Inter" font-size="11" text-anchor="middle" x="65" y="50">Watches &amp; Seals</text>
+<text fill="#e5e2e1" font-family="IBM Plex Mono" font-size="10" text-anchor="middle" x="65" y="80">K-Record Ledger</text>
+</g>
+<path d="M 630 80 H 670" stroke="#65d6e9" stroke-width="2"></path>
+<g transform="translate(670, 45)">
+<circle class="fill-surface-container-high" cx="35" cy="35" r="35" stroke="#65d6e9" stroke-width="1.5"></circle>
+<text fill="#65d6e9" font-family="IBM Plex Mono" font-size="11" font-weight="600" text-anchor="middle" x="35" y="32">ERIE</text>
+<text fill="#e5e2e1" font-family="Inter" font-size="9" text-anchor="middle" x="35" y="48">Verifies</text>
+</g>
+<!-- Backloop to ELLE -->
+<path d="M 705 115 C 705 150, 350 155, 350 140" fill="none" stroke="#EF174C" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<text fill="#EF174C" font-family="IBM Plex Mono" font-size="9" text-anchor="middle" x="520" y="152">ELLE: External Continuous Learning Loop</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE THREE ENGINES ON ARCHE SUBSTRATE -->
+<section class="relative w-full bg-ground-deep py-space-xl lg:py-28">
+<div class="mx-auto w-full max-w-7xl px-6 lg:px-12">
+<!-- Section Title -->
+<div class="mb-space-xl">
+<span class="font-telemetry-head text-telemetry-cell text-primary uppercase tracking-[0.16em] block mb-space-xs">The Perfecta Trifecta</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Three engines. <span class="italic text-primary font-headline-xl">One cognitive substrate.</span>
+</h2>
+</div>
+<!-- ENGINE A: KATIE (§4.1) -->
+<div class="mb-space-xl rounded-2xl bg-surface-container p-space-lg lg:p-space-xl shadow-2xl relative overflow-hidden">
+<div class="pointer-events-none absolute top-0 right-0 h-64 w-64 rounded-full bg-primary/10 blur-[80px]"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<div class="lg:col-span-7">
+<div class="flex flex-wrap items-center gap-space-sm mb-space-md">
+<span class="rounded-full bg-primary/20 px-3 py-1 font-telemetry-head text-telemetry-cell text-primary uppercase">
+ ENGINE A · WATCHES
+ </span>
+<span class="rounded-full bg-surface-container-highest px-3 py-1 font-telemetry-head text-telemetry-cell text-engine-line">
+ Candidate computational law · Patent Pending
+ </span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-paper-light mb-space-sm">
+ KATIE — Knowledge Authority Time Indexing Engine
+ </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-lg">
+ Watches. Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+<a class="inline-flex items-center gap-2 font-telemetry-head text-telemetry-head text-primary hover:text-paper-light transition-colors group" data-path="katie" href="/katie/">
+<span>Explore KATIE Engine &amp; Lab Suite</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- KATIE Telemetry Sheet -->
+<div class="lg:col-span-5 rounded-xl bg-surface-container-lowest p-space-md shadow-inner">
+<div class="flex items-center justify-between pb-space-xs mb-space-sm">
+<span class="font-telemetry-head text-telemetry-cell text-engine-muted uppercase">LIVE K-RECORD BUFFER</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">SEALED_OK</span>
+</div>
+<div class="space-y-2 font-telemetry-code text-[12px]">
+<div class="p-2 rounded bg-surface-container-low flex justify-between items-center">
+<span class="text-engine-line">ENTRY_089421</span>
+<span class="text-primary font-semibold">TOKEN_HANDOFF</span>
+<span class="text-on-surface-variant text-[10px]">T_KNOW: 14:02:18.01</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex justify-between items-center">
+<span class="text-engine-line">ENTRY_089422</span>
+<span class="text-tertiary font-semibold">BELIEF_STATE_REVISION</span>
+<span class="text-on-surface-variant text-[10px]">T_KNOW: 14:02:18.04</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex justify-between items-center">
+<span class="text-engine-line">ENTRY_089423</span>
+<span class="text-status-lime font-semibold">RECEIPT_ISSUED</span>
+<span class="text-on-surface-variant text-[10px]">VALIDATED</span>
+</div>
+</div>
+<div class="mt-3 pt-2 text-right">
+<span class="font-telemetry-cell text-[10px] text-engine-muted">APPEND-ONLY AUDIT LOG ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ENGINE B: ERIE (§4.0b) -->
+<div class="mb-space-xl rounded-2xl bg-surface-container p-space-lg lg:p-space-xl shadow-2xl relative overflow-hidden">
+<div class="pointer-events-none absolute top-0 left-0 h-64 w-64 rounded-full bg-tertiary/10 blur-[80px]"></div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="rounded-full bg-tertiary/20 px-3 py-1 font-telemetry-head text-telemetry-cell text-tertiary uppercase">
+ ENGINE B · VERIFIES
+ </span>
+<span class="rounded-full bg-surface-container-highest px-3 py-1 font-telemetry-head text-telemetry-cell text-engine-line">
+ 5,201 tests passing · Python · stdlib-only core
+ </span>
+</div>
+<a class="inline-flex items-center gap-1.5 font-telemetry-head text-telemetry-cell text-primary hover:underline" href="https://github.com/volshi-ai/info/tree/main/erie" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span>github.com/volshi-ai/info/tree/main/erie →</span>
+</a>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-paper-light mb-space-sm">
+ ERIE — Epistemic Retrieval &amp; Investigation Engine
+ </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-4xl mb-space-xl">
+ Retrieval without hallucination. When a bot asks about your user, everything that comes back carries its provenance. No invented answers. No confident fiction. And when the evidence isn't there, she says so — explicitly.
+ </p>
+<!-- How She Works: Target, Evidence, Verdict -->
+<div class="mb-space-xl">
+<span class="font-telemetry-head text-telemetry-cell text-engine-line uppercase tracking-wider block mb-space-md">HOW SHE WORKS — 3-STAGE EPISTEMIC INQUEST</span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-primary text-telemetry-head block mb-1">01 / TARGET</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ The question becomes a target with satisfaction criteria — what an answer would have to establish before anyone gets to speak.
+ </p>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-tertiary text-telemetry-head block mb-1">02 / EVIDENCE</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Retrieval runs through an adapter over your data pool. Every candidate is bound back to the criteria it supports, with its provenance attached.
+ </p>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-status-lime text-telemetry-head block mb-1">03 / VERDICT</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Sufficiency is judged, not assumed. Answered — with the full chain of custody. Or cannot-answer — with the gaps preserved, not paved over.
+ </p>
+</div>
+</div>
+</div>
+<!-- Interactive erie.ask Execution Console -->
+<div class="rounded-xl bg-ground-deep p-space-md shadow-2xl mb-space-lg">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-status-orange"></span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light">LIVE REPLAY · ERIE.ASK REASONING TRACE</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-line">DIAGNOSTIC ADAPTER: KATIE_K_RECORD</span>
+</div>
+<!-- Trace Card 1: Answered -->
+<div class="mb-space-md rounded-lg bg-surface-container-low p-space-md">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<span class="font-telemetry-code text-[13px] text-paper-light font-semibold">
+ &gt; erie.ask("Why was acct-002's name changed?")
+ </span>
+<span class="rounded bg-status-lime/10 px-2.5 py-0.5 font-telemetry-head text-[10px] text-status-lime font-semibold uppercase">
+ STATUS: ANSWERED
+ </span>
+</div>
+<div class="space-y-1 font-telemetry-code text-telemetry-cell text-engine-line">
+<div><strong class="text-tertiary">evidence:</strong> k-record interval [k2..live] · cust_name = “Sofia Bennett”</div>
+<div><strong class="text-primary">provenance:</strong> katie.entries row 47 · reason “married” · authority 89%</div>
+<div><strong class="text-status-lime">gaps:</strong> none — criteria satisfied</div>
+</div>
+</div>
+<!-- Trace Card 2: Refused -->
+<div class="rounded-lg bg-surface-container-low p-space-md">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<span class="font-telemetry-code text-[13px] text-paper-light font-semibold">
+ &gt; erie.ask("What is the customer's mother's maiden name?")
+ </span>
+<span class="rounded bg-ruby/15 px-2.5 py-0.5 font-telemetry-head text-[10px] text-ruby-hot font-semibold uppercase">
+ STATUS: CANNOT-ANSWER
+ </span>
+</div>
+<div class="space-y-1 font-telemetry-code text-telemetry-cell text-engine-line">
+<div><strong class="text-ruby-hot">gaps:</strong> no evidence in the pool addresses this · refused to invent.</div>
+<div><strong class="text-engine-muted">inquest_verdict:</strong> criteria unfulfillable without hallucination · execution terminated cleanly</div>
+</div>
+</div>
+</div>
+<!-- The Honesty Boundary Callout -->
+<div class="rounded-xl bg-surface-container-low p-space-md">
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">shield</span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">The Honesty Boundary</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ ERIE guarantees the chain of custody — source to evidence to answer — and she would rather say cannot-answer than fabricate. What she does not do is independently verify that your data pool tells the truth; that's the pool's job. In our stack the pool is KATIE's K-record — append-only, every entry bound to its moment — so the ground she stands on is solid. We say exactly this much, and no more.
+ </p>
+</div>
+</div>
+<!-- ENGINE C: ELLE (§4.0c) -->
+<div class="rounded-2xl bg-surface-container p-space-lg lg:p-space-xl shadow-2xl relative overflow-hidden">
+<div class="pointer-events-none absolute top-0 right-0 h-64 w-64 rounded-full bg-ruby/10 blur-[80px]"></div>
+<div class="flex flex-wrap items-center gap-space-sm mb-space-md">
+<span class="rounded-full bg-ruby/20 px-3 py-1 font-telemetry-head text-telemetry-cell text-ruby-hot uppercase">
+ ENGINE C · PERSISTS
+ </span>
+<span class="rounded-full bg-surface-container-highest px-3 py-1 font-telemetry-head text-telemetry-cell text-engine-line">
+ in the forge — engine rebuild underway
+ </span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-paper-light mb-space-sm">
+ ELLE — External Learning Loop Engine
+ </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-4xl mb-space-xl">
+ She learns. You never start from zero again. Every interaction is an experience, and experience accumulates: lessons learned, scoped, attributed — durable rules that survive model replacement and follow the user into whatever model they talk to next.
+ </p>
+<!-- Her Job: 4-Step Loop -->
+<div class="mb-space-xl">
+<span class="font-telemetry-head text-telemetry-cell text-engine-line uppercase tracking-wider block mb-space-md">HER JOB — 4-STEP LEARNING LOOP</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-primary text-telemetry-head block mb-1">01 / EXPERIENCE</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Every interaction with the user — lived, not logged. What happened, in context.
+ </p>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-tertiary text-telemetry-head block mb-1">02 / LESSON</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Experience distills into a lesson: what was learned, scoped to where it holds, attributed to its source.
+ </p>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-status-lime text-telemetry-head block mb-1">03 / RULE</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Lessons mature into rules — durable, portable, surviving whatever model comes next.
+ </p>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<span class="font-telemetry-head text-ruby-hot text-telemetry-head block mb-1">04 / RETURN</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ The rules follow the user into every future interaction. Never start from zero again.
+ </p>
+</div>
+</div>
+</div>
+<!-- Why External Grid Callout -->
+<div class="rounded-xl bg-surface-container-low p-space-md lg:p-space-lg">
+<div class="max-w-3xl mb-space-md">
+<h4 class="font-headline-md text-headline-md text-paper-light mb-space-xs">Why External?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ The learning doesn't live inside the model. Models get replaced. Fine-tuning gets wiped. Context windows get flushed. ELLE's loop is external — the lessons live outside any single model, so the user's accumulated experience survives all of it. Swap the model underneath; the learning stays.
+ </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-sm">
+<div class="rounded-lg bg-surface-container-lowest p-space-sm">
+<span class="font-telemetry-head text-primary text-telemetry-cell block mb-1 uppercase tracking-wide">Scoped</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Every lesson knows where it applies — a lesson about one user doesn't leak into another.
+ </p>
+</div>
+<div class="rounded-lg bg-surface-container-lowest p-space-sm">
+<span class="font-telemetry-head text-tertiary text-telemetry-cell block mb-1 uppercase tracking-wide">Attributed</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Every lesson carries where it came from — the experience it was learned in, on the record.
+ </p>
+</div>
+<div class="rounded-lg bg-surface-container-lowest p-space-sm">
+<span class="font-telemetry-head text-status-lime text-telemetry-cell block mb-1 uppercase tracking-wide">Durable</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Lessons outlive models. Replacement, retraining, new vendor — the loop doesn't care.
+ </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: BOTTOM CTA -->
+<section class="relative w-full bg-ground-deep py-space-xl lg:py-28 overflow-hidden">
+<!-- Center Ambient Glow -->
+<div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-[600px] rounded-full bg-primary/10 blur-[100px]"></div>
+<div class="mx-auto w-full max-w-4xl px-6 lg:px-12 text-center relative z-10">
+<span class="font-telemetry-head text-telemetry-cell text-primary uppercase tracking-[0.2em] block mb-space-sm">
+ FOUNDATION &amp; PERSONAS
+ </span>
+<h2 class="font-headline-hero text-headline-hero text-paper-light mb-space-md">
+ The machine remembers.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-space-xl max-w-2xl mx-auto">
+ ARCHE is the foundation: a cognitive architecture with memory at its core, engines for accountability, retrieval, and learning — and personas built to run on it.
+ </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-space-md">
+<a class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-on-primary font-telemetry-head text-telemetry-head font-medium hover:bg-paper-light transition-all duration-200 shadow-xl shadow-primary/20 hover:shadow-primary/40" href="mailto:founder@volshi.com?subject=The%20System%20—%20ARCHE%20Inquiry">
+<span>Talk to us</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-surface-container-high text-paper-light font-telemetry-head text-telemetry-head hover:bg-surface-container-highest transition-colors" href="https://github.com/volshi-ai/info/tree/main/erie" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">code</span>
+<span>View Open Core on GitHub</span>
+</a>
+</div>
+<!-- Machine Status Stamp -->
+<div class="mt-space-xl inline-flex items-center gap-space-sm px-4 py-2 rounded-full bg-surface-container text-engine-line font-telemetry-cell text-telemetry-cell">
+<span class="h-2 w-2 rounded-full bg-status-lime animate-pulse"></span>
+<span>ARCHE KERNEL READY · RTP RESEARCH FACILITY · PROV. PAT. APP. 64/182,709</span>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-ground-deep border-t border-gold-glass-stroke py-space-xl relative overflow-hidden"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg border-b border-line-subtle"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md tracking-[0.2em] text-paper-light uppercase">VOLSH<span class="tracking-normal">i</span></span><span class="w-1 h-1 rounded-full bg-primary"></span><span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase tracking-[0.1em]">ARCHE SUBSTRATE</span></div><div class="flex flex-wrap items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line"><span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-gold-glass-stroke text-primary"><span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>LEDGER STABLE</span><span>Zenodo DOIs: 10.5281/zenodo.23137456 &amp; 10.5281/zenodo.23198458</span><span>U.S. Prov. Pat. App. 64/182,709</span></div></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-telemetry-cell text-telemetry-cell text-on-surface-variant"><p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p><p class="text-engine-muted">Candidate Computational Law · Append-Only Evidence Protocol</p></div></div></footer>
+
+
+
+</body></html>

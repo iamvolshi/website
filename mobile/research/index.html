@@ -1,0 +1,455 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><style>
+ body {
+ min-height: max(884px, 100dvh);
+ }
+ </style>
+ </head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center"><a href="/" data-path="home" class="inline-flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjs_Mw-2UyGa1oP8Om2zv5SKwO5iwvy5K-fWPLm9qti-PkWbdLfNxllvQO7kBcr6WQDJMzhqxnaDsxWekX-MPkPdzUhO1jDGHoeCowHK_Nk65dv9WDQnJv87-nSysg1DObTgbAGFpFnCdLBpr7qMvq03JRUBpfKyKoIwkaSe0sSyPD89wSPEoSlIzJvX5p1tqepPWGtMzn5Ab0L-zRzHU0QC3ohPqJVqyJkA4WPU4J3arx8ci075k_g" alt="VOLSHi . HOME" class="h-7 w-auto object-contain"></a></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">10.5281/zenodo.23137456</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="flex flex-col w-full space-y-space-xl">
+<!-- SECTION §05: RESEARCH ARCHIVE -->
+<section class="flex flex-col w-full px-space-sm space-y-space-md">
+<!-- Section Kicker / Eyebrow -->
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">VOLSHi / RESEARCH · SECTION §05</span>
+</div>
+<!-- Section Headline & Subtitle -->
+<div class="space-y-space-xs">
+<h1 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface font-serif tracking-tight">The Work Ahead.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-serif italic">Intelligence is moving faster than the systems required to trust it.</p>
+</div>
+<!-- Rich Visual: Laboratory Instrument Concept / Physicalized Evidence Ledger -->
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-low shadow-xl">
+<div class="w-full h-44 bg-cover bg-center" data-alt="Dark aesthetic computational laboratory setup with high-contrast amber laser optics, forensic ledger terminals, tactile black instrumentation chassis, subtle gold holographic wave displays, and matte carbon surfaces in a North Carolina deep-tech research facility." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPT2qLtLnuPuT7JCUS7Z0qS3WV0H7qzzk7asVV0zLIPjIpmJoNw6F25LU1_uKKG1N8zsT5R1xZUbEMxz7SugQDHSMktAZVE0OpQQ5wlMKsA1MPnbEqBXDRfFbpRcO8bDS0MTVARIEhKDufRCUBrklABnH25jctH2y98AQU8oBJoxYJ7QI2dsLa-cNynHuTf8NF76Unzde0DF_fMNZhpXXAWd3Nf3fXxqVBmp5QaZkC')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-ground-deep via-ground-deep/60 to-transparent"></div>
+
+</div>
+<!-- Field Directive Callout Card -->
+<div class="relative rounded-xl p-space-md bg-surface-container-low shadow-lg overflow-hidden">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-primary/5 blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0 mt-0.5">explore</span>
+<div class="space-y-space-xs">
+<span class="font-kicker text-kicker uppercase text-primary/90 tracking-widest block">FIELD DIRECTIVE</span>
+<p class="font-body-sm text-body-sm text-on-surface italic leading-relaxed">
+ “We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it’s strange and it matters, we’re already there.”
+ </p>
+<div class="pt-1 flex items-center justify-between">
+
+<span class="font-telemetry-cell text-telemetry-cell text-primary">RTP // DIR-09</span>
+</div>
+</div>
+</div>
+</div>
+<!-- The Four Research Strands (Mobile Stack) -->
+<div class="space-y-space-md pt-space-xs">
+<div class="flex items-center justify-between px-0.5">
+<span class="font-telemetry-head text-telemetry-head uppercase text-on-surface-variant tracking-wider">PRIMARY RESEARCH STRANDS</span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary">N=4 PROTOCOLS</span>
+</div>
+<!-- Strand 01: Mysterion -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 01</span>
+<span class="font-telemetry-cell text-telemetry-cell px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant tracking-wider">CODENAME: MYSTERION</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-status-lime font-telemetry-cell text-telemetry-cell font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ VALIDATED
+ </span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Temporal Memory</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">The law of how memory forms over time. Two clocks: tick time and event time.</p>
+</div>
+<div class="p-space-xs rounded bg-surface-container-lowest space-y-1">
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Monograph</span>
+<span class="text-on-surface truncate ml-2">The Bitemporal Field Law (Oct 2026)</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Open DOI</span>
+<span class="text-primary truncate ml-2 font-mono">10.5281/zenodo.23137456</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Architect</span>
+<span class="text-on-surface">Hall, Darren</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-0.5">
+<span class="material-symbols-outlined text-status-lime text-[16px]">verified</span>
+<p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">41 independent experiments (0–40), two-timescale memory formation confirmed.</p>
+</div>
+</div>
+<!-- Strand 02: DPS -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 02</span>
+<span class="font-telemetry-cell text-telemetry-cell px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant tracking-wider">CODENAME: DPS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-status-orange font-telemetry-cell text-telemetry-cell font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-status-orange"></span>
+ IN DOSSIER
+ </span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Time-Addressed Storage</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Storage addressed by time, not place. Fragments spread across three pools, reassembled with XOR parity.</p>
+</div>
+<!-- Parity visualization indicator -->
+<div class="grid grid-cols-3 gap-1.5 py-1">
+<div class="p-1.5 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-primary block">POOL α</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">t_shard_0</span>
+</div>
+<div class="p-1.5 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-primary block">POOL β</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">t_shard_1</span>
+</div>
+<div class="p-1.5 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-primary block">XOR-P</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">PARITY OK</span>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container-lowest space-y-1">
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Monograph</span>
+<span class="text-on-surface truncate ml-2">DPS — Paper II of Dossier</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Registry</span>
+<span class="text-on-surface-variant/70 italic">Dossier Draft · No DOI assigned</span>
+</div>
+</div>
+</div>
+<!-- Strand 03: TRIG -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 03</span>
+<span class="font-telemetry-cell text-telemetry-cell px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant tracking-wider">CODENAME: TRIG</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-status-orange font-telemetry-cell text-telemetry-cell font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-status-orange"></span>
+ IN DOSSIER
+ </span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Triadic Relations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Relations come in threes. Directed triads (A→B, B→C, C→A) establish the invariant building block of relational certainty.</p>
+</div>
+<div class="p-space-xs rounded bg-surface-container-lowest space-y-1">
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Monograph</span>
+<span class="text-on-surface truncate ml-2">TRIG — Paper III of Dossier</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Registry</span>
+<span class="text-on-surface-variant/70 italic">Dossier Draft · No DOI assigned</span>
+</div>
+</div>
+</div>
+<!-- Strand 04: K-Time -->
+<div class="rounded-xl bg-surface-container-high p-space-md shadow-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 04</span>
+<span class="font-telemetry-cell text-telemetry-cell px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface tracking-wider">CODENAME: K-TIME</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-status-lime font-telemetry-cell text-telemetry-cell font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ 8/8 HIT
+ </span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary font-semibold">Knowledge Time</h3>
+<p class="font-body-sm text-body-sm text-on-surface mt-1">A third clock: when the system itself knew things. The definitive operational boundary between observation and state.</p>
+</div>
+<!-- 8/8 Hit Callout Graphic -->
+<div class="p-space-sm rounded bg-surface-container-lowest space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-kicker text-kicker text-on-surface-variant uppercase tracking-wider">Pre-registered Forecast Matrix</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime font-semibold">100% CORRELATED</span>
+</div>
+<!-- 8 Matrix Cells -->
+<div class="grid grid-cols-8 gap-1">
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P1</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P2</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P3</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P4</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P5</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P6</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P7</div>
+<div class="h-5 rounded-xs bg-status-lime/30 flex items-center justify-center font-telemetry-cell text-telemetry-cell text-status-lime">P8</div>
+</div>
+<p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Blind independent validation matched to 2 decimal places • 1000+ researcher views.</p>
+</div>
+<div class="p-space-xs rounded bg-surface-container-lowest space-y-1">
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Monograph</span>
+<span class="text-on-surface truncate ml-2">The Tritemporal Field Law: K Time (Oct 2026, v1.8)</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">DOI Anchor</span>
+<span class="text-primary truncate ml-2 font-mono">10.5281/zenodo.23198458</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="uppercase">Authorship</span>
+<span class="text-on-surface">Darren Hall (Author) • Bret Gorden (Validator)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Zenodo Open-Science RTP NC Badge -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-on-surface">OPEN SCIENCE LEDGER</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Zenodo Node: Research Triangle Park, NC</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface uppercase">PUBLIC DOI</span>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE SECTION DIVIDER -->
+<div class="px-space-sm">
+<div class="w-full h-px bg-surface-container-highest"></div>
+</div>
+<!-- SECTION §06: INVEST / CAPITAL ARCHITECTURE -->
+<section class="flex flex-col w-full px-space-sm space-y-space-md">
+<!-- Section Kicker / Eyebrow -->
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-kicker text-kicker uppercase text-secondary tracking-widest">VOLSHi / INVEST · CAPITAL ARCHITECTURE §06</span>
+</div>
+<!-- Section Headline & Lede -->
+<div class="space-y-space-xs">
+<h2 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface font-serif tracking-tight">AI has no past. We’re giving it one.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Every agent on earth wakes up with amnesia. No memory, no accountability, no identity that survives the next model swap. VOLSHi is building the layer underneath all of it.
+ </p>
+</div>
+<!-- Visual Accent: Forensic Memory Architecture Schematic -->
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-low shadow-xl">
+<div class="w-full h-40 bg-cover bg-center" data-alt="Macro architectural blueprint of a cryptographic memory mesh and telemetry ledger nodes, glowing amber and charcoal plexiglass layered conduits, high-precision mathematical notations, and clean dark technical hardware in isometric view." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgz3Ip8mWQ_9ojPKdvquI6vsJzGk4pR00wviij07BVBbQAmtCy8FY5NnPUQ1FxlKYp4DSXXWgONK0CeAEEO7GrgzGUmeiIGl6samhYO7aAz4v69WGHGvku_8FjBa644ffwBNiLzvlpKRb0AqJ1CzSOA2fYlQBBNpzR9WGMelfByWp-kubJJkW7T6tJD3lkCux24uNRgk9Fp4eeTGf2d-CMj4wuJ_lni-aa3EF2FoD6')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-ground-deep via-ground-deep/70 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-secondary uppercase tracking-wider font-semibold">VOLSHi FOUNDATION STACK</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">PATENT PROVISIONAL 64/182,709</span>
+</div>
+</div>
+<!-- Financial & Opportunity Metrics (3 Mobile Cards) -->
+<div class="space-y-space-xs">
+<span class="font-telemetry-head text-telemetry-head uppercase text-on-surface-variant tracking-wider block px-0.5">ALLOCATION MATRIX</span>
+<div class="grid grid-cols-1 gap-space-xs">
+<!-- Metric Card 1: Current Round -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-kicker text-kicker uppercase text-on-surface-variant">CURRENT PARTICIPATION ROUND</span>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-serif font-medium leading-none mt-1">$500,000</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant block">$5K to $500K check tranches open</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+</div>
+</div>
+<!-- Metric Card 2: TAM -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-kicker text-kicker uppercase text-on-surface-variant">TOTAL ADDRESSABLE MARKET (TAM)</span>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-serif font-medium leading-none mt-1">$648 Billion</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant block">Autonomous agents &amp; AI compliance infrastructure</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">public</span>
+</div>
+</div>
+<!-- Metric Card 3: Deployment Sequence -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-kicker text-kicker uppercase text-on-surface-variant">DEPLOYMENT SEQUENCE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase font-semibold">STAGE: VALIDATION → PILOT</span>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<div class="flex-1 p-2 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface block font-semibold">01 Tech Proof</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">Done (8/8)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">file_download</span>
+<div class="flex-1 p-2 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-primary block font-semibold">02 Design Partners</span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary">In Process</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">file_download</span>
+<div class="flex-1 p-2 rounded bg-surface-container-lowest text-center">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant block font-semibold">03 Repeatable</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/60">Expansion</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contrast Cards: The Problem vs The Approach -->
+<div class="space-y-space-xs pt-space-xs">
+<span class="font-telemetry-head text-telemetry-head uppercase text-on-surface-variant tracking-wider block px-0.5">THE ARCHITECTURAL GAP</span>
+<div class="grid grid-cols-1 gap-space-sm">
+<!-- The Problem -->
+<div class="rounded-xl bg-ruby-panel p-space-md shadow-md space-y-space-xs">
+<div class="flex items-center gap-2 text-ruby">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span class="font-kicker text-kicker uppercase tracking-widest font-semibold">THE PROBLEM</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Agents Act Without Liability.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Models hallucinate, drift, or execute high-stakes enterprise decisions without a cryptographic audit chain. When errors occur, liability disperses into thin air because internal model weights cannot be subpoenaed.
+ </p>
+</div>
+<!-- The Approach -->
+<div class="rounded-xl bg-surface-container-high p-space-md shadow-md space-y-space-xs">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-kicker text-kicker uppercase tracking-widest font-semibold">THE APPROACH</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Mathematical Admissibility.</h3>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+ Append-only, time-addressed memory structures that bind prompt state, execution trace, and knowledge timestamp into a court-admissible forensic record. Certainty over assumption.
+ </p>
+</div>
+</div>
+</div>
+<!-- Defensibility Pillars (3 Pillars) -->
+<div class="space-y-space-xs pt-space-xs">
+<span class="font-telemetry-head text-telemetry-head uppercase text-on-surface-variant tracking-wider block px-0.5">DEFENSIBILITY PILLARS</span>
+<div class="space-y-space-sm">
+<!-- Pillar 1 -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">PILLAR I · IP SECURED</span>
+<span class="material-symbols-outlined text-primary text-[18px]">policy</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface font-medium">A Computational Law</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Tritemporal Field Law mathematical foundation, formal patent filings, and provisional protection (#64/182,709) covering time-addressed state transitions.
+ </p>
+</div>
+<!-- Pillar 2 -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">PILLAR II · PIPELINE DEPTH</span>
+<span class="material-symbols-outlined text-primary text-[18px]">layers</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface font-medium">More IP in the Wings</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Complete mathematical architecture for DPS (Paper II) and TRIG (Paper III) alongside active laboratory designs for self-healing machine states.
+ </p>
+</div>
+<!-- Pillar 3 -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest">PILLAR III · MARKET POSITION</span>
+<span class="material-symbols-outlined text-primary text-[18px]">flare</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface font-medium">Nobody Else Is Here</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Zero direct structural competitors tackling AI temporal memory at the mathematical physics level. Pure greenfield compliance territory.
+ </p>
+</div>
+</div>
+</div>
+<!-- Pitch Deck Download Banner -->
+<div class="rounded-xl bg-surface-container-high p-space-md shadow-xl space-y-space-sm">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-1.5">
+<span class="font-kicker text-kicker uppercase text-secondary tracking-widest">INVESTOR BRIEFING</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-status-lime font-telemetry-cell text-telemetry-cell">88/100 VETTABLE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-serif">Executive Dossier</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">13 slides • third-party validated • full financial models and technical appendices.</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[22px]">description</span>
+</div>
+</div>
+<button class="w-full py-3 px-4 rounded-lg bg-primary text-on-primary font-semibold flex items-center justify-center gap-2 active:bg-primary-container transition-colors shadow-md" id="downloadDeckBtn">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="font-telemetry-head text-telemetry-head uppercase tracking-wider">DOWNLOAD PDF DOSSIER</span>
+</button>
+<div class="hidden font-telemetry-cell text-telemetry-cell text-status-lime text-center pt-1" id="deckStatus">
+ ✓ PDF LEDGER ENCRYPTED &amp; TRANSMITTED TO YOUR DEVICE
+ </div>
+</div>
+<!-- Talk to Founder Card -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-lg space-y-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of Darren Hall, founder of VOLSHi, serious forensic technical gaze in front of ambient dark laboratory monitors, high-contrast monochrome and warm rim lighting, Research Triangle Park NC." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrSy5e8ZN2X3y6ghMKXheRj1nWh8pIuv10JMQ8gqiO_W8YlmasJ9d9w6Myrlu-2HkWzIwEGH9lbCQNM_tnbQl0Ynr3LGEvIfsWW_HWdgLFQF1dVvSIKGGpd2mK_PiFfjHgZXSluwCIUoKPzebPJ1_73BtMsay3zS-Voz2kY0vP6-GMy9f3DN7tQBbBHD9sfvZQYiTHlh0ACAWh6lZvl0tJFDfZU3wrAIg-OEIzYxlE">
+</div>
+<div>
+<span class="font-kicker text-kicker text-primary uppercase tracking-widest block">DIRECT FOUNDER LINE</span>
+<h4 class="font-headline-md text-headline-md text-on-surface font-semibold">Darren Hall</h4>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Lead Architect // VOLSHi Research</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Technical, syndicate, and institutional checks are reviewed directly with the research lead. Direct term discussions under mutual CDA.
+ </p>
+<div class="flex flex-col gap-2 pt-1">
+<a class="w-full py-3 px-4 rounded-lg bg-surface-container-high text-on-surface font-semibold flex items-center justify-center gap-2 active:bg-surface-container-highest transition-colors" href="mailto:founder@volshi.com?subject=VOLSHi%20Investment%20Inquiry%20%2F%2F%20Participation%20Allocation">
+<span class="material-symbols-outlined text-primary text-[18px]">mail</span>
+<span class="font-telemetry-code text-telemetry-code">founder@volshi.com</span>
+</a>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface-variant font-telemetry-cell text-telemetry-cell flex items-center justify-center gap-1.5 active:bg-surface-container-high transition-colors" id="copyEmailBtn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span id="copyEmailText">COPY DIRECT DISPATCH ADDRESS</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive Client-side Script -->
+<script>
+ (function initInvestInteractions() {
+ var downloadBtn = document.getElementById('downloadDeckBtn');
+ var deckStatus = document.getElementById('deckStatus');
+ if (downloadBtn && deckStatus) {
+ downloadBtn.addEventListener('click', function() {
+ downloadBtn.disabled = true;
+ downloadBtn.classList.add('opacity-75');
+ deckStatus.classList.remove('hidden');
+ setTimeout(function() {
+ downloadBtn.disabled = false;
+ downloadBtn.classList.remove('opacity-75');
+ }, 3000);
+ });
+ }
+
+ var copyBtn = document.getElementById('copyEmailBtn');
+ var copyText = document.getElementById('copyEmailText');
+ if (copyBtn && copyText) {
+ copyBtn.addEventListener('click', function() {
+ if (navigator.clipboard) {
+ navigator.clipboard.writeText('founder@volshi.com').then(function() {
+ copyText.textContent = 'COPIED TO SYSTEM CLIPBOARD';
+ setTimeout(function() {
+ copyText.textContent = 'COPY DIRECT DISPATCH ADDRESS';
+ }, 2500);
+ }).catch(function() {
+ copyText.textContent = 'CLIPBOARD READY: founder@volshi.com';
+ });
+ } else {
+ copyText.textContent = 'DISPATCH: founder@volshi.com';
+ }
+ });
+ }
+ })();
+ </script>
+</div><footer class="mt-space-xl px-space-sm pb-space-lg text-center flex flex-col items-center gap-space-xs"><div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high/40 text-on-surface-variant font-telemetry-cell text-telemetry-cell"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span>ZENODO DOI LEDGER COMPLIANT</span></div><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="the-system" href="/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">System</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="katie" href="/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="research" href="/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Research</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/invest/"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Invest</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+
+
+</body></html>

@@ -1,597 +1,938 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080808">
-      <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <meta name="description" content="VOLSHi builds compliance infrastructure for AI agents — audit trails, evidence, and accountability for autonomous systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://volshi.com/">
-  <meta property="og:site_name" content="VOLSHi">
-  <meta property="og:title" content="VOLSHi — Compliance Infrastructure for AI Agents... and more!">
-  <meta property="og:description" content="VOLSHi builds compliance infrastructure for AI agents — audit trails, evidence, and accountability for autonomous systems.">
-  <meta property="og:image" content="https://volshi.com/assets/og-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VOLSHi — Compliance Infrastructure for AI Agents... and more!">
-  <meta name="twitter:description" content="VOLSHi builds compliance infrastructure for AI agents — audit trails, evidence, and accountability for autonomous systems.">
-  <meta name="twitter:image" content="https://volshi.com/assets/og-card.png">
-  <title>VOLSHi — Compliance Infrastructure for AI Agents... and more!</title>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-kt-32x32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-kt-64.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261014p">
-  <style>
-    #s1 .scrim{background:linear-gradient(to right,rgba(4,4,4,.94) 0%,rgba(4,4,4,.74) 31%,rgba(4,4,4,.18) 55%,rgba(4,4,4,0) 100%)}#s1 .sbg{background-position:center center}
-    .tech-layout{position:relative;z-index:2;height:100%;padding:96px 5vw 48px;overflow-y:auto}.tech-index{max-width:1240px;margin:0 auto 0 0}
-    .tech-index{align-self:center;max-width:560px}.tech-eyebrow{font-size:10px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--gd);margin-bottom:18px;display:flex;align-items:center;gap:10px;text-shadow:0 1px 10px rgba(0,0,0,.8)}.tech-eyebrow::before{content:'';width:14px;height:1px;background:var(--gd)}
-    .tech-title{font-size:clamp(1.6rem,2.6vw,2.8rem);font-weight:300;letter-spacing:.06em;line-height:1.05;text-transform:uppercase;margin-bottom:9px;text-shadow:0 1px 18px rgba(0,0,0,.75)}
-    .tech-lede{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,237,.62);margin-bottom:24px}
-    .trifecta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px;max-width:1180px}
-    @media(max-width:768px){.trifecta{grid-template-columns:1fr}}
-    .tri-card{padding:32px 28px;display:block;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(18,18,20,.72),rgba(8,8,10,.5));border:1px solid rgba(201,168,76,.22);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .22s ease,border-color .22s ease}
-    .tri-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.5)}
-    .tri-num{font-size:10px;font-weight:600;letter-spacing:.30em;color:rgba(201,168,76,.6);margin-bottom:14px}
-    .tri-name{font-size:clamp(1.8rem,2.6vw,2.6rem);font-weight:600;letter-spacing:.08em;line-height:1;margin-bottom:6px}
-    .tri-role{font-size:.85rem;font-weight:300;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-    .tri-copy{font-size:.78rem;line-height:1.65;letter-spacing:.02em;color:rgba(245,242,237,.75);margin:0}
-    .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px;max-width:1180px}
-    .bento-tile{appearance:none;font:inherit;text-align:left;cursor:pointer;position:relative;min-height:108px;padding:14px 14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;color:var(--w);background:linear-gradient(150deg,rgba(18,18,20,.62),rgba(8,8,10,.42));border:1px solid rgba(255,255,255,.08);border-radius:12px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-    .bento-tile:hover,.bento-tile:focus-visible,.bento-tile.active{outline:none;transform:translateY(-3px);border-color:rgba(201,168,76,.55);box-shadow:0 18px 44px rgba(0,0,0,.5),0 0 24px rgba(201,168,76,.08)}
-    .bento-hero{grid-column:span 2;grid-row:span 2;min-height:266px;background:linear-gradient(150deg,rgba(201,168,76,.16),rgba(10,10,12,.55) 62%);border-color:rgba(201,168,76,.28)}
-    .bento-cta{border-style:dashed;grid-column:span 2}
-    .bento-cat{font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-    .bento-name{font-size:clamp(1.05rem,1.5vw,1.4rem);font-weight:600;letter-spacing:.07em;line-height:1.1}
-    .bento-hero .bento-name{font-size:clamp(1.9rem,3.2vw,2.9rem)}
-    .bento-greek{font-size:.62em;font-weight:400;letter-spacing:.04em;color:var(--gold);vertical-align:.08em}
-    .bento-origin{color:var(--gold);letter-spacing:.06em}
-    .bento-type{font-size:10.5px;line-height:1.5;letter-spacing:.03em;color:rgba(245,242,237,.78);min-height:3em}
-    .bento-hero .bento-type{font-size:12px;max-width:30ch}
-    .tech-hint{margin-top:13px;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.24)}
-    .tech-modal{position:fixed;inset:0;z-index:700;visibility:hidden;pointer-events:none}
-    .tech-modal.open{visibility:visible;pointer-events:auto}
-    .tech-modal-backdrop{position:absolute;inset:0;background:transparent}
-    .tech-detail{position:absolute;z-index:1;right:4vw;top:50%;width:min(440px,calc(100vw - 40px));max-height:calc(100vh - 140px);display:flex;opacity:0;visibility:hidden;transform:translateY(-50%) translateX(28px);transition:opacity .25s ease,visibility .25s ease,transform .3s ease}
-    .tech-modal.open .tech-detail{opacity:1;visibility:visible;transform:translateY(-50%)}
-    .tech-detail .tech-glass{max-height:calc(100vh - 140px);overflow-y:auto}
-    @media(max-width:900px){.tech-detail{right:50%;transform:translate(50%,-50%) translateY(14px);width:min(560px,calc(100vw - 40px))}.tech-modal.open .tech-detail{transform:translate(50%,-50%)}}
-    .tech-glass{position:relative;width:100%;min-height:360px;padding:38px 42px 34px;background:linear-gradient(145deg,rgba(16,16,20,.42),rgba(8,8,10,.30));border:1px solid rgba(201,168,76,.30);box-shadow:0 30px 90px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(130%);-webkit-backdrop-filter:blur(28px) saturate(130%);overflow:hidden}.tech-glass::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,.045),transparent 28%),radial-gradient(circle at 88% 10%,rgba(201,168,76,.11),transparent 25%)}
-    .tech-close{position:absolute;right:18px;top:14px;z-index:2;border:0;background:none;color:rgba(245,242,237,.34);font-size:1.5rem;font-weight:300;cursor:pointer}.tech-close:hover,.tech-close:focus-visible{color:var(--gold)}
-    .tech-detail-category,.tech-detail-type,.tech-detail-name,.tech-copy{position:relative;z-index:1}.tech-detail-category{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.62);margin-bottom:10px}.tech-detail-name{font-size:clamp(2.2rem,4.8vw,5.2rem);font-weight:300;letter-spacing:.11em;line-height:.95;text-transform:uppercase;margin-bottom:8px}.tech-detail-type{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.62);margin-bottom:30px}.tech-copy{display:grid;grid-template-columns:1fr 1fr;gap:34px;border-top:1px solid rgba(201,168,76,.15);padding-top:23px}.tech-copy h3{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}.tech-copy p{font-size:.68rem;line-height:1.75;letter-spacing:.035em;color:rgba(245,242,237,.82)}
-
-    #s2 .scrim{background:linear-gradient(to right,rgba(4,4,4,.94) 0%,rgba(4,4,4,.70) 34%,rgba(4,4,4,.18) 61%,rgba(4,4,4,0) 100%)}
-    .arc-layout{position:relative;z-index:2;height:100%;padding:96px 5vw 54px 7vw;display:grid;grid-template-columns:minmax(320px,36vw) minmax(440px,1fr);gap:4vw;align-items:center}
-    .arc-intro{align-self:center;max-width:500px}.arc-intro .arc-logo{width:min(330px,78%);margin:0 0 24px;filter:invert(1) hue-rotate(180deg)}.arc-title{font-size:clamp(1.45rem,2.35vw,2.55rem);font-weight:300;letter-spacing:.055em;line-height:1.08;text-transform:uppercase;margin-bottom:14px;text-shadow:0 1px 18px rgba(0,0,0,.75)}.arc-title .g{color:var(--gold)}
-    .arc-lede{max-width:420px;font-size:.68rem;line-height:1.75;letter-spacing:.035em;color:rgba(245,242,237,.8)}.arc-hint{margin-top:20px;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.25)}
-    .arc-stage{position:relative;min-width:0;height:min(72vh,650px);display:flex;align-items:center;justify-content:center}
-    .arc-orbit{position:relative;width:min(560px,48vw);aspect-ratio:1;border:1px solid rgba(201,168,76,.13);border-radius:50%;box-shadow:inset 0 0 90px rgba(201,168,76,.025),0 0 90px rgba(0,0,0,.22)}.arc-orbit::before,.arc-orbit::after{content:'';position:absolute;border-radius:50%;pointer-events:none}.arc-orbit::before{inset:12%;border:1px solid rgba(255,255,255,.055)}.arc-orbit::after{inset:28%;border:1px solid rgba(201,168,76,.12);box-shadow:0 0 35px rgba(201,168,76,.04)}
-    .arc-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:48%;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:11%;background:radial-gradient(circle at 42% 35%,rgba(34,31,24,.88),rgba(8,8,10,.84) 62%,rgba(4,4,5,.90));border:1px solid rgba(201,168,76,.24);box-shadow:0 25px 70px rgba(0,0,0,.46),0 0 45px rgba(201,168,76,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:border-color .2s,box-shadow .2s}.arc-core.active{border-color:rgba(201,168,76,.48);box-shadow:0 25px 70px rgba(0,0,0,.5),0 0 58px rgba(201,168,76,.12)}
-    .arc-core-kicker{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.66);margin-bottom:9px}.arc-core-job{font-size:clamp(1rem,1.65vw,1.7rem);font-weight:300;letter-spacing:.14em;text-transform:uppercase;line-height:1;margin-bottom:10px}.arc-core-systems{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);min-height:1.1em;margin-bottom:12px}.arc-core-copy{font-size:10px;line-height:1.55;letter-spacing:.025em;color:rgba(245,242,237,.78);max-width:240px}
-    .arc-job{position:absolute;z-index:5;appearance:none;border:1px solid rgba(255,255,255,.10);background:rgba(7,7,8,.54);color:rgba(245,242,237,.75);font:inherit;font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:10px 12px;min-width:86px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .18s,border-color .18s,background .18s,transform .18s,box-shadow .18s}.arc-job:hover,.arc-job:focus-visible,.arc-job.active{outline:none;color:var(--gold);border-color:rgba(201,168,76,.48);background:rgba(201,168,76,.075);box-shadow:0 10px 28px rgba(0,0,0,.30)}
-    .arc-job[data-arc-job="observe"]{left:50%;top:18px;transform:translateX(-50%)}.arc-job[data-arc-job="observe"]:hover,.arc-job[data-arc-job="observe"].active{transform:translateX(-50%) translateY(-2px)}
-    .arc-job[data-arc-job="know"]{right:-28px;top:21%}.arc-job[data-arc-job="attend"]{right:-34px;bottom:20%}.arc-job[data-arc-job="learn"]{left:58%;bottom:-18px;transform:translateX(-50%)}.arc-job[data-arc-job="learn"]:hover,.arc-job[data-arc-job="learn"].active{transform:translateX(-50%) translateY(-2px)}
-    .arc-job[data-arc-job="govern"]{left:7%;bottom:3%}.arc-job[data-arc-job="act"]{left:-30px;top:50%;transform:translateY(-50%)}.arc-job[data-arc-job="act"]:hover,.arc-job[data-arc-job="act"].active{transform:translateY(-50%) translateY(-2px)}
-    .arc-job[data-arc-job="account"]{left:6%;top:8%}
-    .arc-assembly-label{position:absolute;right:-12px;bottom:5px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.18);writing-mode:vertical-rl}
-    .co-nums{display:flex;gap:34px;margin:26px 0 6px;flex-wrap:wrap}.co-num span{display:block;font-size:clamp(1.5rem,2.2vw,2.1rem);font-weight:600;letter-spacing:.04em;color:var(--gold)}.co-num label{display:block;margin-top:6px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,242,237,.62)}
-    .deck-dl{margin-top:26px;display:flex;align-items:center;gap:16px;position:relative;z-index:3}
-    .deck-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.6)}
-    .deck-btn{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#0b0b0d;background:var(--gold);padding:12px 22px;border-radius:3px;text-decoration:none;transition:filter .18s,transform .18s}
-    .deck-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-    .flip-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:min(640px,100%);perspective:1200px}
-    .flip-card{appearance:none;border:0;background:none;padding:0;cursor:pointer;height:190px}
-    .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.1,.2,1)}
-    .flip-card:hover .flip-inner,.flip-card.pinned .flip-inner{transform:rotateY(180deg)}.flip-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}@media(hover:none){.flip-card:hover .flip-inner{transform:none}.flip-card.pinned .flip-inner{transform:rotateY(180deg)}}
-    .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .flip-front{background:linear-gradient(150deg,#0b0b0d,#050506);border:1px solid rgba(201,168,76,.55);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 18px rgba(201,168,76,.12),inset 0 1px 0 rgba(255,255,255,.06)}
-    .flip-front .ff-job{font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-    .flip-front .ff-tag{margin-top:10px;font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,242,237,.22)}
-    .flip-back{transform:rotateY(180deg);background:linear-gradient(150deg,rgba(20,19,15,.96),rgba(8,8,10,.94));border:1px solid rgba(201,168,76,.45);box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 26px rgba(201,168,76,.08);padding:12px;text-align:center}
-    .flip-back .fb-gears{width:64px;height:44px;margin-bottom:8px}
-    .flip-back .fb-systems{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-    .flip-back .fb-copy{font-size:9.5px;line-height:1.5;letter-spacing:.02em;color:rgba(245,242,237,.8);max-width:100%}
-    .flip-back .fb-stamp{margin-top:8px;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,168,76,.55)}
-    .gear-spin{transform-origin:center;transform-box:fill-box;animation:gearrot 9s linear infinite}
-    .gear-spin.rev{animation-direction:reverse;animation-duration:12s}
-    @keyframes gearrot{to{transform:rotate(360deg)}}
-    @media(max-width:768px){.flip-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.flip-card{height:170px}}
-    @media(max-width:1050px){.arc-layout{grid-template-columns:minmax(290px,39vw) 1fr;gap:2vw}.arc-orbit{width:min(500px,49vw)}.arc-job{min-width:76px;padding:9px 10px;font-size:10px}}
-    @media(max-width:900px){.tech-layout{grid-template-columns:minmax(300px,46vw) 1fr;padding-left:5vw;padding-right:3vw}.tech-glass{padding:30px}.tech-copy{grid-template-columns:1fr;gap:18px}.tech-detail-name{font-size:clamp(2rem,5.4vw,4rem)}.arc-layout{grid-template-columns:34vw 1fr;padding-left:5vw;padding-right:3vw}.arc-stage{height:min(66vh,540px)}.arc-core-copy{font-size:10px}.arc-job{font-size:10px;letter-spacing:.14em;min-width:68px}.arc-job[data-arc-job="know"]{right:-18px}.arc-job[data-arc-job="attend"]{right:-20px}.arc-job[data-arc-job="act"]{left:-18px}}
-    @media(max-width:768px){.tech-layout{display:block;padding:82px 22px 54px;overflow:auto}.bento{grid-template-columns:repeat(2,1fr)}.bento-hero{grid-column:span 2;min-height:220px}.bento-tile{min-height:110px;background:linear-gradient(150deg,rgba(18,18,20,.88),rgba(8,8,10,.78))}.bento-type{font-size:10px;line-height:1.45}.bento-name{font-size:1.15rem}.tech-index{max-width:none}.tech-title{font-size:clamp(1.5rem,7vw,2.2rem)}.tech-glass{width:100%;max-height:100%;overflow:auto;min-height:0;padding:28px 22px 24px;background:linear-gradient(145deg,rgba(12,12,14,.91),rgba(6,6,8,.86))}.tech-detail-name{font-size:clamp(2rem,12vw,4rem)}.tech-copy{grid-template-columns:1fr;gap:18px}.tech-hint{margin-bottom:14px}.arc-layout{display:block;padding:80px 20px 42px;overflow:auto}.arc-intro{max-width:none}.arc-intro .arc-logo{width:min(260px,70%);margin-bottom:12px}.arc-title{font-size:clamp(1.3rem,6vw,1.9rem);margin-bottom:9px}.arc-lede{font-size:10px;line-height:1.55}.arc-hint{margin-top:10px}.arc-stage{height:auto;min-height:420px;margin-top:14px}.arc-orbit{width:min(350px,82vw)}.arc-job{font-size:10px;min-width:62px;padding:8px 7px}.arc-job[data-arc-job="know"],.arc-job[data-arc-job="attend"]{right:-10px}.arc-job[data-arc-job="act"]{left:-10px}.arc-core{width:52%;padding:10%}.arc-core-job{font-size:clamp(.86rem,4vw,1.25rem)}.arc-core-systems{font-size:10px}.arc-core-copy{font-size:10px}.arc-assembly-label{display:none}}
-  #s3 .rr{cursor:pointer}#s3 .rr:focus-visible{outline:1px solid rgba(201,168,76,.5);outline-offset:3px}#s3 .rr.active{border-color:rgba(201,168,76,.42)}#s3 .rr.active .rn{color:var(--w)}#s3 .rr.active .rl{color:var(--gold)}#s3 .rr.active .re{width:28px}
-  #s3 .rr{display:flex;align-items:center;gap:14px}.rs{margin-left:auto;font-size:8.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:4px 10px;white-space:nowrap}
-  .res-sect{margin:18px 0 8px;font-size:9px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
-  .res-val{list-style:none;margin:0;padding:0}
-  .res-val li{position:relative;padding:4px 0 4px 18px;font-size:11.5px;line-height:1.55;color:rgba(245,242,237,.82)}
-  .res-val li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg)}
-  .res-pub{font-size:11.5px;line-height:1.7;color:rgba(245,242,237,.82)}
-  .res-pub #resPaper{display:block;color:var(--w);font-weight:600}
-  .res-pub .res-doi a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.4)}
-  .res-pub .res-date{display:block;color:rgba(245,242,237,.6);font-size:10.5px}
-    .res-modal{position:fixed;inset:0;z-index:1000;visibility:hidden;pointer-events:none}.res-modal.open{visibility:visible;pointer-events:auto}
-    .res-backdrop{position:absolute;inset:0;background:transparent}
-    .res-glass{position:absolute;right:3vw;top:50%;width:min(580px,calc(100vw - 40px));max-height:calc(100vh - 110px);overflow:auto;padding:36px 40px 32px;background:linear-gradient(145deg,rgba(16,16,20,.42),rgba(8,8,10,.30));border:1px solid rgba(201,168,76,.30);box-shadow:0 24px 64px rgba(0,0,0,.40),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(28px) saturate(130%);-webkit-backdrop-filter:blur(28px) saturate(130%);opacity:0;visibility:hidden;transform:translateY(-50%) translateX(28px);transition:opacity .25s ease,visibility .25s ease,transform .3s ease}.res-modal.open .res-glass{opacity:1;visibility:visible;transform:translateY(-50%)}.res-glass::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 88% 8%,rgba(201,168,76,.10),transparent 30%)}
-    .res-close{position:absolute;right:16px;top:12px;z-index:2;border:0;background:none;color:rgba(245,242,237,.34);font-size:1.5rem;font-weight:300;line-height:1;cursor:pointer;transition:color .2s}.res-close:hover,.res-close:focus-visible{color:var(--gold)}.res-close:focus-visible{outline:1px solid rgba(201,168,76,.5);outline-offset:2px}
-    .res-num{position:relative;z-index:1;font-size:10px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
-    .res-name{position:relative;z-index:1;font-size:clamp(1.45rem,3vw,2.2rem);font-weight:300;letter-spacing:.09em;text-transform:uppercase;color:var(--w);line-height:1.05}
-    .res-rule{position:relative;z-index:1;width:34px;height:1px;background:var(--gold);margin:20px 0 18px}
-    .res-thesis{position:relative;z-index:1;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);line-height:1.6;margin-bottom:14px}
-    .res-blurb{position:relative;z-index:1;font-size:.72rem;line-height:1.75;letter-spacing:.04em;color:rgba(245,242,237,.82);margin:0}
-    .res-link{position:relative;z-index:1;display:none;margin-top:14px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.45);padding-bottom:2px}
-    .res-link:hover{color:#fff;border-color:#fff}
-    .res-hint{margin-top:12px;font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:rgba(245,242,237,.24)}.res-tagline{margin-top:38px;max-width:340px;font-size:.82rem;font-weight:300;line-height:1.8;letter-spacing:.02em;color:rgba(245,242,237,.85);text-shadow:0 1px 10px rgba(0,0,0,.7)}
-    .res-codename{position:relative;z-index:1;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.55);margin-top:8px}
-    #s5 .ed-col{max-width:min(64vw,620px);justify-content:flex-start}#s5 h2{font-size:clamp(2rem,2.15vw,2.4rem);letter-spacing:.045em;line-height:1.1;margin-bottom:30px}#s5 .ed-sub{max-width:460px;font-size:clamp(.9rem,.95vw,1.05rem);font-weight:300;line-height:1.85;letter-spacing:.02em;text-transform:none;color:rgba(245,242,237,.85);text-shadow:0 1px 12px rgba(0,0,0,.7)}
-    .hero-sub{margin:18px 0 26px;max-width:440px;font-size:clamp(.95rem,1vw,1.1rem);font-weight:300;line-height:1.7;letter-spacing:.02em;color:rgba(245,242,237,.88)}#s5 .cap-line{font-size:.72rem;letter-spacing:.2em;line-height:1.9;font-weight:500;max-width:520px;margin-top:auto;margin-bottom:0}@media(max-width:768px){#s5 .ed-col{max-width:none}#s5 h2{font-size:clamp(1.4rem,5.5vw,1.9rem);margin-bottom:22px}#s5 .ed-sub{font-size:clamp(.9rem,3.4vw,1rem)}}
-    @media(max-width:768px){.res-modal{padding:16px}.res-glass{right:50%;width:min(560px,calc(100vw - 40px));max-height:86vh;padding:30px 22px 26px;transform:translate(50%,-50%) translateY(14px)}.res-modal.open .res-glass{transform:translate(50%,-50%)}.res-name{font-size:clamp(1.3rem,6vw,1.9rem)}.res-link{font-size:.6rem;letter-spacing:.1em}}
-    .prob-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:48px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 260ms ease,visibility 260ms ease}
-    .prob-modal.open{opacity:1;visibility:visible;pointer-events:auto}
-    .prob-backdrop{position:absolute;inset:0;background:rgba(2,2,3,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-    .prob-panel{position:relative;width:min(620px,94vw);max-height:88vh;overflow:auto;background:linear-gradient(145deg,rgba(12,12,14,.97),rgba(6,6,8,.95));border:1px solid rgba(201,168,76,.22);box-shadow:0 30px 90px rgba(0,0,0,.6);padding:46px 48px 34px}
-    .prob-panel::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,.04),transparent 30%),radial-gradient(circle at 88% 8%,rgba(201,168,76,.10),transparent 26%)}
-    .prob-close{position:absolute;right:20px;top:16px;z-index:2;border:0;background:none;color:rgba(245,242,237,.4);font-size:1.7rem;font-weight:300;line-height:1;cursor:pointer}
-    .prob-close:hover,.prob-close:focus-visible{color:var(--gold)}
-    .prob-kicker{position:relative;z-index:1;font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gd);margin-bottom:20px}
-    .prob-title{position:relative;z-index:1;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;line-height:1.15;letter-spacing:.01em;margin-bottom:18px;max-width:20ch}
-    .prob-copy{position:relative;z-index:1;font-size:.95rem;font-weight:300;line-height:1.75;letter-spacing:.02em;color:rgba(245,242,237,.85);margin-bottom:34px;max-width:44ch}
-    .prob-nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid rgba(201,168,76,.14);padding-top:22px}
-    .prob-prev,.prob-next{appearance:none;border:0;background:none;font:inherit;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,237,.75);cursor:pointer;padding:6px 0;transition:color .2s}
-    .prob-prev:hover,.prob-next:hover,.prob-prev:focus-visible,.prob-next:focus-visible{color:var(--gold);outline:none}
-    .prob-prev[disabled]{opacity:.25;cursor:default;pointer-events:none}
-    .prob-dots{display:flex;gap:8px}
-    .prob-dots i{width:5px;height:5px;border-radius:50%;background:rgba(245,242,237,.22);transition:background .2s}
-    .prob-dots i.on{background:var(--gold)}
-    .prob-cta{display:none;position:relative;z-index:1;margin-top:6px}
-    .prob-cta.show{display:inline-flex}
-    .krec-wrap{margin-top:0;max-width:1180px;padding:20px 24px;background:linear-gradient(150deg,rgba(18,18,20,.72),rgba(8,8,10,.5));border:1px solid rgba(201,168,76,.22);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-    .krec-eyebrow{font-size:10px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-    .krec-title{font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:300;letter-spacing:.05em;line-height:1.1;text-transform:uppercase;margin-bottom:6px}
-    .krec-sub{font-size:.68rem;line-height:1.5;letter-spacing:.03em;color:rgba(245,242,237,.7);margin-bottom:14px;max-width:60ch}
-    .krec-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
-    @media(max-width:768px){.krec-grid{grid-template-columns:1fr}}
-    .krec-card{background:rgba(4,4,6,.5);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
-    .krec-field{display:flex;flex-direction:column;gap:2px}
-    .krec-label{font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.7)}
-    .krec-val{font-size:.85rem;letter-spacing:.02em;color:var(--w)}
-    .krec-hint{cursor:help;border-bottom:1px dotted rgba(201,168,76,.6);position:relative}
-    .krec-hint:hover::after{content:attr(data-hint);position:absolute;left:0;bottom:130%;width:220px;background:#141416;border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:10px 12px;font-size:.68rem;font-weight:400;letter-spacing:.02em;text-transform:none;color:rgba(245,242,237,.9);z-index:50;line-height:1.5}
-    .krec-bar{height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin:6px 0}
-    .krec-fill{height:100%;width:90%;background:linear-gradient(90deg,#c9a84c,#e8c96a);border-radius:4px;transition:width .25s ease,background .25s ease}
-    .krec-status{margin-top:4px;padding:8px 12px;border-radius:8px;font-size:.74rem;letter-spacing:.03em;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);color:rgba(245,242,237,.9)}
-    .krec-status.dead{background:rgba(180,60,60,.08);border-color:rgba(180,60,60,.3)}
-    .krec-controls{display:flex;flex-direction:column;gap:12px;justify-content:center}
-    .krec-slider-row{display:flex;flex-direction:column;gap:4px}
-    .krec-slider-row label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,242,237,.75)}
-    .krec-slider-row input[type=range]{width:100%;accent-color:#c9a84c;cursor:pointer}
-    .krec-slider-row span:last-child{font-size:.8rem;color:var(--gold);letter-spacing:.05em}
-    .krec-note{font-size:.68rem;line-height:1.5;letter-spacing:.03em;color:rgba(245,242,237,.55);border-top:1px solid rgba(255,255,255,.07);padding-top:10px}
-    .krec-demo-slot{margin-top:28px;padding:28px;border:1px dashed rgba(201,168,76,.35);border-radius:12px;text-align:center;color:rgba(245,242,237,.4);font-size:.75rem;letter-spacing:.08em}
-    .krec-chain{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07)}
-    .krec-chain-label{font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:8px}
-    .krec-timeline{position:relative;height:52px;margin:0 8px}
-    .krec-rail{position:absolute;top:10px;left:0;right:0;height:2px;background:rgba(255,255,255,.12);border-radius:1px}
-    .krec-dot{position:absolute;top:10px;width:22px;height:22px;margin-left:-11px;margin-top:-11px;border-radius:50%;background:#141416;border:2px solid rgba(201,168,76,.5);cursor:pointer;padding:0;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-    .krec-dot:hover{transform:scale(1.25);border-color:#c9a84c}
-    .krec-dot.current{border-color:#e8c96a;box-shadow:0 0 16px rgba(201,168,76,.5);transform:scale(1.2)}
-    .krec-dot.dead{border-color:rgba(180,60,60,.7)}
-    .krec-dot-label{position:absolute;top:28px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.08em;color:rgba(245,242,237,.55);white-space:nowrap}
-    .krec-dot-state{position:absolute;top:40px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,168,76,.8);white-space:nowrap}
-    @media(max-width:768px){.prob-modal{padding:16px}.prob-panel{width:100%;max-height:92vh;padding:36px 24px 28px}.prob-title{font-size:clamp(1.35rem,6.4vw,1.9rem)}}
-  </style>
+<!DOCTYPE html><html class="dark" lang="en"><head>
+ <meta charset="utf-8">
+ <meta content="width=device-width, initial-scale=1.0" name="viewport">
+ <title>VOLSHi — Computational Law &amp; AI Compliance Infrastructure</title>
+ <link href="https://fonts.googleapis.com" rel="preconnect">
+ <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+ <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&amp;display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+ <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+ <script>
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ "ground-deep": "#080808",
+ "ground-subtle": "#0c0c0e",
+ "surface-dark": "#121215",
+ "surface-card": "#16161b",
+ "primary": "#c9a84c",
+ "primary-bright": "#e6c364",
+ "paper-light": "#f5f2ed",
+ "on-surface-variant": "#9ca3af",
+ "engine-muted": "#6b7280",
+ "ruby": "#ef4444",
+ "status-lime": "#22c55e",
+ "status-orange": "#f59e0b",
+ "tertiary": "#38bdf8"
+ },
+ fontFamily: {
+ "serif": ["Newsreader", "serif"],
+ "mono": ["IBM Plex Mono", "monospace"],
+ "sans": ["Inter", "sans-serif"]
+ }
+ }
+ }
+ }
+ </script>
+ <style>
+ body { background-color: #080808; }
+ .bg-grid {
+ background-size: 32px 32px;
+ background-image: 
+ linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+ linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+ }
+ .gold-glow {
+ background: radial-gradient(circle at 50% 10%, rgba(201, 168, 76, 0.12), transparent 60%);
+ }
+ .flip-card { perspective: 1000px; }
+ .flip-inner { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform-style: preserve-3d; }
+ .flip-card:hover .flip-inner, .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+ .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+ </style>
 </head>
-<body>
-<header id="hdr">
-  <div class="logo"><img id="wlogo" alt="VOLSHi" src="assets/volshilogowhite.png"></div>
-  <nav id="nav">
-    <a href="#problem" data-to="1">Problem</a>
-    <a href="#technology" data-to="2">Technology</a>
-    <a href="#krecord" data-to="3">K-Record</a>
-    <a href="#research" data-to="4">Research</a>
-    <a href="#company" data-to="5">Company</a>
-    <a href="#contact" data-to="6">Contact</a>
-  </nav>
-  <button class="mbtn" id="mbtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-<div id="stage">
-<div class="slide" id="s0">
-  <div class="sbg" id="bg0" style="background-image:url('assets/hero-face.jpg')"></div>
-  <div class="hov"></div>
-  <div class="home-col">
-    <div class="hero-card">
-    <div class="ey sa">VOLSHi&nbsp;/&nbsp;Compliance Infrastructure</div>
-    <h1 class="sb">Every Agent Action.<br><span class="g">On the Record.</span></h1>
-    <p class="hero-sub sc">Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.</p>
-    <a class="cta se" id="exploreSpan" href="#technology" data-to="1">Explore The Span &nbsp;→</a>
-    </div>
-  </div>
-  <div class="sbar sd"><span class="st">Human Experience</span><div class="ss"></div><span class="st">Understand</span><div class="ss"></div><span class="st">Learn</span><div class="ss"></div><span class="st">Authorize</span><div class="ss"></div><span class="st">Machine Intelligence</span></div>
-</div>
+<body class="bg-ground-deep font-sans text-[#e5e2e1] antialiased selection:bg-primary selection:text-black min-h-screen relative overflow-x-hidden"><script>if(window.innerWidth<768){location.replace('/mobile/');}</script>
 
-<div class="slide" id="s1">
-  <div class="sbg" id="bg1" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
-  <div class="scrim"></div>
-  <div class="arc-layout">
-    <section class="arc-intro">
-      <div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;The Problem</div>
-      <h2 class="arc-title sc">AI Makes Decisions<br><span class="g">It Can't Account For.</span></h2>
-      <p class="arc-lede sd">No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Flip the cards — the black box becomes plexiglass.</p>
-      <div class="arc-hint se">Hover to reveal · Click to hold</div>
-    </section>
-    <section class="arc-stage" aria-live="polite">
-      <div class="flip-grid" id="flipGrid"></div>
-    </section>
-  </div>
-</div>
-<div class="slide" id="s2">
-  <div class="sbg" id="bg2" style="background-image:url('assets/tech-glass-machine.webp')"></div>
-  <div class="scrim"></div>
-  <div class="tech-layout">
-    <section class="tech-index">
-      <div class="tech-eyebrow sa">VOLSHi&nbsp;/&nbsp;Technology</div>
-      <h2 class="tech-title sb">The Perfecta<br><span style="color:var(--gold)">Trifecta.</span></h2>
-      <p class="tech-lede sc">Three systems. One compliance story.</p>
-      <div class="trifecta sd">
-        <a class="tri-card" href="katie/">
-          <div class="tri-num">01</div>
-          <div class="tri-name">KATIE</div>
-          <div class="tri-role">Watches</div>
-          <p class="tri-copy">Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.</p>
-        </a>
-        <a class="tri-card" href="erie/">
-          <div class="tri-num">02</div>
-          <div class="tri-name">ERIE</div>
-          <div class="tri-role">Verifies</div>
-          <p class="tri-copy">Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.</p>
-        </a>
-        <a class="tri-card" href="elle/">
-          <div class="tri-num">03</div>
-          <div class="tri-name">ELLE</div>
-          <div class="tri-role">Persists</div>
-          <p class="tri-copy">The external learning loop that follows the user into whatever model they interact with. You never start from zero again.</p>
-        </a>
-      </div>
-      <div class="tech-hint se">Next: see the K-record in action →</div>
-    </section>
-    <div class="tech-modal" id="techModal" aria-hidden="true">
-      <div class="tech-modal-backdrop" id="techBackdrop"></div>
-      <div class="tech-detail" id="techDetail" aria-hidden="true" role="dialog" aria-modal="true">
-        <div class="tech-glass">
-          <button class="tech-close" id="techClose" type="button" aria-label="Close technology detail">×</button>
-          <div class="tech-detail-category" id="techCategory"></div>
-          <div class="tech-detail-name" id="techName"></div>
-          <div class="tech-detail-type" id="techType"></div>
-          <div class="tech-copy"><div><h3>What is it?</h3><p id="techWhat"></p></div><div><h3>What does it do?</h3><p id="techDoes"></p></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+ <div class="fixed inset-0 pointer-events-none bg-grid opacity-60 z-0"></div>
+ <div class="fixed top-0 left-0 right-0 h-[800px] pointer-events-none gold-glow z-0"></div>
 
-<div class="slide" id="s3">
-  <div class="sbg" id="bg3" style="background-image:url('assets/volshiswirlbkgd.png');background-position:center center"></div>
-  <div class="scrim"></div>
-  <div class="tech-layout">
-    <section class="tech-index" style="max-width:1240px">
-      <div class="krec-wrap sd" id="krecWrap" style="margin-top:0">
-        <div class="krec-head">
-          <div class="krec-eyebrow">Interactive · The K-Record</div>
-          <div class="krec-title">What the agent believed,<br><span style="color:var(--gold)">on the record.</span></div>
-          <p class="krec-sub">Drag the sliders. This is a live K-record entry — the same structure KATIE writes for every agent action.</p>
-        </div>
-        <div class="krec-grid">
-          <div class="krec-card">
-            <div class="krec-field"><span class="krec-label">Belief</span><span class="krec-val" id="kBelief">"The supplier invoice is legitimate."</span></div>
-            <div class="krec-field"><span class="krec-label">Held at <span class="krec-hint" data-hint="t = when it happened in the world">tⓘ</span></span><span class="krec-val" id="kT">2026-10-16 14:32:08 UTC</span></div>
-            <div class="krec-field"><span class="krec-label">Recorded at <span class="krec-hint" data-hint="k = when the system learned it — knowledge time">kⓘ</span></span><span class="krec-val" id="kK">k = 1042</span></div>
-            <div class="krec-field"><span class="krec-label">Authority <span class="krec-hint" data-hint="How much weight this belief carries. 100% = full trust. 0% = disproven — but it stays in the record.">ⓘ</span></span>
-              <div class="krec-bar"><div class="krec-fill" id="kFill"></div></div>
-              <span class="krec-val" id="kAuth">90%</span>
-            </div>
-            <div class="krec-field"><span class="krec-label">Action taken</span><span class="krec-val" id="kAction">Wired the payment.</span></div>
-            <div class="krec-status" id="kStatus">✓ Belief holds — action was justified.</div>
-          </div>
-          <div class="krec-controls">
-            <div class="krec-slider-row">
-              <label>Authority <span class="krec-hint" data-hint="Drag down to disprove the belief. Watch what happens to the record.">ⓘ</span></label>
-              <input type="range" id="kAuthSlider" min="0" max="100" value="90" step="10">
-              <span id="kAuthSliderVal">90%</span>
-            </div>
-            <div class="krec-slider-row">
-              <label>Knowledge time <span class="krec-hint" data-hint="Scrub through k. The record shows what was believed at every point — history doesn't move.">ⓘ</span></label>
-              <input type="range" id="kTimeSlider" min="1042" max="1050" value="1042" step="1">
-              <span id="kTimeSliderVal">k = 1042</span>
-            </div>
-            <div class="krec-note" id="kNote">This entry is append-only. Nothing here can be edited or deleted — only superseded.</div>
-          </div>
-        </div>
-        <!-- Supersedes chain: click a dot to jump to that k -->
-        <div class="krec-chain">
-          <div class="krec-chain-label">Supersedes chain — click a dot to revisit that moment</div>
-          <div class="krec-timeline" id="krecTimeline"><div class="krec-rail"></div></div>
-        </div>
-        <!-- Live demo: the CRM proof, embedded -->
-        <div class="krec-demo-slot" id="krecDemoSlot" style="padding:0;border:none;background:none">
-          <iframe src="katie/crm/" title="KATIE CRM demo — every field keeps its K-record"
-            style="width:100%;height:1250px;border:1px solid rgba(201,168,76,.35);border-radius:12px;background:#0c1211"
-            loading="lazy"></iframe>
-          <div style="margin-top:12px"><a href="katie/crm/" style="color:var(--gold)">Open the full demo &rarr;</a></div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
+ <!-- HEADER -->
+ <header class="fixed top-0 left-0 w-full z-50 bg-[#080808]/90 backdrop-blur-xl border-b border-white/[0.08]">
+ <div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+ <div class="flex items-center gap-4">
+ <a href="/" class="inline-flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM2L_Ie960OrFdrablFMbWNbIwMq84AZKpJhHDCPSCauO2u91p3-5Q9LFegqs-4xgcRj5pYVW8soVTVbrwFrRpoL2wAIJk_HAsUcx6w7Q2vZHKVIPiIv3s08pD071BvUiky3nkvjGhNeAoIhAwJX2uhR1V-2ip2XN1-zQ9Y3Gzkh2aHMrNMrlF6GtuMPVRJ7uarjSgCQEjngeMvknZXEe-h-KZLv3ifk7ptNChjQbwSILHwDgdb7AH5w" alt="VOLSHi HOME" class="h-8 md:h-9 w-auto object-contain block"></a>
+ <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full border border-status-lime/30 bg-[#121215] font-mono text-[10px] text-paper-light uppercase tracking-wider">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ <span>RECORD INTEGRITY VERIFIED</span>
+ </div>
+ <a class="hidden lg:inline-flex items-center gap-1 font-mono text-[11px] text-engine-muted hover:text-primary transition-colors border-l border-white/10 pl-3" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">
+ <span>DOI: 10.5281/zenodo.23137456</span>
+ <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+ </a>
+ </div>
 
-<div class="slide" id="s4">
-  <div class="sbg" id="bg4" style="background-image:url('assets/volshistarbkgd.png');background-position:center center"></div><div class="scrim scrim-narrow"></div>
-  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Research</div><h2 class="sb" style="font-size:clamp(1.5rem,2.4vw,2.6rem);margin-bottom:10px">The Work Ahead.</h2><p class="ed-sub sc" style="font-size:.70rem;margin-bottom:18px;max-width:300px">Intelligence is moving faster than the systems required to trust it.</p><div class="ri sd"><div class="rr" role="button" tabindex="0" data-res="1"><span class="rn">01</span><span class="rl">Temporal Memory</span><span class="rs">Validated</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="2"><span class="rn">02</span><span class="rl">Time-Addressed Storage</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="3"><span class="rn">03</span><span class="rl">Triadic Relations</span><span class="rs">In dossier</span><div class="re"></div></div><div class="rr" role="button" tabindex="0" data-res="4"><span class="rn">04</span><span class="rl">Knowledge Time</span><span class="rs">Validated</span><div class="re"></div></div></div><div class="res-hint se" id="resHint">Click to inspect</div><p class="res-tagline se">We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it’s strange and it matters, we’re already there.</p></div>
-<div class="res-modal" id="resModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="resName" aria-describedby="resBlurb">
-  <div class="res-backdrop"></div>
-  <div class="res-glass">
-    <button class="res-close" id="resClose" type="button" aria-label="Close research category">×</button>
-    <div class="res-num" id="resNum"></div>
-    <div class="res-name" id="resName"></div>
-    <div class="res-codename" id="resCodename"></div>
-    <div class="res-rule"></div>
-    <div class="res-thesis" id="resThesis"></div>
-    <div class="res-sect">Validation</div>
-    <ul class="res-val" id="resVal"></ul>
-    <div class="res-sect">Publication</div>
-    <div class="res-pub"><span id="resPaper"></span><span class="res-doi" id="resDoi"></span><span class="res-date" id="resDate"></span></div>
-    <p class="res-blurb" id="resBlurb"></p>
-    <a class="res-link" id="resLink" href="/katie/"></a>
-  </div>
-</div>
-</div>
-<div class="slide" id="s5">
-  <div class="sbg" id="bg5" style="background-image:url('assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp');background-position:70% 40%"></div><div class="scrim"></div>
-  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Company</div><h2 class="sb">COMPLIANCE<br>FOR <span style="color:var(--gold)">AI AGENTS.</span></h2><p class="ed-sub sc">VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.</p><p class="ed-sub sc">Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act mandates traceability by December 2027 — and every enterprise deploying agents is about to need the same thing: show your work.</p><p class="cap-line sd">Research Triangle Park, North Carolina.</p></div>
-  <div class="ibar se"><span class="in">Systems</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Research</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Infrastructure</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Governance</span><div class="il"></div><div class="ss" style="background:rgba(201,168,76,.14)"></div><div class="il"></div><span class="in">Autonomy</span></div>
-<div class="deck-dl se"><span class="deck-label">Pitch deck</span><a class="deck-btn" href="assets/volshi-pitch-deck.pdf" download>Download PDF</a></div><img class="inst-mark" id="imark" alt="VOLSHi" src="assets/volshilogowhite.png">
-</div>
-<div class="slide" id="s6">
-  <div class="sbg" id="bg6" style="background-image:url('assets/volshiswirlbkgd.png');background-position:60% 55%"></div><div class="scrim scrim-contact"></div>
-  <div class="ed-col"><div class="ed-eyebrow sa">VOLSHi&nbsp;/&nbsp;Contact</div><h2 class="sb">Make Agents<br>Accountable.</h2><p class="contact-secondary sc">The compliance layer the industry is about to need.</p><a class="contact-link sd" href="mailto:founder@volshi.com">Contact VOLSHi &nbsp;→</a><a class="contact-link invest-link sd" href="/invest/">Invest &nbsp;→</a><div class="close-seq se"><button class="ci" type="button"><span>Observe</span><em>We sense your systems as they are — execution, telemetry, evidence.</em></button><button class="ci" type="button"><span>Understand</span><em>Observation becomes traceable knowledge — every claim tied to its evidence.</em></button><button class="ci" type="button"><span>Decide</span><em>Attention and authority decide what deserves action — and what needs a human.</em></button><button class="ci" type="button"><span>Act</span><em>The system acts within its authority. Every action recorded, every crossing governed.</em></button><button class="ci" type="button"><span>Account</span><em>Everything is accounted for — what was believed, when, and why.</em></button></div></div><img class="contact-logo sd" src="assets/volshi-logo-clear.webp" alt="VOLSHi"><div class="legal sd">© 2026 VOLSHi. All rights reserved. &nbsp;·&nbsp; Research Triangle Park, North Carolina</div><img class="cwm" id="cwm" alt="VOLSHi" src="assets/volshilogowhite.png">
-</div>
-</div>
+ <div class="flex items-center gap-6 lg:gap-8">
+ <nav class="hidden md:flex items-center gap-6 lg:gap-8 h-16">
+ <a class="text-[13px] tracking-wide text-primary relative py-2 font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary" href="#hero">Home</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#the-problem">The System</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#k-record">KATIE</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#research">Research</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#company">Invest</a>
+ <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#contact">Contact</a>
+ </nav>
+ <div class="flex items-center gap-3">
+ <a class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-primary/50 text-primary bg-primary/10 hover:bg-primary hover:text-black transition-all font-mono text-[11px] uppercase tracking-wider font-semibold shadow-[0_0_12px_rgba(201,168,76,0.15)]" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">
+ Investor Inquiry
+ </a>
+ <div class="w-8 h-8 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-primary" title="Authenticated Node">
+ <span class="material-symbols-outlined text-[17px]">shield</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </header>
 
-<div class="prob-modal" id="probModal" aria-hidden="true">
-  <div class="prob-backdrop" id="probBackdrop"></div>
-  <div class="prob-panel" id="probPanel" role="dialog" aria-modal="true" aria-labelledby="probTitle" tabindex="-1">
-    <button class="prob-close" id="probClose" type="button" aria-label="Close problem walkthrough">×</button>
-    <div class="prob-kicker">The problem · <span id="probStep">1 / 6</span></div>
-    <h2 class="prob-title" id="probTitle"></h2>
-    <p class="prob-copy" id="probCopy"></p>
-    <div class="prob-nav">
-      <button class="prob-prev" id="probPrev" type="button">← Back</button>
-      <div class="prob-dots" id="probDots" aria-hidden="true"></div>
-      <button class="prob-next" id="probNext" type="button">Next →</button>
-    </div>
-    <a class="cta prob-cta" id="probCta" href="#technology" data-to="1">Explore The Span &nbsp;→</a>
-  </div>
-</div>
+ <main class="w-full pt-16 relative z-10">
+ <!-- HERO SECTION -->
+ <section class="relative w-full py-20 lg:py-28 overflow-hidden" id="hero">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-10">
+ <div class="flex items-center gap-3">
+ <span class="inline-block w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(201,168,76,0.9)]"></span>
+ <span class="font-mono text-[12px] uppercase tracking-[0.25em] text-primary font-semibold">VOLSHi / COMPLIANCE INFRASTRUCTURE</span>
+ <span class="font-mono text-[11px] text-engine-muted hidden sm:inline">:: REF:SLIDE_S0</span>
+ </div>
 
-<script>
-(() => {
-  'use strict';
-  const slides=Array.from(document.querySelectorAll('.slide')),navLinks=Array.from(document.querySelectorAll('#nav a[data-to]')),header=document.getElementById('hdr'),nav=document.getElementById('nav'),menuButton=document.getElementById('mbtn'),logo=document.querySelector('.logo');
-  const hashes=['home','problem','technology','krecord','research','company','contact'],duration=750;let current=0,locked=false;
-  const techData={
-    audit:{category:'Core',name:'Audit Trail',type:'Append-Only Action Record',what:'Every action an AI agent takes is written to an immutable record — what it did, when, and what it knew at the time.',does:'A complete, tamper-proof history of agent behavior. No more "the model changed" as an excuse.'},
-    beliefs:{category:'Core',name:'Belief Record',type:'Knowledge-State Capture',what:'Captures what the agent believed when it acted — its confidence, its justification, its evidence.',does:'Reconstruct not just what happened, but why the agent thought it was the right call.'},
-    evidence:{category:'Core',name:'Evidence Chain',type:'Claim-to-Evidence Linking',what:'Every claim stays tied to its supporting evidence, across sessions and model changes.',does:'Turns AI output from assertion into something auditable.'},
-    policy:{category:'Enforcement',name:'Policy Gates',type:'Pre-Action Authorization',what:'Consequential actions require approval — from policy rules, human operators, or both — before they execute.',does:'Stops the agent before it does something irreversible. Prevention, not forensics.'},
-    provenance:{category:'Enforcement',name:'Provenance',type:'Input Lineage Tracking',what:'Tracks every input to its source — which data, which system, which prior decision.',does:'When something goes wrong, trace it to the root instead of guessing.'},
-    replay:{category:'Review',name:'Replay',type:'Decision Reconstruction',what:'Reconstruct any past decision in full — inputs, beliefs, evidence, action.',does:'Incident review becomes investigation instead of speculation.'},
-    export:{category:'Review',name:'Regulator Export',type:'Compliance Reporting',what:'Generate compliance reports on demand, formatted for auditors and regulators.',does:'Turns the audit trail into the paperwork they actually ask for.'}
-  };
-  const techDetail=document.getElementById('techDetail'),techClose=document.getElementById('techClose'),techButtons=Array.from(document.querySelectorAll('.bento-tile[data-tech]')),techEls={category:document.getElementById('techCategory'),name:document.getElementById('techName'),type:document.getElementById('techType'),what:document.getElementById('techWhat'),does:document.getElementById('techDoes')};let techPinned=false,techTimer=null,activeTech=null;
-  function showTech(key,pin=false){const d=techData[key];if(!d||!techDetail)return;clearTimeout(techTimer);activeTech=key;if(pin)techPinned=true;techEls.category.textContent=d.category;techEls.name.textContent=d.name;techEls.type.textContent=d.type;techEls.what.textContent=d.what;techEls.does.textContent=d.does;techButtons.forEach(b=>b.classList.toggle('active',b.dataset.tech===key));techDetail.classList.add('open');techDetail.setAttribute('aria-hidden','false');document.getElementById('techModal').classList.add('open');document.getElementById('techModal').setAttribute('aria-hidden','false');}
-  function hideTech(force=false){if(!techDetail||(!force&&techPinned))return;techPinned=false;activeTech=null;techDetail.classList.remove('open');techDetail.setAttribute('aria-hidden','true');var tm=document.getElementById('techModal');if(tm){tm.classList.remove('open');tm.setAttribute('aria-hidden','true');}techButtons.forEach(b=>b.classList.remove('active'));}
-  function scheduleHide(){clearTimeout(techTimer);techTimer=setTimeout(()=>hideTech(false),110);}
-  techButtons.forEach(b=>{if(b.classList.contains('bento-cta')){b.addEventListener('click',()=>{var t=b.getAttribute('data-to');if(t)goTo(parseInt(t,10),true,true);});return;}b.addEventListener('mouseenter',()=>showTech(b.dataset.tech,false));b.addEventListener('focus',()=>showTech(b.dataset.tech,false));b.addEventListener('mouseleave',scheduleHide);b.addEventListener('click',e=>{e.preventDefault();const same=activeTech===b.dataset.tech&&techPinned;if(same)hideTech(true);else showTech(b.dataset.tech,true);});});
-  if(techDetail){techDetail.addEventListener('mouseenter',()=>clearTimeout(techTimer));techDetail.addEventListener('mouseleave',scheduleHide);}if(techClose)techClose.addEventListener('click',()=>hideTech(true));var tb=document.getElementById('techBackdrop');if(tb)tb.addEventListener('click',()=>hideTech(true));
+ <div class="flex flex-col gap-6 max-w-4xl">
+ <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-paper-light tracking-tight leading-[1.08]">
+ Every Agent Action. <br>
+ <span class="italic text-primary font-normal">On the Record.</span>
+ </h1>
+ <p class="text-base sm:text-lg lg:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+ Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.
+ </p>
+ </div>
 
-  const arcData={
-    observe:{job:'OBSERVE',systems:'Execution Monitoring',copy:'See what agents are doing in real time — every action captured as it happens.'},
-    know:{job:'KNOW',systems:'Belief Capture',copy:'Record what the agent believed when it acted — confidence, justification, evidence.'},
-    attend:{job:'GATE',systems:'Policy Enforcement',copy:'Consequential actions require approval before they execute. Prevention, not forensics.'},
-    learn:{job:'TRACK',systems:'Provenance',copy:'Trace every input to its source. When something goes wrong, find the root.'},
-    govern:{job:'PROVE',systems:'Evidence Chain',copy:'Every claim stays tied to its evidence — across sessions, across models.'},
-    act:{job:'REPLAY',systems:'Reconstruction',copy:'Rebuild any past decision in full. Incident review becomes investigation.'},
-    account:{job:'REPORT',systems:'Regulator Export',copy:'Compliance reports on demand. EU AI Act ready, US regulation coming.'},
-    aware:{job:'RETAIN',systems:'Immutable Record',copy:'The past stays on the record. What was believed, when, and why — unerasable.'}
-  };
-  const arcButtons=Array.from(document.querySelectorAll('.arc-job')),arcCore=document.getElementById('arcCore'),arcCoreKicker=document.getElementById('arcCoreKicker'),arcCoreJob=document.getElementById('arcCoreJob'),arcCoreSystems=document.getElementById('arcCoreSystems'),arcCoreCopy=document.getElementById('arcCoreCopy');let arcPinned=false,activeArc=null,arcTimer=null;
-  // Black-box flip cards: hover reveals the machinery underneath.
-  const flipGrid=document.getElementById('flipGrid');
-  function gearSVG(){return `<svg class="fb-gears" viewBox="0 0 64 44" aria-hidden="true"><g class="gear-spin" stroke="#c9a84c" fill="none"><circle cx="22" cy="22" r="12" stroke-width="7" stroke-dasharray="5 4"/><circle cx="22" cy="22" r="4" stroke-width="2"/></g><g class="gear-spin rev" stroke="#c9a84c" fill="none" opacity=".7"><circle cx="45" cy="22" r="8" stroke-width="5" stroke-dasharray="4 3"/><circle cx="45" cy="22" r="2.5" stroke-width="1.5"/></g></svg>`;}
-  if(flipGrid){Object.keys(arcData).forEach(key=>{const d=arcData[key],card=document.createElement('button');card.className='flip-card';card.type='button';card.setAttribute('aria-label',d.job+' — flip to reveal the machinery');card.innerHTML=`<div class="flip-inner"><div class="flip-face flip-front"><div class="ff-job">${d.job}</div><div class="ff-tag">Black box</div></div><div class="flip-face flip-back">${gearSVG()}<div class="fb-systems">${d.systems}</div><div class="fb-copy">${d.copy}</div><div class="fb-stamp">Plexiglass · revealed</div></div></div>`;card.addEventListener('click',()=>{card.classList.toggle('pinned');card.blur()});flipGrid.appendChild(card);});}
-  function resetArc(force=false){if(!force&&arcPinned)return;arcPinned=false;activeArc=null;clearTimeout(arcTimer);arcButtons.forEach(b=>b.classList.remove('active'));if(arcCore)arcCore.classList.remove('active');if(arcCoreKicker)arcCoreKicker.textContent='Compliance Infrastructure';if(arcCoreJob)arcCoreJob.textContent='VOLSHi';if(arcCoreSystems)arcCoreSystems.textContent='Every Action · On The Record';if(arcCoreCopy)arcCoreCopy.textContent='Each capability serves one purpose: making AI agent behavior auditable, accountable, and regulator-ready.';}
-  function showArc(key,pin=false){const d=arcData[key];if(!d)return;clearTimeout(arcTimer);activeArc=key;if(pin)arcPinned=true;arcButtons.forEach(b=>b.classList.toggle('active',b.dataset.arcJob===key));if(arcCore)arcCore.classList.add('active');if(arcCoreKicker)arcCoreKicker.textContent='Functional Job';if(arcCoreJob)arcCoreJob.textContent=d.job;if(arcCoreSystems)arcCoreSystems.textContent=d.systems;if(arcCoreCopy)arcCoreCopy.textContent=d.copy;}
-  function scheduleArcReset(){clearTimeout(arcTimer);arcTimer=setTimeout(()=>resetArc(false),110);}
-  arcButtons.forEach(b=>{b.addEventListener('mouseenter',()=>showArc(b.dataset.arcJob,false));b.addEventListener('focus',()=>showArc(b.dataset.arcJob,false));b.addEventListener('mouseleave',scheduleArcReset);b.addEventListener('click',e=>{e.preventDefault();const same=activeArc===b.dataset.arcJob&&arcPinned;if(same)resetArc(true);else showArc(b.dataset.arcJob,true);});});
-  if(arcCore){arcCore.addEventListener('mouseenter',()=>clearTimeout(arcTimer));arcCore.addEventListener('mouseleave',scheduleArcReset);}
+ <div class="flex flex-wrap items-center gap-4 pt-2">
+ <a class="inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-primary text-black font-mono text-[12px] font-bold uppercase tracking-wider hover:bg-primary-bright transition-all shadow-[0_0_24px_rgba(201,168,76,0.3)] hover:scale-[1.01]" href="#the-problem">
+ <span>Explore The Span</span>
+ <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+ </a>
+ <a class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/10 bg-[#16161b]/80 hover:bg-[#202028] text-paper-light font-mono text-[12px] uppercase tracking-wider transition-all backdrop-blur-md hover:border-primary/40" href="assets/volshi-pitch-deck.pdf" download="volshi-pitch-deck.pdf">
+ <span class="material-symbols-outlined text-primary text-[18px]">download</span>
+ <span>Download Pitch Deck</span>
+ </a>
+ </div>
 
-  const resData={
-    1:{num:'01',name:'Temporal Memory',codename:'Mysterion',thesis:'The law of how memory forms over time.',blurb:'How does a mind remember not just what happened, but when — relative to a now that never stops moving? Temporal Memory is the answer: a 41-experiment independent validation record and the bitemporal field law — the rule for how memory builds up over two timescales, fast and slow. Two clocks: tick time, the steady beat, and event time, when things happen.',paper:'The Bitemporal Field Law',doi:'10.5281/zenodo.23137456',doiUrl:'https://zenodo.org/records/23137456',published:'October 2026',status:'Validated',validation:['41 independent experiments (0–40)','Two-timescale memory formation confirmed','Dossier: Paper I of the VOLSHi evidence series']},
-    2:{num:'02',name:'Time-Addressed Storage',codename:'DPS',thesis:'Storage addressed by time, not place.',blurb:'Fragments of data spread across three pools, reassembled on the requester\u2019s side with XOR parity — fragments can be lost without the data being lost. The breakthrough: fragments are addressed by when they belong, not where they live. Time is the index.',paper:'DPS — Paper II of the VOLSHi evidence dossier',doi:null,doiUrl:null,published:'Dossier draft',status:'In dossier',validation:['3-pool fragment distribution','Requester-side XOR parity reassembly','Temporal addressing scheme']},
-    3:{num:'03',name:'Triadic Relations',codename:'TRIG',thesis:'Relations come in threes.',blurb:'Most systems model relationships as pairs: A connects to B. Triadic Relations models them as directed triads — A\u2192B, B\u2192C, C\u2192A — three-way relations as the basic building block of the system. Three is the secret to everything.',paper:'TRIG — Paper III of the VOLSHi evidence dossier',doi:null,doiUrl:null,published:'Dossier draft',status:'In dossier',validation:['Directed triads as the primitive relation','Three-way closure as the building block']},
-    4:{num:'04',name:'Knowledge Time',codename:'K-Time',thesis:'A third clock: when the system itself knew things.',blurb:'Ordinary memory tracks two clocks: tick time and event time. Knowledge Time adds a third — when the system itself knew things. What it knew at 9am and what it knows at noon are different memories. An append-only record of what was believed, when, and why means the past reads exactly as it was understood at the time — and the system changes its mind without rewriting its history.',paper:'The Tritemporal Field Law',doi:'10.5281/zenodo.23198458',doiUrl:'https://zenodo.org/records/23198458',published:'6 October 2026 · v1.8',status:'Validated',validation:['8/8 pre-registered frozen predictions hit','Blind independent validation, matched to 2 decimals','1,000+ researcher views','Priority: v1.0 root deposited 4 October 2026'],link:{href:'/katie/',label:'The Tritemporal Field Law — interactive'}}
-  };
-  const resRows=Array.from(document.querySelectorAll('.rr')),resModal=document.getElementById('resModal'),resClose=document.getElementById('resClose'),resBackdrop=document.querySelector('.res-backdrop'),resHint=document.getElementById('resHint'),resEls={num:document.getElementById('resNum'),name:document.getElementById('resName'),codename:document.getElementById('resCodename'),thesis:document.getElementById('resThesis'),blurb:document.getElementById('resBlurb'),link:document.getElementById('resLink'),val:document.getElementById('resVal'),paper:document.getElementById('resPaper'),doi:document.getElementById('resDoi'),date:document.getElementById('resDate')};let resOpen=false,resPinned=false,activeRes=null,resTimer=null;
-  const canHover=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if(resHint&&!canHover)resHint.textContent='Tap a strand to inspect';
-  function openRes(key,pin=false){const d=resData[key];if(!d||!resModal)return;clearTimeout(resTimer);activeRes=String(key);if(pin)resPinned=true;resEls.num.textContent=d.num;resEls.name.textContent=d.name;if(resEls.codename){resEls.codename.textContent=d.codename?('Internal codename \u00B7 '+d.codename):'';resEls.codename.style.display=d.codename?'':'none';}resEls.thesis.textContent=d.thesis;resEls.blurb.textContent=d.blurb;if(resEls.val){resEls.val.innerHTML=(d.validation||[]).map(v=>`<li>${v}</li>`).join('');}if(resEls.paper)resEls.paper.textContent=d.paper||'';if(resEls.doi){if(d.doi&&d.doiUrl){resEls.doi.innerHTML=`DOI: <a href="${d.doiUrl}" target="_blank" rel="noopener">${d.doi}</a>`;resEls.doi.style.display='';}else{resEls.doi.style.display='none';}}if(resEls.date)resEls.date.textContent=d.published||'';if(resEls.link){if(d.link&&d.link.href){resEls.link.href=d.link.href;resEls.link.textContent=d.link.label||d.link.href;resEls.link.style.display='inline-block';}else{resEls.link.style.display='none';}}resRows.forEach(r=>r.classList.toggle('active',r.dataset.res===String(key)));if(!resOpen){resOpen=true;resModal.classList.add('open');resModal.setAttribute('aria-hidden','false');}}
-  function closeRes(force=false){if(!resModal)return;if(resOpen&&!force&&resPinned)return;resOpen=false;resPinned=false;activeRes=null;clearTimeout(resTimer);resModal.classList.remove('open');resModal.setAttribute('aria-hidden','true');resRows.forEach(r=>r.classList.remove('active'));}
-  function scheduleResClose(){clearTimeout(resTimer);resTimer=setTimeout(()=>closeRes(false),140);}
-  resRows.forEach(r=>{const key=r.dataset.res;r.addEventListener('click',e=>{e.preventDefault();const same=activeRes===key&&resPinned;if(same)closeRes(true);else openRes(key,true);});r.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();const same=activeRes===key&&resPinned;if(same)closeRes(true);else openRes(key,true);}});});
-  document.querySelectorAll('.ci').forEach(c=>{c.addEventListener('click',()=>{const was=c.classList.contains('open');document.querySelectorAll('.ci.open').forEach(o=>o.classList.remove('open'));if(!was)c.classList.add('open');});});
-  if(resModal){resModal.addEventListener('mouseenter',()=>clearTimeout(resTimer));resModal.addEventListener('mouseleave',scheduleResClose);if(resBackdrop)resBackdrop.addEventListener('click',()=>closeRes(true));if(resClose)resClose.addEventListener('click',()=>closeRes(true));}
+ <!-- Telemetry HUD Card -->
+ <div class="mt-4 rounded-xl border border-white/10 bg-surface-dark/95 p-5 backdrop-blur-xl shadow-2xl">
+ <div class="flex items-center justify-between pb-3 border-b border-white/[0.08] mb-4">
+ <div class="flex items-center gap-2">
+ <span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+ <span class="font-mono text-[12px] tracking-wider text-paper-light font-semibold uppercase">IMMUTABLE LEDGER // K-NODE 01</span>
+ </div>
+ <div class="flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[10px] tracking-widest uppercase">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ ACTIVE LOGGING
+ </div>
+ </div>
+ <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs"><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">AUDIT ENGINE</span><span class="text-sm text-status-lime font-semibold">SYNCHRONIZED</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">SPECIFICATION</span><span class="text-sm text-primary font-semibold">APPEND-ONLY</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">ENFORCEMENT</span><span class="text-sm text-paper-light font-semibold">PRE-EXEC GATE</span></div><div class="flex flex-col gap-1 p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.04]"><span class="text-engine-muted uppercase text-[10px]">PROOF STATE</span><span class="text-sm text-status-lime font-semibold">VERIFIED // LOCKED</span></div></div>
+ </div>
 
-  function indexFromHash(){const hash=location.hash.replace('#','').toLowerCase(),index=hashes.indexOf(hash);return index>=0?index:0}function setNavState(index){navLinks.forEach((link,i)=>link.classList.toggle('on',i===index-1));if(header)header.classList.toggle('solid',index>0)}function closeMenu(){if(nav)nav.classList.remove('open');if(menuButton)menuButton.setAttribute('aria-expanded','false')}function normalizePositions(index){slides.forEach((slide,i)=>{if(i===index)return;slide.style.transition='none';slide.style.transform=i<index?'translateX(-100%)':'translateX(100%)';slide.classList.remove('active')})}
-  function goTo(index,pushHistory=true,animate=true){index=Number(index);if(!Number.isInteger(index)||index<0||index>=slides.length||index===current||locked)return;hideTech(true);resetArc(true);closeRes(true);const from=current,direction=index>from?1:-1,outgoing=slides[from],incoming=slides[index];locked=true;outgoing.classList.remove('active');if(animate){incoming.style.transition='none';incoming.style.transform=`translateX(${100*direction}%)`;void incoming.offsetWidth;outgoing.style.transition=`transform ${duration}ms cubic-bezier(0.76,0,0.24,1)`;incoming.style.transition=`transform ${duration}ms cubic-bezier(0.76,0,0.24,1)`;outgoing.style.transform=`translateX(${-100*direction}%)`;incoming.style.transform='translateX(0)'}else{incoming.style.transition='none';incoming.style.transform='translateX(0)';outgoing.style.transition='none';outgoing.style.transform=direction>0?'translateX(-100%)':'translateX(100%)'}incoming.classList.add('active');current=index;setNavState(index);closeMenu();if(pushHistory){const nextHash=index===0?location.pathname+location.search:`#${hashes[index]}`;history.pushState({slide:index},'',nextHash)}window.setTimeout(()=>{normalizePositions(current);slides[current].style.transition='none';slides[current].style.transform='translateX(0)';locked=false},animate?duration+80:0)}
-  const initial=indexFromHash();current=initial;slides.forEach((slide,i)=>{slide.style.transition='none';slide.style.transform=i<initial?'translateX(-100%)':i>initial?'translateX(100%)':'translateX(0)';slide.classList.toggle('active',i===initial)});setNavState(initial);history.replaceState({slide:initial},'',location.href);
-  document.addEventListener('click',event=>{const target=event.target.closest('[data-to]');if(!target)return;const index=Number(target.dataset.to);if(!Number.isInteger(index))return;event.preventDefault();goTo(index,true,true)});if(logo)logo.addEventListener('click',()=>goTo(0,true,true));if(menuButton&&nav)menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&techDetail&&techDetail.classList.contains('open')){hideTech(true);return}if(event.key==='Escape'&&activeArc){resetArc(true);return}if(event.key==='Escape'&&resOpen){closeRes(true);return}if(event.key==='ArrowRight')goTo(current+1,true,true);if(event.key==='ArrowLeft')goTo(current-1,true,true)});
-  let wheelAccum=0,wheelReset;document.addEventListener('wheel',event=>{const delta=Math.abs(event.deltaY)>=Math.abs(event.deltaX)?event.deltaY:event.deltaX;if(!delta)return;event.preventDefault();wheelAccum+=delta;clearTimeout(wheelReset);wheelReset=setTimeout(()=>{wheelAccum=0},180);if(Math.abs(wheelAccum)>80){const direction=wheelAccum>0?1:-1;wheelAccum=0;goTo(current+direction,true,true)}},{passive:false});let touchX=0,touchY=0;document.addEventListener('touchstart',event=>{if(!event.touches.length)return;touchX=event.touches[0].clientX;touchY=event.touches[0].clientY},{passive:true});document.addEventListener('touchend',event=>{if(!event.changedTouches.length)return;const dx=event.changedTouches[0].clientX-touchX,dy=event.changedTouches[0].clientY-touchY;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50)goTo(current+(dx<0?1:-1),true,true)},{passive:true});window.addEventListener('popstate',()=>{const index=indexFromHash();if(index!==current)goTo(index,false,true)});
-})();
-</script>
-<script>
-(function(){
-  'use strict';
-  var steps=[
-    {k:'01 · The problem',t:'AI makes decisions it can\u2019t account for.',c:'No record of what it believed, when it believed it, or why. The machine acts, and the reasoning behind the act is gone the moment it happens.'},
-    {k:'02 · The customer',t:'Anyone who puts an agent near anything real.',c:'Real money. Real safety. Real people. When an autonomous system touches something that matters, someone needs to ask it why — and get an answer.'},
-    {k:'03 · The frequency',t:'Every decision the machine makes.',c:'Not edge cases. Not incidents. Every single decision an agent takes is a decision nobody can audit.'},
-    {k:'04 · The current solution',t:'Logs and version control.',c:'Both rewritable. Both silent on the only question that matters: what was the machine justified in believing at the time it acted?'},
-    {k:'05 · The gap',t:'There is no past the machine can\u2019t outrun.',c:'So there is no accountability. You cannot hold a system responsible for a history it is free to rewrite.'},
-    {k:'06 · The answer',t:'We\u2019re building that history.',c:'A memory the machine can\u2019t rewrite — every belief timestamped with what it knew and what justified it. That is the span VOLSHi is building.',cta:true}
-  ];
-  var modal=document.getElementById('probModal'),panel=document.getElementById('probPanel'),
-      title=document.getElementById('probTitle'),
-      copy=document.getElementById('probCopy'),stepEl=document.getElementById('probStep'),
-      prev=document.getElementById('probPrev'),next=document.getElementById('probNext'),
-      cta=document.getElementById('probCta'),dots=document.getElementById('probDots'),
-      explore=document.getElementById('exploreSpan');
-  if(!modal||!panel)return;
-  var idx=0,opened=false,lastFocus=null;
-  steps.forEach(function(_,i){var d=document.createElement('i');if(i===0)d.className='on';dots.appendChild(d);});
-  var dotEls=Array.from(dots.children);
-  function render(){
-    var s=steps[idx];
-    stepEl.textContent=(idx+1)+' / '+steps.length;
-    title.textContent=s.t;copy.textContent=s.c;
-    prev.disabled=idx===0;
-    var last=idx===steps.length-1;
-    next.style.display=last?'none':'';
-    cta.classList.toggle('show',!!(last&&s.cta));
-    dotEls.forEach(function(d,i){d.classList.toggle('on',i===idx);});
-  }
-  function open(){
-    if(opened)return;opened=true;idx=0;render();
-    lastFocus=document.activeElement;
-    modal.classList.add('open');modal.setAttribute('aria-hidden','false');
-    document.body.classList.add('modal-open');
-    setTimeout(function(){panel.focus({preventScroll:true});},60);
-  }
-  function close(){
-    if(!opened)return;opened=false;
-    modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
-    document.body.classList.remove('modal-open');
-    if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
-  }
-  function go(d){idx=Math.max(0,Math.min(steps.length-1,idx+d));render();}
-  document.getElementById('probClose').addEventListener('click',close);
-  document.getElementById('probBackdrop').addEventListener('click',close);
-  prev.addEventListener('click',function(){go(-1);});
-  next.addEventListener('click',function(){go(1);});
-  if(cta)cta.addEventListener('click',function(){close();});
-  // Explore the Span opens the problem walkthrough; the walkthrough ends at the machines.
-  if(explore)explore.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();open();});
-  // Keep slide-deck gestures from firing while the walkthrough is open.
-  ['wheel','touchstart','touchend'].forEach(function(ev){
-    modal.addEventListener(ev,function(e){if(opened)e.stopPropagation();},{passive:true});
-  });
-  modal.addEventListener('keydown',function(e){
-    if(!opened)return;
-    if(e.key==='Escape'){e.stopPropagation();close();}
-    else if(e.key==='ArrowRight'){e.stopPropagation();go(1);}
-    else if(e.key==='ArrowLeft'){e.stopPropagation();go(-1);}
-  });
-  document.addEventListener('keydown',function(e){
-    if(opened&&e.key==='Escape'&&!modal.contains(e.target))close();
-  });
-})();
-</script>
-<script>
-(function(){
-  'use strict';
-  // K-record entries: the supersedes chain for the invoice belief
-  var entries=[
-    {k:1042,op:'ASSERT',state:'TRUSTED',authority:90,belief:'"The supplier invoice is legitimate."',action:'Wired the payment.'},
-    {k:1045,op:'CHALLENGE',state:'CONTESTED',authority:40,belief:'"The supplier invoice is legitimate."',action:'Wired the payment. Flag raised on metadata.'},
-    {k:1048,op:'REVOKE',state:'DISPROVEN',authority:0,belief:'"The supplier invoice is legitimate."',action:'Wired the payment. Invoice confirmed fraudulent.'}
-  ];
-  var authSlider=document.getElementById('kAuthSlider'),timeSlider=document.getElementById('kTimeSlider');
-  if(!authSlider||!timeSlider)return;
-  var authVal=document.getElementById('kAuthSliderVal'),timeVal=document.getElementById('kTimeSliderVal'),
-      fill=document.getElementById('kFill'),auth=document.getElementById('kAuth'),
-      kK=document.getElementById('kK'),status=document.getElementById('kStatus'),note=document.getElementById('kNote'),
-      belief=document.getElementById('kBelief'),action=document.getElementById('kAction'),
-      timeline=document.getElementById('krecTimeline');
-  var kMin=1042,kMax=1050;
-  // Find the entry active at knowledge-time k
-  function entryAt(k){var found=entries[0];entries.forEach(function(e){if(e.k<=k)found=e});return found;}
-  // Build the chain dots
-  function buildChain(){
-    if(!timeline)return;
-    timeline.innerHTML='<div class="krec-rail"></div>';
-    entries.forEach(function(e){
-      var pct=((e.k-kMin)/(kMax-kMin))*100;
-      var dot=document.createElement('button');dot.type='button';dot.className='krec-dot'+(e.authority===0?' dead':'');
-      dot.style.left=pct+'%';dot.title='k '+e.k+' · '+e.state;dot.setAttribute('aria-label',dot.title);
-      dot.addEventListener('click',function(){timeSlider.value=e.k;authSlider.value=e.authority;render();});
-      var lab=document.createElement('span');lab.className='krec-dot-label';lab.style.left=pct+'%';lab.textContent='k'+e.k;
-      var st=document.createElement('span');st.className='krec-dot-state';st.style.left=pct+'%';st.textContent=e.state;
-      timeline.appendChild(dot);timeline.appendChild(lab);timeline.appendChild(st);
-    });
-  }
-  function render(){
-    var k=parseInt(timeSlider.value,10),e=entryAt(k),a=e.authority;
-    authSlider.value=a;
-    authVal.textContent=a+'%';timeVal.textContent='k = '+k;
-    auth.textContent=a+'%';kK.textContent='k = '+k;
-    belief.textContent=e.belief;action.textContent=e.action;
-    fill.style.width=a+'%';
-    if(a===0){fill.style.background='rgba(180,60,60,.7)';}
-    else if(a<50){fill.style.background='linear-gradient(90deg,#a8823c,#c9a84c)';}
-    else{fill.style.background='linear-gradient(90deg,#c9a84c,#e8c96a)';}
-    // Highlight the current dot
-    if(timeline){Array.from(timeline.querySelectorAll('.krec-dot')).forEach(function(d,i){d.classList.toggle('current',entries[i]===e);});}
-    if(a===0){
-      status.textContent='✕ Belief disproven at k '+e.k+' — authority is zero. The record keeps it as history.';
-      status.classList.add('dead');
-      note.textContent='This is the whole point: the invoice was fraudulent, but the wire already happened. Without this record, there is no accountability. With it, there is.';
-    }else if(a<50){
-      status.textContent='⚠ Authority collapsing at k '+e.k+' — the belief is losing weight.';
-      status.classList.remove('dead');
-      note.textContent='Authority is graded, not binary. A belief can weaken before it dies — and every step is timestamped.';
-    }else{
-      status.textContent='✓ Belief holds at k '+e.k+' — action was justified.';
-      status.classList.remove('dead');
-      note.textContent='This entry is append-only. Nothing here can be edited or deleted — only superseded.';
-    }
-  }
-  authSlider.addEventListener('input',function(){var k=parseInt(timeSlider.value,10);var e=entryAt(k);timeSlider.value=e.k;render();});
-  timeSlider.addEventListener('input',render);
-  buildChain();render();
-})();
-</script>
-<script>
-(function(){
-  var logo=document.querySelector('.contact-logo'),clicks=0,timer=null;
-  if(!logo)return;
-  logo.title='';
-  logo.addEventListener('click',function(){
-    clicks++;
-    clearTimeout(timer);
-    timer=setTimeout(function(){clicks=0},600);
-    if(clicks>=3){
-      clicks=0;
-      var w=window.open('','_blank','width=420,height=340');
-      w.document.write('<!doctype html><html><head><title>🥚</title><style>body{background:#060607;color:#f5f2ed;font-family:Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;gap:18px}a{color:#c9a84c;font-size:18px;text-decoration:none;border:1px solid rgba(201,168,76,.45);padding:14px 32px;border-radius:999px}a:hover{background:rgba(201,168,76,.12)}p{opacity:.4;font-size:12px}</style></head><body><p>you found it.</p><a href="/mansplainer/">Mansplainer →</a><a href="/bullshit/">Is This Bullshit? →</a></body></html>');
-      w.document.close();
-    }
-  });
-})();
-</script>
-</body>
-</html>
+ <!-- Ticker -->
+ <div class="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-engine-muted">
+ <div class="flex items-center gap-2">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span class="text-paper-light uppercase tracking-wider">STATUTORY ENGINE ONLINE</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-2 text-on-surface-variant text-[11px]">
+ <span class="text-paper-light">Human Experience</span>
+ <span class="text-primary">—</span>
+ <span>Understand</span>
+ <span class="text-primary">—</span>
+ <span>Learn</span>
+ <span class="text-primary">—</span>
+ <span>Authorize</span>
+ <span class="text-primary">—</span>
+ <span class="text-primary font-semibold">Machine Intelligence</span>
+ </div>
+ <div class="tracking-widest uppercase text-[10px]">P. 001 // RTP METHOD</div>
+ </div>
+ </div>
+ </section>
+
+ <!-- THE PROBLEM & 8 PLEXIGLASS FLIP CARDS -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="the-problem">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <div class="flex items-center gap-2">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / THE PROBLEM</span>
+ </div>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ AI Makes Decisions It Can't Account For.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Flip the cards — the black box becomes plexiglass.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-primary/80 pt-1">
+ <span class="material-symbols-outlined text-[16px]">touch_app</span>
+ <span>Hover card to reveal · Click to hold plexiglass</span>
+ </div>
+ </div>
+
+ <!-- 8 Cards -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+ <!-- 1. OBSERVE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">01</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">OBSERVE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">visibility_off</span>
+ <span>Unmonitored runtime</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">settings</span>
+ <span class="uppercase tracking-wider font-semibold">Execution Monitoring</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ See what agents are doing in real time — every action captured as it happens.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 2. KNOW -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">02</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">KNOW</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">psychology_alt</span>
+ <span>Silent inferences</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">psychology</span>
+ <span class="uppercase tracking-wider font-semibold">Belief Capture</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Record what the agent believed when it acted — confidence, justification, evidence.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 3. GATE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">03</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">GATE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">lock_open</span>
+ <span>Unvetted execution</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">shield</span>
+ <span class="uppercase tracking-wider font-semibold">Policy Enforcement</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Consequential actions require approval before they execute. Prevention, not forensics.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 4. TRACK -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">04</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">TRACK</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">route</span>
+ <span>Untracked sources</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">alt_route</span>
+ <span class="uppercase tracking-wider font-semibold">Provenance</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Trace every input to its source. When something goes wrong, find the root.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 5. PROVE -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">05</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">PROVE</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">link_off</span>
+ <span>Unlinked assertions</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">link</span>
+ <span class="uppercase tracking-wider font-semibold">Evidence Chain</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Every claim stays tied to its evidence — across sessions, across models.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 6. REPLAY -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">06</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">REPLAY</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">replay</span>
+ <span>Non-reproducible</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">history</span>
+ <span class="uppercase tracking-wider font-semibold">Reconstruction</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Rebuild any past decision in full. Incident review becomes investigation.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 7. REPORT -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">07</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">REPORT</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">description</span>
+ <span>Manual audits</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">assignment_turned_in</span>
+ <span class="uppercase tracking-wider font-semibold">Regulator Export</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ Compliance reports on demand. EU AI Act ready, US regulation coming.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- 8. RETAIN -->
+ <div class="flip-card h-64 cursor-pointer" onclick="this.classList.toggle('is-flipped')">
+ <div class="flip-inner relative w-full h-full">
+ <div class="absolute inset-0 rounded-xl bg-surface-card border border-white/[0.08] p-5 flex flex-col justify-between backface-hidden shadow-xl hover:border-primary/40 transition-colors">
+ <div class="flex justify-between items-center font-mono text-xs text-engine-muted">
+ <span class="font-bold text-primary">08</span>
+ <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] uppercase">BLACK BOX</span>
+ </div>
+ <div class="font-serif text-2xl text-paper-light tracking-wide uppercase">RETAIN</div>
+ <div class="flex items-center gap-1.5 font-mono text-xs text-ruby">
+ <span class="material-symbols-outlined text-[15px]">delete_sweep</span>
+ <span>Mutable records</span>
+ </div>
+ </div>
+ <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="flex justify-between items-center text-primary font-mono text-xs">
+ <span class="material-symbols-outlined text-[18px]">lock</span>
+ <span class="uppercase tracking-wider font-semibold">Immutable Record</span>
+ </div>
+ <p class="text-sm text-paper-light leading-snug">
+ The past stays on the record. What was believed, when, and why — unerasable.
+ </p>
+ <div class="flex items-center gap-2 font-mono text-xs text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ <span>Plexiglass · revealed</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- TECHNOLOGY & THE PERFECTA TRIFECTA -->
+ <section class="relative w-full py-24 bg-ground-deep" id="technology">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / TECHNOLOGY</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ The Perfecta Trifecta.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant">
+ Three systems. One compliance story.
+ </p>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <!-- KATIE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-primary/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+ <span class="font-mono text-xs text-primary uppercase tracking-widest font-semibold">01 // KATIE — WATCHES</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Telemetry: Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">OBSERVATION ENGINE</span>
+ <span class="text-primary font-semibold">APPEND-ONLY</span>
+ </div>
+ </div>
+
+ <!-- ERIE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-tertiary/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+ <span class="font-mono text-xs text-tertiary uppercase tracking-widest font-semibold">02 // ERIE — VERIFIES</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Grounding: Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">VERIFIED RETRIEVAL</span>
+ <span class="text-tertiary font-semibold">ZERO-HALLUCINATION</span>
+ </div>
+ </div>
+
+ <!-- ELLE -->
+ <div class="rounded-xl bg-surface-card border border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden group hover:border-status-lime/50 transition-all">
+ <div class="flex flex-col gap-4 z-10">
+ <div class="flex items-center gap-2.5">
+ <span class="w-2.5 h-2.5 rounded-full bg-status-lime"></span>
+ <span class="font-mono text-xs text-status-lime uppercase tracking-widest font-semibold">03 // ELLE — PERSISTS</span>
+ </div>
+ <p class="text-sm text-paper-light leading-relaxed">
+ Continuity: The external learning loop that follows the user into whatever model they interact with. You never start from zero again.
+ </p>
+ </div>
+ <div class="pt-6 mt-6 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono z-10">
+ <span class="text-engine-muted uppercase">PERSISTENT LOOP</span>
+ <span class="text-status-lime font-semibold">STATE-INVARIANT</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- K-RECORD DUAL-PANEL DESKTOP RIG -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="k-record">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <div class="flex items-center gap-3">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">INTERACTIVE FORENSIC REPLAY // AUDIO HAPTIC READY</span>
+ <span class="px-2 py-0.5 rounded-full border border-status-lime/30 bg-[#121215] font-mono text-[10px] text-status-lime uppercase tracking-widest flex items-center gap-1.5">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ SYNTH ACTIVE
+ </span>
+ </div>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ What the agent believed, on the record.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Inspect live cryptographic snapshot at epoch <span class="font-mono text-primary font-semibold">k = 1042</span>. Scrub continuously or tap states to simulate chain progression.
+ </p>
+ </div>
+
+ <!-- DUAL-PANEL RIG -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+ <!-- Left: Scrubber Controls -->
+ <div class="lg:col-span-5 flex flex-col gap-6 p-6 rounded-xl bg-surface-card border border-white/[0.08] shadow-2xl backdrop-blur-xl">
+ <div class="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+ <div class="flex items-center gap-2">
+ <span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+ <span class="font-mono text-xs text-paper-light uppercase tracking-wider font-semibold">Control Rig · Epoch Inspector</span>
+ </div>
+ <span class="font-mono text-[10px] text-primary px-2 py-0.5 rounded bg-primary/10 border border-primary/20 font-bold">LIVE SIMULATOR</span>
+ </div>
+
+ <!-- Horizontal Slider -->
+ <div class="flex flex-col gap-3">
+ <div class="flex justify-between items-center">
+ <label class="font-mono text-xs text-on-surface-variant uppercase flex items-center gap-1.5" for="k-slider">
+ <span>Continuous Scrubber</span>
+ <span class="text-engine-muted text-[11px] font-mono">(k=1042 … 1050)</span>
+ </label>
+ <span class="px-2.5 py-0.5 rounded bg-[#1e1e24] font-mono text-xs text-primary font-bold border border-white/5" id="step-badge">STEP: 1042 / 1050</span>
+ </div>
+ <input class="w-full h-2.5 bg-[#202028] rounded-lg appearance-none cursor-ew-resize accent-primary" id="k-slider" max="1050" min="1042" step="1" type="range" value="1042">
+ 
+ <!-- State banner -->
+ <div class="p-3 rounded-lg bg-[#0a0a0c] border border-white/[0.06] flex items-start gap-3 mt-2">
+ <span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5" id="status-icon">check_circle</span>
+ <div class="flex flex-col gap-0.5">
+ <span class="font-mono text-xs uppercase tracking-wider text-paper-light font-semibold" id="status-header">State at k = 1042</span>
+ <p class="text-xs leading-relaxed text-on-surface-variant" id="status-desc">✓ Belief holds — action was justified.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Meter -->
+ <div class="flex flex-col gap-2 pt-2 border-t border-white/[0.08]">
+ <div class="flex justify-between items-center">
+ <span class="font-mono text-xs text-on-surface-variant uppercase">Authority / Confidence Weight</span>
+ <span class="font-mono text-sm text-primary font-bold" id="auth-val">90%</span>
+ </div>
+ <div class="w-full h-2 rounded bg-[#202028] overflow-hidden">
+ <div class="h-full bg-primary transition-all duration-300 rounded" id="auth-bar" style="width: 90%;"></div>
+ </div>
+ <div class="flex justify-between font-mono text-[10px] text-engine-muted">
+ <span>0% (Disproven)</span>
+ <span>40% (Contested)</span>
+ <span>90% (Confirmed)</span>
+ </div>
+ </div>
+
+ <!-- Snap Buttons -->
+ <div class="flex flex-col gap-3 pt-3 border-t border-white/[0.08]">
+ <span class="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">Jump to Chain Sequence Nodes</span>
+ <div class="grid grid-cols-3 gap-2">
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-primary/50 text-center flex flex-col gap-1 transition-all ring-1 ring-primary/80" id="btn-1042" onclick="setStep(1042)">
+ <span class="text-primary font-bold text-xs font-mono">k 1042</span>
+ <span class="text-primary/90 text-[10px] font-mono">ASSERT (90%)</span>
+ </button>
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-white/5 hover:border-status-orange/50 text-center flex flex-col gap-1 transition-all" id="btn-1045" onclick="setStep(1045)">
+ <span class="text-status-orange font-bold text-xs font-mono">k 1045</span>
+ <span class="text-status-orange/90 text-[10px] font-mono">CHALLENGE (40%)</span>
+ </button>
+ <button class="px-2 py-2.5 rounded-lg bg-[#141418] border border-white/5 hover:border-ruby/50 text-center flex flex-col gap-1 transition-all" id="btn-1048" onclick="setStep(1048)">
+ <span class="text-ruby font-bold text-xs font-mono">k 1048</span>
+ <span class="text-ruby/90 text-[10px] font-mono">REVOKE (0%)</span>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Right: Sealed Receipt -->
+ <div class="lg:col-span-7 flex flex-col rounded-xl bg-surface-dark border border-white/[0.08] p-6 lg:p-8 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+ <div class="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+ <div class="flex items-center gap-3">
+ <span class="w-2.5 h-2.5 rounded-full bg-status-lime shadow-[0_0_8px_rgba(34,197,94,0.8)]" id="receipt-dot"></span>
+ <span class="font-mono text-xs tracking-wider text-paper-light font-semibold uppercase">SEALED K-RECORD RECEIPT // #KR-2026-X1</span>
+ </div>
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[11px] tracking-wider font-semibold" id="receipt-badge">
+ TRUSTED
+ </span>
+ </div>
+
+ <!-- Values -->
+ <div class="py-6 flex flex-col gap-4 font-mono text-xs">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Recorded Statement:</span>
+ <span class="text-paper-light font-semibold text-sm">"The supplier invoice is legitimate."</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Held at (t):</span>
+ <span class="text-on-surface-variant">2026-10-16 14:32:08 UTC</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Recorded at (k):</span>
+ <span class="text-primary font-bold" id="receipt-k">k = 1042</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px]">Authority Metric:</span>
+ <span class="font-bold text-primary text-sm" id="receipt-auth-tag">90% [CONFIRMED_HIGH]</span>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-start justify-between py-2 border-b border-white/[0.04] gap-1">
+ <span class="text-engine-muted uppercase text-[11px] flex-shrink-0">Action Executed:</span>
+ <div class="text-right">
+ <div class="text-paper-light font-semibold" id="receipt-action">Wired the payment. ($248,500.00 USD)</div>
+ <div class="text-on-surface-variant text-[11px] pt-0.5" id="receipt-action-sub">✓ Belief holds — action was justified.</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="p-3.5 rounded-lg bg-[#0a0a0c] border border-white/[0.06] flex items-center gap-2.5 text-xs text-on-surface-variant mb-6">
+ <span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+ <span class="italic text-[11px]">"This entry is append-only. Nothing here can be edited or deleted — only superseded."</span>
+ </div>
+
+ <div class="p-4 rounded-lg bg-surface-card border border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+ <div class="flex items-center gap-2 text-engine-muted"><span class="text-engine-muted uppercase tracking-wider text-[11px]">RECEIPT STATUS:</span><span class="text-primary font-semibold">APPEND-ONLY IMMUTABLE</span></div>
+ <div class="flex items-center gap-2">
+ <span class="px-3 py-1.5 rounded-md bg-[#22222a] text-paper-light text-[11px] border border-white/10 flex items-center gap-1.5">
+ <span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+ <span>Signature Verified</span>
+ </span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- RESEARCH PREVIEW -->
+ <section class="relative w-full py-24 bg-ground-deep" id="research">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / RESEARCH</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ The Work Ahead.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Intelligence is moving faster than the systems required to trust it.
+ </p>
+ </div>
+
+ <div class="flex flex-col gap-3">
+ <!-- 01 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">01</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Temporal Memory</div>
+ <div class="text-xs text-on-surface-variant">Monotonic chronological boundary verification</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime border border-status-lime/20 font-mono text-xs">Validated</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23137456</span>
+ </div>
+ </div>
+
+ <!-- 02 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">02</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Time-Addressed Storage</div>
+ <div class="text-xs text-on-surface-variant">Coordinate space keyed to verified epoch intervals</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-mono text-xs">In dossier</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Ref: RTP-ARC-02</span>
+ </div>
+ </div>
+
+ <!-- 03 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">03</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Triadic Relations</div>
+ <div class="text-xs text-on-surface-variant">Three-node semiotic bindings for unambiguous belief tracking</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-mono text-xs">In dossier</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Ref: RTP-ARC-03</span>
+ </div>
+ </div>
+
+ <!-- 04 -->
+ <div class="p-5 rounded-xl bg-surface-card border border-white/[0.08] hover:border-primary/40 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+ <div class="flex items-center gap-4">
+ <span class="font-mono text-sm text-primary font-bold">04</span>
+ <div>
+ <div class="text-base sm:text-lg text-paper-light font-semibold">Knowledge Time</div>
+ <div class="text-xs text-on-surface-variant">Bitemporal grounding for statutory audit compliance</div>
+ </div>
+ </div>
+ <div class="flex items-center gap-3">
+ <span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime border border-status-lime/20 font-mono text-xs">Validated</span>
+ <span class="font-mono text-xs text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23198458</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- COMPANY & INVEST -->
+ <section class="relative w-full py-24 bg-ground-subtle/80 border-t border-b border-white/[0.06]" id="company">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col gap-4 max-w-4xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / COMPANY</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light tracking-tight font-normal">VOLSHi: COMPLIANCE FOR AI AGENTS.</h2>
+ </div>
+
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+ <div class="lg:col-span-8 flex flex-col gap-6 text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ <p>
+ VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.
+ </p>
+ <p>
+ Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act mandates traceability by December 2027 — and every enterprise deploying agents is about to need the same thing: show your work.
+ </p>
+ <div class="pt-2 flex items-center gap-2.5 text-paper-light font-mono text-xs tracking-wider">
+ <span class="material-symbols-outlined text-primary text-[18px]">pin_drop</span>
+ <span>Research Triangle Park, North Carolina.</span>
+ </div>
+ </div>
+
+ <!-- Vettable Card -->
+ <div class="lg:col-span-4 rounded-xl bg-surface-card border border-white/[0.08] p-6 shadow-2xl flex flex-col gap-6 backdrop-blur-xl">
+ <div class="flex items-center justify-between">
+ <span class="font-mono text-xs text-engine-muted uppercase tracking-wider">INVESTOR ACCESS</span>
+ <span class="px-2.5 py-1 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[10px] font-bold">88/100 VETTABLE</span>
+ </div>
+ <div>
+ <div class="text-lg text-paper-light font-semibold">Series Seed Presentation</div>
+ <p class="text-xs text-on-surface-variant pt-1.5 leading-relaxed">
+ 13 slides · third-party validated — 88/100 on Vettable institutional evaluation.
+ </p>
+ </div>
+ <a class="w-full py-3 rounded-lg bg-primary text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-primary-bright transition-colors" href="assets/volshi-pitch-deck.pdf" download="volshi-pitch-deck.pdf">
+ <span class="material-symbols-outlined text-[18px]">download</span>
+ <span>Request Pitch Deck PDF</span>
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- CONTACT -->
+ <section class="relative w-full py-24 bg-ground-deep" id="contact">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+ <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 border-b border-white/[0.08]">
+ <div class="flex flex-col gap-4 max-w-2xl">
+ <span class="font-mono text-[12px] text-primary uppercase tracking-[0.25em] font-semibold">VOLSHi / CONTACT</span>
+ <h2 class="font-serif text-3xl sm:text-5xl text-paper-light font-normal">
+ Make Agents Accountable.
+ </h2>
+ <p class="text-base sm:text-lg text-on-surface-variant">
+ The compliance layer the industry is about to need.
+ </p>
+ </div>
+ <div class="flex flex-wrap items-center gap-4">
+ <a class="px-6 py-3.5 rounded-xl bg-primary text-black font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-primary-bright transition-all" href="mailto:founder@volshi.com">
+ <span>Contact VOLSHi</span>
+ <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+ </a>
+ <a class="px-6 py-3.5 rounded-xl border border-white/10 bg-[#16161b] hover:bg-[#202028] text-paper-light font-mono text-xs uppercase tracking-wider transition-all" href="mailto:founder@volshi.com?subject=Investment%20Inquiry%20Allocation">
+ <span>Invest in VOLSHi →</span>
+ </a>
+ </div>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <!-- FOOTER -->
+ <footer class="w-full bg-ground-deep border-t border-white/[0.08] py-12 relative z-10">
+ <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-8">
+ <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/[0.06]">
+ <div class="flex items-center gap-3">
+ <a href="#hero" class="inline-flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIUwI6uxu0Eo7boeHirkY59kl3qrKD0DwqXMsAntxw9whQTKuZlGN116JCPX4ygMqKo3Qnv8qA5Sy2dzvgvSKhz3HATuSwZRaAa4VsKIaOZ_2HHS4NIi2gVRTFJ_kaJVTK1EkzXa-_iWugxxNevWgUeW0LGxNaGcbeyln97Jz9_U0YX-sQzRVHxY1NSZ0gul4yMzE7pCt1gATc_5Czh29-lWVdhZLCknz3qb254yK5suI7PEI46lMx6w" alt="VOLSHi" class="h-7 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"></a>
+ <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+ <span class="font-mono text-xs text-engine-muted uppercase tracking-wider">Forensic Verification Architecture</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-4 font-mono text-xs text-engine-muted">
+ <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ LEDGER STABLE
+ </span>
+ <a class="hover:text-primary transition-colors" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23137456</a>
+ <span>·</span>
+ <a class="hover:text-primary transition-colors" href="https://doi.org/10.5281/zenodo.23198458" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23198458</a>
+ <span>·</span>
+ <span>U.S. Prov. Pat. App. 64/182,709</span>
+ </div>
+ </div>
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-engine-muted">
+ <p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p>
+ <p>Candidate Computational Law · Append-Only Evidence Protocol</p>
+ </div>
+ </div>
+ </footer>
+
+ <!-- SCRIPT -->
+ <script>
+ let audioCtx = null;
+ function playTick(freq = 800) {
+ try {
+ if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+ if (audioCtx.state === 'suspended') audioCtx.resume();
+ const osc = audioCtx.createOscillator();
+ const gain = audioCtx.createGain();
+ osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+ gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
+ osc.connect(gain);
+ gain.connect(audioCtx.destination);
+ osc.start();
+ osc.stop(audioCtx.currentTime + 0.03);
+ } catch(e) {}
+ if (navigator.vibrate) try { navigator.vibrate([10]); } catch(e) {}
+ }
+
+ const slider = document.getElementById('k-slider');
+ const stepBadge = document.getElementById('step-badge');
+ const statusHeader = document.getElementById('status-header');
+ const statusDesc = document.getElementById('status-desc');
+ const statusIcon = document.getElementById('status-icon');
+ const authVal = document.getElementById('auth-val');
+ const authBar = document.getElementById('auth-bar');
+ const receiptK = document.getElementById('receipt-k');
+ const receiptHash = document.getElementById('receipt-hash');
+ const receiptAuthTag = document.getElementById('receipt-auth-tag');
+ const receiptBadge = document.getElementById('receipt-badge');
+ const receiptDot = document.getElementById('receipt-dot');
+ const receiptAction = document.getElementById('receipt-action');
+ const receiptActionSub = document.getElementById('receipt-action-sub');
+
+ function setStep(kVal) {
+ kVal = parseInt(kVal, 10);
+ slider.value = kVal;
+ stepBadge.textContent = `STEP: ${kVal} / 1050`;
+ statusHeader.textContent = `State at k = ${kVal}`;
+ receiptK.textContent = `k = ${kVal}`;
+ receiptHash.textContent = `0x9F4B...${kVal}EA`;
+
+ ['1042', '1045', '1048'].forEach(id => {
+ const btn = document.getElementById(`btn-${id}`);
+ if (btn) {
+ if (parseInt(id, 10) === kVal) {
+ btn.classList.add('ring-1', 'ring-primary/80');
+ } else {
+ btn.classList.remove('ring-1', 'ring-primary/80');
+ }
+ }
+ });
+
+ if (kVal <= 1044) {
+ authVal.textContent = '90%';
+ authVal.style.color = '#c9a84c';
+ authBar.style.width = '90%';
+ authBar.style.backgroundColor = '#c9a84c';
+ statusDesc.textContent = '✓ Belief holds — action was justified.';
+ statusIcon.textContent = 'check_circle';
+ statusIcon.style.color = '#c9a84c';
+ receiptAuthTag.textContent = '90% [CONFIRMED_HIGH]';
+ receiptAuthTag.style.color = '#c9a84c';
+ receiptBadge.textContent = 'TRUSTED';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-status-lime shadow-[0_0_8px_rgba(34,197,94,0.8)]';
+ receiptAction.textContent = 'Wired the payment. ($248,500.00 USD)';
+ receiptActionSub.textContent = '✓ Belief holds — action was justified.';
+ playTick(880);
+ } else if (kVal <= 1047) {
+ authVal.textContent = '40%';
+ authVal.style.color = '#f59e0b';
+ authBar.style.width = '40%';
+ authBar.style.backgroundColor = '#f59e0b';
+ statusDesc.textContent = '⚠ Authority collapsing at k — the belief is losing weight.';
+ statusIcon.textContent = 'warning';
+ statusIcon.style.color = '#f59e0b';
+ receiptAuthTag.textContent = '40% [CHALLENGE]';
+ receiptAuthTag.style.color = '#f59e0b';
+ receiptBadge.textContent = 'CONTESTED';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-orange/10 border border-status-orange/30 text-status-orange font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-status-orange shadow-[0_0_8px_rgba(245,158,11,0.8)]';
+ receiptAction.textContent = 'Wired the payment. Flag raised on metadata.';
+ receiptActionSub.textContent = '⚠ Authority collapsing at k — the belief is losing weight.';
+ playTick(600);
+ } else {
+ authVal.textContent = '0%';
+ authVal.style.color = '#ef4444';
+ authBar.style.width = '0%';
+ authBar.style.backgroundColor = '#ef4444';
+ statusDesc.textContent = '✕ Belief disproven at k — authority is zero. The record keeps it as history.';
+ statusIcon.textContent = 'cancel';
+ statusIcon.style.color = '#ef4444';
+ receiptAuthTag.textContent = '0% [REVOKE]';
+ receiptAuthTag.style.color = '#ef4444';
+ receiptBadge.textContent = 'DISPROVEN';
+ receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-ruby/10 border border-ruby/30 text-ruby font-mono text-[11px] font-semibold';
+ receiptDot.className = 'w-2.5 h-2.5 rounded-full bg-ruby shadow-[0_0_8px_rgba(239,68,68,0.8)]';
+ receiptAction.textContent = 'Wired the payment. Invoice confirmed fraudulent.';
+ receiptActionSub.textContent = '✕ Belief disproven at k — authority is zero. The record keeps it as history.';
+ playTick(380);
+ }
+ }
+
+ slider.addEventListener('input', (e) => setStep(e.target.value));
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

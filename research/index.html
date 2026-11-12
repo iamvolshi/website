@@ -1,0 +1,776 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>VOLSHi — Computational Law &amp; AI Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"ruby-deep":"#8E072B","ruby":"#EF174C","inverse-surface":"#e5e2e1","primary-container":"#c9a84c","on-primary-fixed":"#241a00","surface-container-highest":"#353534","on-tertiary":"#00363e","engine-line":"#A8B6B1","error-container":"#93000a","surface-container-low":"#1c1b1b","on-background":"#e5e2e1","secondary-fixed":"#ffe084","on-surface-variant":"#d0c5b2","tertiary-container":"#44bacd","surface-variant":"#353534","primary-fixed":"#ffe08f","secondary-container":"#735c00","secondary-fixed-dim":"#e3c466","primary":"#e6c364","on-surface":"#e5e2e1","status-lime":"#A8E349","surface-dim":"#131313","secondary":"#e3c466","engine-muted":"#4F5F5A","surface-container-lowest":"#0e0e0e","status-orange":"#F08A4B","tertiary-fixed":"#9defff","tertiary":"#65d6e9","inverse-on-surface":"#313030","engine-ink":"#101716","on-secondary-fixed":"#231b00","surface-container-high":"#2a2a2a","ruby-hot":"#FF4D70","background":"#131313","on-tertiary-fixed-variant":"#004f59","on-secondary-container":"#f6d675","on-secondary":"#3c2f00","on-tertiary-fixed":"#001f24","engine-deep":"#14201E","on-secondary-fixed-variant":"#574500","inverse-primary":"#755b00","surface-container":"#201f1f","primary-fixed-dim":"#e6c364","on-error":"#690005","on-primary":"#3d2e00","ruby-ground":"#0D090B","on-primary-fixed-variant":"#584400","outline":"#99907e","line-subtle":"#232220","tertiary-fixed-dim":"#65d6e9","outline-variant":"#4d4637","gold-glass-stroke":"rgba(201, 168, 76, 0.2)","ruby-panel":"#171013","surface":"#131313","on-tertiary-container":"#004750","error":"#ffb4ab","on-error-container":"#ffdad6","paper-light":"#F5F2ED","on-primary-container":"#503d00","engine-sheet":"#EDF1EF","ground-deep":"#060607","surface-tint":"#e6c364","surface-bright":"#3a3939"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2.25rem","space-md":"1.125rem",gutter:"1.125rem","space-xs":"0.375rem","space-sm":"0.75rem","space-lg":"1.5rem",margin:"1.5rem"},fontFamily:{"body-md":["Inter"],"telemetry-cell":["IBM Plex Mono"],"telemetry-head":["IBM Plex Mono"],"body-sm":["Inter"],"telemetry-code":["IBM Plex Mono"],"headline-hero-mobile":["Newsreader"],"headline-xl-mobile":["Newsreader"],"headline-lg":["Newsreader"],"headline-hero":["Newsreader"],"body-lg":["Inter"],"headline-md":["IBM Plex Sans"],kicker:["Inter"],"headline-xl":["Newsreader"],"headline-lg-mobile":["Newsreader"]},fontSize:{"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"telemetry-cell":["11px",{lineHeight:"14px",fontWeight:"400"}],"telemetry-head":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"telemetry-code":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-hero-mobile":["34px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-lg":["30px",{lineHeight:"38px",fontWeight:"400"}],"headline-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}],"body-lg":["17px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"600"}],kicker:["11px",{lineHeight:"14px",letterSpacing:"0.12em",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"400"}]}}}}</script></head><body class="bg-ground-deep font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><script>if(window.innerWidth<768){location.replace('/mobile/research/');}</script><header class="fixed top-0 left-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl border-b border-gold-glass-stroke"><div class="h-16 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><a class="flex items-center gap-space-sm group text-left" data-path="home" href="/"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYCidMTy4hjnLO52nQ-yAJLkxLxjTxdgCCMuGwIr0ffTXKCEYmwUsTRjW_pBlcsTVJSVIIvFf1urkIOLiqZysGUmLSml6LoCYLxl0pW4yk_xMg5Es-HQS3JUq83xxN3WtDGOOx0EVdhrL9Iq3lLDTaE23ldxCOo2Em3uYg0J-En5SBzOz0XTawJXm1Ours4lbl22p2lB-l_eGg6L6FUNso0LSRrJOVAygSrgRXlfZfgnH3DLhr-jlwZA" alt="VOLSHi Home" class="h-8 md:h-9 w-auto object-contain inline-block"></a><div class="flex items-center gap-space-lg"><nav class="hidden md:flex items-center gap-space-lg h-16" data-active-classes="text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary"><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="the-system" href="/the-system/">The System</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="katie" href="/katie/">KATIE</a><a aria-current="page" class="font-body-sm tracking-wide transition-colors py-2 text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary" data-path="research" href="/research/">Research</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="invest" href="/invest/">Invest</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="contact" href="/#contact">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-md py-1.5 rounded border border-gold-glass-stroke bg-surface-container-lowest font-telemetry-head text-telemetry-head text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200 shadow-[0_0_12px_rgba(201,168,76,0.1)] hover:shadow-[0_0_16px_rgba(201,168,76,0.35)]" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">Investor Inquiry</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_8px_rgba(201,168,76,0.25)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-ground-deep min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Forensic Breadcrumb & Session Matrix -->
+<section class="w-full bg-ground-deep py-space-sm px-6 lg:px-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-xs font-telemetry-cell text-telemetry-cell text-engine-muted">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ RECORD INTEGRITY VERIFIED
+ </span>
+<span class="text-line-subtle">/</span>
+<span>DOSSIER: VOLSHI-R&amp;I-2026.10</span>
+<span class="text-line-subtle">/</span>
+<span class="text-paper-light">BITEMPORAL &amp; TRITEMPORAL FIELDS</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>ARCHIVE REF: RT-0081</span>
+<span class="text-line-subtle">/</span>
+<span class="text-primary tracking-wider">ZENODO OPEN SCIENCE NODE</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- §5 RESEARCH SECTION: THE WORK AHEAD -->
+<!-- ========================================================================= -->
+<section class="w-full py-space-xl px-6 lg:px-12 relative overflow-hidden bg-ground-deep" id="research">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl relative z-10">
+<!-- Editorial Header / Master Lede -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="max-w-3xl flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-kicker text-kicker uppercase text-primary tracking-[0.14em]">VOLSHi / Research</span>
+<span class="w-8 h-px bg-primary/40"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">SECTION §05</span>
+</div>
+<h1 class="font-headline-hero text-headline-hero text-paper-light tracking-tight">
+ The Work Ahead.
+ </h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant font-normal">
+ Intelligence is moving faster than the systems required to trust it.
+ </p>
+</div>
+<!-- Curated Verbatim Quotation Plaque -->
+<div class="max-w-md bg-surface-container-low p-space-md rounded-lg shadow-sm">
+<div class="flex items-center gap-2 pb-2">
+<span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Field Directive</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface italic">
+ “We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it’s strange and it matters, we’re already there.”
+ </p>
+
+</div>
+</div>
+<!-- Research Strands: Four Canonical Anchors -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- STRAND 01: Temporal Memory -->
+<div class="flex flex-col justify-between bg-surface-container rounded-lg p-space-lg shadow-md group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 01</span>
+<span class="text-line-subtle">::</span>
+<span class="font-telemetry-cell text-telemetry-cell text-paper-light tracking-widest uppercase">Codename: Mysterion</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ VALIDATED
+ </span>
+</div>
+<div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Temporal Memory
+ </h2>
+<p class="font-headline-md text-headline-md text-primary font-medium mt-1">
+ The law of how memory forms over time.
+ </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ How does a mind remember not just what happened, but when — relative to a now that never stops moving? Temporal Memory is the answer: a 41-experiment independent validation record and the bitemporal field law — the rule for how memory builds up over two timescales, fast and slow. Two clocks: tick time, the steady beat, and event time, when things happen.
+ </p>
+<!-- Telemetry Field Box -->
+<div class="bg-surface-container-lowest p-space-sm rounded font-telemetry-cell text-telemetry-cell flex flex-col gap-1 text-engine-line">
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Paper:</span>
+<span class="text-paper-light font-medium">The Bitemporal Field Law</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Publication:</span>
+<span>October 2026 · Zenodo</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Zenodo DOI:</span>
+<a class="text-primary hover:underline inline-flex items-center gap-1" href="https://doi.org/10.5281/zenodo.23137456" rel="noopener noreferrer" target="_blank">
+ 10.5281/zenodo.23137456
+ <span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</a>
+</div>
+<div class="pt-2 text-on-surface-variant text-[11px] leading-relaxed">
+<span class="text-status-lime font-semibold">Validation Record:</span> 41 independent experiments (0–40) · Two-timescale memory formation confirmed · Dossier: Paper I of the VOLSHi evidence series.
+ </div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">CREATOR: HALL, DARREN</span>
+<a class="inline-flex items-center gap-1 text-primary font-telemetry-head text-telemetry-head hover:text-paper-light transition-colors" href="https://doi.org/10.5281/zenodo.23137456" rel="noopener noreferrer" target="_blank">
+ Access Deposit <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- STRAND 02: Time-Addressed Storage -->
+<div class="flex flex-col justify-between bg-surface-container rounded-lg p-space-lg shadow-md group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 02</span>
+<span class="text-line-subtle">::</span>
+<span class="font-telemetry-cell text-telemetry-cell text-paper-light tracking-widest uppercase">Codename: DPS</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-telemetry-cell text-telemetry-cell">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+ IN DOSSIER
+ </span>
+</div>
+<div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Time-Addressed Storage
+ </h2>
+<p class="font-headline-md text-headline-md text-primary font-medium mt-1">
+ Storage addressed by time, not place.
+ </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Fragments of data spread across three pools, reassembled on the requester’s side with XOR parity — fragments can be lost without the data being lost. The breakthrough: fragments are addressed by when they belong, not where they live. Time is the index.
+ </p>
+<!-- Telemetry Field Box -->
+<div class="bg-surface-container-lowest p-space-sm rounded font-telemetry-cell text-telemetry-cell flex flex-col gap-1 text-engine-line">
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Paper:</span>
+<span class="text-paper-light font-medium">DPS — Paper II of the VOLSHi evidence dossier</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Registry Status:</span>
+<span>Dossier Draft · Priority Reserved</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">DOI Index:</span>
+<span class="text-engine-muted">None (In evidence review cycle)</span>
+</div>
+<div class="pt-2 text-on-surface-variant text-[11px] leading-relaxed">
+<span class="text-primary font-semibold">Validation Record:</span> 3-pool fragment distribution · Requester-side XOR parity reassembly · Temporal addressing scheme verified.
+ </div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">SPECIFICATION: PARITY-TRIPLEX</span>
+<span class="font-telemetry-head text-telemetry-head text-engine-muted">DOSSIER PENDING RELEASE</span>
+</div>
+</div>
+<!-- STRAND 03: Triadic Relations -->
+<div class="flex flex-col justify-between bg-surface-container rounded-lg p-space-lg shadow-md group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 03</span>
+<span class="text-line-subtle">::</span>
+<span class="font-telemetry-cell text-telemetry-cell text-paper-light tracking-widest uppercase">Codename: TRIG</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-telemetry-cell text-telemetry-cell">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+ IN DOSSIER
+ </span>
+</div>
+<div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Triadic Relations
+ </h2>
+<p class="font-headline-md text-headline-md text-primary font-medium mt-1">
+ Relations come in threes.
+ </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Most systems model relationships as pairs: A connects to B. Triadic Relations models them as directed triads — A→B, B→C, C→A — three-way relations as the basic building block of the system. Three is the secret to everything.
+ </p>
+<!-- Visual Inline Triadic Geometry SVG -->
+<div class="bg-surface-container-lowest p-space-sm rounded flex items-center justify-between">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-line flex flex-col gap-0.5">
+<span class="text-paper-light font-medium">Directed Triadic Primitives</span>
+<span class="text-engine-muted">Paper III of the VOLSHi evidence series</span>
+<span class="text-status-lime text-[11px]">Three-way non-separable closure</span>
+</div>
+<svg class="text-primary flex-shrink-0" fill="none" height="64" viewBox="0 0 74 64" width="74">
+<polygon fill="none" opacity="0.6" points="37,6 68,58 6,58" stroke="currentColor" stroke-width="1.5"></polygon>
+<circle cx="37" cy="6" fill="currentColor" r="3.5"></circle>
+<circle cx="68" cy="58" fill="currentColor" r="3.5"></circle>
+<circle cx="6" cy="58" fill="currentColor" r="3.5"></circle>
+<path d="M37 6 L42 22" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M68 58 L50 54" stroke="currentColor" stroke-width="1.5"></path>
+<path d="M6 58 L20 40" stroke="currentColor" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">MATHEMATICAL ROOT: TRI-03</span>
+<span class="font-telemetry-head text-telemetry-head text-engine-muted">PAPER III IN ARCHIVE</span>
+</div>
+</div>
+<!-- STRAND 04: Knowledge Time (The Flagship Anchor) -->
+<div class="flex flex-col justify-between bg-surface-container rounded-lg p-space-lg shadow-lg relative group">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary">STRAND 04</span>
+<span class="text-line-subtle">::</span>
+<span class="font-telemetry-cell text-telemetry-cell text-paper-light tracking-widest uppercase">Codename: K-Time</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-status-lime/15 text-status-lime font-telemetry-cell text-telemetry-cell">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+ VALIDATED · 8/8 HIT
+ </span>
+</div>
+<div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Knowledge Time
+ </h2>
+<p class="font-headline-md text-headline-md text-primary font-medium mt-1">
+ A third clock: when the system itself knew things.
+ </p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Ordinary memory tracks two clocks: tick time and event time. Knowledge Time adds a third — when the system itself knew things. What it knew at 9am and what it knows at noon are different memories. An append-only record of what was believed, when, and why means the past reads exactly as it was understood at the time — and the system changes its mind without rewriting its history.
+ </p>
+<!-- Detailed Telemetry Dossier Panel -->
+<div class="bg-surface-container-lowest p-space-sm rounded font-telemetry-cell text-telemetry-cell flex flex-col gap-1.5 text-engine-line">
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Paper:</span>
+<span class="text-paper-light font-medium truncate">The Tritemporal Field Law: K Time (v1.8)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Deposited:</span>
+<span>6 October 2026 · Priority Root: 4 Oct 2026</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-engine-muted">Zenodo DOI:</span>
+<a class="text-primary hover:underline inline-flex items-center gap-1" href="https://doi.org/10.5281/zenodo.23198458" rel="noopener noreferrer" target="_blank">
+ 10.5281/zenodo.23198458
+ <span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</a>
+</div>
+<div class="flex items-center justify-between text-status-lime">
+<span>Validation Record:</span>
+<span class="font-semibold">8/8 pre-registered frozen predictions hit</span>
+</div>
+<div class="text-[11px] text-on-surface-variant leading-relaxed">
+ Blind independent validation, matched to 2 decimal places · 1,000+ researcher views recorded · U.S. Prov. Pat. App. 64/182,709.
+ </div>
+</div>
+</div>
+<div class="pt-space-md flex flex-wrap items-center justify-between gap-space-xs">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">
+ AUTHORS: <span class="text-paper-light">Hall, Darren</span> · VALIDATOR: <span class="text-primary">Gorden, Bret</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary font-telemetry-head text-telemetry-head hover:text-paper-light transition-colors" href="https://doi.org/10.5281/zenodo.23198458" rel="noopener noreferrer" target="_blank">
+ Read Primary Source <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Lab Context Ledger Strip -->
+<div class="bg-surface-container-high rounded-lg p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md text-engine-line font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<span>Verified open-access research deposited under public DOIs. All frozen experiment logs can be independently replayed and matched.</span>
+</div>
+<div class="flex items-center gap-space-md flex-shrink-0">
+<span class="text-paper-light font-medium">Research Triangle Park, NC</span>
+<span class="text-line-subtle">•</span>
+<span class="text-primary">Zenodo Open Science Archive</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- §6 INVEST SECTION: THE IDENTITY LAYER FOR MACHINE INTELLIGENCE -->
+<!-- ========================================================================= -->
+<section class="w-full py-space-xl px-6 lg:px-12 bg-surface-container-lowest relative overflow-hidden" id="invest">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl relative z-10">
+<!-- Section Title & Thesis -->
+<div class="max-w-4xl flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-kicker text-kicker uppercase text-primary tracking-[0.14em]">VOLSHi / Invest</span>
+<span class="w-8 h-px bg-primary/40"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">CAPITAL ARCHITECTURE §06</span>
+</div>
+<h1 class="font-headline-hero text-headline-hero text-paper-light tracking-tight">
+ AI has no past. We’re giving it one.
+ </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+ Every agent on earth wakes up with amnesia. No memory, no accountability, no identity that survives the next model swap. VOLSHi is building the layer underneath all of it — the origin of identity for machine intelligence.
+ </p>
+</div>
+<!-- The Frame Cards (3-column Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Raise Metric Card -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col justify-between shadow-md group">
+<div class="flex flex-col gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Current Round</span>
+<div class="font-headline-hero text-headline-hero text-paper-light font-normal tracking-tight">
+ $500K
+ </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+ To take VOLSHi from validated science to first enterprise pilots. Accepting checks from $5K to $500K — every yes moves the needle.
+ </p>
+</div>
+<div class="pt-space-md">
+<span class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+ Syndicate Allocation Open
+ </span>
+</div>
+</div>
+<!-- Market Metric Card -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col justify-between shadow-md group">
+<div class="flex flex-col gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Addressable TAM</span>
+<div class="font-headline-hero text-headline-hero text-paper-light font-normal tracking-tight">
+ $648B
+ </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+ The trust and accountability layer for the autonomous-agent economy now being built across financial services, clinical diagnostics, and computational law.
+ </p>
+</div>
+<div class="pt-space-md">
+<span class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-engine-line">
+<span class="material-symbols-outlined text-[14px]">query_stats</span>
+ Autonomous Agent Infra
+ </span>
+</div>
+</div>
+<!-- The Path Metric Card -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col justify-between shadow-md group">
+<div class="flex flex-col gap-space-xs">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Deployment Sequence</span>
+<div class="font-headline-lg text-headline-lg text-paper-light mt-1">
+ The Path.
+ </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+ Technical proof → first paid design partners → repeatable deployment.
+ </p>
+<div class="pt-2 flex flex-col gap-1.5 font-telemetry-cell text-telemetry-cell text-engine-line">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+<span>Stage 1: Scientific proof locked (8/8 frozen predictions hit)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>Stage 2: Enterprise runtime validation engine</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-engine-muted"></span>
+<span>Stage 3: Append-only compliance protocol standard</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md">
+<span class="font-telemetry-cell text-telemetry-cell text-primary">MILITARY-GRADE AUDITABILITY</span>
+</div>
+</div>
+</div>
+<!-- Problem & Approach Editorial Dossier -->
+<div class="bg-surface-container-high rounded-lg p-space-lg lg:p-space-xl flex flex-col lg:flex-row gap-space-xl shadow-lg">
+<div class="lg:w-1/2 flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ruby text-[22px]">warning</span>
+<span class="font-telemetry-head text-telemetry-head text-ruby uppercase tracking-wider">The Problem</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Agents Act Without Liability.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ Enterprises are deploying autonomous LLM agents to execute trades, triage clinical trials, and generate regulatory filings. Yet, modern machine learning systems lack persistent self-state. When an error occurs, current post-mortems can only point to probability weights, leaving executives holding naked legal liability.
+ </p>
+<div class="bg-surface-container-lowest p-space-sm rounded font-telemetry-cell text-telemetry-cell text-ruby-hot">
+ CRITICAL FAILURE MODE: Memory amnesia forces systems to rewrite histories or run with zero verifiable lineage.
+ </div>
+</div>
+<div class="lg:w-1/2 flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">gavel</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-wider">The Approach</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Mathematical Admissibility.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+ VOLSHi inserts a formal bitemporal and tritemporal runtime field between the agent's cognition and execution layers. Every state transition, parameter inference, and external prompt is recorded into an append-only, XOR-parity temporal store. Agents can change their minds without rewriting history — creating legally admissible machine testimony.
+ </p>
+<div class="bg-surface-container-lowest p-space-sm rounded font-telemetry-cell text-telemetry-cell text-status-lime">
+ GOVERNANCE ASSURANCE: Deterministic replay at any prior Knowledge Time (“K-Time”) index.
+ </div>
+</div>
+</div>
+<!-- The Moat (3 Column High-Contrast Cards) -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="font-kicker text-kicker uppercase text-primary tracking-[0.14em]">Defensibility</span>
+<span class="w-8 h-px bg-primary/40"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">STRUCTURAL ADVANTAGE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Moat 1 -->
+<div class="bg-surface-container rounded-lg p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 pb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">balance</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">IP Secured</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">
+ A computational law
+ </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ The Tritemporal Field Law — a candidate computational law of machine memory, validated across 8/8 pre-registered predictions and locked in with a timestamped priority publication. U.S. patent filings in preparation. This isn’t a feature. It’s physics for the memory layer.
+ </p>
+<div class="pt-2 font-telemetry-cell text-telemetry-cell text-engine-line">
+ U.S. Prov. Pat. App. 64/182,709
+ </div>
+</div>
+<!-- Moat 2 -->
+<div class="bg-surface-container rounded-lg p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 pb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Pipeline Depth</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">
+ More IP in the wings
+ </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Dossier papers II and III establish novel algorithms for distributed XOR time-indexed fragmented storage (DPS) and directed triadic closure primitives (TRIG). Each component deepens the proprietary architecture required to verify machine decisions under forensic audit.
+ </p>
+<div class="pt-2 font-telemetry-cell text-telemetry-cell text-engine-line">
+ Papers II &amp; III in Evidence Queue
+ </div>
+</div>
+<!-- Moat 3 -->
+<div class="bg-surface-container rounded-lg p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 pb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Market White Space</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">
+ Nobody else is here
+ </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Standard vector databases and retrieval plugins solve for speed and associative semantic search. They completely ignore temporal jurisprudence and irreversible audit trails. VOLSHi is the only foundation building forensic memory as an unalterable field of truth.
+ </p>
+<div class="pt-2 font-telemetry-cell text-telemetry-cell text-engine-line">
+ Zero Direct Structural Competitors
+ </div>
+</div>
+</div>
+</div>
+<!-- Pitch Deck Card & Direct Call to Action Split Banner -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
+<!-- Pitch Deck Download Card -->
+<div class="lg:col-span-7 bg-surface-container rounded-lg p-space-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[28px]">description</span>
+</div>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">CONFIDENTIAL MEMORANDUM</span>
+<span class="font-body-md text-body-md text-on-surface-variant">13 slides · third-party validated — 88/100 on Vettable</span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">Pre-seed Dossier &amp; Pilot Metrics</span>
+</div>
+</div>
+<a class="px-space-md py-2.5 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head hover:bg-paper-light transition-all shadow-md inline-flex items-center gap-1.5 flex-shrink-0" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Pitch%20Deck%20Request%20(13%20Slides)">
+ Download PDF <span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</a>
+</div>
+<!-- Founder Direct Action Banner -->
+<div class="lg:col-span-5 bg-primary rounded-lg p-space-lg flex flex-col justify-between shadow-xl text-on-primary">
+<div class="flex flex-col gap-1">
+<span class="font-telemetry-head text-telemetry-head text-on-primary-fixed-variant uppercase">Direct Allocation Desk</span>
+<div class="font-headline-lg text-headline-lg font-semibold tracking-tight">
+ Talk to the founder.
+ </div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+ Engage directly with Darren Patrick Hall regarding syndicate participation or enterprise pilot deployment.
+ </p>
+</div>
+<div class="pt-space-md">
+<a class="inline-flex items-center justify-center w-full px-space-md py-2.5 rounded bg-surface-container-lowest text-primary font-telemetry-head text-telemetry-head hover:bg-ground-deep hover:text-paper-light transition-colors" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">
+ Talk to the founder →
+ </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- §7 CONTACT SECTION & 5-STEP CLOSE SEQUENCE -->
+<!-- ========================================================================= -->
+<section class="w-full py-space-xl px-6 lg:px-12 bg-ground-deep relative overflow-hidden" id="contact">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl relative z-10">
+<!-- Section Header -->
+<div class="max-w-3xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="font-kicker text-kicker uppercase text-primary tracking-[0.14em]">VOLSHi / Contact</span>
+<span class="w-8 h-px bg-primary/40"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">ACCOUNTABILITY KERNEL §07</span>
+</div>
+<h2 class="font-headline-hero text-headline-hero text-paper-light tracking-tight">
+ Make Agents Accountable.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Deploy the 5-step computational verification loop across your enterprise autonomous workflows.
+ </p>
+</div>
+<!-- 5-Step Interactive Close Sequence Accordion -->
+<div class="w-full flex flex-col gap-space-sm" id="accordion-group">
+<!-- Step 1: OBSERVE -->
+<div class="step-card bg-surface-container rounded-lg p-space-md shadow-sm transition-all duration-200 cursor-pointer" onclick="toggleStep(0)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-telemetry-head text-telemetry-head text-primary">01</span>
+<span class="font-headline-md text-headline-md text-paper-light">OBSERVE</span>
+<span class="hidden sm:inline-block font-telemetry-cell text-telemetry-cell text-engine-muted">Event Tick Registration</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">TICK_TIME: ACTIVE</span>
+<span class="material-symbols-outlined step-chevron text-on-surface-variant transition-transform duration-200">expand_more</span>
+</div>
+</div>
+<div class="step-content pt-space-sm flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<p>Every external sensory pulse, user prompt, and distributed system event is intercepted at physical ingress. The kernel assigns a monotonic event tick that cannot be spoofed, re-ordered, or deferred by the calling model.</p>
+<div class="font-telemetry-cell text-telemetry-cell text-primary pt-1">
+ Field Parameter: Event-Time Monotonic Hash [E_t0]
+ </div>
+</div>
+</div>
+<!-- Step 2: UNDERSTAND -->
+<div class="step-card bg-surface-container rounded-lg p-space-md shadow-sm transition-all duration-200 cursor-pointer" onclick="toggleStep(1)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-telemetry-head text-telemetry-head text-primary">02</span>
+<span class="font-headline-md text-headline-md text-paper-light">UNDERSTAND</span>
+<span class="hidden sm:inline-block font-telemetry-cell text-telemetry-cell text-engine-muted">Internal Knowledge State Freezing</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">K_TIME: INDEXED</span>
+<span class="material-symbols-outlined step-chevron text-on-surface-variant transition-transform duration-200">expand_more</span>
+</div>
+</div>
+<div class="step-content pt-space-sm flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm hidden">
+<p>The system freezes what it believed to be true at the exact nanosecond of observation. By indexing Knowledge Time (K-Time), downstream revisions in world models cannot retroactively sanitize or pollute earlier reasoning passes.</p>
+<div class="font-telemetry-cell text-telemetry-cell text-primary pt-1">
+ Field Parameter: K-Time State Boundary Vector [K_0900]
+ </div>
+</div>
+</div>
+<!-- Step 3: DECIDE -->
+<div class="step-card bg-surface-container rounded-lg p-space-md shadow-sm transition-all duration-200 cursor-pointer" onclick="toggleStep(2)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-telemetry-head text-telemetry-head text-primary">03</span>
+<span class="font-headline-md text-headline-md text-paper-light">DECIDE</span>
+<span class="hidden sm:inline-block font-telemetry-cell text-telemetry-cell text-engine-muted">Triadic Relation Closure</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">TRIAD: BOUND</span>
+<span class="material-symbols-outlined step-chevron text-on-surface-variant transition-transform duration-200">expand_more</span>
+</div>
+</div>
+<div class="step-content pt-space-sm flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm hidden">
+<p>Candidate choices are evaluated via directed triadic closures rather than pairwise assumptions. Decision paths require non-separable 3-way consistency between prompt, system state, and candidate action.</p>
+<div class="font-telemetry-cell text-telemetry-cell text-primary pt-1">
+ Field Parameter: Closure Hash [A→B→C→A]
+ </div>
+</div>
+</div>
+<!-- Step 4: ACT -->
+<div class="step-card bg-surface-container rounded-lg p-space-md shadow-sm transition-all duration-200 cursor-pointer" onclick="toggleStep(3)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-telemetry-head text-telemetry-head text-primary">04</span>
+<span class="font-headline-md text-headline-md text-paper-light">ACT</span>
+<span class="hidden sm:inline-block font-telemetry-cell text-telemetry-cell text-engine-muted">Distributed Parity Execution</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">EXEC: DISPATCHED</span>
+<span class="material-symbols-outlined step-chevron text-on-surface-variant transition-transform duration-200">expand_more</span>
+</div>
+</div>
+<div class="step-content pt-space-sm flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm hidden">
+<p>The action executes with multi-pool data fragment distribution. Even under partial network failure or node compromise, XOR parity allows the requester to reconstitute the exact state of action without central trust bottlenecks.</p>
+<div class="font-telemetry-cell text-telemetry-cell text-primary pt-1">
+ Field Parameter: 3-Pool XOR Parity Receipt
+ </div>
+</div>
+</div>
+<!-- Step 5: ACCOUNT -->
+<div class="step-card bg-surface-container rounded-lg p-space-md shadow-sm transition-all duration-200 cursor-pointer" onclick="toggleStep(4)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="font-telemetry-head text-telemetry-head text-primary">05</span>
+<span class="font-headline-md text-headline-md text-paper-light">ACCOUNT</span>
+<span class="hidden sm:inline-block font-telemetry-cell text-telemetry-cell text-engine-muted">Forensic Admissibility Ledger</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime">LEDGER: SEALED</span>
+<span class="material-symbols-outlined step-chevron text-on-surface-variant transition-transform duration-200">expand_more</span>
+</div>
+</div>
+<div class="step-content pt-space-sm flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm hidden">
+<p>The sequence writes to the append-only ledger. A cryptographically immutable testimony card is ready for compliance officers, courts of law, or regulatory inspection. Total liability containment.</p>
+<div class="font-telemetry-cell text-telemetry-cell text-status-lime pt-1">
+ Field Parameter: Tritemporal Forensic Attestation Seal
+ </div>
+</div>
+</div>
+</div>
+<!-- Contact Dispatch Dossier -->
+<div class="bg-surface-container-high rounded-lg p-space-lg lg:p-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg shadow-xl">
+<div class="flex flex-col gap-space-xs max-w-xl">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Direct Dispatch</span>
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+</div>
+<div class="font-headline-md text-headline-md text-paper-light">
+ Direct Founder Channel
+ </div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ For academic inquiries regarding the Zenodo datasets, institutional research access, or venture participation.
+ </p>
+<a class="font-telemetry-head text-telemetry-head text-primary hover:text-paper-light transition-colors mt-2 text-lg" href="mailto:founder@volshi.com">
+ founder@volshi.com
+ </a>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md w-full md:w-auto">
+<a class="px-space-md py-3 rounded bg-surface-container-lowest text-paper-light font-telemetry-head text-telemetry-head text-center hover:bg-surface-container transition-colors shadow-sm" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Research%20Collaboration">
+ Research Inquiry
+ </a>
+<a class="px-space-md py-3 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head text-center hover:bg-paper-light transition-colors shadow-md" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">
+ Investor Inquiry →
+ </a>
+</div>
+</div>
+<!-- Triple-Click Watermark & Secret Console Trigger -->
+<div class="py-space-md flex flex-col items-center justify-center text-center">
+<button class="group flex items-center gap-2 cursor-pointer select-none bg-transparent hover:opacity-100 opacity-60 transition-opacity" id="secret-watermark">
+<span class="font-headline-md text-headline-md text-engine-muted tracking-[0.25em] group-hover:text-primary transition-colors">VOLSH<span class="tracking-normal">i</span></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">AUTHENTIC DATASTREAM // RTP·NC</span>
+</button>
+<span class="font-telemetry-cell text-[10px] text-engine-muted mt-1">(triple-click watermark to open diagnostics)</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- HIDDEN EASTER EGG MODAL: UNINDEXED PAGES -->
+<!-- ========================================================================= -->
+<div class="fixed inset-0 z-50 bg-ground-deep/90 backdrop-blur-xl flex items-center justify-center p-6 hidden" id="easter-egg-modal">
+<div class="bg-surface-container-lowest max-w-2xl w-full rounded-xl p-space-lg lg:p-space-xl flex flex-col gap-space-md shadow-2xl relative text-on-surface">
+<!-- Close button -->
+<button class="absolute top-4 right-4 text-engine-muted hover:text-paper-light" onclick="closeSecretModal()">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-ruby/15 text-ruby font-telemetry-cell text-telemetry-cell">
+<span class="w-1.5 h-1.5 rounded-full bg-ruby"></span>
+ RESTRICTED RUNTIME ACCESS
+ </span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">UNINDEXED VOLSHi SYSTEM NODES</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-xl text-headline-xl text-paper-light">
+ Diagnostic Overrides Unlocked
+ </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ You have triggered the forensic telemetry bypass. Two unindexed exploratory nodes are available for inspection:
+ </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md pt-2">
+<!-- Node 1 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between shadow-md">
+<div class="flex flex-col gap-1">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Node 0X-1</span>
+<h4 class="font-headline-md text-headline-md text-paper-light">Mansplainer</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ The condescension detection engine and real-time semantic asymmetry auditor.
+ </p>
+</div>
+<div class="pt-space-md">
+<a class="text-primary hover:underline font-telemetry-cell text-telemetry-cell inline-flex items-center gap-1" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Mansplainer%20Diagnostics%20Access">
+ Request Telemetry Key <span class="material-symbols-outlined text-[12px]">key</span>
+</a>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between shadow-md">
+<div class="flex flex-col gap-1">
+<span class="font-telemetry-head text-telemetry-head text-ruby uppercase">Node 0X-2</span>
+<h4 class="font-headline-md text-headline-md text-paper-light">Is This Bullshit</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ The high-velocity Bayesian reality-check parser for synthetic marketing claims.
+ </p>
+</div>
+<div class="pt-space-md">
+<a class="text-ruby hover:underline font-telemetry-cell text-telemetry-cell inline-flex items-center gap-1" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Is%20This%20Bullshit%20Access">
+ Verify Evidence Integrity <span class="material-symbols-outlined text-[12px]">security</span>
+</a>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between font-telemetry-cell text-telemetry-cell text-engine-line">
+<span>SESSION: LOCAL_INSPECTOR_004</span>
+<button class="px-space-md py-1.5 rounded bg-surface-container text-paper-light hover:bg-surface-container-high transition-colors" onclick="closeSecretModal()">
+ Dismiss Console
+ </button>
+</div>
+</div>
+</div>
+<!-- Inline Script for Accordion & Easter Egg Interactions -->
+<script>
+ function toggleStep(index) {
+ const cards = document.querySelectorAll('#accordion-group .step-card');
+ cards.forEach((card, i) => {
+ const content = card.querySelector('.step-content');
+ const chevron = card.querySelector('.step-chevron');
+ if (i === index) {
+ const isHidden = content.classList.contains('hidden');
+ if (isHidden) {
+ content.classList.remove('hidden');
+ chevron.classList.add('rotate-180');
+ } else {
+ content.classList.add('hidden');
+ chevron.classList.remove('rotate-180');
+ }
+ }
+ });
+ }
+
+ // Triple Click Handler for Easter Egg Modal
+ (function initEasterEgg() {
+ const trigger = document.getElementById('secret-watermark');
+ const modal = document.getElementById('easter-egg-modal');
+ let clickCount = 0;
+ let timer = null;
+
+ if (!trigger || !modal) return;
+
+ trigger.addEventListener('click', function(e) {
+ e.preventDefault();
+ clickCount++;
+ clearTimeout(timer);
+
+ if (clickCount >= 3) {
+ modal.classList.remove('hidden');
+ clickCount = 0;
+ } else {
+ timer = setTimeout(() => {
+ clickCount = 0;
+ }, 600);
+ }
+ });
+ })();
+
+ function closeSecretModal() {
+ const modal = document.getElementById('easter-egg-modal');
+ if (modal) modal.classList.add('hidden');
+ }
+ </script>
+</div></main><footer class="w-full bg-ground-deep border-t border-gold-glass-stroke py-space-xl relative overflow-hidden"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg border-b border-line-subtle"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md tracking-[0.2em] text-paper-light uppercase">VOLSH<span class="tracking-normal">i</span></span><span class="w-1 h-1 rounded-full bg-primary"></span><span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase tracking-[0.1em]">Forensic Verification Architecture</span></div><div class="flex flex-wrap items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line"><span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-gold-glass-stroke text-primary"><span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>LEDGER STABLE</span><span>Zenodo DOIs: 10.5281/zenodo.23137456 &amp; 10.5281/zenodo.23198458</span><span>U.S. Prov. Pat. App. 64/182,709</span></div></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-telemetry-cell text-telemetry-cell text-on-surface-variant"><p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p><p class="text-engine-muted">Candidate Computational Law · Append-Only Evidence Protocol</p></div></div></footer>
+
+
+
+</body></html>

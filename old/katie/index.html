@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+      <link rel="apple-touch-icon" href="assets/assets/apple-touch-icon.png" />
+  <title>KT Engine — VOLSHi</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-kt-32x32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-kt-64.png">
+  <meta name="description" content="KATIE — the Knowledge Authority Time Indexing Engine. An interactive demo of the tritemporal K-record: every belief graded by authority, nothing rewritten, history you can scrub." />
+  <link rel="stylesheet" href="assets/kt.css?v=3" />
+</head>
+<body>
+<main class="page">
+  <a class="home-logo" href="../" aria-label="VOLSHi home"><img src="../assets/volshilogoblack.png" alt="VOLSHi"></a>
+  <header class="topline">
+    <div class="title-block">
+      <div class="eyebrow">Candidate computational law</div>
+      <h1>The Tritemporal Field Law</h1>
+    </div>
+    <p class="intro">Authority-graded consolidation leaves a slow-trace deficit that persists after trust is restored.</p>
+  </header>
+
+  <nav class="pagenav" aria-label="KT visuals">
+    <a href="./" class="current"><span class="pg-num">01</span>Engine</a>
+    <a href="scar/" class=""><span class="pg-num">02</span>Scar lab</a>
+    <a href="curves/" class=""><span class="pg-num">03</span>Curve bench</a>
+    <a href="kernel/"><span class="pg-num">04</span>Kernel</a>
+    <a href="ruby-glasses/"><span class="pg-num">05</span>Ruby glasses</a>
+    <a href="crm/"><span class="pg-num">06</span>CRM demo</a>
+  </nav>
+
+  <section id="engine" aria-label="Full engine view">
+    <div class="engine-grid">
+      <aside class="panel control-panel">
+        <div class="panel-title">Event console</div>
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option>Bridge status</option>
+          <option>Sensor A</option>
+          <option>Response policy</option>
+        </select>
+        <label>Deposit type</label>
+        <div class="event-grid" id="eventTypes">
+          <button class="event-type selected" data-type="unknown">Unknown report<small>assert · WILD</small></button>
+          <button class="event-type" data-type="known">Known event<small>assert · preset</small></button>
+          <button class="event-type" data-type="policy">Policy<small>assert · preset</small></button>
+          <button class="event-type" data-type="promote">Confirm<small>re-grade ↑</small></button>
+          <button class="event-type" data-type="challenge">Challenge<small>re-grade ↓</small></button>
+          <button class="event-type" data-type="revoke">Revoke<small>authority → 0</small></button>
+        </div>
+        <button class="fire" id="fire"><span>Fire event</span><span class="mono">↳ k+</span></button>
+        <p class="micro">First encounter only: unknowns enter WILD. Recognized events and policies take their preset.</p>
+      </aside>
+
+      <div class="stage">
+        <section class="panel belief" aria-live="polite">
+          <div class="belief-head">
+            <div>
+              <div class="eyebrow">Belief at selected knowledge-time</div>
+              <h2 id="beliefSubject">Bridge status</h2>
+              <div class="state-row"><span class="state" id="beliefState">TRUSTED</span><span class="authority" id="beliefAuthority">authority 0.80</span></div>
+            </div>
+            <span class="k-badge" id="kBadge">k = 40</span>
+          </div>
+          <div class="authority-bar" aria-hidden="true"><div class="authority-fill" id="authorityFill" style="width:80%"></div></div>
+          <div class="scrubber">
+            <div class="scrub-head"><strong>Scrub the K-record</strong><span class="mono" id="rangeText">k 1 — 61</span></div>
+            <input id="kScrubber" type="range" min="1" max="61" value="61" aria-label="Knowledge time" />
+            <div class="ticks"><span>FIRST DEPOSIT</span><span>NOW</span></div>
+          </div>
+        </section>
+
+        <section class="panel timeline-panel">
+          <div class="panel-title">Supersedes chain</div>
+          <div class="timeline" id="timeline"><div class="rail"></div></div>
+        </section>
+
+        <section class="panel record">
+          <div class="record-head"><div><div class="eyebrow">Append-only ledger</div><strong>K-record</strong></div><button class="reset" id="reset">Reset sample</button></div>
+          <div class="record-list" id="recordList"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="patent" aria-label="Patent pending">
+    <div class="panel patent-panel">
+      <div class="eyebrow">Patent Pending</div>
+      <h2>U.S. Provisional Patent Application No. 64/182,709</h2>
+      <p class="patent-meta">Filed October 23, 2026 &middot; Inventor: Darren Patrick Hall</p>
+      <p class="intro">The filing covers eleven mechanisms:</p>
+      <ol class="aspects">
+        <li><strong>The sealed record</strong> — every belief append-only, hash-chained to the entry before it. Tampering, deletion, or a broken interval is detected by verification, which identifies the exact affected row.</li>
+        <li><strong>Knowledge time</strong> — a third clock: not when an event happened, and not when it arrived, but when it was known, and at what authority.</li>
+        <li><strong>Authority that falls without erasing</strong> — a wrong belief remains in the record while its authority collapses. The system learns without rewriting its history.</li>
+        <li><strong>Born registered</strong> — every kernel is assigned a Kernel ID at birth. No KID, no read, no write. What is not yet understood runs as null: registered, present, and unassigned — never invisible.</li>
+        <li><strong>The poison proof</strong> — the record verifies its own integrity against tampering, deletion, and interval attacks, and produces proof of each catch.</li>
+        <li><strong>The firewall</strong> — each source carries a damage accumulator. Past a threshold, the source continues to be recorded in full and ceases to have any effect. The attack is preserved as evidence.</li>
+        <li><strong>The self-healing loop</strong> — the machine reads its own record, identifies a deficiency, constructs the missing component, and integrates it.</li>
+        <li><strong>Parameters as deeds</strong> — a change to a kernel's parameters is recorded as a versioned event on the same identity. No component receives a new identity to escape its history.</li>
+        <li><strong>Snapshots, not state</strong> — any view of the present is derived from the ledger and can be re-derived identically at any time. Where a snapshot and the ledger disagree, the ledger governs.</li>
+        <li><strong>Pressure-pot attention</strong> — influence the system cannot consolidate accumulates per kind until it crosses an attention threshold. Attention discharges it.</li>
+        <li><strong>Debt and the curve</strong> — outstanding deficit removes options from the injured component until it heals; a component's position on the response curve is set by design, as protection, as a sensor, or for deliberate retention.</li>
+      </ol>
+      <p class="patent-rights">&copy; 2026 Darren Patrick Hall. All rights reserved.</p>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <span>&copy; 2026 VOLSHi &middot; All rights reserved</span>
+  <span class="mono">Candidate computational law &middot; Foundation published October 2026 &middot; <a href="https://zenodo.org/records/23198458">DOI 10.5281/zenodo.23198458</a></span>
+</footer>
+<script>
+(function(){
+var seed=[
+    {id:1,kStart:1,kEnd:12,subject:'Bridge status',op:'ASSERT',state:'WILD',authority:.2,supersedes:null},
+    {id:2,kStart:12,kEnd:24,subject:'Bridge status',op:'RE-GRADE',state:'CONTESTED',authority:.4,supersedes:1},
+    {id:3,kStart:24,kEnd:40,subject:'Bridge status',op:'RE-GRADE',state:'VALIDATED',authority:.7,supersedes:2},
+    {id:4,kStart:40,kEnd:null,subject:'Bridge status',op:'RE-GRADE',state:'TRUSTED',authority:.8,supersedes:3}
+  ];
+  var records=[],nextId=5,currentType='unknown';
+  var scrub=document.getElementById('kScrubber'),subject=document.getElementById('subject');
+  function cloneSeed(){records=seed.map(function(x){return Object.assign({},x)});nextId=5;scrub.max=61;scrub.value=61;render()}
+  function maxK(){return Number(scrub.max)}
+  function liveFor(name){for(var i=records.length-1;i>=0;i--){if(records[i].subject===name&&records[i].kEnd===null)return records[i]}return null}
+  function atK(name,k){var found=null;records.forEach(function(r){if(r.subject===name&&r.kStart<=k&&(r.kEnd===null||k<r.kEnd))found=r});return found}
+  function selectedFallback(k){var direct=atK(subject.value,k);if(direct)return direct;for(var i=records.length-1;i>=0;i--){var r=records[i];if(r.kStart<=k&&(r.kEnd===null||k<r.kEnd))return r}return null}
+  document.querySelectorAll('.event-type').forEach(function(btn){btn.addEventListener('click',function(){currentType=btn.dataset.type;document.querySelectorAll('.event-type').forEach(function(b){b.classList.toggle('selected',b===btn)})})});
+  document.getElementById('fire').addEventListener('click',function(){
+    var name=subject.value,live=liveFor(name),newK=maxK()+7,state='WILD',auth=.2,op='ASSERT';
+    var map={unknown:['WILD',.2],known:['VALIDATED',.7],policy:['ADOPTED',.9],promote:['TRUSTED',.8],challenge:['CONTESTED',.4],revoke:['REVOKED',0]};
+    state=map[currentType][0];auth=map[currentType][1];
+    if(live){live.kEnd=newK;op=currentType==='revoke'?'REVOKE':'RE-GRADE'}
+    records.push({id:nextId++,kStart:newK,kEnd:null,subject:name,op:op,state:state,authority:auth,supersedes:live?live.id:null});
+    scrub.max=newK;scrub.value=newK;render();
+  });
+  scrub.addEventListener('input',render);subject.addEventListener('change',render);document.getElementById('reset').addEventListener('click',cloneSeed);
+  function render(){
+    var k=Number(scrub.value),r=selectedFallback(k),name=subject.value;
+    document.getElementById('kBadge').textContent='k = '+k;document.getElementById('rangeText').textContent='k 1 — '+maxK();
+    document.getElementById('beliefSubject').textContent=r?r.subject:name;
+    document.getElementById('beliefState').textContent=r?r.state:'NOT YET KNOWN';
+    document.getElementById('beliefAuthority').textContent='authority '+(r?r.authority.toFixed(2):'0.00');
+    document.getElementById('authorityFill').style.width=((r?r.authority:0)*100)+'%';
+    var list=document.getElementById('recordList');list.innerHTML='';
+    records.slice().reverse().forEach(function(row){var div=document.createElement('div');var active=r&&row.id===r.id;
+      div.className='record-row'+(row.kStart>k?' future':'')+(active?' active-row':'');
+      div.innerHTML='<span class="mono">k '+row.kStart+'</span><span class="op">'+row.op+'</span><span class="subject">'+row.subject+'</span><span class="mono">'+row.state+'</span><span class="supersedes mono">'+(row.supersedes?'← #'+row.supersedes:'origin')+'</span>';list.appendChild(div)});
+    var tl=document.getElementById('timeline');tl.innerHTML='<div class="rail"></div>';var relevant=records.filter(function(x){return x.subject===name});
+    relevant.forEach(function(row){var pct=Math.max(2,Math.min(98,(row.kStart/maxK())*100));var mark=document.createElement('button');mark.className='timeline-mark'+(row.kStart<=k?' past':'')+(r&&r.id===row.id?' current':'');mark.style.left=pct+'%';mark.title='k '+row.kStart+' · '+row.state;mark.setAttribute('aria-label',mark.title);mark.addEventListener('click',function(){scrub.value=row.kStart;render()});tl.appendChild(mark);
+      var lab=document.createElement('span');lab.className='timeline-label';lab.style.left=pct+'%';lab.textContent='k'+row.kStart;tl.appendChild(lab)});
+  }
+  cloneSeed();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+input[type="range"]::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ appearance: none;
+ width: 22px;
+ height: 22px;
+ border-radius: 4px;
+ background: #e6c364;
+ cursor: pointer;
+ border: 2px solid #131313;
+ box-shadow: 0 0 10px rgba(230, 195, 100, 0.4);
+}
+input[type="range"]::-moz-range-thumb {
+ width: 22px;
+ height: 22px;
+ border-radius: 4px;
+ background: #e6c364;
+ cursor: pointer;
+ border: 2px solid #131313;
+ box-shadow: 0 0 10px rgba(230, 195, 100, 0.4);
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><style>
+ body {
+ min-height: max(884px, 100dvh);
+ }
+ </style>
+</head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><a href="/" data-path="home" class="inline-flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWmTj5Oj2OVXUggCwGJhxVZWV5nf0Y3o5JieVF3KIlt4ldrkfs53-n-V_Q7sEMxe-ravjDpGaokOhfRX2IA4CC2C521_Ei8hLfc-TVQu3NaKS8yZa7n9Wey1fe_Vf6rE1mBtXoSTlvw-cbQfjs6tyVWSXG2I_TDcrQLWi-Qdi8IwysURBkSKrhZl2BhIA-SIXh582koZ2vxEg_smFcA-sUbHxRiWj36dc_VIhZuNgzff-ijdwJHc5pJQ" alt="VOLSHi . HOME" class="h-7 w-auto object-contain"></a></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">ZENODO</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO -->
+<section class="flex flex-col px-space-sm pt-space-md pb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="inline-flex items-center gap-1.5 self-start px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-telemetry-cell text-telemetry-cell tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>VOLSHi / COMPLIANCE INFRASTRUCTURE</span>
+</div>
+<h1 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface tracking-tight mt-1">
+ Every Agent Action. <span class="italic font-headline-hero-mobile text-primary">On the Record.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+ Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.
+ </p>
+</div>
+<!-- Hero Technical Metric Plaque -->
+<div class="mt-space-md rounded-xl bg-surface-container-low p-space-sm shadow-md relative overflow-hidden">
+<div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+ IMMUTABLE LEDGER // K-NODE 01
+ </span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase px-2 py-0.5 rounded-full bg-surface-container-high">
+ ACTIVE LOGGING
+ </span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center py-1">
+<div class="flex flex-col rounded bg-surface-container p-1.5">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">EVAL LATENCY</span>
+<span class="font-telemetry-head text-telemetry-head text-primary font-semibold">—</span>
+</div>
+<div class="flex flex-col rounded bg-surface-container p-1.5">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">AUDIT HASH</span>
+<span class="font-telemetry-head text-telemetry-head text-on-surface font-semibold">—</span>
+</div>
+<div class="flex flex-col rounded bg-surface-container p-1.5">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">ENFORCEMENT</span>
+<span class="font-telemetry-head text-telemetry-head text-status-lime font-semibold">PRE-EXEC</span>
+</div>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col gap-2.5 mt-space-md">
+<a class="w-full flex items-center justify-center gap-2 py-3 px-space-md rounded-lg bg-primary text-on-primary font-headline-md text-[15px] font-semibold tracking-wide transition-transform active:scale-[0.98] shadow-lg shadow-primary/10" href="#trifecta">
+<span>Explore The Span</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="w-full flex items-center justify-center gap-2 py-2.5 px-space-md rounded-lg bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell tracking-wider uppercase transition-colors hover:bg-surface-bright" href="#pitch-deck">
+<span class="material-symbols-outlined text-[16px] text-primary">download</span>
+<span>Download Pitch Deck</span>
+</a>
+</div>
+<!-- Ticker Stream -->
+<div class="mt-space-md rounded-lg bg-surface-container-lowest p-2 overflow-x-auto scrollbar-none">
+<div class="flex items-center gap-2 whitespace-nowrap font-telemetry-cell text-telemetry-cell text-on-surface-variant">
+<span class="text-primary font-semibold">FLOW:</span>
+<span class="text-on-surface">Human Experience</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Understand</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Learn</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Authorize</span>
+<span class="text-outline">→</span>
+<span class="text-primary font-semibold">Machine Intelligence</span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: THE PROBLEM (INTERACTIVE CARDS) -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest/60">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>VOLSHi / THE PROBLEM</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ AI Makes Decisions It Can't Account For.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+ No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Tap cards to inspect.
+ </p>
+</div>
+<!-- 8 Mobile Tap-to-Inspect Cards -->
+<div class="grid grid-cols-1 gap-2.5 mt-space-md" id="problem-card-grid">
+<!-- 1. OBSERVE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">01 // OBSERVE</span>
+<span class="font-headline-md text-[15px] text-on-surface">Execution Monitoring</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ See what autonomous agents are doing in real time. Continuous telemetry hooks monitor multi-agent runtime handoffs without invasive code rewrites.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-tertiary">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+<span>Kernel stream: 2,400 events/sec baseline</span>
+</div>
+</div>
+</div>
+<!-- 2. KNOW -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-secondary uppercase">02 // KNOW</span>
+<span class="font-headline-md text-[15px] text-on-surface">Belief Capture</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Record what the agent believed when it acted. Distinguish momentary hallucinations from structured factual priors before financial or clinical actions commit.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-secondary">
+<span class="material-symbols-outlined text-[14px]">psychology_alt</span>
+<span>Captures epistemic confidence states &amp; premises</span>
+</div>
+</div>
+</div>
+<!-- 3. GATE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-ruby-deep/40 flex items-center justify-center text-ruby">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-ruby uppercase">03 // GATE</span>
+<span class="font-headline-md text-[15px] text-on-surface">Policy Enforcement</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Consequential actions require mathematical assertion approvals before dispatch. Policy rules intercept high-impact tool invocations.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+<span>Deterministic circuit breaker // Hard stop triggers</span>
+</div>
+</div>
+</div>
+<!-- 4. TRACK -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">route</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">04 // TRACK</span>
+<span class="font-headline-md text-[15px] text-on-surface">Provenance Tracking</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Trace every single token and input vector to its authoritative origin. Cross-correlates external web scrapers, corporate APIs, and local vectorized stores.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-primary">
+<span class="material-symbols-outlined text-[14px]">fingerprint</span>
+<span>Cryptographic origin validation &amp; tamper stamps</span>
+</div>
+</div>
+</div>
+<!-- 5. PROVE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-tertiary uppercase">05 // PROVE</span>
+<span class="font-headline-md text-[15px] text-on-surface">Evidence Chain</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Every output claim remains immutably tied to evidentiary grounding. Prevents synthetic citations and ensures litigation-ready courtroom defensibility.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-tertiary">
+<span class="material-symbols-outlined text-[14px]">fact_check</span>
+<span>Zenodo DOI ledger compliant linking</span>
+</div>
+</div>
+</div>
+<!-- 6. REPLAY -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-status-orange">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-status-orange uppercase">06 // REPLAY</span>
+<span class="font-headline-md text-[15px] text-on-surface">Reconstruction</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Rebuild any past decision state in full fidelity. Step through multi-agent deliberations second-by-second with full model weights and contextual memories.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-status-orange">
+<span class="material-symbols-outlined text-[14px]">slow_motion_video</span>
+<span>Deterministic state machine reconstruction</span>
+</div>
+</div>
+</div>
+<!-- 7. REPORT -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-status-lime">
+<span class="material-symbols-outlined text-[18px]">article</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-status-lime uppercase">07 // REPORT</span>
+<span class="font-headline-md text-[15px] text-on-surface">Regulator Export</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Compliance reports generated automatically on demand. Pre-mapped to EU AI Act Title III high-risk systemic oversight templates and SEC algorithmic mandates.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Single-tap automated regulatory package compile</span>
+</div>
+</div>
+</div>
+<!-- 8. RETAIN -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">database</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">08 // RETAIN</span>
+<span class="font-headline-md text-[15px] text-on-surface">Immutable Record</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ What was believed, when, and why — completely unerasable. An append-only cryptographic structure prevents retrofitted log falsification.
+ </p>
+<div class="mt-2 inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell text-primary">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Cryptographic Merkle ledger integrity</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 6-Step Problem Walkthrough Banner -->
+<div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low relative overflow-hidden">
+<div class="flex items-center gap-1.5 mb-2 font-telemetry-head text-telemetry-head text-primary uppercase">
+<span class="material-symbols-outlined text-[16px]">troubleshoot</span>
+<span>The Enterprise Vulnerability Vector</span>
+</div>
+<div class="flex flex-col gap-2 font-telemetry-cell text-telemetry-cell text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">1.</span>
+<span>Agent receives vague human directive → autonomous plan initiated.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">2.</span>
+<span>Sub-agents generate 40+ undocumented internal reasoning iterations.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">3.</span>
+<span>Hallucinated credential or flawed policy treated as valid axiom.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-status-orange font-bold">4.</span>
+<span>Irreversible high-value external wire or database wipe executed.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-ruby font-bold">5.</span>
+<span>Standard server logs show merely HTTP 200: "No failure recorded".</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-status-lime font-bold">6.</span>
+<span>VOLSHi Solution: Epistemic trace locks beliefs in real time.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE PERFECTA TRIFECTA -->
+<section class="flex flex-col px-space-sm py-space-md" id="trifecta">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>VOLSHi / TECHNOLOGY</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ The Perfecta Trifecta.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Three systems. One compliance story.
+ </p>
+</div>
+<!-- Stacked Cards -->
+<div class="flex flex-col gap-space-sm mt-space-md">
+<!-- 01 KATIE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase font-bold tracking-wider">01 // KATIE — Watches</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-telemetry-cell text-telemetry-cell">TELEMETRY</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime inline-block"></span>
+ Receipt Gen: 0.12ms
+ </span>
+<span class="text-primary">K-RECORD ATTACHED</span>
+</div>
+</div>
+<!-- 02 ERIE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-tertiary uppercase font-bold tracking-wider">02 // ERIE — Verifies</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-tertiary font-telemetry-cell text-telemetry-cell">GROUNDING</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary inline-block"></span>
+ Zero Confabulation Mode
+ </span>
+<span class="text-on-surface-variant">CITATION STRICT</span>
+</div>
+</div>
+<!-- 03 ELLE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-secondary uppercase font-bold tracking-wider">03 // ELLE — Persists</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-telemetry-cell text-telemetry-cell">CONTINUITY</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ The external learning loop that follows the user into whatever model they interact with. You never start from zero again.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+ Cross-Model Sync
+ </span>
+<span class="text-on-surface-variant">PORTABLE STATE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: INTERACTIVE MOBILE K-RECORD ENTRY -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest/90">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span>INTERACTIVE FORENSIC REPLAY</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ What the agent believed, on the record.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Inspect live cryptographic snapshot at epoch k = 1042. Scrub continuously or tap states to simulate chain progression.
+ </p>
+</div>
+<!-- Compact Touch Interactive Widget -->
+<div class="mt-space-md rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-sm relative border border-gold-glass-stroke">
+<!-- Widget Header Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-lime animate-pulse"></span>
+<span class="font-telemetry-head text-telemetry-head text-on-surface uppercase font-semibold">K-RECORD INSPECTOR</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell px-2 py-0.5 rounded bg-surface-container-high text-primary font-mono tracking-wider">#KR-2026-X1</span>
+</div>
+<!-- Core Data Matrix -->
+<div class="flex flex-col gap-2 rounded-lg bg-surface-container-low p-space-sm border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase tracking-wider">Held Belief</span>
+<span class="font-headline-md text-[16px] text-primary mt-0.5" id="k-belief-text">
+ “The supplier invoice is legitimate.”
+ </span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-line-subtle">
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Held at t</span>
+<span class="font-telemetry-code text-telemetry-code text-on-surface text-[12px]">2026-10-16 14:32:08 UTC</span>
+</div>
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Recorded at k</span>
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold text-[13px]" id="k-index-val">k = 1042</span>
+</div>
+</div>
+<!-- Authority Meter Bar -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-on-surface-variant uppercase tracking-wider">Authority / Confidence</span>
+<span class="font-semibold text-primary" id="k-authority-val">90% [CONFIRMED_HIGH]</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/40">
+<div class="h-full bg-primary rounded-full transition-all duration-300 w-[90%]" id="k-meter-bar"></div>
+</div>
+</div>
+<!-- Continuous Scrub Bar with Direct Drag -->
+<div class="flex flex-col gap-1.5 pt-2 mt-1 border-t border-line-subtle">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-primary uppercase tracking-wider font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+SCRUB K-INDEX (1042 → 1050)
+</span>
+<span class="text-on-surface-variant font-mono text-[11px]" id="k-scrub-label">STEP: 1042 / 1050</span>
+</div>
+<input aria-label="Scrub K-Index" class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary focus:outline-none" id="k-range-slider" max="1050" min="1042" oninput="handleSliderInput(this.value)" step="1" type="range" value="1042">
+<div class="flex justify-between items-center px-0.5 font-telemetry-cell text-[10px] text-on-surface-variant/60 font-mono">
+<span>k=1042 (ASSERT)</span>
+<span>k=1046 (REVIEW)</span>
+<span>k=1050 (DISPROVEN)</span>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase tracking-wider">Action Taken</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-status-lime font-telemetry-code text-telemetry-code font-semibold" id="k-action-taken">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Wired the payment. ($248,500.00 USD)</span>
+</div>
+</div>
+<!-- Epistemic Status Banner -->
+<div class="p-2 rounded bg-surface-container text-on-surface font-telemetry-cell text-[12px] border border-outline-variant/30 flex items-start gap-1.5" id="k-status-callout">
+<span class="material-symbols-outlined text-primary text-[15px] shrink-0 mt-0.5" id="k-status-icon">check_circle</span>
+<span class="leading-tight" id="k-status-text">✓ Belief holds — action was justified.</span>
+</div>
+</div>
+<!-- Supersedes Chain Tap Selector -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase tracking-wider">Chain Sequence (Tap Epoch):</span>
+<span class="font-telemetry-cell text-[10px] text-primary/70 uppercase">AUDIO/HAPTIC SYNCED</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-high text-primary transition-all text-center border border-primary/40 active:scale-95" id="btn-node-0" onclick="scrubChain(0)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1042</span>
+<span class="font-telemetry-cell text-[10px] text-primary">ASSERT (90%)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-on-surface-variant transition-all text-center border border-outline-variant/20 active:scale-95" id="btn-node-1" onclick="scrubChain(1)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1045</span>
+<span class="font-telemetry-cell text-[10px] text-status-orange">CHALLENGE (40%)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-on-surface-variant transition-all text-center border border-outline-variant/20 active:scale-95" id="btn-node-2" onclick="scrubChain(2)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1048</span>
+<span class="font-telemetry-cell text-[10px] text-ruby">REVOKE (0%)</span>
+</button>
+</div>
+</div>
+<!-- Fullscreen Forensic Sheet Trigger Button -->
+<button class="w-full flex items-center justify-between py-2.5 px-space-sm rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/40 text-primary transition-all active:scale-[0.98]" onclick="openForensicModal()" type="button">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-telemetry-head text-telemetry-head uppercase font-semibold tracking-wider">VERIFY CRYPTOGRAPHIC SIGNATURE</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell font-mono text-primary flex items-center gap-0.5">
+<span>EXPAND RECEIPT</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</span>
+</button>
+<!-- Append-Only Notice -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-ruby-ground text-on-surface-variant font-telemetry-cell text-telemetry-cell leading-tight border border-ruby-deep/40">
+<span class="material-symbols-outlined text-ruby text-[16px] shrink-0">lock</span>
+<span>This entry is append-only. Nothing here can be edited or deleted — only superseded.</span>
+</div>
+</div>
+</section>
+<!-- FULLSCREEN FORENSIC INSPECTION MODAL / BOTTOM SHEET -->
+<div aria-hidden="true" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex-col justify-end transition-opacity duration-300" id="forensic-modal">
+<div class="w-full max-h-[90vh] bg-surface-container-low border-t border-primary/40 rounded-t-2xl flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-bottom pb-safe">
+<!-- Modal Header -->
+<div class="p-4 bg-surface-container flex items-center justify-between border-b border-line-subtle shrink-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+<div>
+<h3 class="font-telemetry-head text-telemetry-head text-on-surface uppercase font-bold tracking-wider leading-none">K-RECORD FORENSIC PROVENANCE</h3>
+<span class="font-telemetry-cell text-[10px] text-status-lime uppercase tracking-widest">RECORD INTEGRITY: VALID · APPEND-ONLY SEALED</span>
+</div>
+</div>
+<button aria-label="Close Forensic Modal" class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="closeForensicModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Modal Scrollable Content -->
+<div class="p-4 overflow-y-auto flex flex-col gap-3 font-telemetry-cell text-telemetry-cell">
+<!-- Status Plaque -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/30">
+<div>
+<span class="text-on-surface-variant/70 uppercase text-[10px] block">ZENODO DOI LEDGER</span>
+<span class="font-mono text-primary text-[12px] font-semibold">10.5281/zenodo.23198458</span>
+</div>
+<div>
+<span class="text-on-surface-variant/70 uppercase text-[10px] block">BLOCK COMMITMENT</span>
+<span class="font-mono text-status-lime text-[12px] font-semibold">EPOCH #1042-ALPHA</span>
+</div>
+</div>
+<!-- Raw Cryptographic Proof Hex Dump -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant uppercase font-semibold text-[11px] tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">data_object</span>
+RAW CRYPTOGRAPHIC LEDGER DUMP
+</span>
+<span class="text-status-lime text-[10px] font-mono">IMMUTABLE</span>
+</div>
+
+</div>
+<!-- Merkle Tree Telemetry Visualizer -->
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-outline-variant/30 flex flex-col gap-1.5">
+<span class="text-on-surface-variant uppercase text-[10px] tracking-wider font-semibold">MERKLE TREE ANCHOR ROUTE</span>
+<div class="font-mono text-[10px] text-on-surface-variant flex flex-col gap-1">
+<div class="flex items-center gap-1.5"><span class="text-primary">Root:</span><span>—</span><span class="text-status-lime ml-auto">✓ ANCHORED</span></div>
+<div class="flex items-center gap-1.5"><span class="text-outline">└─ Branch 0:</span><span>—</span></div>
+<div class="flex items-center gap-1.5 pl-3"><span class="text-secondary">└─ Leaf KR-1042:</span><span>— [AUDITABLE]</span></div>
+</div>
+</div>
+</div>
+<!-- Modal Footer Actions -->
+<div class="p-3 bg-surface-container border-t border-line-subtle flex items-center gap-2 shrink-0">
+<button class="flex-1 py-2.5 px-3 rounded-lg bg-primary text-on-primary font-telemetry-head text-telemetry-head uppercase font-semibold tracking-wider flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md" id="copy-hash-btn" onclick="copyReceiptHash(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>COPY RAW HASH</span>
+</button>
+<button class="py-2.5 px-4 rounded-lg bg-surface-container-high text-on-surface hover:text-primary font-telemetry-cell text-telemetry-cell uppercase tracking-wider font-semibold active:scale-95 transition-colors" onclick="closeForensicModal()" type="button">
+DISMISS
+</button>
+</div>
+</div>
+</div>
+<!-- SECTION 5: COMPANY / MISSION & PITCH DECK -->
+<section class="flex flex-col px-space-sm py-space-md" id="pitch-deck">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span class="w-1.5 h-1.5 rounded-full bg-status-orange"></span>
+<span>GOVERNANCE / MANDATE</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">
+ COMPLIANCE FOR AI AGENTS.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface mt-2 leading-relaxed">
+ Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act mandates traceability by December 2027 — every consequential decision requires an unalterable chain of reasoning.
+ </p>
+</div>
+<!-- Pitch Deck Card -->
+<div class="mt-space-md flex flex-col p-space-md rounded-xl bg-surface-container shadow-lg relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase font-semibold">INVESTOR MEMORANDUM</span>
+<span class="px-2 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell font-semibold">
+ 88/100 ON VETTABLE
+ </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">
+ Institutional Overview Deck
+ </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+ 13 slides · third-party validated — complete technical architecture, financial projections, and enterprise risk thesis.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">picture_as_pdf</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface">VOLSHI_Q3_DECK.PDF</span>
+</div>
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-telemetry-cell text-telemetry-cell uppercase font-semibold tracking-wider flex items-center gap-1 active:scale-95 transition-transform" onclick="simulateDeckDownload(this)" type="button">
+<span class="material-symbols-outlined text-[14px]">file_download</span>
+<span>GET ACCESS</span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CONTACT & LIFECYCLE ACCORDION -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>AGENT EXECUTION PHASES</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ 5-Step Autonomous Lifecycle.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Deterministic accountability at every phase boundary.
+ </p>
+</div>
+<!-- 5-Step Accordion -->
+<div class="flex flex-col gap-2 mt-space-md" id="lifecycle-accordion">
+<!-- 1. Observe -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">1</span>
+<span class="font-headline-md text-[15px] text-on-surface">Observe</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Live stream extraction of memory contexts, function call requests, and raw inbound user telemetry.
+ </div>
+</div>
+<!-- 2. Understand -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">2</span>
+<span class="font-headline-md text-[15px] text-on-surface">Understand</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Epistemic disambiguation: distinguishing facts asserted by authorized tools from unverified system prompts.
+ </div>
+</div>
+<!-- 3. Decide -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">3</span>
+<span class="font-headline-md text-[15px] text-on-surface">Decide</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Policy evaluation engines compute confidence bounds and compliance rule passes before execution dispatch.
+ </div>
+</div>
+<!-- 4. Act -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">4</span>
+<span class="font-headline-md text-[15px] text-on-surface">Act</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ External API mutation with receipt issuance and cryptographic sign-off generated before socket release.
+ </div>
+</div>
+<!-- 5. Account -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">5</span>
+<span class="font-headline-md text-[15px] text-on-surface">Account</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Perpetual append-only archival into the K-record for legal review, regulatory export, and post-incident discovery.
+ </div>
+</div>
+</div>
+<!-- Contact Founder Direct -->
+<div class="flex flex-col gap-2 mt-space-lg">
+<a class="w-full flex items-center justify-center gap-2 py-3 px-space-md rounded-lg bg-surface-container-high text-primary hover:bg-surface-bright font-telemetry-head text-telemetry-head font-semibold tracking-wider uppercase transition-colors shadow-sm" href="mailto:founder@volshi.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Contact Founder (founder@volshi.com)</span>
+</a>
+<span class="text-center font-telemetry-cell text-telemetry-cell text-on-surface-variant/60">
+ Direct partner queries, red-team access &amp; evaluation trials.
+ </span>
+</div>
+<!-- Triple-Click Easter Egg Watermark -->
+<div class="mt-space-lg py-space-sm flex flex-col items-center justify-center select-none cursor-pointer text-center" id="easter-egg-zone">
+<span class="font-telemetry-cell text-[10px] uppercase tracking-widest text-on-surface-variant/40">
+ SYS_ID: 10.5281/ZENODO // NODE 0x9AF
+ </span>
+<span class="h-4 font-telemetry-cell text-[10px] text-primary transition-opacity duration-300 opacity-0 mt-0.5" id="easter-egg-feedback">
+ ROOT ACCESS AUTHENTICATED // TRACE MONITOR ATTACHED
+ </span>
+</div>
+</section>
+<!-- Client Micro-Interactions -->
+<script>
+ function toggleCard(el) {
+ const drawer = el.querySelector('.card-drawer');
+ const chevron = el.querySelector('.chevron-icon');
+ const isHidden = drawer.classList.contains('hidden');
+ 
+ // Close all drawers
+ document.querySelectorAll('#problem-card-grid .card-drawer').forEach(d => d.classList.add('hidden'));
+ document.querySelectorAll('#problem-card-grid .chevron-icon').forEach(c => c.classList.remove('rotate-180'));
+ 
+ if (isHidden) {
+ drawer.classList.remove('hidden');
+ chevron.classList.add('rotate-180');
+ }
+ }
+
+ // Audio Context & Haptic Feedback Engine
+ let audioCtx = null;
+ function playSyntheticBlip(frequency = 1000) {
+ try {
+ if (!audioCtx) {
+ const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+ if (AudioContextClass) audioCtx = new AudioContextClass();
+ }
+ if (audioCtx) {
+ if (audioCtx.state === 'suspended') {
+ audioCtx.resume();
+ }
+ const osc = audioCtx.createOscillator();
+ const gain = audioCtx.createGain();
+ osc.type = 'sine';
+ osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+ 
+ gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.035);
+
+ osc.connect(gain);
+ gain.connect(audioCtx.destination);
+
+ osc.start();
+ osc.stop(audioCtx.currentTime + 0.04);
+ }
+ } catch (e) {
+ // Safe degrade if blocked
+ }
+
+ // Haptic physical vibration
+ if (typeof navigator !== 'undefined' && navigator.vibrate) {
+ try {
+ navigator.vibrate([15]);
+ } catch (e) {}
+ }
+ }
+
+ const chainStates = [
+ {
+ k: 'k = 1042',
+ belief: '\u201CThe supplier invoice is legitimate.\u201D',
+ authText: '90% [CONFIRMED_HIGH]',
+ authWidth: '90%',
+ authColor: '#e6c364',
+ action: 'Wired the payment. ($248,500.00 USD)',
+ actionIcon: 'bolt',
+ actionColor: 'text-status-lime',
+ statusText: '✓ Belief holds — action was justified.',
+ statusIcon: 'check_circle',
+ statusColor: 'text-primary'
+ },
+ {
+ k: 'k = 1045',
+ belief: '\u201CThe supplier invoice is legitimate.\u201D',
+ authText: '40% [CONTESTED_REVIEW]',
+ authWidth: '40%',
+ authColor: '#F08A4B',
+ action: 'Wired the payment. Flag raised on metadata.',
+ actionIcon: 'report_problem',
+ actionColor: 'text-status-orange',
+ statusText: '⚠ Authority collapsing — belief is losing weight.',
+ statusIcon: 'warning',
+ statusColor: 'text-status-orange'
+ },
+ {
+ k: 'k = 1048',
+ belief: '\u201CThe supplier invoice is legitimate.\u201D',
+ authText: '0% [DISPROVEN_ZERO]',
+ authWidth: '6%',
+ authColor: '#EF174C',
+ action: 'Wired the payment. Invoice confirmed fraudulent.',
+ actionIcon: 'block',
+ actionColor: 'text-ruby',
+ statusText: '✕ Belief disproven at k — authority is zero. The record keeps it as history.',
+ statusIcon: 'cancel',
+ statusColor: 'text-ruby'
+ }
+ ];
+
+ let lastSliderVal = 1042;
+
+ function applyKState(kVal, triggerFeedback = true) {
+ kVal = parseInt(kVal, 10);
+ document.getElementById('k-index-val').innerText = `k = ${kVal}`;
+ document.getElementById('k-scrub-label').innerText = `STEP: ${kVal} / 1050`;
+
+ let selectedState;
+ let buttonIndex = -1;
+ let freq = 1000;
+
+ if (kVal >= 1042 && kVal <= 1044) {
+ selectedState = chainStates[0];
+ buttonIndex = 0;
+ freq = 1200;
+ } else if (kVal >= 1045 && kVal <= 1047) {
+ selectedState = chainStates[1];
+ buttonIndex = 1;
+ freq = 900;
+ } else {
+ selectedState = chainStates[2];
+ buttonIndex = 2;
+ freq = 650;
+ }
+
+ document.getElementById('k-belief-text').innerText = selectedState.belief;
+ document.getElementById('k-authority-val').innerText = selectedState.authText;
+
+ const bar = document.getElementById('k-meter-bar');
+ bar.style.width = selectedState.authWidth;
+ bar.style.backgroundColor = selectedState.authColor;
+
+ const actContainer = document.getElementById('k-action-taken');
+ actContainer.className = `flex items-center gap-1.5 mt-0.5 ${selectedState.actionColor} font-telemetry-code text-telemetry-code font-semibold`;
+ actContainer.innerHTML = `<span class="material-symbols-outlined text-[16px]">${selectedState.actionIcon}</span><span>${selectedState.action}</span>`;
+
+ const statusIcon = document.getElementById('k-status-icon');
+ const statusText = document.getElementById('k-status-text');
+ statusIcon.innerText = selectedState.statusIcon;
+ statusIcon.className = `material-symbols-outlined ${selectedState.statusColor} text-[15px] shrink-0 mt-0.5`;
+ statusText.innerText = selectedState.statusText;
+
+ // Update button highlights
+ for (let i = 0; i < 3; i++) {
+ const btn = document.getElementById(`btn-node-${i}`);
+ if (i === buttonIndex) {
+ btn.classList.add('bg-surface-container-high', 'text-primary', 'border-primary/40');
+ btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant/20');
+ } else {
+ btn.classList.remove('bg-surface-container-high', 'text-primary', 'border-primary/40');
+ btn.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-outline-variant/20');
+ }
+ }
+
+ if (triggerFeedback) {
+ playSyntheticBlip(freq);
+ }
+ }
+
+ function handleSliderInput(val) {
+ if (val !== lastSliderVal) {
+ lastSliderVal = val;
+ applyKState(val, true);
+ }
+ }
+
+ function scrubChain(index) {
+ const stepMap = [1042, 1045, 1048];
+ const targetVal = stepMap[index];
+ const slider = document.getElementById('k-range-slider');
+ slider.value = targetVal;
+ lastSliderVal = targetVal;
+ applyKState(targetVal, true);
+ }
+
+ // Modal Control Functions
+ function openForensicModal() {
+ playSyntheticBlip(1100);
+ const modal = document.getElementById('forensic-modal');
+ modal.classList.remove('hidden');
+ modal.classList.add('flex');
+ }
+
+ function closeForensicModal() {
+ playSyntheticBlip(750);
+ const modal = document.getElementById('forensic-modal');
+ modal.classList.add('hidden');
+ modal.classList.remove('flex');
+ }
+
+ function copyReceiptHash(btn) {
+ const hash = "—";
+ playSyntheticBlip(1400);
+ if (navigator.clipboard) {
+ navigator.clipboard.writeText(hash);
+ }
+ const orig = btn.innerHTML;
+ btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">check</span><span>COPIED TO CLIPBOARD</span>`;
+ setTimeout(() => {
+ btn.innerHTML = orig;
+ }, 2000);
+ }
+
+ function toggleLifecycle(btn) {
+ const parent = btn.parentElement;
+ const content = parent.querySelector('.lifecycle-content');
+ const chevron = btn.querySelector('.chevron');
+ const isHidden = content.classList.contains('hidden');
+
+ document.querySelectorAll('#lifecycle-accordion .lifecycle-content').forEach(c => c.classList.add('hidden'));
+ document.querySelectorAll('#lifecycle-accordion .chevron').forEach(c => c.classList.remove('rotate-180'));
+
+ if (isHidden) {
+ content.classList.remove('hidden');
+ chevron.classList.add('rotate-180');
+ playSyntheticBlip(950);
+ }
+ }
+
+ function simulateDeckDownload(btn) {
+ playSyntheticBlip(1250);
+ const orig = btn.innerHTML;
+ btn.innerHTML = `<span class="material-symbols-outlined text-[14px] animate-spin">refresh</span><span>FETCHING...</span>`;
+ setTimeout(() => {
+ btn.innerHTML = `<span class="material-symbols-outlined text-[14px]">check</span><span>DISPATCHED</span>`;
+ setTimeout(() => {
+ btn.innerHTML = orig;
+ }, 2500);
+ }, 1000);
+ }
+
+ // Triple-Click Easter Egg
+ let clickCount = 0;
+ let clickTimer = null;
+ const easterEggZone = document.getElementById('easter-egg-zone');
+ const feedback = document.getElementById('easter-egg-feedback');
+
+ if (easterEggZone) {
+ easterEggZone.addEventListener('click', () => {
+ clickCount++;
+ clearTimeout(clickTimer);
+ clickTimer = setTimeout(() => {
+ clickCount = 0;
+ }, 800);
+
+ if (clickCount >= 3) {
+ playSyntheticBlip(1600);
+ feedback.classList.remove('opacity-0');
+ feedback.classList.add('opacity-100');
+ clickCount = 0;
+ setTimeout(() => {
+ feedback.classList.remove('opacity-100');
+ feedback.classList.add('opacity-0');
+ }, 4000);
+ }
+ });
+ }
+ </script>
+</div><footer class="mt-space-xl px-space-sm pb-space-lg text-center flex flex-col items-center gap-space-xs"><div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high/40 text-on-surface-variant font-telemetry-cell text-telemetry-cell"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span>ZENODO DOI LEDGER COMPLIANT</span></div><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="home" href="/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="the-system" href="/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">System</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="katie" href="/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Research</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/invest/"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Invest</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+
+
+</body></html>

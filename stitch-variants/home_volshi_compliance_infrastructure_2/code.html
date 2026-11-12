@@ -1,0 +1,1228 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>VOLSHi — Computational Law &amp; AI Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"ruby-deep":"#8E072B","ruby":"#EF174C","inverse-surface":"#e5e2e1","primary-container":"#c9a84c","on-primary-fixed":"#241a00","surface-container-highest":"#353534","on-tertiary":"#00363e","engine-line":"#A8B6B1","error-container":"#93000a","surface-container-low":"#1c1b1b","on-background":"#e5e2e1","secondary-fixed":"#ffe084","on-surface-variant":"#d0c5b2","tertiary-container":"#44bacd","surface-variant":"#353534","primary-fixed":"#ffe08f","secondary-container":"#735c00","secondary-fixed-dim":"#e3c466","primary":"#e6c364","on-surface":"#e5e2e1","status-lime":"#A8E349","surface-dim":"#131313","secondary":"#e3c466","engine-muted":"#4F5F5A","surface-container-lowest":"#0e0e0e","status-orange":"#F08A4B","tertiary-fixed":"#9defff","tertiary":"#65d6e9","inverse-on-surface":"#313030","engine-ink":"#101716","on-secondary-fixed":"#231b00","surface-container-high":"#2a2a2a","ruby-hot":"#FF4D70","background":"#131313","on-tertiary-fixed-variant":"#004f59","on-secondary-container":"#f6d675","on-secondary":"#3c2f00","on-tertiary-fixed":"#001f24","engine-deep":"#14201E","on-secondary-fixed-variant":"#574500","inverse-primary":"#755b00","surface-container":"#201f1f","primary-fixed-dim":"#e6c364","on-error":"#690005","on-primary":"#3d2e00","ruby-ground":"#0D090B","on-primary-fixed-variant":"#584400","outline":"#99907e","line-subtle":"#232220","tertiary-fixed-dim":"#65d6e9","outline-variant":"#4d4637","gold-glass-stroke":"rgba(201, 168, 76, 0.2)","ruby-panel":"#171013","surface":"#131313","on-tertiary-container":"#004750","error":"#ffb4ab","on-error-container":"#ffdad6","paper-light":"#F5F2ED","on-primary-container":"#503d00","engine-sheet":"#EDF1EF","ground-deep":"#060607","surface-tint":"#e6c364","surface-bright":"#3a3939"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2.25rem","space-md":"1.125rem",gutter:"1.125rem","space-xs":"0.375rem","space-sm":"0.75rem","space-lg":"1.5rem",margin:"1.5rem"},fontFamily:{"body-md":["Inter"],"telemetry-cell":["IBM Plex Mono"],"telemetry-head":["IBM Plex Mono"],"body-sm":["Inter"],"telemetry-code":["IBM Plex Mono"],"headline-hero-mobile":["Newsreader"],"headline-xl-mobile":["Newsreader"],"headline-lg":["Newsreader"],"headline-hero":["Newsreader"],"body-lg":["Inter"],"headline-md":["IBM Plex Sans"],kicker:["Inter"],"headline-xl":["Newsreader"],"headline-lg-mobile":["Newsreader"]},fontSize:{"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"telemetry-cell":["11px",{lineHeight:"14px",fontWeight:"400"}],"telemetry-head":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"telemetry-code":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-hero-mobile":["34px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-lg":["30px",{lineHeight:"38px",fontWeight:"400"}],"headline-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}],"body-lg":["17px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"600"}],kicker:["11px",{lineHeight:"14px",letterSpacing:"0.12em",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"400"}]}}}}</script></head><body class="bg-ground-deep font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl border-b border-gold-glass-stroke"><div class="h-16 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><a class="flex items-center gap-space-sm group text-left" data-path="home" href="/"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvNAlSEq68posoTqvCe9WuYnT9mEZa6-awfHPm65ZsfHDaE5f6ovh18YAxmmL6FpwFNXM2hTn6lSYEzxkJVrRPLzs-TN08-aME4eXMKIXICh-LP-6ERPGmXOn42PEOk2TIi-8jNfPfRUKAvuEXZ9Av2lAGMvjca23eEmQem6cwU0dIIGL4mbIu6HSijETGGf3iOPmm_h1y_qX_9JIl6aNPJzu5FWYRzdleWCUwIbqdZu5LIHqEYwOhpg" class="h-9 w-auto object-contain inline-block" alt="VOLSHi Home"></a><div class="flex items-center gap-space-lg"><nav class="hidden md:flex items-center gap-space-lg h-16" data-active-classes="text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary"><a aria-current="page" class="font-body-sm tracking-wide transition-colors py-2 text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary" data-path="home" href="/"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvNAlSEq68posoTqvCe9WuYnT9mEZa6-awfHPm65ZsfHDaE5f6ovh18YAxmmL6FpwFNXM2hTn6lSYEzxkJVrRPLzs-TN08-aME4eXMKIXICh-LP-6ERPGmXOn42PEOk2TIi-8jNfPfRUKAvuEXZ9Av2lAGMvjca23eEmQem6cwU0dIIGL4mbIu6HSijETGGf3iOPmm_h1y_qX_9JIl6aNPJzu5FWYRzdleWCUwIbqdZu5LIHqEYwOhpg" class="h-9 w-auto object-contain inline-block" alt="VOLSHi Home"></a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="the-system" href="/the-system/">The System</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="katie" href="/katie/">KATIE</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="research" href="/research/">Research</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="invest" href="/invest/">Invest</a><a class="font-body-sm text-body-sm tracking-wide text-on-surface-variant hover:text-primary transition-colors py-2" data-path="contact" href="/#contact">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center justify-center px-space-md py-1.5 rounded border border-gold-glass-stroke bg-surface-container-lowest font-telemetry-head text-telemetry-head text-primary hover:bg-primary hover:text-on-primary hover:border-primary transition-all duration-200 shadow-[0_0_12px_rgba(201,168,76,0.1)] hover:shadow-[0_0_16px_rgba(201,168,76,0.35)]" href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry">Investor Inquiry</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 shadow-[0_0_8px_rgba(201,168,76,0.25)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-ground-deep min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<!-- ========================================================
+ SLIDE s0: HERO
+ ======================================================== -->
+<section class="relative w-full overflow-hidden bg-ground-deep py-24 lg:py-32 flex flex-col justify-between">
+<!-- Subtle Ambient Backdrop Gradient -->
+<div class="pointer-events-none absolute -top-40 right-0 w-[640px] h-[640px] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="pointer-events-none absolute bottom-0 -left-20 w-[420px] h-[420px] rounded-full bg-ruby-deep/10 blur-[100px]"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 w-full flex flex-col gap-12 relative z-10">
+<!-- Section Eyebrow -->
+<div class="flex items-center gap-3">
+<span class="inline-block w-2 h-2 rounded-full bg-primary shadow-sm shadow-primary"></span>
+<span class="font-telemetry-head text-telemetry-head uppercase tracking-[0.2em] text-primary">VOLSHi / Compliance Infrastructure</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline">:: REF:SLIDE_S0</span>
+</div>
+<!-- Main Headline + Editorial Subhead -->
+<div class="flex flex-col gap-6 max-w-5xl">
+<h1 class="font-headline-hero text-headline-hero text-paper-light tracking-tight selection:bg-primary-container selection:text-on-primary">
+ Every Agent Action. <br class="hidden sm:inline">
+<span class="italic text-primary">On the Record.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+ Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.
+ </p>
+</div>
+<!-- CTAs & Interactive Triggers -->
+<div class="flex flex-wrap items-center gap-4 pt-4">
+<button class="inline-flex items-center gap-3 px-space-lg py-3 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head font-semibold tracking-wider hover:bg-primary-fixed transition-all duration-200 shadow-xl shadow-primary/10" id="hero-explore-btn">
+<span>Explore The Span</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<a class="inline-flex items-center gap-2 px-space-md py-3 rounded border border-gold-glass-stroke bg-surface-container-lowest text-paper-light font-telemetry-head text-telemetry-head hover:bg-surface-container-high transition-colors" href="mailto:founder@volshi.com?subject=VOLSHi%20Briefing%20Inquiry">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span>Request Technical Brief</span>
+</a>
+</div>
+<!-- Visual Telemetry Anchor Card -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 p-space-md rounded-xl bg-surface-container-lowest/80 backdrop-blur-md shadow-2xl">
+<div class="flex flex-col gap-1 p-space-sm bg-surface-container-low rounded">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase">Verification Regime</span>
+<span class="font-telemetry-head text-telemetry-head text-primary">APPEND-ONLY LEDGER</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Deterministic provenance with cryptographic sealing</span>
+</div>
+<div class="flex flex-col gap-1 p-space-sm bg-surface-container-low rounded">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase">Statutory Calibration</span>
+<span class="font-telemetry-head text-telemetry-head text-status-lime">EU AI ACT · DEC 2027</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">High-risk AI traceability &amp; human oversight guarantees</span>
+</div>
+<div class="flex flex-col gap-1 p-space-sm bg-surface-container-low rounded">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase">Core Subsystem</span>
+<span class="font-telemetry-head text-telemetry-head text-tertiary">KATIE · ERIE · ELLE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Continuous observation, retrieval truth, persistent loop</span>
+</div>
+</div>
+<!-- Hero Bottom Bar Metadata -->
+<div class="pt-10 flex flex-wrap items-center justify-between gap-4 font-telemetry-cell text-telemetry-cell text-engine-muted border-t border-line-subtle">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-ping"></span>
+<span class="text-on-surface tracking-wider">INSTRUMENT ACTIVE</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 text-paper-light/70 font-telemetry-head">
+<span>Human Experience</span>
+<span class="text-primary">—</span>
+<span>Understand</span>
+<span class="text-primary">—</span>
+<span>Learn</span>
+<span class="text-primary">—</span>
+<span>Authorize</span>
+<span class="text-primary">—</span>
+<span class="text-primary font-semibold">Machine Intelligence</span>
+</div>
+<div class="tracking-widest">P. 001 // SYSTEM-CORE</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s1: THE PROBLEM & 8 FLIP CARDS
+ ======================================================== -->
+<section class="relative w-full py-24 bg-surface-container-lowest" id="the-problem">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-4 max-w-4xl">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">VOLSHi / The Problem</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ AI Makes Decisions It Can't Account For.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+ No record of what it believed, when it believed it, or why. Logs are rewritable. A $2.5B company just collapsed under safety lawsuits with no audit trail. The EU AI Act is live. Flip the cards — the black box becomes plexiglass.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-engine-line">
+<span class="material-symbols-outlined text-[16px] text-primary">touch_app</span>
+<span>Hover to reveal · Click to hold</span>
+</div>
+</div>
+<!-- 8 Interactive Flip Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- CARD 1: OBSERVE -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front: Black Box -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>01</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">OBSERVE</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">visibility_off</span>
+<span>Unmonitored runtime</span>
+</div>
+</div>
+<!-- Back: Plexiglass -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="uppercase">Execution Monitoring</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ See what agents are doing in real time — every action captured as it happens.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 2: KNOW -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>02</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">KNOW</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">psychology_alt</span>
+<span>Silent inferences</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+<span class="uppercase">Belief Capture</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Record what the agent believed when it acted — confidence, justification, evidence.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 3: GATE -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>03</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">GATE</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">lock_open</span>
+<span>Unvetted execution</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="uppercase">Policy Enforcement</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Consequential actions require approval before they execute. Prevention, not forensics.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 4: TRACK -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>04</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">TRACK</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">route</span>
+<span>Untracked sources</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">alt_route</span>
+<span class="uppercase">Provenance</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Trace every input to its source. When something goes wrong, find the root.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 5: PROVE -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>05</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">PROVE</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">link_off</span>
+<span>Unlinked assertions</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">link</span>
+<span class="uppercase">Evidence Chain</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Every claim stays tied to its evidence — across sessions, across models.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 6: REPLAY -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>06</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">REPLAY</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">replay</span>
+<span>Non-reproducible</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="uppercase">Reconstruction</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Rebuild any past decision in full. Incident review becomes investigation.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 7: REPORT -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>07</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">REPORT</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">description</span>
+<span>Manual audits</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span class="uppercase">Regulator Export</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ Compliance reports on demand. EU AI Act ready, US regulation coming.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD 8: RETAIN -->
+<div class="flip-card h-64 cursor-pointer perspective-[1000px]" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+<!-- Front -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-low p-space-md flex flex-col justify-between shadow-lg [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-engine-muted font-telemetry-cell text-telemetry-cell">
+<span>08</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-engine-line">BLACK BOX</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-paper-light tracking-wide uppercase">RETAIN</div>
+<div class="flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-ruby">
+<span class="material-symbols-outlined text-[14px]">delete_sweep</span>
+<span>Mutable records</span>
+</div>
+</div>
+<!-- Back -->
+<div class="absolute inset-0 rounded-xl bg-surface-container-high p-space-md flex flex-col justify-between shadow-xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+<div class="flex justify-between items-center text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="uppercase">Immutable Record</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light">
+ The past stays on the record. What was believed, when, and why — unerasable.
+ </p>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-status-lime">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span>Plexiglass · revealed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Problem Walkthrough Modal Launch Trigger -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-low border border-gold-glass-stroke">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<div class="font-telemetry-head text-telemetry-head text-paper-light">6-Step Deep Forensic Dossier</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">The Problem · The Customer · The Frequency · The Current Solution · The Gap · The Answer</div>
+</div>
+</div>
+<button class="px-space-md py-2 rounded bg-surface-container-highest text-primary font-telemetry-head text-telemetry-head hover:bg-primary hover:text-on-primary transition-all" id="open-walkthrough-btn">
+ Inspect 6-Step Gap Analysis
+ </button>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s2: TECHNOLOGY & THE PERFECTA TRIFECTA
+ ======================================================== -->
+<section class="relative w-full py-24 bg-ground-deep" id="technology">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-4 max-w-4xl">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">VOLSHi / Technology</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ The Perfecta Trifecta.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Three systems. One compliance story.
+ </p>
+</div>
+<!-- 3 Primary System Pillars -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- KATIE CARD -->
+<div class="rounded-xl bg-surface-container-low p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-space-md opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="font-headline-hero text-[80px] leading-none text-primary font-bold">01</span>
+</div>
+<div class="flex flex-col gap-6 z-10">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+<span class="font-telemetry-head text-telemetry-head text-primary tracking-widest uppercase">KATIE · Watches</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light leading-relaxed">
+ Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+</div>
+<div class="pt-8 border-t border-line-subtle flex items-center justify-between text-engine-muted font-telemetry-cell text-telemetry-cell z-10">
+<span>OBSERVATION ENGINE</span>
+<span class="text-primary font-semibold">APPEND-ONLY</span>
+</div>
+</div>
+<!-- ERIE CARD -->
+<div class="rounded-xl bg-surface-container-low p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-space-md opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="font-headline-hero text-[80px] leading-none text-tertiary font-bold">02</span>
+</div>
+<div class="flex flex-col gap-6 z-10">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-telemetry-head text-telemetry-head text-tertiary tracking-widest uppercase">ERIE · Verifies</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light leading-relaxed">
+ Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.
+ </p>
+</div>
+<div class="pt-8 border-t border-line-subtle flex items-center justify-between text-engine-muted font-telemetry-cell text-telemetry-cell z-10">
+<span>VERIFIED RETRIEVAL</span>
+<span class="text-tertiary font-semibold">ZERO-HALLUCINATION</span>
+</div>
+</div>
+<!-- ELLE CARD -->
+<div class="rounded-xl bg-surface-container-low p-space-lg flex flex-col justify-between shadow-xl relative overflow-hidden group hover:bg-surface-container transition-colors">
+<div class="absolute top-0 right-0 p-space-md opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="font-headline-hero text-[80px] leading-none text-status-lime font-bold">03</span>
+</div>
+<div class="flex flex-col gap-6 z-10">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-status-lime"></span>
+<span class="font-telemetry-head text-telemetry-head text-status-lime tracking-widest uppercase">ELLE · Persists</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light leading-relaxed">
+ The external learning loop that follows the user into whatever model they interact with. You never start from zero again.
+ </p>
+</div>
+<div class="pt-8 border-t border-line-subtle flex items-center justify-between text-engine-muted font-telemetry-cell text-telemetry-cell z-10">
+<span>PERSISTENT LOOP</span>
+<span class="text-status-lime font-semibold">STATE-INVARIANT</span>
+</div>
+</div>
+</div>
+<!-- Technology Drawer / Inspection Selector Panel -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-xl">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-line-subtle">
+<div>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase tracking-widest">TECHNICAL SPECIFICATION REPOSITORY</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Subsystem Architecture Breakdown</h3>
+</div>
+<div class="flex flex-wrap gap-2" id="tech-tabs">
+<button class="tech-tab-btn px-3 py-1 rounded bg-primary text-on-primary font-telemetry-cell text-telemetry-cell font-semibold" data-tech="audit">Audit Trail</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="belief">Belief Record</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="evidence">Evidence Chain</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="gates">Policy Gates</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="provenance">Provenance</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="replay">Replay</button>
+<button class="tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light" data-tech="export">Regulator Export</button>
+</div>
+</div>
+<div class="pt-6 grid grid-cols-1 md:grid-cols-2 gap-8" id="tech-tab-content">
+<div class="flex flex-col gap-3">
+<span class="font-headline-md text-headline-md text-primary" id="tech-detail-title">Append-Only Audit Trail</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="tech-detail-desc">
+ Every invocation, LLM input payload, generated token trace, and downstream tool execution receives a deterministic hash in an unrewritable chronological register.
+ </p>
+<div class="flex items-center gap-2 pt-2 text-engine-line font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[16px] text-status-lime">check_circle</span>
+<span id="tech-detail-spec">Specification: VOLSHi Core RFC-0824 · Cryptographic Nonce Chain</span>
+</div>
+</div>
+<div class="p-space-md rounded bg-ground-deep font-telemetry-code text-telemetry-code text-on-surface flex flex-col gap-2 shadow-inner">
+<div class="flex justify-between text-engine-muted border-b border-line-subtle pb-1">
+<span>MANIFEST_RECOVERY_TEST</span>
+<span class="text-status-lime">PASSED</span>
+</div>
+<pre class="text-primary-fixed overflow-x-auto whitespace-pre-wrap font-telemetry-code text-[12px] leading-tight" id="tech-detail-code">{
+ "trace_id": "tr_99184_katie_obs",
+ "layer": "APPEND_ONLY_RECEIPT",
+ 
+ 
+ "immutability_guarantee": "HARDWARE_SEALED"
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s3: K-RECORD INTERACTIVE DEMO
+ ======================================================== -->
+<section class="relative w-full py-24 bg-surface-container-lowest" id="k-record">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-4 max-w-4xl">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">Interactive · The K-Record</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ What the agent believed, on the record.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Drag the sliders. This is a live K-record entry — the same structure KATIE writes for every agent action.
+ </p>
+</div>
+<!-- Live Interactive Instrument Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Interactive Controls & Slider -->
+<div class="lg:col-span-5 flex flex-col gap-6 p-space-lg rounded-xl bg-surface-container-low shadow-xl">
+<div class="flex items-center justify-between pb-4 border-b border-line-subtle">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Control Panel · Parameter Rig</span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary">LIVE SIMULATOR</span>
+</div>
+<!-- Authority Level Slider -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<label class="font-telemetry-head text-telemetry-head text-on-surface-variant uppercase" for="authority-slider">Authority / Confidence Weight</label>
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold" id="authority-readout">90%</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="authority-slider" max="100" min="0" step="10" type="range" value="90">
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+<span>0% (Disproven)</span>
+<span>50% (Equivocal)</span>
+<span>100% (Absolute)</span>
+</div>
+</div>
+<!-- Chrono Frame Picker -->
+<div class="flex flex-col gap-3 pt-4 border-t border-line-subtle">
+<div class="flex justify-between items-center">
+<label class="font-telemetry-head text-telemetry-head text-on-surface-variant uppercase" for="k-frame-slider">Epoch Step (k)</label>
+<span class="font-telemetry-code text-telemetry-code text-paper-light" id="k-readout">k = 1042</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="k-frame-slider" max="1050" min="1042" step="1" type="range" value="1042">
+</div>
+<!-- Supersedes Chain Interactive Buttons -->
+<div class="flex flex-col gap-3 pt-4 border-t border-line-subtle">
+<span class="font-telemetry-head text-telemetry-head text-on-surface-variant uppercase">Supersedes Chain Points</span>
+<div class="grid grid-cols-3 gap-2">
+<button class="px-2 py-2 rounded bg-surface-container hover:bg-surface-container-high font-telemetry-cell text-telemetry-cell text-center flex flex-col gap-1 transition-colors" onclick="setChainPoint(1042, 90, 'ASSERT', 'TRUSTED')">
+<span class="text-primary font-semibold">k 1042</span>
+<span class="text-status-lime">ASSERT (90%)</span>
+</button>
+<button class="px-2 py-2 rounded bg-surface-container hover:bg-surface-container-high font-telemetry-cell text-telemetry-cell text-center flex flex-col gap-1 transition-colors" onclick="setChainPoint(1045, 40, 'CHALLENGE', 'CONTESTED')">
+<span class="text-status-orange font-semibold">k 1045</span>
+<span class="text-status-orange">CHALLENGE (40%)</span>
+</button>
+<button class="px-2 py-2 rounded bg-surface-container hover:bg-surface-container-high font-telemetry-cell text-telemetry-cell text-center flex flex-col gap-1 transition-colors" onclick="setChainPoint(1048, 0, 'REVOKE', 'DISPROVEN')">
+<span class="text-ruby font-semibold">k 1048</span>
+<span class="text-ruby">REVOKE (0%)</span>
+</button>
+</div>
+</div>
+<!-- KATIE CRM Live System Link Box -->
+<a class="p-space-md rounded bg-primary/10 flex items-center justify-between text-primary hover:bg-primary/20 transition-all" href="mailto:founder@volshi.com?subject=KATIE%20CRM%20Demonstration%20Access">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-telemetry-head text-telemetry-head font-semibold">Launch KATIE Enterprise CRM Sandbox</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+<!-- Right: Dynamic Live K-Record Receipt -->
+<div class="lg:col-span-7 flex flex-col rounded-xl bg-surface-container-high p-space-lg shadow-2xl relative overflow-hidden">
+<div class="flex items-center justify-between pb-4 border-b border-line-subtle">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 rounded-full bg-status-lime" id="receipt-led"></span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light">K-RECORD RECEIPT // SPEC_V4</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell tracking-wider font-semibold" id="receipt-status-badge">
+ TRUSTED
+ </span>
+</div>
+<!-- Structured Payload -->
+<div class="py-6 flex flex-col gap-4 font-telemetry-code text-telemetry-code">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-line-subtle">
+<span class="text-engine-muted font-telemetry-cell uppercase">Recorded Statement / Belief:</span>
+<span class="text-paper-light font-semibold" id="receipt-belief">"The supplier invoice is legitimate."</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-line-subtle">
+<span class="text-engine-muted font-telemetry-cell uppercase">Held at (t):</span>
+<span class="text-on-surface-variant font-telemetry-code" id="receipt-time">2026-10-16 14:32:08 UTC</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-line-subtle">
+<span class="text-engine-muted font-telemetry-cell uppercase">Recorded at (k):</span>
+<span class="text-primary font-bold" id="receipt-k">k = 1042</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-line-subtle">
+<span class="text-engine-muted font-telemetry-cell uppercase">Authority Metric:</span>
+<span class="font-bold text-primary" id="receipt-authority-tag">90% [CONFIRMED_HIGH]</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-line-subtle">
+<span class="text-engine-muted font-telemetry-cell uppercase">Action Justification:</span>
+<span class="text-engine-line" id="receipt-action-state">Wire approval eligible; 2-signature override gate validated.</span>
+</div>
+</div>
+<!-- Hash Verification Bar -->
+<div class="p-space-sm rounded bg-ground-deep flex flex-col sm:flex-row items-center justify-between gap-2 font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-2 text-engine-muted">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>IMMUTABLE RECEIPT HASH:</span>
+</div>
+<span class="text-primary tracking-widest" id="receipt-hash">—</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s4: RESEARCH PREVIEW
+ ======================================================== -->
+<section class="relative w-full py-24 bg-ground-deep" id="research">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-4 max-w-4xl">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">VOLSHi / Research</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ The Work Ahead.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Intelligence is moving faster than the systems required to trust it.
+ </p>
+</div>
+<!-- 4 Clickable Research Rows -->
+<div class="flex flex-col gap-3">
+<!-- ROW 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md group" onclick="openResearchModal('01 Temporal Memory', 'Validated', 'Zenodo DOI 10.5281/zenodo.23137456', 'Formalizing chronological boundaries and monotonic time stamps for autonomous inference chains. Validated through continuous temporal drift verification across distributed agent topologies.')">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">01</span>
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">Temporal Memory</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Monotonic chronological boundary verification</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell">Validated</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23137456</span>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+</div>
+<!-- ROW 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md group" onclick="openResearchModal('02 Time-Addressed Storage', 'In dossier', 'Confidential RTP Laboratory Archive', 'Addressing memory vectors by temporal intervals rather than cosine proximity alone. Eliminates retrospective corruption in agent knowledge graphs.')">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">02</span>
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">Time-Addressed Storage</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Coordinate space keyed to verified epoch intervals</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-telemetry-cell text-telemetry-cell">In dossier</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden md:inline">Ref: RTP-ARC-02</span>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+</div>
+<!-- ROW 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md group" onclick="openResearchModal('03 Triadic Relations', 'In dossier', 'Confidential RTP Laboratory Archive', 'Peircean triadic semiotics applied to agent epistemology: sign, object, and interpretant structured into explicit computational graph nodes.')">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">03</span>
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">Triadic Relations</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Three-node semiotic bindings for unambiguous belief tracking</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-telemetry-cell text-telemetry-cell">In dossier</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden md:inline">Ref: RTP-ARC-03</span>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+</div>
+<!-- ROW 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md group" onclick="openResearchModal('04 Knowledge Time', 'Validated', 'Zenodo DOI 10.5281/zenodo.23198458', 'Distinguishing valid-time (when a fact was true in the world) from transaction-time (when the AI agent ingested it). Essential for regulatory audits.')">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">04</span>
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">Knowledge Time</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Bitemporal grounding for statutory audit compliance</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell">Validated</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden md:inline">Zenodo DOI 10.5281/zenodo.23198458</span>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Verbatim Tagline Callout -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-gold-glass-stroke shadow-xl flex flex-col gap-4">
+<div class="flex items-center gap-2 text-primary font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>THE RTP METHOD</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-paper-light italic leading-snug">
+ “We chase the questions off the beaten path — the strange edges where machine intelligence meets human experience that nobody else is looking at. Curiosity is the method: if it's strange and it matters, we're already there.”
+ </p>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s5: COMPANY & MISSION
+ ======================================================== -->
+<section class="relative w-full py-24 bg-surface-container-lowest" id="company">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col gap-4 max-w-4xl">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">VOLSHi / Company</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light tracking-tight">
+ COMPLIANCE FOR AI AGENTS.
+ </h2>
+</div>
+<!-- Verbatim Paragraphs & Location Anchor -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-8 flex flex-col gap-6 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>
+ VOLSHi builds compliance infrastructure for the AI agent era. Every agent action gets an append-only record — what it believed, when, why it was justified, and what it did while believing it.
+ </p>
+<p>
+ Intelligence without accountability is a liability. Character.AI proved it at $2.5B. The EU AI Act mandates traceability by December 2027 — and every enterprise deploying agents is about to need the same thing: show your work.
+ </p>
+<div class="pt-4 flex items-center gap-3 text-paper-light font-telemetry-head text-telemetry-head">
+<span class="material-symbols-outlined text-primary">pin_drop</span>
+<span>Research Triangle Park, North Carolina.</span>
+</div>
+</div>
+<!-- Download Pitch Deck Card -->
+<div class="lg:col-span-4 rounded-xl bg-surface-container-low p-space-lg border border-gold-glass-stroke shadow-2xl flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase">INVESTOR ACCESS</span>
+<span class="px-2 py-0.5 rounded bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell font-semibold">88/100 VETTABLE</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-paper-light">Series Seed Presentation</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-1">
+ 13 slides · third-party validated — 88/100 on Vettable
+ </p>
+</div>
+<a class="w-full py-3 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head font-semibold flex items-center justify-center gap-2 hover:bg-primary-fixed transition-colors" href="mailto:founder@volshi.com?subject=VOLSHi%20Pitch%20Deck%20PDF%20Request">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Request Pitch Deck PDF</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ SLIDE s6: CONTACT & CLOSE SEQUENCE
+ ======================================================== -->
+<section class="relative w-full py-24 bg-ground-deep" id="contact">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-16">
+<!-- Top Pitch Banner -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 border-b border-line-subtle">
+<div class="flex flex-col gap-4 max-w-2xl">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase tracking-[0.2em]">VOLSHi / Contact</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">
+ Make Agents Accountable.
+ </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ The compliance layer the industry is about to need.
+ </p>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<a class="px-space-lg py-3 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head font-semibold flex items-center gap-2 hover:bg-primary-fixed transition-colors" href="mailto:founder@volshi.com">
+<span>Contact VOLSHi</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="px-space-md py-3 rounded border border-gold-glass-stroke text-paper-light font-telemetry-head text-telemetry-head hover:bg-surface-container transition-colors" href="mailto:founder@volshi.com?subject=Investment%20Inquiry%20Allocation">
+<span>Invest →</span>
+</a>
+</div>
+</div>
+<!-- 5-Step Accordion Close Sequence -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between pb-2">
+<span class="font-telemetry-head text-telemetry-head text-engine-line uppercase">Governance Lifecycle :: 5 Operational Stages</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">CLICK TO EXPAND RECORD</span>
+</div>
+<!-- 1. OBSERVE -->
+<div class="accordion-item rounded-xl bg-surface-container-low overflow-hidden shadow-md">
+<button class="w-full px-space-md py-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary">01</span>
+<span class="font-headline-md text-headline-md text-paper-light">Observe</span>
+</div>
+<span class="material-symbols-outlined text-primary transform transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant py-space-md border-t border-line-subtle leading-relaxed">
+ Every tool execution, LLM thought token, and external API payload is continuously mirrored into the non-repudiable surveillance tier. Zero execution occurs without observation.
+ </p>
+</div>
+</div>
+<!-- 2. UNDERSTAND -->
+<div class="accordion-item rounded-xl bg-surface-container-low overflow-hidden shadow-md">
+<button class="w-full px-space-md py-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary">02</span>
+<span class="font-headline-md text-headline-md text-paper-light">Understand</span>
+</div>
+<span class="material-symbols-outlined text-primary transform transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant py-space-md border-t border-line-subtle leading-relaxed">
+ Inferences are mapped to structured semantic nodes. We extract the explicit beliefs, probabilistic confidences, and underlying premises the agent relies upon before formulating actions.
+ </p>
+</div>
+</div>
+<!-- 3. DECIDE -->
+<div class="accordion-item rounded-xl bg-surface-container-low overflow-hidden shadow-md">
+<button class="w-full px-space-md py-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary">03</span>
+<span class="font-headline-md text-headline-md text-paper-light">Decide</span>
+</div>
+<span class="material-symbols-outlined text-primary transform transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant py-space-md border-t border-line-subtle leading-relaxed">
+ Deterministic policy arbitration evaluates candidate choices against enterprise boundary conditions, jurisdictional red-lines, and compliance thresholds before permission is granted.
+ </p>
+</div>
+</div>
+<!-- 4. ACT -->
+<div class="accordion-item rounded-xl bg-surface-container-low overflow-hidden shadow-md">
+<button class="w-full px-space-md py-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary">04</span>
+<span class="font-headline-md text-headline-md text-paper-light">Act</span>
+</div>
+<span class="material-symbols-outlined text-primary transform transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant py-space-md border-t border-line-subtle leading-relaxed">
+ Actions execute with bound cryptographic proofs. Side-effects, downstream database writes, and external financial transactions carry signed verification tokens minted in real time.
+ </p>
+</div>
+</div>
+<!-- 5. ACCOUNT -->
+<div class="accordion-item rounded-xl bg-surface-container-low overflow-hidden shadow-md">
+<button class="w-full px-space-md py-space-md flex items-center justify-between text-left hover:bg-surface-container transition-colors" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-4">
+<span class="font-telemetry-code text-telemetry-code text-primary">05</span>
+<span class="font-headline-md text-headline-md text-paper-light">Account</span>
+</div>
+<span class="material-symbols-outlined text-primary transform transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-panel max-h-0 overflow-hidden transition-all duration-300 px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant py-space-md border-t border-line-subtle leading-relaxed">
+ Complete historical replay and instant statutory export. Incident investigations resolve within minutes via tamper-evident K-record inspection ready for EU AI Act regulatory review.
+ </p>
+</div>
+</div>
+</div>
+<!-- Secret Easter Egg Logo Trigger Box -->
+<div class="pt-8 flex flex-col items-center justify-center text-center">
+<div class="cursor-pointer select-none group inline-flex flex-col items-center gap-2 p-space-md rounded-xl hover:bg-surface-container-low transition-colors" id="easter-egg-trigger">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md tracking-[0.3em] text-paper-light uppercase group-hover:text-primary transition-colors">VOLSHi</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted group-hover:text-on-surface-variant transition-colors">
+ (Triple click logo to unlock auxiliary research experiments)
+ </span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================
+ MODAL 1: 6-STEP PROBLEM WALKTHROUGH MODAL
+ ======================================================== -->
+<div class="fixed inset-0 z-50 hidden bg-ground-deep/90 backdrop-blur-md flex items-center justify-center p-4" id="problem-walkthrough-modal">
+<div class="w-full max-w-3xl rounded-xl bg-surface-container-low p-space-lg shadow-2xl flex flex-col gap-6 relative">
+<!-- Modal Header -->
+<div class="flex items-center justify-between pb-4 border-b border-line-subtle">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase" id="walkthrough-step-label">Step 01 / 06</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-paper-light transition-colors" id="close-walkthrough-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Step Content Container -->
+<div class="flex flex-col gap-4 min-h-[220px]">
+<h3 class="font-headline-lg text-headline-lg text-paper-light" id="walkthrough-title">
+ 01 The Problem
+ </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed" id="walkthrough-body">
+ AI agents execute irreversible business operations — transfers, policy changes, legal responses — without an immutable ledger of what they believed, when they believed it, or what justification permitted the execution.
+ </p>
+</div>
+<!-- Modal Controls & Pagination -->
+<div class="flex items-center justify-between pt-4 border-t border-line-subtle">
+<button class="px-space-md py-2 rounded bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-paper-light transition-colors disabled:opacity-30 disabled:cursor-not-allowed" id="walkthrough-prev-btn">
+ ← Previous
+ </button>
+<div class="flex gap-1.5" id="walkthrough-dots">
+<!-- Dots dynamically rendered -->
+</div>
+<button class="px-space-md py-2 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head hover:bg-primary-fixed transition-colors" id="walkthrough-next-btn">
+ Next →
+ </button>
+</div>
+</div>
+</div>
+<!-- ========================================================
+ MODAL 2: RESEARCH INSPECTION MODAL
+ ======================================================== -->
+<div class="fixed inset-0 z-50 hidden bg-ground-deep/90 backdrop-blur-md flex items-center justify-center p-4" id="research-modal">
+<div class="w-full max-w-2xl rounded-xl bg-surface-container-low p-space-lg shadow-2xl flex flex-col gap-6 relative">
+<div class="flex items-center justify-between pb-4 border-b border-line-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">science</span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase" id="research-modal-tag">RESEARCH DOSSIER</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-paper-light transition-colors" onclick="closeResearchModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="font-headline-lg text-headline-lg text-paper-light" id="research-modal-title">Research Topic</h3>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell" id="research-modal-status">Validated</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-line" id="research-modal-doi">DOI</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant pt-2 leading-relaxed" id="research-modal-abstract">
+ Abstract content.
+ </p>
+</div>
+<div class="pt-4 border-t border-line-subtle flex justify-end">
+<button class="px-space-md py-2 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head hover:bg-primary-fixed transition-colors" onclick="closeResearchModal()">
+ Acknowledge · Close Dossier
+ </button>
+</div>
+</div>
+</div>
+<!-- ========================================================
+ MODAL 3: SECRET EASTER EGG EXPERIMENTS MODAL
+ ======================================================== -->
+<div class="fixed inset-0 z-50 hidden bg-ground-deep/95 backdrop-blur-xl flex items-center justify-center p-4" id="easter-egg-modal">
+<div class="w-full max-w-lg rounded-xl bg-surface-container-low p-space-lg shadow-2xl flex flex-col gap-6 relative">
+<div class="flex items-center justify-between pb-4 border-b border-line-subtle">
+<div class="flex items-center gap-2 text-ruby">
+<span class="material-symbols-outlined">pest_control</span>
+<span class="font-telemetry-head text-telemetry-head uppercase">VOLSHi Skunkworks Laboratory</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-paper-light transition-colors" onclick="closeEasterEggModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-body-md text-body-md text-paper-light">
+ You unlocked the auxiliary diagnostic toolset. These experimental satirical probes monitor cognitive divergence:
+ </p>
+<div class="flex flex-col gap-3">
+<a class="p-space-md rounded bg-surface-container-high flex items-center justify-between hover:bg-surface-container transition-colors group" href="https://mansplainer.volshi.com" rel="noopener noreferrer" target="_blank">
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">The Mansplainer</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Autonomous patronizing explanation simulator</div>
+</div>
+<span class="material-symbols-outlined text-primary">arrow_outward</span>
+</a>
+<a class="p-space-md rounded bg-surface-container-high flex items-center justify-between hover:bg-surface-container transition-colors group" href="https://isthisbullshit.volshi.com" rel="noopener noreferrer" target="_blank">
+<div>
+<div class="font-headline-md text-headline-md text-paper-light group-hover:text-primary transition-colors">Is This Bullshit?</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Deterministic marketing fluff &amp; hallucination detector</div>
+</div>
+<span class="material-symbols-outlined text-primary">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interactive Script Execution -->
+<script>
+ // --- 1. Problem Walkthrough 6-Step Data & Logic ---
+ const walkthroughSteps = [
+ {
+ num: "01",
+ title: "01 The Problem",
+ body: "AI agents make decisions with direct operational and financial consequences, but standard architectures provide zero immutable record of what they believed, when they believed it, or why. Rewritable server logs fail to protect against liability in post-incident audits."
+ },
+ {
+ num: "02",
+ title: "02 The Customer",
+ body: "Enterprise leaders deploying customer-facing and mission-critical autonomous agents in finance, health, enterprise SaaS, and legal operations who face existential regulatory exposure under emerging global frameworks."
+ },
+ {
+ num: "03",
+ title: "03 The Frequency",
+ body: "Continuous and ubiquitous. Every single customer refund, credit authorization, clinical routing suggestion, and automated contract amendment constitutes a fresh legal exposure event every microsecond."
+ },
+ {
+ num: "04",
+ title: "04 The Current Solution",
+ body: "Engineers rely on ephemeral text logging, debug traces, and opaque LLM completions stored in centralized databases that can be modified, truncated, or quietly purged &mdash; completely failing statutory legal standards of evidence."
+ },
+ {
+ num: "05",
+ title: "05 The Gap",
+ body: "No decoupling between execution and verification. In standard stacks, the same system that acts is trusted to self-report its internal state &mdash; creating an untrusted closed loop when catastrophic hallucinations occur."
+ },
+ {
+ num: "06",
+ title: "06 The Answer",
+ body: "VOLSHi's append-only K-record ledger: a mathematically sealed, bitemporal infrastructure layer guaranteeing that every belief, decision, and gating threshold is independently verifiable by external regulators forever."
+ }
+ ];
+
+ let currentStep = 0;
+
+ function renderWalkthrough() {
+ const step = walkthroughSteps[currentStep];
+ document.getElementById('walkthrough-step-label').textContent = `Step ${step.num} / 06`;
+ document.getElementById('walkthrough-title').textContent = step.title;
+ document.getElementById('walkthrough-body').textContent = step.body;
+
+ const prevBtn = document.getElementById('walkthrough-prev-btn');
+ const nextBtn = document.getElementById('walkthrough-next-btn');
+
+ prevBtn.disabled = currentStep === 0;
+ nextBtn.textContent = currentStep === walkthroughSteps.length - 1 ? 'Finish & Acknowledge' : 'Next →';
+
+ const dotsContainer = document.getElementById('walkthrough-dots');
+ dotsContainer.innerHTML = '';
+ walkthroughSteps.forEach((_, idx) => {
+ const dot = document.createElement('div');
+ dot.className = `w-2.5 h-2.5 rounded-full transition-colors ${idx === currentStep ? 'bg-primary' : 'bg-surface-container-highest'}`;
+ dotsContainer.appendChild(dot);
+ });
+ }
+
+ const modal = document.getElementById('problem-walkthrough-modal');
+ const openModal = () => { currentStep = 0; renderWalkthrough(); modal.classList.remove('hidden'); };
+ const closeModal = () => { modal.classList.add('hidden'); };
+
+ document.getElementById('hero-explore-btn').addEventListener('click', openModal);
+ document.getElementById('open-walkthrough-btn').addEventListener('click', openModal);
+ document.getElementById('close-walkthrough-btn').addEventListener('click', closeModal);
+
+ document.getElementById('walkthrough-prev-btn').addEventListener('click', () => {
+ if (currentStep > 0) { currentStep--; renderWalkthrough(); }
+ });
+
+ document.getElementById('walkthrough-next-btn').addEventListener('click', () => {
+ if (currentStep < walkthroughSteps.length - 1) {
+ currentStep++;
+ renderWalkthrough();
+ } else {
+ closeModal();
+ }
+ });
+
+ // --- 2. Interactive Technology Drawer State ---
+ const techData = {
+ audit: {
+ title: "Append-Only Audit Trail",
+ desc: "Every invocation, LLM input payload, generated token trace, and downstream tool execution receives a deterministic hash in an unrewritable chronological register.",
+ spec: "Specification: VOLSHi Core RFC-0824 · Cryptographic Nonce Chain",
+ code: `{\n "trace_id": "tr_99184_katie_obs",\n "layer": "APPEND_ONLY_RECEIPT",\n \n \n "immutability_guarantee": "HARDWARE_SEALED"\n}`
+ },
+ belief: {
+ title: "Formal Belief Record",
+ desc: "Inferences are timestamped with explicit confidence weights, contextual grounding anchors, and counterfactual limits rather than remaining hidden in transient memory.",
+ spec: "Specification: B-REP 2.1 Epistemic Graph Definition",
+ code: `{\n "belief_id": "blf_invoice_7719",\n "confidence": 0.90,\n "epistemic_state": "ASSERTED",\n "grounding_doc": "doc_sec_filing_q3",\n "falsification_conditions": ["supplier_iban_mismatch"]\n}`
+ },
+ evidence: {
+ title: "Immutable Evidence Chain",
+ desc: "Every assertion links backward to source documentation and forward to the consequential actions executed while the assertion was held true.",
+ spec: "Specification: EV-CHAIN Merkle Graph Proofs",
+ code: `{\n "chain_height": 1042,\n "parent_evidence_root": "0x3310fa",\n "merkle_verification": true,\n "evidence_sources": 3,\n "bitemporal_valid_at": "2026-10-16T14:32:08Z"\n}`
+ },
+ gates: {
+ title: "Deterministic Policy Gates",
+ desc: "Actions crossing enterprise consequence thresholds are intercepted at runtime. The agent cannot proceed without affirmative policy clearance tokens.",
+ spec: "Specification: G-LOCK Hardware Enclave Sentinel",
+ code: `{\n "gate_eval": "FINANCIAL_DISBURSEMENT",\n "threshold_limit_usd": 10000.00,\n "proposed_action_value": 14250.00,\n "gate_decision": "INTERCEPTED_ESCALATION",\n "signature_required": 2\n}`
+ },
+ provenance: {
+ title: "Cryptographic Provenance Engine",
+ desc: "Full ancestry tracing for every model parameter, instruction prompt, and external retrieval chunk involved in downstream decision synthesis.",
+ spec: "Specification: PROV-TREE Open Standards Compliant",
+ code: `{\n "source_origin": "SAP_ENTERPRISE_API",\n "ingestion_digest": ":d8a2...31f",\n "transform_pipeline": ["tokenization", "norm_v2"],\n "provenance_tamper_alert": false\n}`
+ },
+ replay: {
+ title: "Step-Accurate Temporal Replay",
+ desc: "Reconstitute the exact state of the universe known to the agent at timestamp t, enabling complete deterministic investigation of anomalous decisions.",
+ spec: "Specification: REPLAY Time-Travel Debugger v4",
+ code: `{\n "replay_target_epoch": 1042,\n "reconstructed_memory_cells": 184,\n "divergence_score": 0.0000,\n "deterministic_pass": true\n}`
+ },
+ export: {
+ title: "Statutory Regulator Export Engine",
+ desc: "One-click export formatting conforming directly to the technical documentation and risk mitigation requirements of the EU AI Act (December 2027 enforcement).",
+ spec: "Specification: EU-AI-ACT-ANNEX-IV Output Module",
+ code: `{\n "target_standard": "EU_AI_ACT_ANNEX_IV",\n "conformity_assessment_ready": true,\n "risk_category": "HIGH_RISK_SYSTEM",\n "export_archive_size_mb": 42.1,\n "compliance_officer_signoff": "PENDING"\n}`
+ }
+ };
+
+ const techButtons = document.querySelectorAll('.tech-tab-btn');
+ techButtons.forEach(btn => {
+ btn.addEventListener('click', () => {
+ techButtons.forEach(b => {
+ b.className = 'tech-tab-btn px-3 py-1 rounded bg-surface-container text-on-surface-variant font-telemetry-cell text-telemetry-cell hover:text-paper-light';
+ });
+ btn.className = 'tech-tab-btn px-3 py-1 rounded bg-primary text-on-primary font-telemetry-cell text-telemetry-cell font-semibold';
+
+ const key = btn.getAttribute('data-tech');
+ const item = techData[key];
+ document.getElementById('tech-detail-title').textContent = item.title;
+ document.getElementById('tech-detail-desc').textContent = item.desc;
+ document.getElementById('tech-detail-spec').textContent = item.spec;
+ document.getElementById('tech-detail-code').textContent = item.code;
+ });
+ });
+
+ // --- 3. Live K-Record Interactive State Machine ---
+ const authSlider = document.getElementById('authority-slider');
+ const kSlider = document.getElementById('k-frame-slider');
+ const authReadout = document.getElementById('authority-readout');
+ const kReadout = document.getElementById('k-readout');
+ const receiptK = document.getElementById('receipt-k');
+ const receiptHash = document.getElementById('receipt-hash');
+ const receiptAuthTag = document.getElementById('receipt-authority-tag');
+ const receiptBadge = document.getElementById('receipt-status-badge');
+ const receiptLed = document.getElementById('receipt-led');
+ const receiptAction = document.getElementById('receipt-action-state');
+
+ function updateKRecordDisplay(authorityVal, kVal) {
+ authReadout.textContent = `${authorityVal}%`;
+ kReadout.textContent = `k = ${kVal}`;
+ receiptK.textContent = `k = ${kVal}`;
+ receiptHash.textContent = `0x9F4B...${kVal}EA`;
+
+ if (authorityVal === 0) {
+ authReadout.className = "font-telemetry-code text-telemetry-code text-ruby font-bold";
+ receiptAuthTag.textContent = `${authorityVal}% [REVOKED_ZERO]`;
+ receiptAuthTag.className = "font-bold text-ruby";
+ receiptBadge.textContent = "DISPROVEN";
+ receiptBadge.className = "px-2.5 py-0.5 rounded-full bg-ruby/10 text-ruby font-telemetry-cell text-telemetry-cell tracking-wider font-semibold";
+ receiptLed.className = "w-2.5 h-2.5 rounded-full bg-ruby";
+ receiptAction.textContent = "Wire dispatch blocked. Subsystem halted for fraud review.";
+ } else if (authorityVal < 50) {
+ authReadout.className = "font-telemetry-code text-telemetry-code text-status-orange font-bold";
+ receiptAuthTag.textContent = `${authorityVal}% [CONTESTED_INTERMEDIATE]`;
+ receiptAuthTag.className = "font-bold text-status-orange";
+ receiptBadge.textContent = "CONTESTED";
+ receiptBadge.className = "px-2.5 py-0.5 rounded-full bg-status-orange/10 text-status-orange font-telemetry-cell text-telemetry-cell tracking-wider font-semibold";
+ receiptLed.className = "w-2.5 h-2.5 rounded-full bg-status-orange";
+ receiptAction.textContent = "Human-in-the-loop escalation required before ledger approval.";
+ } else {
+ authReadout.className = "font-telemetry-code text-telemetry-code text-primary font-bold";
+ receiptAuthTag.textContent = `${authorityVal}% [CONFIRMED_HIGH]`;
+ receiptAuthTag.className = "font-bold text-primary";
+ receiptBadge.textContent = "TRUSTED";
+ receiptBadge.className = "px-2.5 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell tracking-wider font-semibold";
+ receiptLed.className = "w-2.5 h-2.5 rounded-full bg-status-lime";
+ receiptAction.textContent = "Wire approval eligible; 2-signature override gate validated.";
+ }
+ }
+
+ authSlider.addEventListener('input', (e) => {
+ updateKRecordDisplay(parseInt(e.target.value, 10), parseInt(kSlider.value, 10));
+ });
+
+ kSlider.addEventListener('input', (e) => {
+ updateKRecordDisplay(parseInt(authSlider.value, 10), parseInt(e.target.value, 10));
+ });
+
+ function setChainPoint(kVal, authVal, actionWord, statusWord) {
+ authSlider.value = authVal;
+ kSlider.value = kVal;
+ updateKRecordDisplay(authVal, kVal);
+ }
+
+ // --- 4. Research Modal Controller ---
+ const researchModal = document.getElementById('research-modal');
+ function openResearchModal(title, status, doi, abstract) {
+ document.getElementById('research-modal-title').textContent = title;
+ document.getElementById('research-modal-status').textContent = status;
+ document.getElementById('research-modal-doi').textContent = doi;
+ document.getElementById('research-modal-abstract').textContent = abstract;
+ researchModal.classList.remove('hidden');
+ }
+
+ function closeResearchModal() {
+ researchModal.classList.add('hidden');
+ }
+
+ // --- 5. Accordion Logic for 5 Operational Stages ---
+ function toggleAccordion(button) {
+ const panel = button.nextElementSibling;
+ const icon = button.querySelector('.material-symbols-outlined');
+ const isExpanded = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+
+ // Collapse other accordions
+ document.querySelectorAll('.accordion-panel').forEach(p => {
+ p.style.maxHeight = '0px';
+ });
+ document.querySelectorAll('.accordion-item .material-symbols-outlined').forEach(i => {
+ i.style.transform = 'rotate(0deg)';
+ });
+
+ if (!isExpanded) {
+ panel.style.maxHeight = panel.scrollHeight + "px";
+ icon.style.transform = 'rotate(180deg)';
+ }
+ }
+
+ // --- 6. Secret Easter Egg Triple Click Handler ---
+ let clickCount = 0;
+ let clickTimer = null;
+ const eggTrigger = document.getElementById('easter-egg-trigger');
+ const eggModal = document.getElementById('easter-egg-modal');
+
+ eggTrigger.addEventListener('click', () => {
+ clickCount++;
+ if (clickTimer) clearTimeout(clickTimer);
+ if (clickCount >= 3) {
+ eggModal.classList.remove('hidden');
+ clickCount = 0;
+ } else {
+ clickTimer = setTimeout(() => {
+ clickCount = 0;
+ }, 500);
+ }
+ });
+
+ function closeEasterEggModal() {
+ eggModal.classList.add('hidden');
+ }
+</script></main><footer class="w-full bg-ground-deep border-t border-gold-glass-stroke py-space-xl relative overflow-hidden"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg border-b border-line-subtle"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md tracking-[0.2em] text-paper-light uppercase">VOLSH<span class="tracking-normal">i</span></span><span class="w-1 h-1 rounded-full bg-primary"></span><span class="font-telemetry-cell text-telemetry-cell text-engine-muted uppercase tracking-[0.1em]">Forensic Verification Architecture</span></div><div class="flex flex-wrap items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line"><span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-gold-glass-stroke text-primary"><span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>LEDGER STABLE</span><span>Zenodo DOIs: 10.5281/zenodo.23137456 &amp; 10.5281/zenodo.23198458</span><span>U.S. Prov. Pat. App. 64/182,709</span></div></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-telemetry-cell text-telemetry-cell text-on-surface-variant"><p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p><p class="text-engine-muted">Candidate Computational Law · Append-Only Evidence Protocol</p></div></div></footer>
+
+</body></html>

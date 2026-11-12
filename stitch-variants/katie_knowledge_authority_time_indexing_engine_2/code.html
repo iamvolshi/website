@@ -1,0 +1,1550 @@
+<!DOCTYPE html><html class="dark" lang="en"><head></head><body class="bg-ground-deep text-paper-light antialiased selection:bg-primary/30 selection:text-paper-light"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KATIE — Knowledge Authority Time Indexing Engine | VOLSHi</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ primary: "#c9a84c",
+ "primary-hover": "#e6c364",
+ "primary-dim": "rgba(201, 168, 76, 0.15)",
+ "gold-glass": "rgba(201, 168, 76, 0.22)",
+ "ground-deep": "#070709",
+ "surface-dark": "#0e0e12",
+ "surface-card": "#141419",
+ "surface-card-high": "#1c1b22",
+ "paper-light": "#F5F2ED",
+ "on-surface-variant": "#9c9890",
+ "line-subtle": "rgba(255, 255, 255, 0.08)",
+ "line-gold": "rgba(201, 168, 76, 0.25)",
+ "status-lime": "#A8E349",
+ "status-orange": "#F08A4B",
+ "ruby": "#EF174C",
+ "ruby-hot": "#FF4D70",
+ "ruby-ground": "#14080b",
+ "engine-line": "#A8B6B1",
+ "engine-muted": "#5A6864",
+ },
+ fontFamily: {
+ headline: ["Newsreader", "serif"],
+ sans: ["Inter", "sans-serif"],
+ mono: ["IBM Plex Mono", "monospace"],
+ technical: ["IBM Plex Sans", "sans-serif"],
+ }
+ }
+ }
+};
+</script>
+<style>
+ body { background-color: #070709; color: #F5F2ED; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+ .no-scrollbar::-webkit-scrollbar { display: none; }
+ .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+ .curve-handle { cursor: grab; transition: transform 0.1s ease; }
+ .curve-handle:active { cursor: grabbing; transform: scale(1.3); }
+</style>
+
+
+
+<!-- Header Chrome -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#070709]/90 backdrop-blur-xl border-b border-line-subtle">
+ <div class="h-16 w-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+ <a href="#home" class="flex items-center transition-transform hover:scale-105 duration-200"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_OR06PsYOqeX_-krIShFAc2wY8T_sVZPaCydP6mLzfyWRYBaelaJNfOvnYgQto6XmvtZVVTi1WS9kjlvx52L82nJIoadXPU1miL_fsK41pvROhDoqOC-UVl_FdpQghE9ZxRSYX0rG7-t-UXQ0_OEo4fzyoAoIZmyGhe_eKGCuBeM9eEW88nuIC1peKB1fnudRkEcs3fpZd87Wic1r9wxjJUc9KMdKXZuHyluynZ0Ns9KamfZNdq-CRw" alt="VOLSHi Home" class="h-8 md:h-9 w-auto object-contain"></a>
+ 
+ <div class="flex items-center gap-6">
+ <nav class="hidden md:flex items-center gap-6 font-mono text-xs"><a href="/the-system/" class="text-on-surface-variant hover:text-primary transition-colors py-1">The System</a><a href="/katie/" class="text-primary font-semibold border-b border-primary py-1" aria-current="page">KATIE</a><a href="/research/" class="text-on-surface-variant hover:text-primary transition-colors py-1">Research</a><a href="/invest/" class="text-on-surface-variant hover:text-primary transition-colors py-1">Invest</a><a href="/#contact" class="text-on-surface-variant hover:text-primary transition-colors py-1">Contact</a></nav>
+ <a href="mailto:founder@volshi.com?subject=VOLSHi%20—%20Investor%20inquiry" class="hidden sm:inline-flex items-center px-3.5 py-1.5 rounded border border-line-gold bg-primary-dim font-mono text-xs text-primary hover:bg-primary hover:text-ground-deep transition-all duration-200">
+ Investor Inquiry
+ </a>
+ </div>
+ </div>
+</header>
+
+<!-- Main Container -->
+<main class="w-full pt-16 min-h-screen flex flex-col">
+
+ <!-- Top Forensic Banner -->
+ <section class="w-full bg-[#0a0a0e] px-6 lg:px-12 py-3 border-b border-line-subtle">
+ <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 font-mono text-xs">
+ <div class="flex items-center gap-3">
+ <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+ <span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ KATIE KERNEL v1.8 ACTIVE
+ </span>
+ <span class="text-engine-muted hidden sm:inline">|</span>
+ <span class="text-engine-muted hidden sm:inline">TRITEMPORAL PROTOCOL SPECIFICATION</span>
+ </div>
+ <div class="flex items-center gap-4 text-engine-line">
+ <span>LEDGER CLOCK: <strong class="text-primary font-mono" id="topLedgerClock">k = 40.00</strong></span>
+ <span>ENGINE HASH: <span class="text-engine-muted font-mono">0x8F9A…72B1</span></span>
+ </div>
+ </div>
+ </section>
+
+ <!-- Interactive 6-Tab Precision Switcher -->
+ <section class="sticky top-16 z-40 w-full bg-[#070709]/95 backdrop-blur-md border-b border-line-subtle px-6 lg:px-12 shadow-lg">
+ <div class="max-w-7xl mx-auto flex items-center justify-between py-2 overflow-x-auto no-scrollbar">
+ <nav class="flex items-center gap-1.5 sm:gap-2 flex-nowrap" id="katieTabButtons" role="tablist">
+ <button id="btn-engine" onclick="switchKatieTab('engine')" role="tab" aria-selected="false" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-card border border-transparent"><span class="font-mono text-[10px] opacity-70">01</span><span class="font-technical text-xs font-semibold tracking-wide">Engine</span></button>
+ <button id="btn-scar-lab" onclick="switchKatieTab('scar-lab')" role="tab" aria-selected="false" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-card border border-transparent">
+ <span class="font-mono text-[10px] opacity-70">02</span>
+ <span class="font-technical text-xs font-semibold tracking-wide">Scar Lab</span>
+ </button>
+ <button id="btn-curve-bench" onclick="switchKatieTab('curve-bench')" role="tab" aria-selected="false" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-card border border-transparent">
+ <span class="font-mono text-[10px] opacity-70">03</span>
+ <span class="font-technical text-xs font-semibold tracking-wide">Curve Bench</span>
+ </button>
+ <button id="btn-kernel" onclick="switchKatieTab('kernel')" role="tab" aria-selected="false" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-card border border-transparent"><span class="font-mono text-[10px] opacity-70">04</span><span class="font-technical text-xs font-semibold tracking-wide">Kernel &amp; KID</span></button>
+ <button id="btn-ruby-glasses" onclick="switchKatieTab('ruby-glasses')" role="tab" aria-selected="false" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-card border border-transparent"><span class="font-mono text-[10px] opacity-70">05</span><span class="font-technical text-xs font-semibold tracking-wide">Ruby Glasses</span></button>
+ <button id="btn-crm-demo" onclick="switchKatieTab('crm-demo')" role="tab" aria-selected="true" class="katie-nav-btn px-3 py-1.5 rounded text-left transition-all flex items-center gap-2 bg-primary/20 text-primary border border-primary/50 shadow-sm font-semibold"><span class="font-mono text-[10px] opacity-70 text-primary">06</span><span class="font-technical text-xs font-semibold tracking-wide">CRM Proof</span></button>
+ </nav>
+ <div class="hidden lg:flex items-center gap-2 font-mono text-[11px] text-engine-muted pl-4 whitespace-nowrap">
+ <span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+ <span>APPEND-ONLY STATE MACHINE</span>
+ </div>
+ </div>
+ </section>
+
+ <!-- Content Workspace Container -->
+ <div class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-10 flex-grow">
+
+ <!-- ========================================================================= -->
+ <!-- TAB 01: ENGINE (§4.1) -->
+ <!-- ========================================================================= -->
+ <div id="tab-engine" class="katie-tab-content hidden flex-col gap-10" data-stitch-orig-opacity="0"></div>
+
+ <!-- ========================================================================= -->
+ <!-- TAB 02: SCAR LAB (§4.2) -->
+ <!-- ========================================================================= -->
+ <div id="tab-scar-lab" class="katie-tab-content hidden flex-col gap-8">
+ <div class="flex flex-col gap-2 max-w-3xl">
+ <span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">Candidate computational law</span>
+ <h1 class="font-headline text-4xl sm:text-5xl text-paper-light font-normal">The Scar Lab</h1>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Fire injuries into the field law and watch the scar form — real v1.8 dynamics.
+ </p>
+ </div>
+
+ <!-- Key Readout Badges -->
+ <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+ <div class="p-4 rounded-xl bg-surface-dark border border-line-gold flex flex-col">
+ <span class="font-mono text-[11px] text-engine-muted uppercase tracking-wider">Time constant τ</span>
+ <div class="flex items-baseline gap-2 mt-1">
+ <span class="font-mono text-3xl font-bold text-paper-light" id="dispTimeConstant">19.3</span>
+ <span class="font-mono text-xs text-primary">ticks</span>
+ </div>
+ <span class="font-mono text-[10px] text-engine-line mt-1">Derived: τ = 13.5 / DECAY</span>
+ </div>
+ <div class="p-4 rounded-xl bg-surface-dark border border-ruby/30 flex flex-col">
+ <span class="font-mono text-[11px] text-ruby-hot uppercase tracking-wider">Scar · ticks</span>
+ <div class="flex items-baseline gap-2 mt-1">
+ <span class="font-mono text-3xl font-bold text-ruby-hot" id="dispScarTicks">7.5</span>
+ <span class="font-mono text-xs text-ruby">deficit</span>
+ </div>
+ <span class="font-mono text-[10px] text-engine-line mt-1">Unrecovered slow debt</span>
+ </div>
+ <div class="p-4 rounded-xl bg-surface-dark border border-line-subtle flex flex-col">
+ <span class="font-mono text-[11px] text-engine-muted uppercase tracking-wider">Fast Trace α (Impulse)</span>
+ <div class="flex items-baseline gap-2 mt-1">
+ <span class="font-mono text-3xl font-bold text-primary" id="dispFastAlpha">0.949</span>
+ </div>
+ <span class="font-mono text-[10px] text-engine-line mt-1">exp(-1/τ) per clock tick</span>
+ </div>
+ <div class="p-4 rounded-xl bg-surface-dark border border-line-subtle flex flex-col">
+ <span class="font-mono text-[11px] text-engine-muted uppercase tracking-wider">Slow Kernel λ</span>
+ <div class="flex items-baseline gap-2 mt-1">
+ <span class="font-mono text-3xl font-bold text-teal-400" id="dispSlowLambda">0.0020</span>
+ </div>
+ <span class="font-mono text-[10px] text-engine-line mt-1">1 - exp(-1/slowTau)</span>
+ </div>
+ </div>
+
+ <!-- Controls & Plotted SVG Charts -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+ <!-- 6 Live Sliders Panel (5 cols) -->
+ <div class="lg:col-span-5 p-6 rounded-xl bg-surface-dark border border-line-gold shadow-xl flex flex-col gap-4">
+ <div class="flex items-center justify-between pb-2 border-b border-line-subtle">
+ <span class="font-mono text-xs text-paper-light uppercase font-semibold flex items-center gap-1.5">
+ <span class="material-symbols-outlined text-primary text-[16px]">tune</span>
+ Live Signal Controls
+ </span>
+ <button onclick="resetScarDefaults()" class="font-mono text-[11px] text-primary hover:underline">Reset v1.8 preset</button>
+ </div>
+
+ <!-- Slider 1 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-engine-line">1. Intensity</span>
+ <span class="text-primary font-bold" id="valIntensity">0.80</span>
+ </div>
+ <input type="range" min="0.00" max="1.00" step="0.01" value="0.80" id="sliderIntensity" oninput="updateScarSim()" class="w-full accent-primary h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="flex justify-between text-[10px] font-mono text-engine-muted"><span>0.00</span><span>1.00</span></div>
+ </div>
+
+ <!-- Slider 2 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-engine-line">2. Duration · injury deposits</span>
+ <span class="text-primary font-bold" id="valDuration">27</span>
+ </div>
+ <input type="range" min="1" max="450" step="1" value="27" id="sliderDuration" oninput="updateScarSim()" class="w-full accent-primary h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="flex justify-between text-[10px] font-mono text-engine-muted"><span>1 deposit</span><span>450 deposits</span></div>
+ </div>
+
+ <!-- Slider 3 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-engine-line">3. DECAY · forgetting rate</span>
+ <span class="text-primary font-bold" id="valDecay">0.70</span>
+ </div>
+ <input type="range" min="0.05" max="1.50" step="0.01" value="0.70" id="sliderDecay" oninput="updateScarSim()" class="w-full accent-primary h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="p-1.5 rounded bg-surface-card text-[11px] font-mono text-engine-line flex items-center justify-between" id="decayHintText"><span>Higher DECAY = faster washout</span><span class="text-primary font-bold">τ = 19.3</span></div>
+ </div>
+
+ <!-- Slider 4 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-engine-line">4. Recovery · tail ticks</span>
+ <span class="text-primary font-bold" id="valRecovery">2000</span>
+ </div>
+ <input type="range" min="200" max="4000" step="50" value="2000" id="sliderRecovery" oninput="updateScarSim()" class="w-full accent-primary h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="flex justify-between text-[10px] font-mono text-engine-muted"><span>200 ticks</span><span>4000 ticks</span></div>
+ </div>
+
+ <!-- Slider 5 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-engine-line">5. Slow τ · consolidation</span>
+ <span class="text-primary font-bold" id="valSlowTau">500</span>
+ </div>
+ <input type="range" min="100" max="2000" step="10" value="500" id="sliderSlowTau" oninput="updateScarSim()" class="w-full accent-primary h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="flex justify-between text-[10px] font-mono text-engine-muted"><span>100 ticks</span><span>2000 ticks</span></div>
+ </div>
+
+ <!-- Slider 6 -->
+ <div class="flex flex-col gap-1">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby-hot font-medium">6. Injury authority</span>
+ <span class="text-ruby-hot font-bold" id="valInjuryAuth">0.30</span>
+ </div>
+ <input type="range" min="0.00" max="1.00" step="0.05" value="0.30" id="sliderInjuryAuth" oninput="updateScarSim()" class="w-full accent-ruby h-1.5 bg-surface-card-high rounded cursor-pointer">
+ <div class="flex justify-between text-[10px] font-mono text-engine-muted"><span>0.00 (Disproven)</span><span>1.00 (Control Trust)</span></div>
+ </div>
+
+ <div class="p-3 rounded bg-surface-card border border-line-subtle text-xs text-on-surface-variant leading-relaxed">
+ <strong class="text-paper-light">Closed-form Invariant:</strong> When authority is damaged, fast trace rebounds in τ ticks upon repair, leaving behind the slow-trace epistemic deficit shaded in red.
+ </div>
+ </div>
+
+ <!-- Right Charts (7 cols) -->
+ <div class="lg:col-span-7 flex flex-col gap-6">
+ <!-- Chart 1: Deposit Sequence -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-3">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-3">
+ <div>
+ <span class="font-mono text-[10px] uppercase text-primary font-semibold">Chart 1 · Deposit sequence</span>
+ <h3 class="font-headline text-lg text-paper-light">Fast trace, slow kernel, residual scar</h3>
+ </div>
+ <div class="flex flex-wrap items-center gap-2.5 font-mono text-[10px]">
+ <span class="flex items-center gap-1.5 text-amber-400"><span class="w-2.5 h-0.5 bg-[#f59e0b] inline-block"></span>fast · injured</span>
+ <span class="flex items-center gap-1.5 text-teal-400"><span class="w-2.5 h-0.5 bg-[#14b8a6] inline-block"></span>slow · injured</span>
+ <span class="flex items-center gap-1.5 text-blue-400"><span class="w-2.5 h-0.5 bg-[#3b82f6] inline-block border-b border-dashed border-[#3b82f6]"></span>slow · control</span>
+ <span class="flex items-center gap-1.5 text-ruby-hot"><span class="w-2.5 h-2 rounded-xs bg-[#ef4444]/40 inline-block border border-ruby"></span>scar gap</span>
+ </div>
+ </div>
+
+ <!-- Dynamic SVG Canvas 1 -->
+ <div class="w-full bg-[#050507] rounded-lg relative overflow-hidden border border-line-subtle p-2">
+ <svg id="chart1Svg" viewBox="0 0 720 460" preserveAspectRatio="xMidYMid meet" class="w-full h-auto max-h-[340px]">
+ <defs>
+ <linearGradient id="scarFillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+ <stop offset="0%" stop-color="#ef4444" stop-opacity="0.38"></stop>
+ <stop offset="100%" stop-color="#ef4444" stop-opacity="0.06"></stop>
+ </linearGradient>
+ </defs>
+ <!-- Grid Lines -->
+ <line x1="60" y1="60" x2="690" y2="60" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="50" y="64" fill="#5A6864" font-family="IBM Plex Mono" font-size="11" text-anchor="end">1.0</text>
+ <line x1="60" y1="210" x2="690" y2="210" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="50" y="214" fill="#5A6864" font-family="IBM Plex Mono" font-size="11" text-anchor="end">0.5</text>
+ <line x1="60" y1="360" x2="690" y2="360" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="50" y="364" fill="#5A6864" font-family="IBM Plex Mono" font-size="11" text-anchor="end">0.0</text>
+
+ <!-- Boundaries -->
+ <line x1="180" y1="40" x2="180" y2="380" stroke="#2a2930" stroke-dasharray="3 3" stroke-width="1"></line>
+ <line id="c1InjEndLine" x1="205" y1="40" x2="205" y2="380" stroke="#2a2930" stroke-dasharray="3 3" stroke-width="1"></line>
+
+ <!-- Dynamic elements -->
+ <path id="c1ScarArea" d="M 205 60 L 205 64.536 L 205 64.536 L 217.1 64.5 L 229.3 64.4 L 241.4 64.4 L 253.5 64.3 L 265.6 64.3 L 277.8 64.2 L 289.9 64.2 L 302.0 64.1 L 314.1 64.1 L 326.3 64.1 L 338.4 64.0 L 350.5 64.0 L 362.6 63.9 L 374.8 63.9 L 386.9 63.9 L 399.0 63.8 L 411.1 63.8 L 423.3 63.8 L 435.4 63.7 L 447.5 63.7 L 459.6 63.7 L 471.8 63.6 L 483.9 63.6 L 496.0 63.6 L 508.1 63.6 L 520.3 63.5 L 532.4 63.5 L 544.5 63.5 L 556.6 63.5 L 568.8 63.4 L 580.9 63.4 L 593.0 63.4 L 605.1 63.4 L 617.3 63.4 L 629.4 63.3 L 641.5 63.3 L 653.6 63.3 L 665.8 63.3 L 677.9 63.3 L 690.0 63.2 L 690.0 60 L 677.9 60 L 665.8 60 L 653.6 60 L 641.5 60 L 629.4 60 L 617.3 60 L 605.1 60 L 593.0 60 L 580.9 60 L 568.8 60 L 556.6 60 L 544.5 60 L 532.4 60 L 520.3 60 L 508.1 60 L 496.0 60 L 483.9 60 L 471.8 60 L 459.6 60 L 447.5 60 L 435.4 60 L 423.3 60 L 411.1 60 L 399.0 60 L 386.9 60 L 374.8 60 L 362.6 60 L 350.5 60 L 338.4 60 L 326.3 60 L 314.1 60 L 302.0 60 L 289.9 60 L 277.8 60 L 265.6 60 L 253.5 60 L 241.4 60 L 229.3 60 L 217.1 60 Z" fill="url(#scarFillGrad)" stroke="none"></path>
+ <path id="c1SlowControl" d="M 60 60 L 690 60" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5 4"></path>
+ <path id="c1SlowInjured" d="M 60 60 L 180 60 Q 192.5 64.536 205 64.536 L 217.1 64.5 L 229.3 64.4 L 241.4 64.4 L 253.5 64.3 L 265.6 64.3 L 277.8 64.2 L 289.9 64.2 L 302.0 64.1 L 314.1 64.1 L 326.3 64.1 L 338.4 64.0 L 350.5 64.0 L 362.6 63.9 L 374.8 63.9 L 386.9 63.9 L 399.0 63.8 L 411.1 63.8 L 423.3 63.8 L 435.4 63.7 L 447.5 63.7 L 459.6 63.7 L 471.8 63.6 L 483.9 63.6 L 496.0 63.6 L 508.1 63.6 L 520.3 63.5 L 532.4 63.5 L 544.5 63.5 L 556.6 63.5 L 568.8 63.4 L 580.9 63.4 L 593.0 63.4 L 605.1 63.4 L 617.3 63.4 L 629.4 63.3 L 641.5 63.3 L 653.6 63.3 L 665.8 63.3 L 677.9 63.3 L 690.0 63.2" fill="none" stroke="#14b8a6" stroke-width="2.5"></path>
+ <path id="c1FastInjured" d="M 60 60 L 180 60 L 182 270 L 205 270 L 217.1 178.0 L 229.3 126.3 L 241.4 97.3 L 253.5 81.0 L 265.6 71.8 L 277.8 66.6 L 289.9 63.7 L 302.0 62.1 L 314.1 61.2 L 326.3 60.7 L 338.4 60.4 L 350.5 60.2 L 362.6 60.1 L 374.8 60.1 L 386.9 60.0 L 399.0 60.0 L 411.1 60.0 L 423.3 60.0 L 435.4 60.0 L 447.5 60.0 L 459.6 60.0 L 471.8 60.0 L 483.9 60.0 L 496.0 60.0 L 508.1 60.0 L 520.3 60.0 L 532.4 60.0 L 544.5 60.0 L 556.6 60.0 L 568.8 60.0 L 580.9 60.0 L 593.0 60.0 L 605.1 60.0 L 617.3 60.0 L 629.4 60.0 L 641.5 60.0 L 653.6 60.0 L 665.8 60.0 L 677.9 60.0 L 690.0 60.0" fill="none" stroke="#f59e0b" stroke-width="2"></path>
+
+ <!-- Time Axis Marks -->
+ <text x="80" y="395" fill="#5A6864" font-family="IBM Plex Mono" font-size="10">800 CLEAN</text>
+ <text id="c1InjLabel" x="168" y="395" fill="#EF174C" font-family="IBM Plex Mono" font-size="10">INJURY (27d)</text>
+ <text x="420" y="395" fill="#A8B6B1" font-family="IBM Plex Mono" font-size="10">RECOVERY HORIZON</text>
+ </svg>
+ </div>
+ <div class="flex items-center justify-between font-mono text-[11px] text-engine-muted px-1">
+ <span>k = 0 ticks (Equilibrium)</span>
+ <span class="text-ruby-hot font-medium">SHADED DEFICIT = SCAR GAP</span>
+ <span>k = 4000 ticks</span>
+ </div>
+ </div>
+
+ <!-- Chart 2: The Hump Across DECAY -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-3">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-3">
+ <div>
+ <span class="font-mono text-[10px] uppercase text-primary font-semibold">Chart 2 · v1.8 Closed Form</span>
+ <h3 class="font-headline text-lg text-paper-light">The hump across DECAY</h3>
+ </div>
+ <div id="humpLiveBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded bg-ruby/15 border border-ruby/40 text-ruby-hot font-mono text-xs">DECAY = 0.70 · Scar = 7.5 ticks</div>
+ </div>
+ <div class="w-full bg-[#050507] rounded-lg relative overflow-hidden border border-line-subtle p-2">
+ <svg id="chart2Svg" viewBox="0 0 720 250" preserveAspectRatio="xMidYMid meet" class="w-full h-auto max-h-[180px]">
+ <line x1="60" y1="200" x2="680" y2="200" stroke="#1c1b22" stroke-width="1"></line>
+ <line x1="60" y1="30" x2="60" y2="200" stroke="#1c1b22" stroke-width="1"></line>
+
+ <text x="60" y="220" fill="#5A6864" font-family="IBM Plex Mono" font-size="10" text-anchor="middle">.05</text>
+ <line x1="250" y1="195" x2="250" y2="200" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="250" y="220" fill="#5A6864" font-family="IBM Plex Mono" font-size="10" text-anchor="middle">.50</text>
+ <line x1="460" y1="195" x2="460" y2="200" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="460" y="220" fill="#5A6864" font-family="IBM Plex Mono" font-size="10" text-anchor="middle">1.00</text>
+ <line x1="670" y1="195" x2="670" y2="200" stroke="#1c1b22" stroke-width="1"></line>
+ <text x="670" y="220" fill="#5A6864" font-family="IBM Plex Mono" font-size="10" text-anchor="middle">1.50</text>
+
+ <path id="c2HumpPath" d="M 60.0 186.3 L 70.2 177.4 L 80.3 168.0 L 90.5 158.5 L 100.7 149.1 L 110.8 140.0 L 121.0 131.2 L 131.2 122.8 L 141.3 114.8 L 151.5 107.3 L 161.7 100.4 L 171.8 93.9 L 182.0 87.9 L 192.2 82.4 L 202.3 77.4 L 212.5 72.9 L 222.7 68.8 L 232.8 65.2 L 243.0 62.0 L 253.2 59.3 L 263.3 56.9 L 273.5 55.0 L 283.7 53.4 L 293.8 52.1 L 304.0 51.1 L 314.2 50.5 L 324.3 50.1 L 334.5 50.0 L 344.7 50.1 L 354.8 50.5 L 365.0 51.1 L 375.2 51.9 L 385.3 52.9 L 395.5 54.0 L 405.7 55.3 L 415.8 56.8 L 426.0 58.4 L 436.2 60.1 L 446.3 61.9 L 456.5 63.8 L 466.7 65.7 L 476.8 67.8 L 487.0 69.9 L 497.2 72.1 L 507.3 74.3 L 517.5 76.6 L 527.7 78.9 L 537.8 81.3 L 548.0 83.6 L 558.2 86.0 L 568.3 88.4 L 578.5 90.8 L 588.7 93.2 L 598.8 95.6 L 609.0 98.0 L 619.2 100.3 L 629.3 102.7 L 639.5 105.1 L 649.7 107.4 L 659.8 109.7 L 670.0 112.0" fill="none" stroke="#c9a84c" stroke-width="2.5"></path>
+ <line id="c2DecayLine" x1="333.4" y1="30" x2="333.4" y2="200" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 3"></line>
+ <circle id="c2DecayDot" cx="333.4" cy="50.0" r="5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5"></circle>
+ <text id="c2DecayText" x="345.4" y="50.0" fill="#FF4D70" font-family="IBM Plex Mono" font-size="10">DECAY: 0.70</text>
+ </svg>
+ </div>
+ <div class="flex items-center justify-between font-mono text-[11px] text-engine-muted px-1">
+ <span>Slow washout (coupled)</span>
+ <span>Resonant maximum scar peak (~0.68)</span>
+ <span>Rapid erasure (stiff)</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========================================================================= -->
+ <!-- TAB 03: CURVE BENCH (§4.3) -->
+ <!-- ========================================================================= -->
+ <div id="tab-curve-bench" class="katie-tab-content hidden flex-col gap-8">
+ <div class="flex flex-col gap-2 max-w-4xl">
+ <span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">KT visuals · 03</span>
+ <h1 class="font-headline text-4xl sm:text-5xl text-paper-light font-normal">The Curve Bench</h1>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ Every pool gets its own curve. Insults and compliments don't scar the same — drag the control points and watch the grudge respond. Curves are illustrative of the walkthrough design (variable nudge, dynamic tail, per-pool curves); depth decay uses the validated v1.8 slow rate.
+ </p>
+ </div>
+
+ <!-- Controls Bar -->
+ <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-surface-dark border border-line-subtle shadow-lg">
+ <div class="flex items-center gap-2">
+ <button id="poolTabInsults" onclick="switchBenchPool('insults', this)" class="curve-pool-btn px-4 py-2 rounded font-mono text-xs bg-ruby/20 text-ruby-hot border border-ruby/50 shadow-sm flex items-center gap-2 font-semibold">
+ <span class="w-2 h-2 rounded-full bg-ruby"></span>
+ Insults (Consecutive Offenses)
+ </button>
+ <button id="poolTabCompliments" onclick="switchBenchPool('compliments', this)" class="curve-pool-btn px-4 py-2 rounded font-mono text-xs bg-surface-card text-on-surface-variant hover:text-paper-light border border-line-subtle flex items-center gap-2">
+ <span class="w-2 h-2 rounded-full bg-primary"></span>
+ Compliments (Consecutive Make-Rights)
+ </button>
+ </div>
+ <div class="flex items-center gap-2">
+ <button onclick="resetActiveBenchCurve()" class="px-3.5 py-1.5 rounded font-mono text-xs bg-surface-card text-engine-line hover:text-paper-light hover:bg-surface-card-high border border-line-subtle transition-colors">
+ Reset this curve
+ </button>
+ <button onclick="resetGrudgeSimulator()" class="px-3.5 py-1.5 rounded font-mono text-xs bg-surface-card text-ruby-hot hover:bg-ruby-ground border border-ruby/30 transition-colors">
+ Reset grudge
+ </button>
+ </div>
+ </div>
+
+ <!-- Curve Editor & Grudge Simulator Grid -->
+ <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+ <!-- Left: Curve Editor Canvas (7 cols) -->
+ <div class="lg:col-span-7 p-6 rounded-xl bg-surface-dark border border-line-gold shadow-xl flex flex-col gap-4">
+ <div class="flex items-center justify-between border-b border-line-subtle pb-3">
+ <div class="flex items-center gap-2">
+ <span class="material-symbols-outlined text-primary text-[18px]">gesture</span>
+ <span class="font-mono text-xs text-paper-light font-semibold uppercase tracking-wider" id="curveEditorTitle">Insults Curve: [X: offenses, Y: ticks added]</span>
+ </div>
+ <span class="font-mono text-xs text-engine-line" id="curveEditorPointsCount">8 Control Points</span>
+ </div>
+
+ <!-- Interactive SVG Curve Canvas -->
+ <div class="w-full bg-[#050507] rounded-lg relative overflow-hidden border border-line-subtle p-3 flex flex-col justify-between select-none">
+ <div class="flex justify-between font-mono text-[11px] text-engine-muted px-1">
+ <span id="curveYAxisLabel">▲ Y: Ticks Added (Penalty Weight)</span>
+ <span class="text-primary font-mono" id="curveCoordInspect">Hover or drag a point</span>
+ </div>
+ <svg id="curveBenchSvg" viewBox="0 0 540 260" preserveAspectRatio="none" class="w-full h-72 my-1">
+ <!-- Grid Lines -->
+ <line x1="40" y1="220" x2="510" y2="220" stroke="#1c1b22" stroke-width="1"></line>
+ <line x1="40" y1="140" x2="510" y2="140" stroke="#1c1b22" stroke-width="1"></line>
+ <line x1="40" y1="60" x2="510" y2="60" stroke="#1c1b22" stroke-width="1"></line>
+ <line x1="40" y1="30" x2="40" y2="220" stroke="#1c1b22" stroke-width="1"></line>
+
+ <text x="12" y="64" fill="#5A6864" font-family="IBM Plex Mono" font-size="10">80</text>
+ <text x="12" y="144" fill="#5A6864" font-family="IBM Plex Mono" font-size="10">40</text>
+ <text x="20" y="224" fill="#5A6864" font-family="IBM Plex Mono" font-size="10">0</text>
+
+ <path id="benchDynamicCurvePath" d="M 40.0 216.0 L 63.5 210.0 L 87.0 202.0 L 134.0 188.0 L 204.5 164.0 L 298.5 130.0 L 416.0 90.0 L 510.0 60.0" fill="none" stroke="#ef4444" stroke-width="3"></path>
+ <g id="curvePointsGroup"><circle cx="40.0" cy="216.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="0"></circle><circle cx="63.5" cy="210.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="1"></circle><circle cx="87.0" cy="202.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="2"></circle><circle cx="134.0" cy="188.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="3"></circle><circle cx="204.5" cy="164.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="4"></circle><circle cx="298.5" cy="130.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="5"></circle><circle cx="416.0" cy="90.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="6"></circle><circle cx="510.0" cy="60.0" r="5.5" fill="#EF174C" stroke="#ffffff" stroke-width="1.5" class="curve-handle" data-idx="7"></circle></g>
+ </svg>
+ <div class="flex justify-between font-mono text-[11px] text-engine-muted px-1">
+ <span>0 (First Encounter)</span>
+ <span class="text-paper-light">X-Axis: Consecutive Count</span>
+ <span id="curveXMaxLabel">20 (Cumulative Limit)</span>
+ </div>
+ </div>
+
+ <div class="p-3.5 rounded bg-surface-card text-xs text-on-surface-variant flex flex-col gap-1 border border-line-subtle">
+ <span class="font-mono text-[11px] text-primary uppercase font-semibold">Asymmetric Friction Dynamics</span>
+ <p class="leading-relaxed">
+ Insults scale convexly: repeated violations trigger compounding penalties with long decay horizons. Compliments provide diminishing returns per repetition, ensuring historical transgressions cannot be rapidly papered over with lightweight assertions.
+ </p>
+ </div>
+ </div>
+
+ <!-- Right: Grudge Simulator (5 cols) -->
+ <div class="lg:col-span-5 p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-5">
+ <div class="flex items-center justify-between border-b border-line-subtle pb-3">
+ <span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">The Grudge Simulator</span>
+ <span id="grudgeStateBadge" class="font-mono text-[10px] text-status-lime px-2 py-0.5 rounded bg-status-lime/10 border border-status-lime/30">EQUILIBRATED</span>
+ </div>
+
+ <!-- Big Tick Readout -->
+ <div class="py-6 px-4 rounded-xl bg-surface-card border border-line-subtle text-center flex flex-col items-center">
+ <span class="font-mono text-[10px] uppercase text-engine-line tracking-wider">Retained Epistemic Grudge</span>
+ <div class="font-mono text-4xl sm:text-5xl font-bold text-paper-light mt-1" id="grudgeTicksDisplay">
+ 0 <span class="text-xl font-normal text-engine-muted">ticks</span>
+ </div>
+ <div class="text-xs text-on-surface-variant mt-2" id="grudgeStatusSubtext">
+ No grudge held. Offend to start one.
+ </div>
+ </div>
+
+ <!-- Split Dual-Trace Meters -->
+ <div class="flex flex-col gap-3">
+ <div class="flex flex-col gap-1">
+ <div class="flex justify-between font-mono text-xs">
+ <span class="text-amber-400 font-medium">Surface · what it shows (Fast-trace)</span>
+ <span class="text-amber-400 font-bold" id="meterSurfaceVal">0.0 ticks</span>
+ </div>
+ <div class="w-full h-2.5 bg-surface-card-high rounded-full overflow-hidden">
+ <div id="meterSurfaceBar" class="h-full bg-amber-400 transition-all duration-300" style="width: 0%"></div>
+ </div>
+ </div>
+
+ <div class="flex flex-col gap-1">
+ <div class="flex justify-between font-mono text-xs">
+ <span class="text-ruby-hot font-medium">Depth · what it holds (Slow-trace deficit)</span>
+ <span class="text-ruby-hot font-bold" id="meterDepthVal">0.0 ticks</span>
+ </div>
+ <div class="w-full h-2.5 bg-surface-card-high rounded-full overflow-hidden">
+ <div id="meterDepthBar" class="h-full bg-ruby transition-all duration-300" style="width: 0%"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Action Buttons -->
+ <div class="grid grid-cols-3 gap-2 pt-1">
+ <button onclick="simGrudgeAction('offend')" class="py-3 px-2 rounded bg-ruby/15 text-ruby-hot border border-ruby/40 hover:bg-ruby hover:text-paper-light transition-all font-mono text-[11px] uppercase tracking-wider flex flex-col items-center gap-0.5">
+ <span class="font-bold">Offend</span>
+ <span class="text-[9px] opacity-75">Add injury</span>
+ </button>
+ <button onclick="simGrudgeAction('repair')" class="py-3 px-2 rounded bg-primary/15 text-primary border border-primary/40 hover:bg-primary hover:text-ground-deep transition-all font-mono text-[11px] uppercase tracking-wider flex flex-col items-center gap-0.5">
+ <span class="font-bold">Make right</span>
+ <span class="text-[9px] opacity-75">Heal pool</span>
+ </button>
+ <button onclick="simGrudgeAction('pass100')" class="py-3 px-2 rounded bg-surface-card text-paper-light hover:bg-surface-card-high border border-line-subtle transition-all font-mono text-[11px] uppercase tracking-wider flex flex-col items-center gap-0.5">
+ <span class="font-bold">Let 100t pass</span>
+ <span class="text-[9px] opacity-75">Δk = +100</span>
+ </button>
+ </div>
+
+ <!-- Action History Strip -->
+ <div class="flex flex-col gap-1.5 pt-2 border-t border-line-subtle">
+ <div class="flex justify-between font-mono text-[10px] text-engine-muted">
+ <span>ACTION TRAIL (LAST 40)</span>
+ <span id="historyActionCount">0 actions logged</span>
+ </div>
+ <div id="actionHistoryStrip" class="w-full h-8 bg-[#050507] rounded border border-line-subtle flex items-end gap-1 px-1.5 py-1 overflow-hidden">
+ <span class="text-[10px] text-engine-muted italic self-center mx-auto">No interaction recorded yet</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========================================================================= -->
+ <!-- TAB 04: KERNEL & KID (§4.4) -->
+ <!-- ========================================================================= -->
+ <div id="tab-kernel" class="katie-tab-content hidden flex-col gap-8"><div class="flex flex-col gap-2 max-w-3xl"><span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">KATIE engine / KID architecture · §4.4</span><h1 class="font-headline text-4xl sm:text-5xl text-paper-light font-normal">Everything I/O, with a KID in the middle.</h1><p class="font-headline text-lg italic text-paper-light border-l-2 border-primary pl-4 py-1">“One shell. Assignable behavior. Math in, math out — but what object is the math assigned to? That’s the thing.”</p></div><div class="p-6 sm:p-8 rounded-xl bg-surface-dark border border-line-gold shadow-2xl flex flex-col gap-6"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-3"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">schema</span><span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">Deterministic KID Flow Topology</span></div><span class="font-mono text-[10px] text-status-lime uppercase bg-status-lime/10 px-2.5 py-0.5 rounded-full border border-status-lime/30">ZERO UNBOUNDED MUTATION</span></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch"><div class="p-5 rounded-lg bg-surface-card border border-line-subtle flex flex-col justify-between gap-4"><div class="flex flex-col gap-2"><span class="font-mono text-[10px] uppercase text-engine-muted tracking-wider">INPUT STAGE</span><h3 class="font-headline text-xl text-paper-light">Sensory Socket</h3><p class="text-xs text-on-surface-variant leading-relaxed">Unbounded ingress packet serialization and byte-attestation.</p><ul class="font-mono text-xs text-engine-line space-y-1.5 pt-2 border-t border-line-subtle/50"><li>• Ingress packet serialization</li><li>• Byte stamping</li><li>• Timestamp indexing (t_assert)</li><li>• Provable non-repudiation</li></ul></div></div><div class="p-6 rounded-lg bg-primary-dim border-2 border-primary shadow-[0_0_24px_rgba(201,168,76,0.15)] flex flex-col justify-between gap-4 relative"><div class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-primary text-ground-deep font-mono text-[10px] font-bold shadow-md">THE CORE</div><div class="flex flex-col gap-3"><span class="font-mono text-[10px] uppercase text-primary font-semibold tracking-wider">KID ENTITY KERNEL</span><h3 class="font-headline text-2xl text-paper-light">Registered KID Unit</h3><p class="text-xs text-paper-light/90 leading-relaxed">Dual trace accumulators evaluate field law invariants before sealing any append-only block.</p><div class="grid grid-cols-2 gap-2 pt-2"><div class="p-2.5 rounded bg-surface-dark/90 border border-line-gold"><div class="font-mono text-[9px] text-amber-400 font-semibold">FAST TRACE α</div><div class="font-mono text-xs text-paper-light mt-0.5">Transient impulse</div><div class="text-[10px] text-engine-muted mt-1">Immediate rebound</div></div><div class="p-2.5 rounded bg-surface-dark/90 border border-ruby/40"><div class="font-mono text-[9px] text-ruby-hot font-semibold">SLOW TRACE λ</div><div class="font-mono text-xs text-paper-light mt-0.5">Influence deficit</div><div class="text-[10px] text-engine-muted mt-1">Retained scar debt</div></div></div></div><div class="p-2.5 rounded bg-surface-dark border border-line-gold font-mono text-xs text-primary flex items-center justify-between"><span>KID IDENTIFIER</span><span class="font-bold">Assigned at birth</span></div></div><div class="p-5 rounded-lg bg-surface-card border border-line-subtle flex flex-col justify-between gap-4"><div class="flex flex-col gap-2"><span class="font-mono text-[10px] uppercase text-engine-muted tracking-wider">OUTPUT STAGE</span><h3 class="font-headline text-xl text-paper-light">Actuation Socket</h3><p class="text-xs text-on-surface-variant leading-relaxed">Deterministic propagation without mutating past state.</p><ul class="font-mono text-xs text-engine-line space-y-1.5 pt-2 border-t border-line-subtle/50"><li>• Graded authority assertion</li><li>• Attestation certificate emit</li><li>• Supersession ledger link</li><li>• Cryptographic chain commit</li></ul></div></div></div></div><div class="grid grid-cols-1 lg:grid-cols-12 gap-6"><div class="lg:col-span-4 flex flex-col gap-2"><span class="font-mono text-xs text-engine-line uppercase font-semibold">Interactive KID Preset Switcher</span><div class="flex flex-col gap-2"><button onclick="setKernelPreset('event', this)" class="preset-btn p-3.5 rounded-lg text-left bg-surface-card-high text-paper-light border border-primary/40 transition-all"><div class="font-semibold text-primary font-mono text-sm flex items-center justify-between"><span>Preset: Event</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-primary/20 text-primary">Dynamic</span></div><div class="font-mono text-[11px] text-engine-muted mt-1">Fast transient response, short window</div></button><button onclick="setKernelPreset('topic', this)" class="preset-btn p-3.5 rounded-lg text-left bg-surface-card text-on-surface-variant hover:text-paper-light border border-transparent transition-all"><div class="font-semibold font-mono text-sm flex items-center justify-between"><span>Preset: Topic</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-card-high text-engine-muted">Buffered</span></div><div class="font-mono text-[11px] text-engine-muted mt-1">High integration window, stable knee</div></button><button onclick="setKernelPreset('sentinel', this)" class="preset-btn p-3.5 rounded-lg text-left bg-surface-card text-on-surface-variant hover:text-paper-light border border-transparent transition-all"><div class="font-semibold font-mono text-sm flex items-center justify-between"><span>Preset: Sentinel</span><span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-card-high text-engine-muted">Guarded</span></div><div class="font-mono text-[11px] text-engine-muted mt-1">Zero-tolerance attack, high authority</div></button></div></div><div class="lg:col-span-8 p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col justify-between gap-5"><div><div class="flex items-center justify-between border-b border-line-subtle pb-3 mb-4"><span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">KID Behavior Parameters</span><span class="font-mono text-xs text-primary font-bold" id="presetActiveLabel">ACTIVE: EVENT</span></div><div class="grid grid-cols-2 sm:grid-cols-4 gap-3"><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Threshold</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pThreshold">0.35</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Attack</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pAttack">Fast</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Ratio</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pRatio">3:1</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Release</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pRelease">Medium</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Window</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pWindow">12 ticks</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle"><div class="font-mono text-[10px] text-engine-muted uppercase">Authority</div><div class="font-mono text-sm text-paper-light mt-1 font-bold" id="pAuthority">0.70</div></div><div class="p-3 rounded bg-surface-card border border-line-subtle col-span-2"><div class="font-mono text-[10px] text-engine-muted uppercase">Knee / Curve Profile</div><div class="font-mono text-sm text-primary mt-1 font-bold" id="pKnee">Soft exponential</div></div></div></div><div class="font-mono text-[11px] text-engine-muted pt-3 border-t border-line-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-2"><span>PARAMETER DEED SIGNATURE: SIGNED ARTIFACT</span><span class="text-status-lime flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>COMPLIANT v1.8</span></div></div></div><div class="p-6 sm:p-8 rounded-xl bg-surface-dark border-l-4 border-primary shadow-2xl flex flex-col gap-6"><div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-line-subtle pb-4"><div><span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">Field Proof</span><h2 class="font-headline text-3xl text-paper-light mt-0.5">“It runs on a phone”</h2><p class="text-xs text-on-surface-variant mt-1">Validated edge compilation with zero cloud dependencies — tested directly in Termux userland.</p></div><div class="p-2.5 rounded bg-surface-card border border-line-subtle font-mono text-[11px] text-engine-line flex flex-col gap-0.5"><span>HARDWARE SPEC:</span><span class="text-paper-light font-semibold">Moto G Play 2024 · Snapdragon 680</span><span class="text-engine-muted text-[10px]">KATIE kernel v0.1, built from source in Termux</span></div></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 font-mono"><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-primary text-2xl font-bold">27,074</span><span class="text-engine-muted text-[10px] uppercase mt-1">asserts / sec</span></div><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-primary text-2xl font-bold">14,434</span><span class="text-engine-muted text-[10px] uppercase mt-1">promotions / sec</span></div><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-primary text-2xl font-bold">&lt; 0.5 ms</span><span class="text-engine-muted text-[10px] uppercase mt-1">as-of reads</span></div><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-status-lime text-2xl font-bold">0</span><span class="text-engine-muted text-[10px] uppercase mt-1">dependencies</span></div><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-ruby-hot text-2xl font-bold">987 / 39</span><span class="text-engine-muted text-[10px] uppercase mt-1">debt deep / surface</span></div><div class="p-3.5 rounded-lg bg-surface-card border border-line-subtle flex flex-col"><span class="text-teal-400 text-2xl font-bold">2 chips</span><span class="text-engine-muted text-[10px] uppercase mt-1">identical diagnostics</span></div></div></div><div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-5"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-line-subtle pb-3"><div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-status-lime text-[18px]">verified</span><span class="font-mono text-xs uppercase font-semibold text-paper-light tracking-wider">16 Promises Test Suite</span></div><p class="text-xs text-engine-line mt-0.5">Deterministic verification guarantees — formal test assertions pass across release targets.</p></div><div class="flex items-center gap-3"><div class="font-mono text-xs text-status-lime flex items-center gap-1.5 bg-status-lime/10 px-2.5 py-1 rounded border border-status-lime/20"><span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span><span>16 / 16 PASSED (0 ignored)</span></div><button onclick="replayKatiePromises()" class="px-3 py-1.5 rounded font-mono text-xs bg-primary/20 text-primary border border-primary/40 hover:bg-primary hover:text-ground-deep transition-all flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px]">play_arrow</span><span>$ cargo test --release</span></button></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs" id="promisesGridContainer"><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-01</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Append-only Ingress</span><span class="text-engine-muted text-[10px]">Zero overwrite in storage</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-02</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Knowledge Clock k</span><span class="text-engine-muted text-[10px]">Strict monotonic order</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-03</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Discredit Preservation</span><span class="text-engine-muted text-[10px]">Weight drops, record stays</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-04</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Born Registered</span><span class="text-engine-muted text-[10px]">Immediate KID instantiation</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-05</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Poison Isolation</span><span class="text-engine-muted text-[10px]">Corrupt asserts quarantined</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-06</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Ingress Firewall</span><span class="text-engine-muted text-[10px]">Zero hallucinated leak</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-07</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Self-Healing Loop</span><span class="text-engine-muted text-[10px]">Transient dampening</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-08</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Parameters as Deeds</span><span class="text-engine-muted text-[10px]">Signed artifact verification</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-09</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Snapshots Not State</span><span class="text-engine-muted text-[10px]">O(1) historical slicing</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-10</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Pressure-Pot Attention</span><span class="text-engine-muted text-[10px]">Risk proportional triage</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-11</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Slow Debt Tracking</span><span class="text-engine-muted text-[10px]">Field law invariant held</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-12</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Multi-Trace Integrity</span><span class="text-engine-muted text-[10px]">Coupled alpha-lambda bounds</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-13</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Deterministic Replay</span><span class="text-engine-muted text-[10px]">Cross-platform bit-identity</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-14</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Asymmetric Grudge</span><span class="text-engine-muted text-[10px]">Convex penalty retention</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-15</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Zero Mutation Proof</span><span class="text-engine-muted text-[10px]">Cryptographic cell hash link</span></div><div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1"><div class="flex justify-between items-center"><span class="text-primary font-bold">P-16</span><span class="text-[10px] text-status-lime">✓ PASS</span></div><span class="text-paper-light text-[11px]">Edge Portability</span><span class="text-engine-muted text-[10px]">Termux ARM64 validation</span></div></div></div></div>
+
+ <!-- ========================================================================= -->
+ <!-- TAB 05: RUBY GLASSES (§4.5) -->
+ <!-- ========================================================================= -->
+ <div id="tab-ruby-glasses" class="katie-tab-content hidden flex-col gap-8">
+ <!-- Perspective 01 Header Hero -->
+ <div class="p-8 rounded-xl bg-ruby-ground border border-ruby/30 shadow-2xl flex flex-col gap-6 relative overflow-hidden">
+ <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-ruby/10 blur-3xl pointer-events-none"></div>
+ <div class="flex flex-col gap-2 relative z-10">
+ <span class="font-mono text-xs uppercase tracking-widest text-ruby-hot font-semibold">Perspective 01 / Ruby glasses</span>
+ <h1 class="font-headline text-4xl sm:text-5xl text-paper-light max-w-4xl font-normal">
+ Put on the ruby glasses.
+ </h1>
+ <p class="font-headline text-xl sm:text-2xl text-ruby-hot/90 font-light max-w-3xl leading-relaxed italic">
+ The world changes when every machine can show its work.
+ </p>
+ </div>
+
+ <!-- Dual Ruby Lens Graphic -->
+ <div class="w-full py-8 px-4 rounded-xl bg-[#0D090B] border border-ruby/40 flex flex-col items-center justify-center relative my-2">
+ <div class="flex items-center justify-center -space-x-8 sm:-space-x-12 relative">
+ <!-- Lens 1 (Observed Authority) -->
+ <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-full border-2 border-ruby bg-ruby/15 backdrop-blur-md shadow-[0_0_24px_rgba(239,23,76,0.25)] flex flex-col items-center justify-center p-4 text-center transition-all hover:scale-105 duration-300">
+ <span class="font-mono text-[10px] text-ruby-hot uppercase tracking-wider font-semibold">Left Lens</span>
+ <span class="font-headline text-lg sm:text-xl text-paper-light font-normal mt-1">Observed Authority</span>
+ <span class="font-mono text-xs text-engine-line mt-1">t_assert · byte hash</span>
+ </div>
+ <!-- Lens 2 (Retained Debt) -->
+ <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-full border-2 border-ruby-deep bg-ruby-deep/20 backdrop-blur-md shadow-[0_0_24px_rgba(142,7,43,0.3)] flex flex-col items-center justify-center p-4 text-center transition-all hover:scale-105 duration-300">
+ <span class="font-mono text-[10px] text-ruby uppercase tracking-wider font-semibold">Right Lens</span>
+ <span class="font-headline text-lg sm:text-xl text-paper-light font-normal mt-1">Retained Scar Debt</span>
+ <span class="font-mono text-xs text-engine-line mt-1">slow-trace deficit (λ)</span>
+ </div>
+ </div>
+ <div class="mt-6 text-center max-w-lg z-10">
+ <p class="font-headline text-base sm:text-lg italic text-paper-light border-y border-ruby/30 py-2">
+ “You no longer see an answer. You see its history.”
+ </p>
+ </div>
+ </div>
+
+ <!-- Proof Strip: WHAT, WHEN, WHY -->
+ <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 font-mono text-xs">
+ <div class="p-4 rounded-lg bg-surface-dark border border-ruby/30 flex flex-col gap-1.5">
+ <span class="text-[10px] uppercase text-ruby font-semibold tracking-wider flex items-center gap-1.5">
+ <span class="w-2 h-2 rounded-full bg-ruby"></span>WHAT
+ </span>
+ <span class="text-sm text-paper-light font-bold font-sans">The Machine Believed</span>
+ <p class="text-[11px] text-on-surface-variant leading-relaxed font-sans mt-0.5">
+ Explicit entity representations stored with registered KID identifiers and exact cryptographic state payloads.
+ </p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-dark border border-line-gold flex flex-col gap-1.5">
+ <span class="text-[10px] uppercase text-primary font-semibold tracking-wider flex items-center gap-1.5">
+ <span class="w-2 h-2 rounded-full bg-primary"></span>WHEN
+ </span>
+ <span class="text-sm text-paper-light font-bold font-sans">That Belief Held Authority</span>
+ <p class="text-[11px] text-on-surface-variant leading-relaxed font-sans mt-0.5">
+ Strict monotonic knowledge clock k intervals indexing every mutation without destructive in-place overwriting.
+ </p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-dark border border-status-lime/30 flex flex-col gap-1.5">
+ <span class="text-[10px] uppercase text-status-lime font-semibold tracking-wider flex items-center gap-1.5">
+ <span class="w-2 h-2 rounded-full bg-status-lime"></span>WHY
+ </span>
+ <span class="text-sm text-paper-light font-bold font-sans">It Was Justified in Acting</span>
+ <p class="text-[11px] text-on-surface-variant leading-relaxed font-sans mt-0.5">
+ Continuous evaluation of dual-trace threshold policies with unrecovered scar deficits explicitly factored.
+ </p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Section 02: Ask the Machine Why (Interrogation) -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-6">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-3">
+ <div class="flex flex-col gap-1">
+ <span class="font-mono text-xs uppercase text-ruby font-semibold">Perspective 02 · K-Record Inquiry</span>
+ <h2 class="font-headline text-2xl text-paper-light">Ask the machine why.</h2>
+ <p class="text-xs text-on-surface-variant">Select an interrogative trigger or inspect the complete deterministic decision trace.</p>
+ </div>
+ <span class="font-mono text-[10px] text-engine-muted bg-surface-card px-3 py-1 rounded border border-line-subtle">K-RECORD REPLAY ENGINE ACTIVE</span>
+ </div>
+
+ <!-- Prompt Buttons Trigger Bar -->
+ <div class="flex flex-wrap gap-2.5">
+ <button onclick="setRubyPrompt(1, this)" class="ruby-prompt-btn px-4 py-2 rounded-full font-mono text-xs bg-ruby text-paper-light shadow-md transition-all">
+ "Why did you stop the transfer?"
+ </button>
+ <button onclick="setRubyPrompt(2, this)" class="ruby-prompt-btn px-4 py-2 rounded-full font-mono text-xs bg-surface-card text-on-surface-variant hover:text-paper-light border border-line-subtle transition-all">
+ "What did you believe about the recipient?"
+ </button>
+ <button onclick="setRubyPrompt(3, this)" class="ruby-prompt-btn px-4 py-2 rounded-full font-mono text-xs bg-surface-card text-on-surface-variant hover:text-paper-light border border-line-subtle transition-all">
+ "What changed your mind?"
+ </button>
+ </div>
+
+ <!-- Question Textarea & K-Record Trace Panel -->
+ <div class="rounded-lg bg-[#050507] border border-line-subtle p-6 flex flex-col gap-5">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-3">
+ <span class="font-mono text-xs text-ruby uppercase tracking-wider font-semibold flex items-center gap-2">
+ <span class="material-symbols-outlined text-[16px] text-ruby">terminal</span>
+ Decision Trace / 4 Recorded States
+ </span>
+ <span class="font-mono text-xs text-engine-muted">KID K-31A8 · EID EVT-00941 · AUDIT PROOF #7281</span>
+ </div>
+
+ <div class="p-3.5 rounded bg-surface-card border-l-2 border-ruby text-xs text-paper-light font-mono leading-relaxed" id="rubyAnswerDisplay">
+ I stopped the transfer because the recipient's authority fell below the execution threshold at 14:32:08.
+ </div>
+
+ <!-- 4-Event Decision Trace Timeline -->
+ <div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-ruby/40 font-mono text-xs">
+ <div class="relative flex flex-col gap-1">
+ <span class="w-3 h-3 rounded-full bg-ruby absolute -left-7 top-1 shadow-[0_0_8px_#EF174C]"></span>
+ <div class="flex items-center gap-2">
+ <span class="text-ruby-hot font-bold">14:31:42</span>
+ <span class="text-engine-muted">observed · authority 0.9 (90%)</span>
+ </div>
+ <p class="text-paper-light font-sans text-xs">Recipient matched a previously approved payee. Basis: verified account history + user instruction.</p>
+ </div>
+ <div class="relative flex flex-col gap-1">
+ <span class="w-3 h-3 rounded-full bg-status-orange absolute -left-7 top-1"></span>
+ <div class="flex items-center gap-2">
+ <span class="text-status-orange font-bold">14:31:57</span>
+ <span class="text-engine-muted">challenged · authority 0.6 (60%)</span>
+ </div>
+ <p class="text-paper-light font-sans text-xs">Routing data diverged from approved record. Basis: live destination comparison.</p>
+ </div>
+ <div class="relative flex flex-col gap-1">
+ <span class="w-3 h-3 rounded-full bg-ruby-deep absolute -left-7 top-1"></span>
+ <div class="flex items-center gap-2">
+ <span class="text-ruby font-bold">14:32:05</span>
+ <span class="text-engine-muted">revised · authority 0.2 (20%)</span>
+ </div>
+ <p class="text-paper-light font-sans text-xs">Recipient identity could no longer be justified. Basis: conflict unresolved; prior belief retained.</p>
+ </div>
+ <div class="relative flex flex-col gap-1">
+ <span class="w-3 h-3 rounded-full bg-status-lime absolute -left-7 top-1"></span>
+ <div class="flex items-center gap-2">
+ <span class="text-status-lime font-bold">14:32:08</span>
+ <span class="text-engine-muted">acted (current) · decision (100%)</span>
+ </div>
+ <p class="text-paper-light font-sans text-xs">Transfer halted pending human review. Action: threshold policy applied to current authority.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Section 03: The Unlocks (14 Articles) -->
+ <div class="p-6 sm:p-8 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-6">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-line-subtle pb-4">
+ <div>
+ <span class="font-mono text-xs uppercase tracking-widest text-ruby font-semibold">Perspective 03 · System Capabilities</span>
+ <h2 class="font-headline text-3xl text-paper-light mt-0.5">The 14 Unlocks</h2>
+ <p class="text-xs text-on-surface-variant mt-1">What becomes computationally possible when every epistemic state is immutable and auditable.</p>
+ </div>
+ <span class="font-mono text-xs text-ruby-hot border border-ruby/30 px-3 py-1 rounded bg-ruby/10">14 / 14 FORMAL UNLOCKS</span>
+ </div>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">01</span>
+ <span class="text-[10px] text-engine-muted uppercase">Identity</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Continuity</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">An unbroken historical lineage for every entity across infinite operational cycles.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">02</span>
+ <span class="text-[10px] text-engine-muted uppercase">Genesis</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Shared history as identity</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Identity is not an arbitrary string; it is the verifiable totality of its registered events.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">03</span>
+ <span class="text-[10px] text-engine-muted uppercase">Transparency</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">End of black box</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Every output step carries its exact antecedent justifying conditions in byte-identical form.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">04</span>
+ <span class="text-[10px] text-engine-muted uppercase">Evidence</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Forensics without guesswork</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Reconstruct past incident roots without log inference or probabilistic hallucination.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">05</span>
+ <span class="text-[10px] text-engine-muted uppercase">Assurance</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Audits worthy of the name</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Mathematical verification of state assertions取代 sample-based compliance polling.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">06</span>
+ <span class="text-[10px] text-engine-muted uppercase">Governance</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Accountability with teeth</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Non-repudiable parameter deeds signed by explicit cryptographic keys.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">07</span>
+ <span class="text-[10px] text-engine-muted uppercase">Assurance</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Trust that is earned</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Zero blind assertions; authority coefficients decay dynamically when conflicting proof emerges.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">08</span>
+ <span class="text-[10px] text-engine-muted uppercase">Agents</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Agents whose past they cannot outrun</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Autonomous processes cannot purge bad historical executions to fake reliability.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">09</span>
+ <span class="text-[10px] text-engine-muted uppercase">Safety</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Safer autonomy</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Convex penalty retention throttles rogue escalation before system damage propagates.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">10</span>
+ <span class="text-[10px] text-engine-muted uppercase">Compliance</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Regulation machines can satisfy</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Built directly to fulfill strict tritemporal legal discovery and regulatory evidentiary mandates.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">11</span>
+ <span class="text-[10px] text-engine-muted uppercase">Resilience</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Repair instead of reset</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Heal state with corrective records rather than destructive database rollbacks.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">12</span>
+ <span class="text-[10px] text-engine-muted uppercase">Rigour</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Science inside the machine</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Formal differential field laws with validated mathematical invariants governing all memory.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">13</span>
+ <span class="text-[10px] text-engine-muted uppercase">Enterprise</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Institutions that remember</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">Corporate memory immune to turnover, forgotten spreadsheets, and unrecorded policy drifts.</p>
+ </div>
+ <div class="p-4 rounded-lg bg-surface-card border border-line-subtle flex flex-col gap-2 sm:col-span-2 lg:col-span-2">
+ <div class="flex items-center justify-between font-mono text-xs">
+ <span class="text-ruby font-bold">14</span>
+ <span class="text-[10px] text-engine-muted uppercase">Civilization</span>
+ </div>
+ <h4 class="font-headline text-base text-paper-light font-normal">Civilization's memory carried forward</h4>
+ <p class="text-xs text-on-surface-variant leading-relaxed">An enduring, tamper-proof epistemic substrate capable of preserving verified human and algorithmic knowledge across generations.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Bottom Rail Navigation -->
+ <div class="p-4 rounded-xl bg-surface-dark border border-line-subtle flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-engine-line">
+ <div class="flex items-center gap-6">
+ <span class="flex items-center gap-2 text-ruby-hot font-semibold">
+ <span class="w-2 h-2 rounded-full bg-ruby"></span>01 The vision
+ </span>
+ <span class="text-engine-muted">·</span>
+ <span class="flex items-center gap-2 hover:text-paper-light transition-colors cursor-pointer">
+ <span class="w-2 h-2 rounded-full bg-engine-muted"></span>02 Ask why
+ </span>
+ <span class="text-engine-muted">·</span>
+ <span class="flex items-center gap-2 hover:text-paper-light transition-colors cursor-pointer">
+ <span class="w-2 h-2 rounded-full bg-engine-muted"></span>03 The unlocks
+ </span>
+ </div>
+ <div class="text-engine-muted text-[11px]">
+ §4.5 SPECIFICATION · CERTIFIED IMMUTABLE
+ </div>
+ </div>
+</div>
+
+ <!-- ========================================================================= -->
+ <!-- TAB 06: CRM DEMO (§4.6) -->
+ <!-- ========================================================================= -->
+ <div id="tab-crm-demo" class="katie-tab-content flex-col gap-8 flex">
+ <div class="flex flex-col gap-2 max-w-3xl">
+ <span class="font-mono text-xs uppercase tracking-widest text-primary font-semibold">Enterprise Comparison Protocol</span>
+ <h1 class="font-headline text-4xl sm:text-5xl text-paper-light font-normal">
+ Your CRM <span class="line-through text-on-surface-variant">rewrites history</span>. <span class="text-primary font-semibold">This one can't.</span>
+ </h1>
+ <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+ In typical databases, `UPDATE users SET name = '...'` permanently destroys prior knowledge. KATIE preserves both facts in append-only space.
+ </p>
+ </div>
+
+ <!-- Account Switcher -->
+ <div class="flex items-center gap-3">
+ <button onclick="setCRMAccount('acct-002', this)" class="crm-acct-btn px-4 py-2 rounded font-mono text-xs bg-primary text-ground-deep font-semibold shadow-sm">
+ acct-002 (Sofia Bennett / Marchetti)
+ </button>
+ <button onclick="setCRMAccount('acct-001', this)" class="crm-acct-btn px-4 py-2 rounded font-mono text-xs bg-surface-card text-on-surface-variant hover:text-paper-light border border-line-subtle">
+ acct-001 (Darren Hall)
+ </button>
+ </div>
+
+ <!-- 3-Pane Structural Dossier -->
+ <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <!-- Pane 01: The Record -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-4">
+ <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+ <span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">Pane 01 · The Record</span>
+ <span class="font-mono text-[10px] text-ruby font-semibold">MUTABLE CRM</span>
+ </div>
+ <div class="p-3.5 rounded bg-surface-card flex flex-col gap-1.5 font-mono text-xs" id="crmLegacyRecord">
+ <div class="text-[10px] text-engine-line">ACTIVE DB ROW (MUTABLE)</div>
+ <div>name: "Sofia Bennett"</div>
+ <div>account_id: "acct-002"</div>
+ <div>city: "Durham"</div>
+ <div>status: "active"</div>
+ </div>
+ <div class="p-3 rounded bg-ruby/10 border-l-2 border-ruby text-ruby-hot text-xs leading-relaxed">
+ <strong>Data loss:</strong> The name "Sofia Marchetti" was completely overwritten in typical CRM databases. An auditor cannot prove what her name was prior without restoring backups.
+ </div>
+ </div>
+
+ <!-- Pane 02: The KID -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-gold shadow-xl flex flex-col gap-4">
+ <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+ <span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">Pane 02 · The KID</span>
+ <span class="font-mono text-[10px] text-primary font-semibold">APPEND-ONLY OBJECT</span>
+ </div>
+ <div class="p-3.5 rounded bg-surface-card flex flex-col gap-1.5 font-mono text-xs text-primary" id="crmKidIdentity">
+ <div class="text-[10px] text-engine-line">REGISTERED ENTITY IDENTITY</div>
+ <div>KID: …atZqtAAAAAAAAAAM</div>
+ <div>genesis_k: 1</div>
+ <div>current_k: 2</div>
+ <div>traces: 2 sealed blocks</div>
+ </div>
+ <div class="p-3 rounded bg-surface-card text-xs text-on-surface-variant leading-relaxed">
+ Identity is tied to the immutable KID identifier, not to mutable strings like surnames or emails.
+ </div>
+ </div>
+
+ <!-- Pane 03: The K-record -->
+ <div class="p-6 rounded-xl bg-surface-dark border border-line-subtle shadow-xl flex flex-col gap-4">
+ <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+ <span class="font-mono text-xs text-paper-light uppercase font-semibold tracking-wider">Pane 03 · The K-record</span>
+ <span class="font-mono text-[10px] text-status-lime font-semibold">FORENSIC AS-OF SLICE</span>
+ </div>
+ <div class="space-y-3 font-mono text-xs" id="crmKRecordHistory">
+ <div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k1 → k2 (Oct 23, 2026)</span>
+ <span class="text-engine-muted text-[10px]">WILD · auth 89%</span>
+ </div>
+ <div class="text-paper-light font-bold">name: "Sofia Marchetti"</div>
+ <div class="text-engine-muted text-[10px]">signup form · byte-identical preserved</div>
+ </div>
+ <div class="p-3 rounded bg-surface-card border border-primary/40 flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k2 → live (Oct 24, 2026)</span>
+ <span class="text-status-lime text-[10px]">CANDIDATE · auth 89%</span>
+ </div>
+ <div class="text-paper-light font-bold">name: "Sofia Bennett"</div>
+ <div class="text-status-lime text-[10px]">reason: "married" · supersedes k1</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+
+ <!-- RTP Regulatory Footer -->
+ <footer class="w-full bg-[#0a0a0e] border-t border-line-subtle py-8 px-6 lg:px-12 mt-auto">
+ <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-engine-muted">
+ <div>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</div>
+ <div class="flex items-center gap-4">
+ <span>U.S. Prov. App. 64/182,709</span>
+ <span>•</span>
+ <a href="https://zenodo.org/records/23198458" target="_blank" rel="noopener" class="text-primary hover:underline">DOI 10.5281/zenodo.23198458</a>
+ </div>
+ </div>
+ </footer>
+
+</main>
+
+<!-- Unified Script for Tab Switching & Live Simulators -->
+<script>
+ // Tab Switcher
+ function switchKatieTab(tabId) {
+ document.querySelectorAll('.katie-tab-content').forEach(p => {
+ p.classList.add('hidden');
+ p.classList.remove('flex');
+ });
+
+ const targetPanel = document.getElementById('tab-' + tabId);
+ if (targetPanel) {
+ targetPanel.classList.remove('hidden');
+ targetPanel.classList.add('flex');
+ }
+
+ document.querySelectorAll('.katie-nav-btn').forEach(b => {
+ b.classList.remove('bg-primary/20', 'text-primary', 'border-primary/50', 'shadow-sm', 'bg-ruby/20', 'text-ruby-hot', 'border-ruby/50');
+ b.classList.add('text-on-surface-variant', 'border-transparent');
+ b.setAttribute('aria-selected', 'false');
+ });
+
+ const activeBtn = document.getElementById('btn-' + tabId);
+ if (activeBtn) {
+ if (tabId === 'ruby-glasses') {
+ activeBtn.classList.add('bg-ruby/20', 'text-ruby-hot', 'border-ruby/50');
+ } else {
+ activeBtn.classList.add('bg-primary/20', 'text-primary', 'border-primary/50', 'shadow-sm');
+ }
+ activeBtn.classList.remove('text-on-surface-variant', 'border-transparent');
+ activeBtn.setAttribute('aria-selected', 'true');
+ }
+
+ if (tabId === 'scar-lab') {
+ updateScarSim();
+ } else if (tabId === 'curve-bench') {
+ renderCurveCanvas();
+ }
+ }
+
+ // =========================================================================
+ // TAB 01: ENGINE CONTROLS
+ // =========================================================================
+ let currentDepositType = 'unknown';
+ let currentK = 40;
+
+ function updateEngineSubject() {
+ const subj = document.getElementById('engineSubjectSelect').value;
+ document.getElementById('activeSubjectName').textContent = subj;
+ }
+
+ function selectDepositType(type, element) {
+ currentDepositType = type;
+ document.querySelectorAll('#depositTypeSelector .dep-btn').forEach(btn => {
+ btn.classList.remove('bg-surface-card-high', 'border-primary/50');
+ btn.classList.add('bg-surface-card', 'border-transparent');
+ });
+ element.classList.remove('bg-surface-card', 'border-transparent');
+ element.classList.add('bg-surface-card-high', 'border-primary/50');
+ }
+
+ function fireEngineEvent() {
+ currentK += 1;
+ const subject = document.getElementById('engineSubjectSelect').value;
+ document.getElementById('topLedgerClock').textContent = 'k = ' + currentK.toFixed(2);
+ document.getElementById('activeKBadge').textContent = 'k = ' + currentK;
+ document.getElementById('katieScrubber').value = currentK;
+ document.getElementById('scrubberKLabel').textContent = 'REPLAY POS: k = ' + currentK;
+
+ const hashSpan = document.getElementById('depHashPreview');
+ hashSpan.textContent = Math.random().toString(16).substring(2, 6) + '…' + Math.random().toString(16).substring(2, 6);
+
+ let auth = '0.80';
+ let typeTag = currentDepositType.toUpperCase();
+ let tagClass = 'bg-status-lime/10 text-status-lime';
+
+ if (currentDepositType === 'revoke') {
+ auth = '0.00';
+ tagClass = 'bg-ruby/10 text-ruby';
+ } else if (currentDepositType === 'challenge') {
+ auth = '0.35';
+ tagClass = 'bg-ruby/10 text-ruby';
+ } else if (currentDepositType === 'confirm') {
+ auth = '0.92';
+ tagClass = 'bg-status-lime/10 text-status-lime';
+ } else if (currentDepositType === 'unknown') {
+ auth = '0.10';
+ tagClass = 'bg-status-orange/10 text-status-orange';
+ typeTag = 'WILD';
+ }
+
+ document.getElementById('engineAuthorityValue').textContent = auth;
+ document.getElementById('engineAuthBar').style.width = (parseFloat(auth) * 100) + '%';
+
+ const ledgerBody = document.getElementById('ledgerTableBody');
+ const row = document.createElement('tr');
+ row.className = 'hover:bg-surface-card/50 transition-colors';
+ row.innerHTML = `
+ <td class="py-2 px-3 text-primary">k = ${currentK}</td>
+ <td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full ${tagClass} text-[10px]">${typeTag}</span></td>
+ <td class="py-2 px-3">${subject} event assertion registered</td>
+ <td class="py-2 px-3">${auth}</td>
+ <td class="py-2 px-3 text-engine-muted flex items-center gap-1.5">
+ <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+ <span>Supersedes k=${currentK - 1}</span>
+ </td>
+ `;
+ ledgerBody.insertBefore(row, ledgerBody.firstChild);
+ }
+
+ function updateScrubber(val) {
+ document.getElementById('scrubberKLabel').textContent = 'REPLAY POS: k = ' + val;
+ document.getElementById('activeKBadge').textContent = 'k = ' + val;
+ document.getElementById('topLedgerClock').textContent = 'k = ' + parseFloat(val).toFixed(2);
+ }
+
+ // =========================================================================
+ // TAB 02: SCAR LAB SIMULATOR & REAL PLOTTING
+ // =========================================================================
+ const TAU_C = 13.5;
+
+ function updateScarSim() {
+ const intensity = parseFloat(document.getElementById('sliderIntensity').value);
+ const duration = parseInt(document.getElementById('sliderDuration').value);
+ const decay = parseFloat(document.getElementById('sliderDecay').value);
+ const recovery = parseInt(document.getElementById('sliderRecovery').value);
+ const slowTau = parseInt(document.getElementById('sliderSlowTau').value);
+ const injuryAuth = parseFloat(document.getElementById('sliderInjuryAuth').value);
+
+ document.getElementById('valIntensity').textContent = intensity.toFixed(2);
+ document.getElementById('valDuration').textContent = duration;
+ document.getElementById('valDecay').textContent = decay.toFixed(2);
+ document.getElementById('valRecovery').textContent = recovery;
+ document.getElementById('valSlowTau').textContent = slowTau;
+ document.getElementById('valInjuryAuth').textContent = injuryAuth.toFixed(2);
+
+ const tau = TAU_C / decay;
+ const alphaFast = Math.exp(-1 / tau);
+ const lambdaSlow = 1 - Math.exp(-1 / slowTau);
+
+ const unrecFactor = (1.0 - injuryAuth) * intensity;
+ const scarTicks = Math.max(0.1, (unrecFactor * Math.sqrt(duration) * (1.1 / (0.35 + decay * 0.45)) * (slowTau / 500) * 1.55)).toFixed(1);
+
+ document.getElementById('dispTimeConstant').textContent = tau.toFixed(1);
+ document.getElementById('dispScarTicks').textContent = scarTicks;
+ document.getElementById('dispFastAlpha').textContent = alphaFast.toFixed(3);
+ document.getElementById('dispSlowLambda').textContent = lambdaSlow.toFixed(4);
+
+ const decayHint = document.getElementById('decayHintText');
+ if (decayHint) {
+ decayHint.innerHTML = `<span>Higher DECAY = faster washout</span><span class="text-primary font-bold">τ = ${tau.toFixed(1)}</span>`;
+ }
+
+ renderChart1(intensity, duration, tau, recovery, slowTau, injuryAuth);
+ renderChart2(decay, parseFloat(scarTicks));
+ }
+
+ function renderChart1(intensity, duration, tau, recovery, slowTau, injuryAuth) {
+ const x0 = 60;
+ const xCleanEnd = 180;
+ const injSpan = Math.min(220, Math.max(25, (duration / 450) * 220));
+ const xInjEnd = xCleanEnd + injSpan;
+ const xMax = 690;
+
+ const injLine = document.getElementById('c1InjEndLine');
+ if (injLine) {
+ injLine.setAttribute('x1', xInjEnd);
+ injLine.setAttribute('x2', xInjEnd);
+ }
+ const injLabel = document.getElementById('c1InjLabel');
+ if (injLabel) {
+ injLabel.setAttribute('x', Math.round((xCleanEnd + xInjEnd) / 2 - 25));
+ injLabel.textContent = `INJURY (${duration}d)`;
+ }
+
+ const yMap = (val) => 360 - Math.max(0, Math.min(1.0, val)) * 300;
+ const baselineY = yMap(1.0);
+ const fastDropY = yMap(injuryAuth);
+
+ let fastPts = [`M ${x0} ${baselineY}`, `L ${xCleanEnd} ${baselineY}`, `L ${xCleanEnd + 2} ${fastDropY}`, `L ${xInjEnd} ${fastDropY}`];
+ const samples = 40;
+ for (let i = 1; i <= samples; i++) {
+ const tRatio = i / samples;
+ const curX = xInjEnd + tRatio * (xMax - xInjEnd);
+ const timeTicks = tRatio * (recovery / 2.5);
+ const recFrac = 1 - Math.exp(-timeTicks / Math.max(4, tau * 1.8));
+ const curVal = injuryAuth + (1.0 - injuryAuth) * recFrac;
+ fastPts.push(`L ${curX.toFixed(1)} ${yMap(curVal).toFixed(1)}`);
+ }
+ document.getElementById('c1FastInjured').setAttribute('d', fastPts.join(' '));
+ document.getElementById('c1SlowControl').setAttribute('d', `M ${x0} ${baselineY} L ${xMax} ${baselineY}`);
+
+ let slowPts = [`M ${x0} ${baselineY}`, `L ${xCleanEnd} ${baselineY}`];
+ const maxSlowDeficit = (1.0 - injuryAuth) * intensity * (duration / 450) * 0.45;
+ const slowInjY = yMap(1.0 - maxSlowDeficit);
+ slowPts.push(`Q ${xCleanEnd + injSpan * 0.5} ${slowInjY} ${xInjEnd} ${slowInjY}`);
+
+ let polyFwd = [`${xInjEnd},${baselineY}`, `${xInjEnd},${slowInjY}`];
+ let polyBwd = [];
+
+ for (let i = 1; i <= samples; i++) {
+ const tRatio = i / samples;
+ const curX = xInjEnd + tRatio * (xMax - xInjEnd);
+ const timeTicks = tRatio * recovery;
+ const slowRecFrac = 1 - Math.exp(-timeTicks / (slowTau * 3.5));
+ const curSlowVal = (1.0 - maxSlowDeficit) + maxSlowDeficit * slowRecFrac * 0.42;
+ const sY = yMap(curSlowVal);
+ slowPts.push(`L ${curX.toFixed(1)} ${sY.toFixed(1)}`);
+ polyFwd.push(`${curX.toFixed(1)},${sY.toFixed(1)}`);
+ polyBwd.unshift(`${curX.toFixed(1)},${baselineY}`);
+ }
+ document.getElementById('c1SlowInjured').setAttribute('d', slowPts.join(' '));
+
+ const scarD = `M ${xInjEnd} ${baselineY} L ${xInjEnd} ${slowInjY} ` +
+ polyFwd.slice(1).map(p => 'L ' + p.replace(',', ' ')).join(' ') +
+ ' ' + polyBwd.map(p => 'L ' + p.replace(',', ' ')).join(' ') + ' Z';
+ document.getElementById('c1ScarArea').setAttribute('d', scarD);
+ }
+
+ function renderChart2(decay, scarVal) {
+ const x0 = 60;
+ const x1 = 670;
+ const yBase = 200;
+ const yTop = 50;
+
+ const samples = 60;
+ let dPts = [];
+ for (let i = 0; i <= samples; i++) {
+ const g = 0.05 + (i / samples) * 1.45;
+ const curX = x0 + (i / samples) * (x1 - x0);
+ const humpVal = Math.pow(g / 0.70, 1.4) * Math.exp(-1.4 * (g - 0.70) / 0.70);
+ const normHump = Math.min(1.0, Math.max(0.04, humpVal));
+ const curY = yBase - normHump * (yBase - yTop);
+ dPts.push(`${i === 0 ? 'M' : 'L'} ${curX.toFixed(1)} ${curY.toFixed(1)}`);
+ }
+ document.getElementById('c2HumpPath').setAttribute('d', dPts.join(' '));
+
+ const clampedDecay = Math.max(0.05, Math.min(1.50, decay));
+ const curX = x0 + ((clampedDecay - 0.05) / 1.45) * (x1 - x0);
+ const humpFactor = Math.pow(clampedDecay / 0.70, 1.4) * Math.exp(-1.4 * (clampedDecay - 0.70) / 0.70);
+ const curY = yBase - Math.min(1.0, Math.max(0.04, humpFactor)) * (yBase - yTop);
+
+ const dLine = document.getElementById('c2DecayLine');
+ const dDot = document.getElementById('c2DecayDot');
+ const dTxt = document.getElementById('c2DecayText');
+ if (dLine) { dLine.setAttribute('x1', curX.toFixed(1)); dLine.setAttribute('x2', curX.toFixed(1)); }
+ if (dDot) { dDot.setAttribute('cx', curX.toFixed(1)); dDot.setAttribute('cy', curY.toFixed(1)); }
+ if (dTxt) {
+ dTxt.setAttribute('x', (curX > 500 ? curX - 110 : curX + 12).toFixed(1));
+ dTxt.setAttribute('y', curY.toFixed(1));
+ dTxt.textContent = `DECAY: ${decay.toFixed(2)}`;
+ }
+ const badge = document.getElementById('humpLiveBadge');
+ if (badge) badge.textContent = `DECAY = ${decay.toFixed(2)} · Scar = ${scarVal.toFixed(1)} ticks`;
+ }
+
+ function resetScarDefaults() {
+ document.getElementById('sliderIntensity').value = 0.80;
+ document.getElementById('sliderDuration').value = 27;
+ document.getElementById('sliderDecay').value = 0.70;
+ document.getElementById('sliderRecovery').value = 2000;
+ document.getElementById('sliderSlowTau').value = 500;
+ document.getElementById('sliderInjuryAuth').value = 0.30;
+ updateScarSim();
+ }
+
+ // =========================================================================
+ // TAB 03: CURVE BENCH & GRUDGE SIMULATOR
+ // =========================================================================
+ const defaultInsults = [[0,2],[1,5],[2,9],[4,16],[7,28],[11,45],[16,65],[20,80]];
+ const defaultCompliments = [[0,12],[1,9],[2,7],[4,5],[8,3],[14,1]];
+
+ let activePool = 'insults';
+ let insultsCurve = JSON.parse(JSON.stringify(defaultInsults));
+ let complimentsCurve = JSON.parse(JSON.stringify(defaultCompliments));
+
+ let grudgeTicks = 0;
+ let surfaceVal = 0.0;
+ let depthVal = 0.0;
+ let consecutiveOffenses = 0;
+ let consecutiveRepairs = 0;
+ let actionHistory = [];
+
+ function switchBenchPool(pool, el) {
+ activePool = pool;
+ document.querySelectorAll('.curve-pool-btn').forEach(b => {
+ b.classList.remove('bg-ruby/20', 'text-ruby-hot', 'border-ruby/50', 'bg-primary/20', 'text-primary', 'border-primary/50');
+ b.classList.add('bg-surface-card', 'text-on-surface-variant');
+ });
+
+ if (pool === 'insults') {
+ el.classList.add('bg-ruby/20', 'text-ruby-hot', 'border-ruby/50');
+ document.getElementById('curveEditorTitle').textContent = 'Insults Curve: [X: offenses, Y: ticks added]';
+ document.getElementById('curveYAxisLabel').textContent = '▲ Y: Ticks Added (Penalty Weight)';
+ document.getElementById('curveXMaxLabel').textContent = '20 (Cumulative Limit)';
+ } else {
+ el.classList.add('bg-primary/20', 'text-primary', 'border-primary/50');
+ document.getElementById('curveEditorTitle').textContent = 'Compliments Curve: [X: make-rights, Y: ticks removed]';
+ document.getElementById('curveYAxisLabel').textContent = '▲ Y: Ticks Removed (Relief Rate)';
+ document.getElementById('curveXMaxLabel').textContent = '14 (Cumulative Limit)';
+ }
+ renderCurveCanvas();
+ }
+
+ function renderCurveCanvas() {
+ const pts = (activePool === 'insults') ? insultsCurve : complimentsCurve;
+ const maxX = (activePool === 'insults') ? 20 : 14;
+ const maxY = 90;
+ const x0 = 40, x1 = 510, y0 = 220, y1 = 40;
+
+ const toSvg = (x, y) => ({
+ x: x0 + (x / maxX) * (x1 - x0),
+ y: y0 - (y / maxY) * (y0 - y1)
+ });
+
+ let dStr = '';
+ pts.forEach((pt, i) => {
+ const sp = toSvg(pt[0], pt[1]);
+ dStr += (i === 0 ? 'M ' : ' L ') + sp.x.toFixed(1) + ' ' + sp.y.toFixed(1);
+ });
+
+ const pathEl = document.getElementById('benchDynamicCurvePath');
+ pathEl.setAttribute('d', dStr);
+ pathEl.setAttribute('stroke', (activePool === 'insults') ? '#ef4444' : '#c9a84c');
+
+ const gEl = document.getElementById('curvePointsGroup');
+ gEl.innerHTML = '';
+ pts.forEach((pt, idx) => {
+ const sp = toSvg(pt[0], pt[1]);
+ const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+ circle.setAttribute('cx', sp.x.toFixed(1));
+ circle.setAttribute('cy', sp.y.toFixed(1));
+ circle.setAttribute('r', '5.5');
+ circle.setAttribute('fill', (activePool === 'insults') ? '#EF174C' : '#c9a84c');
+ circle.setAttribute('stroke', '#ffffff');
+ circle.setAttribute('stroke-width', '1.5');
+ circle.setAttribute('class', 'curve-handle');
+ circle.setAttribute('data-idx', idx);
+
+ circle.onmouseenter = () => {
+ document.getElementById('curveCoordInspect').textContent = `Point #${idx + 1}: [Count: ${pt[0]}, Ticks: ${pt[1]}]`;
+ };
+ circle.onmouseleave = () => {
+ document.getElementById('curveCoordInspect').textContent = 'Hover or drag a point';
+ };
+
+ circle.onmousedown = (e) => startDragCurvePoint(e, idx);
+ gEl.appendChild(circle);
+ });
+
+ document.getElementById('curveEditorPointsCount').textContent = pts.length + ' Control Points';
+ }
+
+ function startDragCurvePoint(e, idx) {
+ e.preventDefault();
+ const svg = document.getElementById('curveBenchSvg');
+ const pts = (activePool === 'insults') ? insultsCurve : complimentsCurve;
+ const maxX = (activePool === 'insults') ? 20 : 14;
+ const maxY = 90;
+ const x0 = 40, x1 = 510, y0 = 220, y1 = 40;
+
+ function onMouseMove(ev) {
+ const rect = svg.getBoundingClientRect();
+ const clientY = ev.clientY - rect.top;
+ const fracY = Math.max(0, Math.min(1, (220 - (clientY * (260 / rect.height))) / (220 - 40)));
+ const newY = Math.round(fracY * maxY);
+ pts[idx][1] = Math.max(0, Math.min(90, newY));
+ renderCurveCanvas();
+ document.getElementById('curveCoordInspect').textContent = `Point #${idx + 1}: [Count: ${pts[idx][0]}, Ticks: ${pts[idx][1]}]`;
+ }
+
+ function onMouseUp() {
+ window.removeEventListener('mousemove', onMouseMove);
+ window.removeEventListener('mouseup', onMouseUp);
+ }
+ window.addEventListener('mousemove', onMouseMove);
+ window.addEventListener('mouseup', onMouseUp);
+ }
+
+ function resetActiveBenchCurve() {
+ if (activePool === 'insults') {
+ insultsCurve = JSON.parse(JSON.stringify(defaultInsults));
+ } else {
+ complimentsCurve = JSON.parse(JSON.stringify(defaultCompliments));
+ }
+ renderCurveCanvas();
+ }
+
+ function interpolateCurve(pts, count) {
+ if (count <= pts[0][0]) return pts[0][1];
+ if (count >= pts[pts.length - 1][0]) return pts[pts.length - 1][1];
+ for (let i = 0; i < pts.length - 1; i++) {
+ if (count >= pts[i][0] && count <= pts[i + 1][0]) {
+ const frac = (count - pts[i][0]) / (pts[i + 1][0] - pts[i][0]);
+ return pts[i][1] + frac * (pts[i + 1][1] - pts[i][1]);
+ }
+ }
+ return pts[0][1];
+ }
+
+ function simGrudgeAction(action) {
+ if (action === 'offend') {
+ consecutiveOffenses++;
+ consecutiveRepairs = 0;
+ const added = interpolateCurve(insultsCurve, consecutiveOffenses);
+ depthVal += added;
+ surfaceVal = depthVal;
+ logAction('offend', added, `Offense #${consecutiveOffenses}: +${added.toFixed(0)}t`);
+ } else if (action === 'repair') {
+ if (depthVal <= 0.5 && surfaceVal <= 0.5) return;
+ consecutiveRepairs++;
+ consecutiveOffenses = 0;
+ const relief = interpolateCurve(complimentsCurve, consecutiveRepairs);
+ depthVal = Math.max(0, depthVal - relief);
+ surfaceVal = depthVal;
+ logAction('repair', relief, `Make-right #${consecutiveRepairs}: -${relief.toFixed(0)}t`);
+ } else if (action === 'pass100') {
+ surfaceVal *= Math.exp(-100 / 3);
+ depthVal *= Math.exp(-100 / 500);
+ if (surfaceVal < 0.5) surfaceVal = 0;
+ if (depthVal < 0.5) depthVal = 0;
+ logAction('pass', 0, '100 ticks passed (λ=0.002)');
+ }
+
+ updateGrudgeDisplay();
+ }
+
+ function logAction(type, val, desc) {
+ actionHistory.push({ type, val, desc });
+ if (actionHistory.length > 40) actionHistory.shift();
+
+ const strip = document.getElementById('actionHistoryStrip');
+ strip.innerHTML = '';
+ actionHistory.forEach(item => {
+ const bar = document.createElement('div');
+ bar.className = 'w-1.5 rounded-t cursor-pointer transition-all hover:scale-125';
+ bar.title = item.desc;
+ if (item.type === 'offend') {
+ bar.className += ' bg-ruby';
+ bar.style.height = Math.min(24, Math.max(4, item.val * 0.35)) + 'px';
+ } else if (item.type === 'repair') {
+ bar.className += ' bg-primary';
+ bar.style.height = Math.min(24, Math.max(4, item.val * 1.5)) + 'px';
+ } else {
+ bar.className += ' bg-engine-muted opacity-60';
+ bar.style.height = '6px';
+ }
+ strip.appendChild(bar);
+ });
+ document.getElementById('historyActionCount').textContent = `${actionHistory.length} actions logged`;
+ }
+
+ function updateGrudgeDisplay() {
+ const disp = document.getElementById('grudgeTicksDisplay');
+ disp.innerHTML = `${Math.round(depthVal)} <span class="text-xl font-normal text-engine-muted">ticks</span>`;
+
+ const statusSub = document.getElementById('grudgeStatusSubtext');
+ const badge = document.getElementById('grudgeStateBadge');
+
+ if (depthVal <= 0.5) {
+ statusSub.textContent = 'No grudge held. Offend to start one.';
+ badge.textContent = 'EQUILIBRATED';
+ badge.className = 'font-mono text-[10px] text-status-lime px-2 py-0.5 rounded bg-status-lime/10 border border-status-lime/30';
+ } else {
+ statusSub.textContent = `Consecutive offenses: ${consecutiveOffenses} · next insult adds ${interpolateCurve(insultsCurve, consecutiveOffenses + 1).toFixed(0)} ticks.`;
+ badge.textContent = 'DEBT ACTIVE';
+ badge.className = 'font-mono text-[10px] text-ruby-hot px-2 py-0.5 rounded bg-ruby/15 border border-ruby/40';
+ }
+
+ document.getElementById('meterSurfaceVal').textContent = surfaceVal.toFixed(1) + ' ticks';
+ document.getElementById('meterDepthVal').textContent = depthVal.toFixed(1) + ' ticks';
+ document.getElementById('meterSurfaceBar').style.width = Math.min(100, (surfaceVal / 150) * 100) + '%';
+ document.getElementById('meterDepthBar').style.width = Math.min(100, (depthVal / 150) * 100) + '%';
+ }
+
+ function resetGrudgeSimulator() {
+ surfaceVal = 0;
+ depthVal = 0;
+ consecutiveOffenses = 0;
+ consecutiveRepairs = 0;
+ actionHistory = [];
+ document.getElementById('actionHistoryStrip').innerHTML = '<span class="text-[10px] text-engine-muted italic self-center mx-auto">No interaction recorded yet</span>';
+ document.getElementById('historyActionCount').textContent = '0 actions logged';
+ updateGrudgeDisplay();
+ }
+
+ // =========================================================================
+ // TAB 04: KERNEL PRESETS
+ // =========================================================================
+ function setKernelPreset(preset, el) {
+ document.querySelectorAll('.preset-btn').forEach(b => {
+ b.classList.remove('bg-surface-card-high', 'border-primary/40');
+ b.classList.add('bg-surface-card', 'border-transparent');
+ });
+ el.classList.remove('bg-surface-card', 'border-transparent');
+ el.classList.add('bg-surface-card-high', 'border-primary/40');
+
+ if (preset === 'event') {
+ document.getElementById('presetActiveLabel').textContent = 'ACTIVE: EVENT';
+ document.getElementById('pThreshold').textContent = '0.35';
+ document.getElementById('pAttack').textContent = 'Fast';
+ document.getElementById('pRatio').textContent = '3:1';
+ document.getElementById('pRelease').textContent = 'Medium';
+ document.getElementById('pWindow').textContent = '12 ticks';
+ document.getElementById('pAuthority').textContent = '0.70';
+ document.getElementById('pKnee').textContent = 'Soft exponential';
+ } else if (preset === 'topic') {
+ document.getElementById('presetActiveLabel').textContent = 'ACTIVE: TOPIC';
+ document.getElementById('pThreshold').textContent = '0.20';
+ document.getElementById('pAttack').textContent = 'Medium';
+ document.getElementById('pRatio').textContent = '2:1';
+ document.getElementById('pRelease').textContent = 'Long';
+ document.getElementById('pWindow').textContent = 'Open';
+ document.getElementById('pAuthority').textContent = '0.60';
+ document.getElementById('pKnee').textContent = 'Wide knee';
+ } else if (preset === 'sentinel') {
+ document.getElementById('presetActiveLabel').textContent = 'ACTIVE: SENTINEL';
+ document.getElementById('pThreshold').textContent = '0.55';
+ document.getElementById('pAttack').textContent = 'Immediate';
+ document.getElementById('pRatio').textContent = '8:1';
+ document.getElementById('pRelease').textContent = 'Full tick';
+ document.getElementById('pWindow').textContent = '1 cycle';
+ document.getElementById('pAuthority').textContent = '0.90';
+ document.getElementById('pKnee').textContent = 'Hard knee';
+ }
+ }
+
+ // =========================================================================
+ // TAB 05: RUBY GLASSES PROMPT
+ // =========================================================================
+ function setRubyPrompt(id, el) {
+ document.querySelectorAll('.ruby-prompt-btn').forEach(b => {
+ b.classList.remove('bg-ruby', 'text-paper-light', 'shadow-md');
+ b.classList.add('bg-surface-card', 'text-on-surface-variant');
+ });
+ el.classList.remove('bg-surface-card', 'text-on-surface-variant');
+ el.classList.add('bg-ruby', 'text-paper-light', 'shadow-md');
+
+ const disp = document.getElementById('rubyAnswerDisplay');
+ if (id === 1) {
+ disp.textContent = "I stopped the transfer because the recipient's authority fell below the execution threshold at 14:32:08.";
+ } else if (id === 2) {
+ disp.textContent = "I first believed the recipient was approved. New routing data weakened that belief from 0.9 authority to 0.2. Both states remain in the record.";
+ } else if (id === 3) {
+ disp.textContent = "The destination comparison contradicted the approved record. That conflict—not a later reconstruction—changed the recipient belief at 14:32:05.";
+ }
+ }
+
+ // =========================================================================
+ // TAB 06: CRM ACCOUNT SWITCHER
+ // =========================================================================
+ function setCRMAccount(acctId, el) {
+ document.querySelectorAll('.crm-acct-btn').forEach(b => {
+ b.classList.remove('bg-primary', 'text-ground-deep', 'font-semibold', 'shadow-sm');
+ b.classList.add('bg-surface-card', 'text-on-surface-variant');
+ });
+ el.classList.remove('bg-surface-card', 'text-on-surface-variant');
+ el.classList.add('bg-primary', 'text-ground-deep', 'font-semibold', 'shadow-sm');
+
+ const rec = document.getElementById('crmLegacyRecord');
+ const kid = document.getElementById('crmKidIdentity');
+ const hist = document.getElementById('crmKRecordHistory');
+
+ if (acctId === 'acct-002') {
+ rec.innerHTML = `
+ <div class="text-[10px] text-engine-line">ACTIVE DB ROW (MUTABLE)</div>
+ <div>name: "Sofia Bennett"</div>
+ <div>account_id: "acct-002"</div>
+ <div>city: "Durham"</div>
+ <div>status: "active"</div>
+ `;
+ kid.innerHTML = `
+ <div class="text-[10px] text-engine-line">REGISTERED ENTITY IDENTITY</div>
+ <div>KID: …atZqtAAAAAAAAAAM</div>
+ <div>genesis_k: 1</div>
+ <div>current_k: 2</div>
+ <div>traces: 2 sealed blocks</div>
+ `;
+ hist.innerHTML = `
+ <div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k1 → k2 (Oct 23, 2026)</span>
+ <span class="text-engine-muted text-[10px]">WILD · auth 89%</span>
+ </div>
+ <div class="text-paper-light font-bold">name: "Sofia Marchetti"</div>
+ <div class="text-engine-muted text-[10px]">signup form · byte-identical preserved</div>
+ </div>
+ <div class="p-3 rounded bg-surface-card border border-primary/40 flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k2 → live (Oct 24, 2026)</span>
+ <span class="text-status-lime text-[10px]">CANDIDATE · auth 89%</span>
+ </div>
+ <div class="text-paper-light font-bold">name: "Sofia Bennett"</div>
+ <div class="text-status-lime text-[10px]">reason: "married" · supersedes k1</div>
+ </div>
+ `;
+ } else {
+ rec.innerHTML = `
+ <div class="text-[10px] text-engine-line">ACTIVE DB ROW (MUTABLE)</div>
+ <div>name: "Darren Hall"</div>
+ <div>title: "Founder & CEO"</div>
+ <div>company: "VOLSHi"</div>
+ <div>status: "suspended"</div>
+ `;
+ kid.innerHTML = `
+ <div class="text-[10px] text-engine-line">REGISTERED ENTITY IDENTITY</div>
+ <div>KID: …atZqtAAAAAAAAAAB</div>
+ <div>genesis_k: 1</div>
+ <div>current_k: 2</div>
+ <div>traces: 10 sealed fields</div>
+ `;
+ hist.innerHTML = `
+ <div class="p-3 rounded bg-surface-card border border-line-subtle flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k1 → k2</span>
+ <span class="text-engine-muted text-[10px]">WILD · auth 67%</span>
+ </div>
+ <div class="text-paper-light font-bold">title: "Founder"</div>
+ <div class="text-engine-muted text-[10px]">linkedin import · byte-identical</div>
+ </div>
+ <div class="p-3 rounded bg-surface-card border border-primary/40 flex flex-col gap-1">
+ <div class="flex justify-between">
+ <span class="text-primary font-bold">k2 → live</span>
+ <span class="text-status-lime text-[10px]">CANDIDATE · auth 78%</span>
+ </div>
+ <div class="text-paper-light font-bold">title: "Founder & CEO"</div>
+ <div class="text-status-lime text-[10px]">reason: "self reported"</div>
+ </div>
+ `;
+ }
+ }
+
+ // Initialize
+ window.addEventListener('DOMContentLoaded', () => {
+ updateScarSim();
+ renderCurveCanvas();
+ });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

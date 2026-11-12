@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Compliance Infrastructure</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><style>
+ body {
+ min-height: max(884px, 100dvh);
+ }
+ </style>
+ </head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><a href="/" data-path="home" class="inline-flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC31qK9s5t84vB60t2n77x0fG6K-LVkrBpb7J4TJCKP1-KiuzwVFtuwP_itPUykkbMiYKwtC2ZHXE_emCx1BY1LAZA3s6zyu4ORF8cNGp4up9ewx9WeQf9i3OMjXAYyGbqo9vOnrhedeOnl40Ou_q6eCBxzB2vruDxU4lS9ugdrcx51Z6fI6M9KqAUOpLgprPpIts4aI9jF3jsO_7eR-Jk5Qh9LioBoAXkujWb8y7vqzE0Nh59aO2qGDg" alt="VOLSHi . HOME" class="h-7 w-auto object-contain"></a></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">10.5281/zenodo.23198458</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="flex flex-col w-full text-on-surface">
+<!-- 1. Header Section -->
+<section class="px-space-sm pt-space-xs pb-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-primary">VOLSHi / THE SYSTEM · ARCHE SUBSTRATE</span>
+</div>
+<div class="flex flex-col gap-1">
+<h1 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface leading-tight font-serif">
+ Built like a mind.<br>
+<span class="italic text-primary">Not like a database.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant/90 leading-relaxed mt-1">
+ ARCHE — the Adaptive Relational Cognitive Human Emulator. The architecture doesn't store intelligence and bolt memory on afterward. It emulates how humans function — interaction, behavior, and memory as one design. The engines run on ARCHE. The personas are built on it.
+ </p>
+</div>
+<!-- Substrate Badges Stack -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-tertiary tracking-wide uppercase">VOLSHi / THE SYSTEM · ARCHE SUBSTRATE</span>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary tracking-wide uppercase">VOLSHi / THE SYSTEM · ARCHE SUBSTRATE</span>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high/80 backdrop-blur-md flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+
+</div>
+</div>
+</section>
+<!-- 2. ARCHE Cognitive Vector & Substrate -->
+<section class="px-space-sm pb-space-xl flex flex-col gap-space-md">
+<!-- Live Telemetry Pill -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">neurology</span>
+<span class="font-telemetry-head text-telemetry-head uppercase tracking-wider text-primary">
+ ACTIVE COGNITIVE VECTOR
+ </span>
+</div>
+
+</div>
+<!-- Tritemporal Coordinate Metric Row -->
+<div class="grid grid-cols-2 gap-1.5 pt-1"><div class="bg-surface-container-highest/60 rounded p-1.5 flex flex-col"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70">T_EVENT</span><span class="font-telemetry-code text-telemetry-code text-tertiary">2026-03-30T14:02:11.904Z</span></div><div class="bg-surface-container-highest/60 rounded p-1.5 flex flex-col"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70">T_KNOWLEDGE</span></div></div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">SUBSTRATE TAXONOMY</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-serif">
+ Memory isn't a feature. <span class="italic text-primary">It's the substrate.</span>
+</h2>
+</div>
+<!-- 3 Structured Cards: 01 Input, 02 Attention, 03 Record -->
+<div class="flex flex-col gap-space-sm">
+<!-- 01 Input -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-telemetry-head text-telemetry-head">
+ 01
+ </span>
+<span class="font-headline-md text-headline-md text-on-surface">Input</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant px-2 py-0.5 rounded bg-surface-container-high">
+ INGEST PROTOCOL
+ </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ The world arrives as events — interactions, observations, handoffs. Everything the system will ever know starts here.
+ </p>
+<div class="p-2 rounded bg-surface-container-highest/50 font-telemetry-cell text-telemetry-cell text-tertiary flex items-center gap-2"><span class="material-symbols-outlined text-[14px]">stream</span><span>Stream + Cryptographic Digest + Temporal Envelope</span></div>
+</div>
+<!-- 02 Attention -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-status-orange/10 text-status-orange flex items-center justify-center font-telemetry-head text-telemetry-head">
+ 02
+ </span>
+<span class="font-headline-md text-headline-md text-on-surface">Attention</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-status-orange px-2 py-0.5 rounded bg-surface-container-high">
+ FILTER &amp; SIFT
+ </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Not every event matters equally. ARCHE decides what deserves weight — what to record deeply, what to let pass. Attention is the first act of memory.
+ </p>
+<div class="flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell pt-1">
+<span>Decay Threshold: 12.4%</span>
+
+</div>
+</div>
+<!-- 03 Record -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+
+<span class="font-headline-md text-headline-md text-on-surface">Record</span>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ What attention keeps is recorded with its authority and its moment — bound by KATIE, retrievable by ERIE, learned from by ELLE.
+ </p>
+<div class="flex items-center gap-2 text-primary font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span>Cryptographically Sealed Immutable Journal Entry</span>
+</div>
+</div>
+</div>
+<!-- Mobile Subsystem Topology Diagram Card -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs shadow-md">
+<div class="flex items-center justify-between mb-1">
+<span class="font-kicker text-kicker uppercase text-primary">SCHEMATIC // RUNTIME FLOW</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">SUBSTRATE ROUTER</span>
+</div>
+<!-- Visual Inline SVG Flow -->
+<div class="w-full bg-surface-container-highest/40 rounded-lg p-3 flex flex-col items-center">
+<svg class="w-full h-auto" viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Nodes -->
+<rect fill="#201f1f" height="42" rx="6" stroke="#e6c364" stroke-width="1.2" width="130" x="10" y="20"></rect>
+<text fill="#e6c364" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="75" y="38">EVENT STREAM</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="75" y="52">Multi-Agent Inputs</text>
+<!-- Arrow 1 to 2 -->
+<path d="M 140 41 L 195 41" stroke="#e6c364" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<polygon fill="#e6c364" points="195,38 202,41 195,44"></polygon>
+<!-- Node 2 -->
+<rect fill="#201f1f" height="42" rx="6" stroke="#F08A4B" stroke-width="1.2" width="128" x="202" y="20"></rect>
+<text fill="#F08A4B" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="266" y="38">WEIGHTING</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="266" y="52">Attention Gating</text>
+<!-- Branching Paths down -->
+<path d="M 266 62 L 266 90 L 100 90 L 100 115" fill="none" stroke="#65d6e9" stroke-width="1.5"></path>
+<polygon fill="#65d6e9" points="97,115 100,122 103,115"></polygon>
+<path d="M 266 62 L 266 90 L 255 90 L 255 115" fill="none" stroke="#A8E349" stroke-width="1.5"></path>
+<polygon fill="#A8E349" points="252,115 255,122 258,115"></polygon>
+<!-- Target Node KATIE -->
+<rect fill="#171013" height="46" rx="6" stroke="#e6c364" stroke-width="1.2" width="150" x="25" y="122"></rect>
+<text fill="#e6c364" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="100" y="141">KATIE ENGINE</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="100" y="156">Watches &amp; Seals Ledger</text>
+<!-- Target Node ERIE -->
+<rect fill="#14201E" height="46" rx="6" stroke="#A8E349" stroke-width="1.2" width="145" x="185" y="122"></rect>
+<text fill="#A8E349" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="257" y="141">ERIE INQUIRY</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="257" y="156">Forensic Audit &amp; Proof</text>
+</svg>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 text-center">
+ Unified non-destructive state passing via ARCHE ring buffer (Zero Serialization Drift)
+ </span>
+</div>
+</section>
+<!-- 3. The Three Engines on ARCHE -->
+<section class="px-space-sm pb-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">THE PERFECTA TRIFECTA</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-serif">
+ Three engines. <span class="italic text-primary">One cognitive substrate.</span>
+</h2>
+</div>
+<!-- ENGINE A: KATIE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">watch_screentime</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">KATIE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">KNOWLEDGE AUTHORITY TIME INDEXING ENGINE</span>
+</div>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Watches. Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
+ </p>
+<!-- Compact Live K-Record Buffer Preview -->
+<div class="bg-ground-deep rounded-lg p-space-sm flex flex-col gap-1.5 shadow-inner">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-ruby"></span>
+<span class="w-2 h-2 rounded-full bg-status-orange"></span>
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80 ml-1">K-RECORD STREAM BUFFER</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-primary">REC#9821</span>
+</div>
+<div class="space-y-1 font-telemetry-cell text-telemetry-cell">
+<div class="flex items-start gap-1">
+<span class="text-tertiary">08:14:02.12</span>
+<span class="text-on-surface-variant">[OBSERVE]</span>
+<span class="text-on-surface">Agent.alpha → Auth Token Exchange</span>
+</div>
+<div class="flex items-start gap-1"><span class="text-tertiary">08:14:02.44</span><span class="text-status-orange">[RECEIPT]</span><span class="text-on-surface">Cryptographic Verification Receipt Issued</span></div>
+<div class="flex items-start gap-1">
+<span class="text-tertiary">08:14:02.79</span>
+
+<span class="text-on-surface">Committed to immutable chain epoch #42</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ENGINE B: ERIE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[20px]">policy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-tertiary">ERIE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">EPISTEMIC RETRIEVAL &amp; INVESTIGATION ENGINE</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+
+<a class="inline-flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-primary hover:underline" href="https://github.com/volshi-ai/info/tree/main/erie" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[14px]">code</span>
+<span>github.com/volshi-ai/info/erie</span>
+</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Queries the substrate without presumption. Never hallucinates: if an assertion lacks provenance in the K-record, ERIE explicitly returns unverified.
+ </p>
+<!-- 3-Stage Inquiry Pipeline -->
+<div class="grid grid-cols-3 gap-1 bg-surface-container-highest/40 p-2 rounded-lg">
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+<span class="font-telemetry-head text-telemetry-head text-primary">01 TARGET</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Entity &amp; Slot</span>
+</div>
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+<span class="font-telemetry-head text-telemetry-head text-tertiary">02 EVIDENCE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Chain Proofs</span>
+</div>
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Assert / Refuse</span>
+</div>
+</div>
+<!-- Live Replay Terminal Card -->
+<div class="bg-ground-deep rounded-lg p-space-sm flex flex-col gap-2 font-telemetry-code text-telemetry-code">
+<div class="flex items-center justify-between pb-1">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 uppercase">INTERACTIVE VERIFICATION REPLAY</span>
+<span class="text-tertiary text-telemetry-cell">STDLIB EXEC</span>
+</div>
+<!-- Case 1: Answered with Provenance -->
+<div class="bg-surface-container-highest/30 rounded p-2 flex flex-col gap-1">
+<div class="text-on-surface-variant text-telemetry-cell">
+ &gt; erie.ask("Why was acct-002's name changed?")
+ </div>
+<div class="text-status-lime flex items-start gap-1 font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[14px] shrink-0 text-status-lime">check_circle</span>
+<span>ANSWERED [K-Receipt #71092] Provenance attached: compliance override by admin_sec9 at 14:02 UTC.</span>
+</div>
+</div>
+<!-- Case 2: Refused to Hallucinate -->
+<div class="bg-surface-container-highest/30 rounded p-2 flex flex-col gap-1">
+<div class="text-on-surface-variant text-telemetry-cell">
+ &gt; erie.ask("What is customer's mother's maiden name?")
+ </div>
+<div class="text-ruby flex items-start gap-1 font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[14px] shrink-0 text-ruby">block</span>
+<span>CANNOT-ANSWER [Epistemic Refusal] Void assertion: No matching K-record exists. Invention rejected.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ENGINE C: ELLE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-status-orange/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-orange text-[20px]">loop</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-status-orange">ELLE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">EXTERNAL LEARNING LOOP ENGINE</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-status-orange/10 text-status-orange font-telemetry-cell text-telemetry-cell">
+ FORGE
+ </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-orange animate-ping"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-orange uppercase tracking-wider">
+ in the forge — engine rebuild underway
+ </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ The cognitive loop that adapts agent behavior based on outcomes. Not by retraining neural nets, but by crystalizing verified lessons into deterministic guardrails.
+ </p>
+<!-- 4-step loop visual sequence -->
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase">01 EXPERIENCE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Raw trajectory trace captured</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-tertiary uppercase">02 LESSON</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Post-incident delta evaluated</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-status-orange uppercase">03 RULE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Epistemic policy compiled</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+
+<span class="font-body-sm text-body-sm text-on-surface-variant">Injected back to ARCHE state</span>
+</div>
+</div>
+<!-- Why External Card -->
+<div class="bg-surface-container-highest/30 rounded-lg p-3 flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">WHY EXTERNAL?</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ The learning doesn't live inside weights where it can drift or hallucinate. It is externalized: <strong class="text-on-surface">Scoped</strong>, <strong class="text-on-surface">Attributed</strong>, and <strong class="text-on-surface">Durable</strong> across all model migrations.
+ </p>
+</div>
+</div>
+</section>
+<!-- 4. Bottom CTA Section -->
+<section class="px-space-sm pb-space-xl flex flex-col items-center text-center gap-space-md">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[32px]">memory</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile font-serif text-on-surface">
+ The machine remembers.
+ </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+ Provable cognition for regulated autonomous systems. Open specifications, zero black boxes.
+ </p>
+</div>
+<!-- Dual Action Buttons -->
+<div class="flex flex-col w-full gap-2 pt-1">
+<a class="w-full py-3 px-4 rounded-lg bg-primary text-on-primary font-headline-md text-headline-md font-semibold text-center hover:bg-primary-fixed-dim active:scale-[0.99] transition-transform shadow-md flex items-center justify-center gap-2" href="mailto:invest@volshi.ai?subject=VOLSHi%20Arche%20Substrate%20Inquiry">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Talk to us</span>
+</a>
+<a class="w-full py-3 px-4 rounded-lg bg-surface-container-high text-on-surface font-headline-md text-headline-md text-center hover:bg-surface-container-highest active:scale-[0.99] transition-transform shadow-sm flex items-center justify-center gap-2" href="https://github.com/volshi-ai/info" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>View Open Core on GitHub</span>
+</a>
+</div>
+</section>
+</div><footer class="mt-space-xl px-space-sm pb-space-lg text-center flex flex-col items-center gap-space-xs"><div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high/40 text-on-surface-variant font-telemetry-cell text-telemetry-cell"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span>ZENODO DOI LEDGER COMPLIANT</span></div><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="the-system" href="/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">System</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="katie" href="/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Research</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/invest/"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Invest</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+
+
+</body></html>
