@@ -1,10 +1,6 @@
 # Unified site (Stitch rebuild). Old site preserved under /old/.
-/katie/*  /katie/  301
 /kaite*  /katie/  301
 /Kaite*  /katie/  301
-/KAITE*  /katie/  301
-/Katie*  /katie/  301
-/KATIE*  /katie/  301
 /arche/*  /the-system/  301
 /erie/*  /the-system/  301
 /elle/*  /the-system/  301
