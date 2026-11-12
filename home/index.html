@@ -70,7 +70,7 @@
  </div>
 
  <div class="flex items-center gap-6 lg:gap-8">
- <nav class="hidden md:flex items-center gap-6 lg:gap-8 h-16">
+ <nav class="hidden lg:flex items-center gap-6 lg:gap-8 h-16">
  <a class="text-[13px] tracking-wide text-primary relative py-2 font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary" href="#hero">Home</a>
  <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#the-problem">The System</a>
  <a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" href="#k-record">KATIE</a>
@@ -85,10 +85,13 @@
  <div class="w-8 h-8 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-primary" title="Authenticated Node">
  <span class="material-symbols-outlined text-[17px]">shield</span>
  </div>
+ <button id="menu-btn" class="lg:hidden w-9 h-9 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-primary flex-shrink-0" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()"><span id="menu-icon" class="material-symbols-outlined text-[20px]">menu</span></button>
  </div>
  </div>
  </div>
+ <nav id="mobile-nav" class="hidden lg:hidden border-t border-white/[0.08] bg-[#080808]/95 backdrop-blur-xl px-6 lg:px-12 py-2 flex flex-col"><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="#hero" onclick="toggleMenu()">Home</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="#the-problem" onclick="toggleMenu()">The System</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="#k-record" onclick="toggleMenu()">KATIE</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="#research" onclick="toggleMenu()">Research</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="#company" onclick="toggleMenu()">Invest</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#contact" onclick="toggleMenu()">Contact</a></nav>
  </header>
+ <script>function toggleMenu(){var p=document.getElementById('mobile-nav');var h=p.classList.toggle('hidden');document.getElementById('menu-icon').textContent=h?'menu':'close';document.getElementById('menu-btn').setAttribute('aria-expanded',String(!h));}</script>
 
  <main class="w-full pt-16 relative z-10">
  <!-- HERO SECTION -->
