@@ -12,7 +12,7 @@ KATIE
 <span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline">TRITEMPORAL PROTOCOL SPECIFICATION</span>
 </div>
 <div class="flex items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line">
-<span class="text-on-surface-variant">LEDGER CLOCK: <strong class="text-primary font-telemetry-code">k = 40.00</strong></span>
+<span class="text-on-surface-variant">LEDGER CLOCK: <strong id="ledgerClockK" class="text-primary font-telemetry-code">k = 40</strong></span>
 
 </div>
 </div>
@@ -1077,6 +1077,7 @@ KATIE
  kBadge.textContent = 'k = ' + currentK;
  scrubber.value = currentK;
  scrubberLabel.textContent = 'REPLAY POS: k = ' + currentK;
+ document.getElementById('ledgerClockK').textContent = 'k = ' + currentK;
 
  let authScore = '0.80';
  let tagClass = 'bg-status-lime/10 text-status-lime';
@@ -1125,6 +1126,7 @@ KATIE
  function updateScrubber(val) {
  document.getElementById('scrubberKLabel').textContent = 'REPLAY POS: k = ' + val;
  document.getElementById('activeKBadge').textContent = 'k = ' + val;
+ document.getElementById('ledgerClockK').textContent = 'k = ' + val;
  }
 
  // Tab 02: Scar Lab Dynamics
