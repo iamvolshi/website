@@ -129,7 +129,7 @@
 
 
 </div>
-<span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase bg-surface-container-high px-2 py-0.5 rounded-full">REALTIME KERNEL</span>
+
 </div>
 <!-- Card A: Event Console -->
 <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
@@ -143,7 +143,7 @@
 <div class="flex flex-col gap-1">
 <label class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Target Subject Vector</label>
 <div class="relative w-full">
-<select class="w-full bg-ground-deep text-on-surface font-telemetry-code text-telemetry-code rounded-lg px-space-sm py-2 appearance-none focus:outline-none focus:bg-surface-container-high" id="engine-subject-select"><option selected="" value="bridge_status">Bridge status</option><option value="sofia_identity">Sofia Identity Hash</option><option value="reactor_coolant">Reactor Coolant Feed</option></select>
+<select class="w-full bg-ground-deep text-on-surface font-telemetry-code text-telemetry-code rounded-lg px-space-sm py-2 appearance-none focus:outline-none focus:bg-surface-container-high" id="engine-subject-select"><option selected="" value="bridge_status">Bridge status</option><option value="sensor_a">Sensor A</option><option value="response_policy">Response policy</option></select>
 <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2.5 text-on-surface-variant text-[18px]">expand_more</span>
 </div>
 </div>
@@ -176,7 +176,7 @@
 </div>
 </div>
 <!-- Metrics Gauge Matrix -->
-<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="grid grid-cols-1 gap-space-sm pt-1">
 <!-- Authority Gauge -->
 <div class="rounded-lg bg-ground-deep p-space-sm flex flex-col gap-1.5">
 <div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant">
@@ -186,30 +186,20 @@
 <div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
 <div class="h-full bg-primary rounded-full transition-all duration-300" id="authority-bar" style="width: 80%"></div>
 </div>
-<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Equilibrium band: 0.75 - 0.95</span>
+
 </div>
-<!-- Slow Trace Deficit Gauge -->
-<div class="rounded-lg bg-ground-deep p-space-sm flex flex-col gap-1.5">
-<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant">
-<span>SLOW DEFICIT (Δ)</span>
-<span class="text-status-orange font-semibold" id="deficit-metric">0.142</span>
-</div>
-<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
-<div class="h-full bg-status-orange rounded-full transition-all duration-300" id="deficit-bar" style="width: 28%"></div>
-</div>
-<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Decay tau: 19.3 ticks</span>
-</div>
+
 </div>
 <!-- Inline Historical Sparkline (SVG) -->
 <div class="flex flex-col gap-1 pt-1">
 <div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant/70">
-<span>K-STEP AUTHORITY FLUX TRACE</span>
-<span>k: 1 ➔ 40</span>
+<span>AUTHORITY BY KNOWLEDGE-TIME</span>
+<span>k: 1 ➔ 61</span>
 </div>
 <svg class="w-full h-10 text-primary overflow-visible" fill="none" viewBox="0 0 320 40">
-<path d="M0,35 L40,32 L80,30 L110,34 L150,15 L190,12 L230,36 L260,20 L300,10 L320,8" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
-<path d="M0,38 L40,36 L80,35 L110,36 L150,30 L190,26 L230,22 L260,20 L300,17 L320,15" opacity="0.8" stroke="#F08A4B" stroke-dasharray="2 3" stroke-width="1"></path>
-<circle cx="320" cy="8" fill="#e6c364" r="3"></circle>
+<path d="M0,30.8 L58.7,30.8 L58.7,23.6 L122.7,23.6 L122.7,12.8 L208,12.8 L208,9.2 L320,9.2" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+
+<circle id="sparkDot" cx="208" cy="9.2" fill="#e6c364" r="3"></circle>
 </svg>
 </div>
 </div>
@@ -235,7 +225,7 @@
 <button class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase flex items-center gap-1 active:bg-primary active:text-on-primary" onclick="stepK(-1)">
 <span class="material-symbols-outlined text-[14px]">chevron_left</span> Previous Tick
  </button>
-<span class="font-telemetry-cell text-telemetry-cell text-status-lime">● REPLAY STEADY</span>
+
 <button class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase flex items-center gap-1 active:bg-primary active:text-on-primary" onclick="stepK(1)">
  Next Tick <span class="material-symbols-outlined text-[14px]">chevron_right</span>
 </button>
@@ -246,7 +236,7 @@
 <div class="flex items-center justify-between">
 <div class="flex items-center gap-1.5">
 <span class="material-symbols-outlined text-primary text-[18px]">history_edu</span>
-<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Evidence Ledger</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">K-record</span>
 </div>
 <span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Append-only Ledger</span>
 </div>
@@ -256,8 +246,8 @@
 <div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
 <div class="flex items-center gap-2">
 <span class="text-primary font-bold">k=40</span>
-<span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary font-semibold">CONFIRM</span>
-<span class="text-on-surface truncate max-w-[110px]">Sensor Cluster 09</span>
+<span class="px-1.5 py-0.5 rounded bg-status-lime/20 text-status-lime font-semibold">TRUSTED</span>
+<span class="text-on-surface truncate max-w-[110px]">Bridge status</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="text-status-lime font-mono">auth: 0.80</span>
@@ -267,70 +257,65 @@
 <!-- Row 2 -->
 <div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
 <div class="flex items-center gap-2">
-<span class="text-on-surface-variant font-bold">k=38</span>
-<span class="px-1.5 py-0.5 rounded bg-status-orange/20 text-status-orange font-semibold">CHALLENGE</span>
-<span class="text-on-surface truncate max-w-[110px]">Optical Drift</span>
+<span class="text-on-surface-variant font-bold">k=24</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary font-semibold">VALIDATED</span>
+<span class="text-on-surface truncate max-w-[110px]">Bridge status</span>
 </div>
 <div class="flex items-center gap-2">
-<span class="text-status-orange font-mono">auth: 0.24</span>
-<span class="material-symbols-outlined text-status-orange text-[14px]">priority_high</span>
+<span class="text-paper-light font-mono">auth: 0.70</span>
+<span class="material-symbols-outlined text-outline text-[14px]">check</span>
 </div>
 </div>
 <!-- Row 3 -->
 <div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
 <div class="flex items-center gap-2">
-<span class="text-on-surface-variant font-bold">k=31</span>
-<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">KNOWN</span>
-<span class="text-on-surface truncate max-w-[110px]">DOT Bridge Spec</span>
+<span class="text-on-surface-variant font-bold">k=12</span>
+<span class="px-1.5 py-0.5 rounded bg-ruby/20 text-ruby font-semibold">CONTESTED</span>
+<span class="text-on-surface truncate max-w-[110px]">Bridge status</span>
 </div>
 <div class="flex items-center gap-2">
-<span class="text-paper-light font-mono">auth: 0.72</span>
-<span class="material-symbols-outlined text-outline text-[14px]">check</span>
+<span class="text-ruby font-mono">auth: 0.40</span>
+<span class="material-symbols-outlined text-ruby text-[14px]">priority_high</span>
 </div>
 </div>
 <!-- Row 4 -->
 <div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
 <div class="flex items-center gap-2">
-<span class="text-on-surface-variant font-bold">k=14</span>
-<span class="px-1.5 py-0.5 rounded bg-ruby/20 text-ruby font-semibold">WILD</span>
-<span class="text-on-surface truncate max-w-[110px]">Raw Drone Feed</span>
+<span class="text-on-surface-variant font-bold">k=1</span>
+<span class="px-1.5 py-0.5 rounded bg-status-orange/20 text-status-orange font-semibold">WILD</span>
+<span class="text-on-surface truncate max-w-[110px]">Bridge status</span>
 </div>
 <div class="flex items-center gap-2">
-<span class="text-ruby font-mono">auth: 0.10</span>
-<span class="material-symbols-outlined text-ruby text-[14px]">error_outline</span>
+<span class="text-status-orange font-mono">auth: 0.20</span>
+<span class="material-symbols-outlined text-status-orange text-[14px]">error_outline</span>
 </div>
 </div>
 </div>
-<div class="text-center pt-1">
-<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70">Zenodo Archive Snapshot Compliant</span>
-</div>
+
 </div>
 </div>
 <!-- TAB 02: SCAR LAB (Preview / Content) -->
-<div class="suite-view flex flex-col gap-space-md" id="suite-view-02"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="font-telemetry-cell text-telemetry-cell text-primary font-semibold uppercase tracking-wider">SCAR DYNAMICS LAB</span><span class="w-1 h-1 rounded-full bg-outline-variant"></span><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">ASYMMETRIC HYSTERESIS</span></div><span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase bg-surface-container-high px-2 py-0.5 rounded-full">ACTIVE MODEL</span></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">biotech</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Closed-Form Deficit Decay</span></div><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">v1.8 Core</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Empirical verification of asymmetric scar formation. Fast epistemic authority reconstitutes within 2 ticks, while slow-trace deficit leaves persistent residual scars.</p><div class="grid grid-cols-2 gap-space-sm pt-1"><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">RELAXATION TAU</span><div class="flex items-baseline gap-1"><span class="font-headline-md text-headline-md text-primary font-mono">19.3</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Closed-form constant</span></div><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">SCAR DURATION</span><div class="flex items-baseline gap-1"><span class="font-headline-md text-headline-md text-status-orange font-mono">12.8</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Deficit persistence</span></div></div><div class="p-space-sm rounded-lg bg-ground-deep font-telemetry-code text-telemetry-code text-primary/90 overflow-x-auto flex items-center justify-between"><span>Δ(k) = Δ_max · e^(-(k - k_shock) / 19.3)</span><span class="material-symbols-outlined text-primary/60 text-[16px]">calculate</span></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">tune</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Signal Controls</span></div><span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase font-mono">● CALIBRATED</span></div><div class="flex flex-col gap-space-sm pt-1"><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Intensity</span><span class="text-primary font-mono font-semibold" id="val-intensity">0.80</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.05" type="range" value="0.80"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Duration</span><span class="text-primary font-mono font-semibold" id="val-duration">27</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="100" min="5" step="1" type="range" value="27"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">DECAY</span><span class="text-status-orange font-mono font-semibold" id="val-decay">0.70</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0.1" step="0.05" type="range" value="0.70"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Recovery</span><span class="text-primary font-mono font-semibold" id="val-recovery">2000</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="5000" min="500" step="100" type="range" value="2000"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Slow Tau</span><span class="text-primary font-mono font-semibold" id="val-slowtau">500</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1000" min="100" step="50" type="range" value="500"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Injury Authority</span><span class="text-ruby font-mono font-semibold" id="val-injury">0.30</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.05" type="range" value="0.30"></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">show_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Chart 1: Deposit Sequence</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant font-mono">k: 0 ➔ 120</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">Fast trace authority reconstitution, slow kernel, and residual scar profile</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="15" y2="15"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="45" y2="45"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="75" y2="75"></line><path d="M0,20 L35,20 L45,78 L65,22 L120,20 L200,20 L320,20" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M0,80 L35,80 L45,25 L100,38 L160,55 L240,72 L320,80" opacity="0.9" stroke="#F08A4B" stroke-dasharray="2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path><path d="M45,25 C70,30 90,65 140,78 L200,80 L320,80" opacity="0.75" stroke="#EF174C" stroke-width="1.5"></path><circle cx="45" cy="78" fill="#EF174C" r="3.5"></circle><circle cx="65" cy="22" fill="#e6c364" r="3"></circle><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="48" y="86">k_shock</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell pt-1 border-t border-surface-container-high/60"><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-primary"></span><span class="text-primary">Fast Trace</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-status-orange"></span><span class="text-status-orange">Slow Kernel</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-ruby"></span><span class="text-ruby">Residual Scar</span></div></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">stacked_line_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Chart 2: Cross-Section v1.8 Closed Form</span></div><span class="font-telemetry-cell text-[10px] text-status-lime font-mono">HUMP PROFILE</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">Deficit amplitude response across variable DECAY coefficients</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><path d="M10,80 C60,78 110,65 150,22 C185,22 220,50 310,78" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><path d="M10,80 C70,79 130,72 165,40 C195,42 235,60 310,79" opacity="0.6" stroke="#F08A4B" stroke-dasharray="3 3" stroke-width="1.5"></path><line opacity="0.4" stroke="#EF174C" stroke-dasharray="2 2" x1="150" x2="150" y1="10" y2="85"></line><circle cx="150" cy="22" fill="#e6c364" r="4"></circle><circle cx="150" cy="22" fill="none" r="6" stroke="#e6c364" stroke-width="1"></circle><text fill="#e5e2e1" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="158" y="20">Peak Deficit (DECAY=0.70)</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="10" y="88">DECAY=0.1</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="260" y="88">DECAY=1.0</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell text-on-surface-variant/80 pt-1 border-t border-surface-container-high/60"><span>Equilibrium Band: [0.10, 0.95]</span><span class="text-primary font-mono font-semibold">Maximum Scarring @ τ=19.3</span></div></div></div></div>
+<div class="suite-view flex flex-col gap-space-md" id="suite-view-02"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="font-telemetry-cell text-telemetry-cell text-primary font-semibold uppercase tracking-wider">THE SCAR LAB</span><span class="w-1 h-1 rounded-full bg-outline-variant"></span><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Candidate computational law</span></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">biotech</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Closed-Form Deficit Decay</span></div></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Fire injuries into the field law and watch the scar form — real v1.8 dynamics.</p><div class="grid grid-cols-2 gap-space-sm pt-1"><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">TIME CONSTANT τ</span><div class="flex items-baseline gap-1"><span class="font-headline-md text-headline-md text-primary font-mono">19.3</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Closed-form constant</span></div><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">SCAR · TICKS</span><div class="flex items-baseline gap-1"><span class="font-headline-md text-headline-md text-status-orange font-mono">12.8</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Deficit persistence</span></div></div><div class="p-space-sm rounded-lg bg-ground-deep font-telemetry-code text-telemetry-code text-primary/90 overflow-x-auto flex items-center justify-between"><span>Δ(k) = Δ_max · e^(-(k - k_shock) / 19.3)</span><span class="material-symbols-outlined text-primary/60 text-[16px]">calculate</span></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">tune</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Signal Controls</span></div></div><div class="flex flex-col gap-space-sm pt-1"><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Intensity</span><span class="text-primary font-mono font-semibold" id="val-intensity">0.80</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.01" type="range" value="0.80"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Duration</span><span class="text-primary font-mono font-semibold" id="val-duration">27</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="450" min="1" step="1" type="range" value="27"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">DECAY</span><span class="text-status-orange font-mono font-semibold" id="val-decay">0.70</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1.50" min="0.05" step="0.01" type="range" value="0.70"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Recovery</span><span class="text-primary font-mono font-semibold" id="val-recovery">2000</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="4000" min="200" step="50" type="range" value="2000"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Slow Tau</span><span class="text-primary font-mono font-semibold" id="val-slowtau">500</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="2000" min="100" step="10" type="range" value="500"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Injury Authority</span><span class="text-ruby font-mono font-semibold" id="val-injury">0.30</span></div><input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.05" type="range" value="0.30"></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">show_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Deposit sequence</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant font-mono">k: 0 ➔ 120</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">Fast trace, slow kernel, residual scar</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="15" y2="15"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="45" y2="45"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="75" y2="75"></line><path d="M0,20 L35,20 L45,78 L65,22 L120,20 L200,20 L320,20" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M0,80 L35,80 L45,25 L100,38 L160,55 L240,72 L320,80" opacity="0.9" stroke="#F08A4B" stroke-dasharray="2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path><path d="M45,25 C70,30 90,65 140,78 L200,80 L320,80" opacity="0.75" stroke="#EF174C" stroke-width="1.5"></path><circle cx="45" cy="78" fill="#EF174C" r="3.5"></circle><circle cx="65" cy="22" fill="#e6c364" r="3"></circle><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="48" y="86">k_shock</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell pt-1 border-t border-surface-container-high/60"><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-primary"></span><span class="text-primary">Fast Trace</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-status-orange"></span><span class="text-status-orange">Slow Kernel</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-ruby"></span><span class="text-ruby">Residual Scar</span></div></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">stacked_line_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Cross-section · v1.8 closed form</span></div><span class="font-telemetry-cell text-[10px] text-status-lime font-mono">HUMP PROFILE</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">The hump across DECAY</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><path d="M10,80 C60,78 110,65 150,22 C185,22 220,50 310,78" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><path d="M10,80 C70,79 130,72 165,40 C195,42 235,60 310,79" opacity="0.6" stroke="#F08A4B" stroke-dasharray="3 3" stroke-width="1.5"></path><line opacity="0.4" stroke="#EF174C" stroke-dasharray="2 2" x1="150" x2="150" y1="10" y2="85"></line><circle cx="150" cy="22" fill="#e6c364" r="4"></circle><circle cx="150" cy="22" fill="none" r="6" stroke="#e6c364" stroke-width="1"></circle><text fill="#e5e2e1" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="158" y="20">Peak Deficit (DECAY=0.70)</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="10" y="88">γ .05</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="260" y="88">γ 1.5</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell text-on-surface-variant/80 pt-1 border-t border-surface-container-high/60"><span>γ .05 · .50 · 1.0 · 1.5</span><span class="text-primary font-mono font-semibold">DECAY .70</span></div></div></div></div>
 <!-- TAB 03: CURVE BENCH (Preview / Content) -->
 <div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-03">
 <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
 <div class="flex items-center gap-1.5">
-<span class="font-kicker text-kicker uppercase text-primary">CURVE BENCHMARK</span>
+<span class="font-kicker text-kicker uppercase text-primary">KT visuals · 03</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-paper-light">Asymmetric Memory Curves</h3>
+<h3 class="font-headline-md text-headline-md text-paper-light">The Curve Bench</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
- Benchmarking hysteresis differential between rapid trust collapse vs slow mathematical redemption.
+ Every pool gets its own curve. Insults and compliments don't scar the same — drag the control points and watch the grudge respond. Curves are illustrative of the walkthrough design (variable nudge, dynamic tail, per-pool curves); depth decay uses the validated v1.8 slow rate.
  </p>
 <div class="p-space-sm rounded-lg bg-ground-deep flex flex-col gap-2 font-telemetry-cell text-telemetry-cell">
 <div class="flex justify-between">
-<span class="text-on-surface-variant">Collapse Velocity:</span>
-<span class="text-ruby font-mono">0.72 auth / tick</span>
+<span class="text-on-surface-variant">Insults · nudge per consecutive insult:</span>
+<span class="text-ruby font-mono">2 · 5 · 9 · 16 · 28 · 45 · 65 · 80 ticks</span>
 </div>
 <div class="flex justify-between">
-<span class="text-on-surface-variant">Consolidation Rate:</span>
-<span class="text-primary font-mono">0.038 auth / tick</span>
+<span class="text-on-surface-variant">Compliments · relief per consecutive make-right:</span>
+<span class="text-primary font-mono">12 · 9 · 7 · 5 · 3 · 1 ticks</span>
 </div>
-<div class="flex justify-between">
-<span class="text-on-surface-variant">Asymmetry Factor:</span>
-<span class="text-status-lime font-mono">18.94x hysteresis</span>
-</div>
+
 </div>
 </div>
 </div>
@@ -338,11 +323,11 @@
 <div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-04">
 <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
 <div class="flex items-center gap-1.5">
-<span class="font-kicker text-kicker uppercase text-primary">KID KERNEL RUNTIME</span>
+<span class="font-kicker text-kicker uppercase text-primary">Field proof</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-paper-light">Embedded Edge Architecture</h3>
+<h3 class="font-headline-md text-headline-md text-paper-light">It runs on a phone.</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
- Zero-allocation micro-kernel executing on constrained ARM architectures with absolute determinism.
+ The whole KATIE kernel — record, both traces, scar and debt diagnostics — built from source on a budget phone and benched there. No Pi, no datacenter, no excuses.
  </p>
 <div class="grid grid-cols-2 gap-space-sm">
 <div class="bg-ground-deep p-space-sm rounded-lg flex flex-col">
@@ -353,7 +338,7 @@
 <div class="bg-ground-deep p-space-sm rounded-lg flex flex-col">
 <span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">TEST PROMISES</span>
 <span class="font-headline-md text-headline-md text-primary font-mono">16 / 16</span>
-<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">100% formal pass</span>
+<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Sixteen promises. All kept.</span>
 </div>
 </div>
 </div>
@@ -363,45 +348,34 @@
 <div class="rounded-xl bg-ruby-ground p-space-md flex flex-col gap-space-sm">
 <div class="flex items-center gap-1.5">
 <span class="w-2 h-2 rounded-full bg-ruby"></span>
-<span class="font-kicker text-kicker uppercase text-ruby">RUBY GLASSES ANOMALY LENS</span>
+<span class="font-kicker text-kicker uppercase text-ruby">Ruby Glasses — KATIE Vision Mocks</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-paper-light">Inspection Regime</h3>
+<h3 class="font-headline-md text-headline-md text-paper-light">Put on the ruby glasses.</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
- High-contrast optical filtration highlighting poisoned vectors, suppressed evidence, and divergent trace chains.
+ The world changes when every machine can show its work. You no longer see an answer. You see its history.
  </p>
 <div class="p-space-sm rounded-lg bg-ground-deep flex flex-col gap-2 font-telemetry-cell text-telemetry-cell">
-<div class="flex justify-between items-center">
-<span class="text-ruby">TOXIC INJECTION DETECTED:</span>
-<span class="px-1.5 py-0.5 rounded bg-ruby/20 text-ruby font-mono">k=38</span>
-</div>
-<div class="flex justify-between items-center">
-<span class="text-on-surface-variant">Firewall Suppression:</span>
-<span class="text-status-lime font-mono">ACTIVE (Isolated)</span>
-</div>
-</div>
+        <div class="flex justify-between items-center"><span class="text-ruby">WHAT</span><span class="text-on-surface-variant">the machine believed</span></div>
+        <div class="flex justify-between items-center"><span class="text-ruby">WHEN</span><span class="text-on-surface-variant">that belief held authority</span></div>
+        <div class="flex justify-between items-center"><span class="text-ruby">WHY</span><span class="text-on-surface-variant">it was justified in acting</span></div>
+      </div>
 </div>
 </div>
 <!-- TAB 06: CRM PROOF (Preview / Content) -->
 <div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-06">
 <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
 <div class="flex items-center gap-1.5">
-<span class="font-kicker text-kicker uppercase text-primary">ENTERPRISE CRM COMPLIANCE</span>
+<span class="font-kicker text-kicker uppercase text-primary">VOLSHi / KATIE / CRM demo</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-paper-light">Identity Trace Preservation</h3>
+<h3 class="font-headline-md text-headline-md text-paper-light">Your CRM rewrites history. This one can't.</h3>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
- Verification trace proving immutable continuity during life-event metadata mutations without rewriting historical state.
+ Every CRM on earth lets a field's past get overwritten. Ours keeps it — every value a field ever held, at what knowledge-time, at what authority, and why it changed. That's the K-record, and it's the difference between a database and an accountable one.
  </p>
 <div class="p-space-sm rounded-lg bg-ground-deep flex flex-col gap-2 font-telemetry-cell text-telemetry-cell">
-<div class="flex items-center gap-2">
-<span class="text-on-surface-variant">k=1:</span>
-<span class="text-paper-light">Sofia Marchetti (Citizen ID: 94812)</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="text-primary">k=2:</span>
-<span class="text-primary font-bold">Sofia Bennett (Marriage deed registered)</span>
-</div>
+<div class="flex flex-col gap-0.5"><div class="flex items-center gap-2"><span class="text-on-surface-variant">k1 → k2</span><span class="text-paper-light">Sofia Marchetti</span><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">WILD</span></div><span class="text-[11px] text-on-surface-variant/70">authority 89% · evidence: value=Sofia Marchetti · signup form</span></div>
+<div class="flex flex-col gap-0.5"><div class="flex items-center gap-2"><span class="text-primary">k2 → live</span><span class="text-primary font-bold">Sofia Bennett</span><span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary">CANDIDATE</span></div><span class="text-[11px] text-on-surface-variant/70">authority 89% · evidence: value=Sofia Bennett · married · why: married</span></div>
 <div class="mt-1 text-[11px] text-status-lime">
- ✓ Pre-name auditability intact across all prior ledger epochs.
+ Frozen. Closed intervals are byte-identical to the day they were written — only the live one can ever be superseded.
  </div>
 </div>
 </div>
@@ -424,7 +398,7 @@
  U.S. Provisional Patent Application No. 64/182,709
  </h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant">
- Inventor: Darren Patrick Hall · Covers eleven mechanisms:
+ Inventor: Darren Patrick Hall · The filing covers eleven mechanisms:
  </p>
 </div>
 <!-- 11 Mechanisms Stacked Accordion/Cards -->
@@ -439,7 +413,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Every belief append-only, hash-chained.
+ every belief append-only, hash-chained to the entry before it. Tampering, deletion, or a broken interval is detected by verification, which identifies the exact affected row.
  </div>
 </details>
 <!-- Mechanism 02 -->
@@ -452,7 +426,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- A third clock: when the system knew things.
+ a third clock: not when an event happened, and not when it arrived, but when it was known, and at what authority.
  </div>
 </details>
 <!-- Mechanism 03 -->
@@ -465,7 +439,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Wrong belief remains while authority collapses.
+ a wrong belief remains in the record while its authority collapses. The system learns without rewriting its history.
  </div>
 </details>
 <!-- Mechanism 04 -->
@@ -478,7 +452,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Every kernel assigned a KID at birth.
+ every kernel is assigned a Kernel ID at birth. No KID, no read, no write. What is not yet understood runs as null: registered, present, and unassigned — never invisible.
  </div>
 </details>
 <!-- Mechanism 05 -->
@@ -491,7 +465,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Self-verifies integrity against tampering.
+ the record verifies its own integrity against tampering, deletion, and interval attacks, and produces proof of each catch.
  </div>
 </details>
 <!-- Mechanism 06 -->
@@ -504,7 +478,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Damage accumulator isolates toxic sources.
+ each source carries a damage accumulator. Past a threshold, the source continues to be recorded in full and ceases to have any effect. The attack is preserved as evidence.
  </div>
 </details>
 <!-- Mechanism 07 -->
@@ -517,7 +491,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Identifies deficiency and reconstructs missing component.
+ the machine reads its own record, identifies a deficiency, constructs the missing component, and integrates it.
  </div>
 </details>
 <!-- Mechanism 08 -->
@@ -530,7 +504,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Versioned event on same identity.
+ a change to a kernel's parameters is recorded as a versioned event on the same identity. No component receives a new identity to escape its history.
  </div>
 </details>
 <!-- Mechanism 09 -->
@@ -543,7 +517,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Views derived from ledger, ledger governs.
+ any view of the present is derived from the ledger and can be re-derived identically at any time. Where a snapshot and the ledger disagree, the ledger governs.
  </div>
 </details>
 <!-- Mechanism 10 -->
@@ -556,7 +530,7 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Accumulated influence discharges at threshold.
+ influence the system cannot consolidate accumulates per kind until it crosses an attention threshold. Attention discharges it.
  </div>
 </details>
 <!-- Mechanism 11 -->
@@ -569,24 +543,12 @@
 <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
 </summary>
 <div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
- Outstanding deficit removes options until healed.
+ outstanding deficit removes options from the injured component until it heals; a component's position on the response curve is set by design, as protection, as a sensor, or for deliberate retention.
  </div>
 </details>
 </div>
 </section>
-<!-- Lab Telemetry Proof Footer Seal -->
-<div class="px-space-sm mt-space-xs">
-<div class="rounded-xl bg-surface-container-lowest p-space-md flex items-center justify-between">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">policy</span>
-<div class="flex flex-col">
-<span class="font-telemetry-head text-[11px] text-paper-light uppercase">AUDIT TRAIL CONVERGENCE</span>
-<span class="font-telemetry-cell text-[10px] text-on-surface-variant">Patent Section 64/182,709 Enforced</span>
-</div>
-</div>
-<span class="font-telemetry-code text-telemetry-code text-primary">VALID</span>
-</div>
-</div>
+
 </div>
 <script>
  const SUITE_TABS = ['01', '02', '03', '04', '05', '06'];
@@ -779,29 +741,24 @@
  function updateScrubber(val) {
  currentK = parseInt(val, 10);
  document.getElementById('scrub-label').innerText = 'k=' + currentK;
- 
- // Simulate dynamic Authority and Slow Deficit response based on k
- let computedAuth = (0.5 + 0.45 * Math.sin(currentK / 6)).toFixed(2);
- if (computedAuth < 0.15) computedAuth = 0.15;
- if (computedAuth > 0.98) computedAuth = 0.98;
-
- let computedDeficit = (0.28 * Math.cos(currentK / 8) + 0.1).toFixed(3);
- if (computedDeficit < 0.02) computedDeficit = 0.02;
-
+ // Stepped authority from the seed ledger: k1-12 WILD .20, k12-24 CONTESTED .40, k24-40 VALIDATED .70, k40+ TRUSTED .80
+ let computedAuth;
+ if (currentK < 12) computedAuth = 0.20;
+ else if (currentK < 24) computedAuth = 0.40;
+ else if (currentK < 40) computedAuth = 0.70;
+ else computedAuth = 0.80;
  const authMetric = document.getElementById('authority-metric');
  const authBar = document.getElementById('authority-bar');
- const defMetric = document.getElementById('deficit-metric');
- const defBar = document.getElementById('deficit-bar');
-
  if (authMetric && authBar) {
- authMetric.innerText = computedAuth;
+ authMetric.innerText = computedAuth.toFixed(2);
  authBar.style.width = (computedAuth * 100) + '%';
  }
- if (defMetric && defBar) {
- defMetric.innerText = computedDeficit;
- defBar.style.width = Math.min(100, Math.round(computedDeficit * 200)) + '%';
+ const dot = document.getElementById('sparkDot');
+ if (dot) {
+ dot.setAttribute('cx', ((currentK - 1) / 60 * 320).toFixed(1));
+ dot.setAttribute('cy', (38 - computedAuth * 36).toFixed(1));
  }
- }
+}
 
  function stepK(delta) {
  const slider = document.getElementById('k-slider');
