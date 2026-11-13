@@ -28,5 +28,11 @@
     "bytes": 300565,
     "mime": "image/png",
     "source": "carried from old site (old/assets/volshilogowhite.png)"
+  },
+  {
+    "file": "volshi-favicon.png",
+    "bytes": 479096,
+    "mime": "image/png",
+    "source": "supplied by Darren 2026-11-13 (V mark, for the favicon)"
   }
 ]
