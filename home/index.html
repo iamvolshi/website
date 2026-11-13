@@ -608,7 +608,7 @@
  </div>
  <div class="flex flex-col sm:flex-row sm:items-center justify-between py-2 border-b border-white/[0.04] gap-1">
  <span class="text-engine-muted uppercase text-[11px]">Authority Metric:</span>
- <span class="font-bold text-primary text-sm" id="receipt-auth-tag">90% [CONFIRMED_HIGH]</span>
+ <span class="font-bold text-primary text-sm" id="receipt-auth-tag">90% TRUSTED</span>
  </div>
  <div class="flex flex-col sm:flex-row sm:items-start justify-between py-2 border-b border-white/[0.04] gap-1">
  <span class="text-engine-muted uppercase text-[11px] flex-shrink-0">Action Executed:</span>
@@ -734,7 +734,7 @@
  <span class="px-2.5 py-1 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[10px] font-bold">88/100 VETTABLE</span>
  </div>
  <div>
- <div class="text-lg text-paper-light font-semibold">Series Seed Presentation</div>
+ <div class="text-lg text-paper-light font-semibold">VOLSHi Investor Deck</div>
  <p class="text-xs text-on-surface-variant pt-1.5 leading-relaxed">
  13 slides · third-party validated — 88/100 on Vettable institutional evaluation.
  </p>
@@ -790,7 +790,7 @@
  </div>
  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-engine-muted">
  <p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p>
- <p>Candidate Computational Law · Append-Only Evidence Protocol</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-engine-muted hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button>
+ <p>Candidate Computational Law</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-engine-muted hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button>
  </div>
  </div>
  </footer>
@@ -855,7 +855,7 @@
  statusDesc.textContent = '✓ Belief holds — action was justified.';
  statusIcon.textContent = 'check_circle';
  statusIcon.style.color = '#c9a84c';
- receiptAuthTag.textContent = '90% [CONFIRMED_HIGH]';
+ receiptAuthTag.textContent = '90% TRUSTED';
  receiptAuthTag.style.color = '#c9a84c';
  receiptBadge.textContent = 'TRUSTED';
  receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-lime/10 border border-status-lime/30 text-status-lime font-mono text-[11px] font-semibold';
@@ -871,7 +871,7 @@
  statusDesc.textContent = '⚠ Authority collapsing at k — the belief is losing weight.';
  statusIcon.textContent = 'warning';
  statusIcon.style.color = '#f59e0b';
- receiptAuthTag.textContent = '40% [CHALLENGE]';
+ receiptAuthTag.textContent = '40% CONTESTED';
  receiptAuthTag.style.color = '#f59e0b';
  receiptBadge.textContent = 'CONTESTED';
  receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-status-orange/10 border border-status-orange/30 text-status-orange font-mono text-[11px] font-semibold';
@@ -887,7 +887,7 @@
  statusDesc.textContent = '✕ Belief disproven at k — authority is zero. The record keeps it as history.';
  statusIcon.textContent = 'cancel';
  statusIcon.style.color = '#ef4444';
- receiptAuthTag.textContent = '0% [REVOKE]';
+ receiptAuthTag.textContent = '0% DISPROVEN';
  receiptAuthTag.style.color = '#ef4444';
  receiptBadge.textContent = 'DISPROVEN';
  receiptBadge.className = 'px-2.5 py-0.5 rounded-full bg-ruby/10 border border-ruby/30 text-ruby font-mono text-[11px] font-semibold';
