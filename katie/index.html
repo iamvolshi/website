@@ -6,8 +6,7 @@
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
 <div class="flex items-center gap-space-sm">
 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary font-telemetry-head text-telemetry-cell tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
- KATIE KERNEL v1.8 ACTIVE
+KATIE
  </span>
 <span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline">|</span>
 <span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline">TRITEMPORAL PROTOCOL SPECIFICATION</span>
@@ -76,7 +75,7 @@
 <span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
 <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Event Console</span>
 </div>
-<span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase bg-status-lime/10 px-2 py-0.5 rounded-full">Socket Active</span>
+
 </div>
 <!-- Subject Selection -->
 <div class="flex flex-col gap-1.5">
@@ -165,16 +164,7 @@
 <div class="h-full bg-primary" id="engineAuthBar" style="width: 80%"></div>
 </div>
 </div>
-<div class="p-3 rounded bg-surface-container-low flex flex-col gap-1">
-<span class="font-telemetry-head text-telemetry-cell text-engine-line">SLOW TRACE DEFICIT</span>
-<div class="flex items-baseline justify-between">
-<span class="font-headline-md text-headline-md text-ruby-hot font-mono" id="engineDeficitValue">0.142</span>
-<span class="font-telemetry-cell text-telemetry-cell text-ruby">UNRECOVERED</span>
-</div>
-<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-1">
-<div class="h-full bg-ruby" id="engineDeficitBar" style="width: 28%"></div>
-</div>
-</div>
+
 </div>
 <!-- Scrubber Slider -->
 <div class="flex flex-col gap-2 pt-2">
@@ -198,7 +188,7 @@
 <span class="material-symbols-outlined text-[16px] text-primary">history_edu</span>
 <span>Append-Only Evidence Ledger</span>
 </div>
-<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono">SUPERSESSION MATRIX</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono">Supersedes chain</span>
 </div>
 <div class="overflow-x-auto max-h-72 overflow-y-auto">
 <table class="w-full text-left font-telemetry-cell text-telemetry-cell">
@@ -214,42 +204,42 @@
 <tbody class="divide-y divide-line-subtle/40 text-on-surface font-mono" id="ledgerTableBody">
 <tr class="hover:bg-surface-container-low/40">
 <td class="py-2 px-3 text-primary">k = 40</td>
-<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-status-lime/10 text-status-lime text-[10px]">CONFIRM</span></td>
-<td class="py-2 px-3">Structural integrity 99.4%</td>
+<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-status-lime/10 text-status-lime text-[10px]">TRUSTED</span></td>
+<td class="py-2 px-3">Bridge status</td>
 <td class="py-2 px-3 text-paper-light">0.80</td>
 <td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
 <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
-<span>Supersedes k=38</span>
+<span>Supersedes k=24</span>
 </td>
 </tr>
 <tr class="hover:bg-surface-container-low/40">
-<td class="py-2 px-3 text-engine-line">k = 38</td>
-<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-ruby/10 text-ruby text-[10px]">CHALLENGE</span></td>
-<td class="py-2 px-3">Accelerometer drift delta &gt; 3σ</td>
-<td class="py-2 px-3 text-ruby">0.24</td>
+<td class="py-2 px-3 text-engine-line">k = 24</td>
+<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-ruby/10 text-ruby text-[10px]">CONTESTED</span></td>
+<td class="py-2 px-3">Bridge status</td>
+<td class="py-2 px-3 text-ruby">0.40</td>
 <td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
 <span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
-<span>Supersedes k=31</span>
+<span>Supersedes k=12</span>
 </td>
 </tr>
 <tr class="hover:bg-surface-container-low/40">
-<td class="py-2 px-3 text-engine-line">k = 31</td>
-<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px]">KNOWN</span></td>
-<td class="py-2 px-3">Baseline load telemetry OK</td>
-<td class="py-2 px-3 text-paper-light">0.72</td>
+<td class="py-2 px-3 text-engine-line">k = 12</td>
+<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px]">VALIDATED</span></td>
+<td class="py-2 px-3">Bridge status</td>
+<td class="py-2 px-3 text-paper-light">0.70</td>
 <td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
 <span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
-<span>Supersedes k=14</span>
+<span>Supersedes k=1</span>
 </td>
 </tr>
 <tr class="hover:bg-surface-container-low/40">
-<td class="py-2 px-3 text-engine-line">k = 14</td>
+<td class="py-2 px-3 text-engine-line">k = 1</td>
 <td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-status-orange/10 text-status-orange text-[10px]">WILD</span></td>
-<td class="py-2 px-3">Initial peripheral mount check</td>
-<td class="py-2 px-3 text-paper-light">0.10</td>
+<td class="py-2 px-3">Bridge status</td>
+<td class="py-2 px-3 text-paper-light">0.20</td>
 <td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
 <span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
-<span>Root genesis</span>
+<span>origin</span>
 </td>
 </tr>
 </tbody>
@@ -270,64 +260,64 @@
  </div>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
- The following eleven mechanisms constitute the core physicalized computational framework of KATIE, formalizing tamper-evident machine cognition and deterministic retrospective replay without mutable state.
+ The filing covers eleven mechanisms:
  </p>
 <!-- 11 Mechanisms Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">01</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">The sealed record</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Every deposit is immutably sealed at ingress. The kernel never modifies prior cells; state is strictly an append-only derivation.</p>
+<p class="font-body-sm text-body-sm text-engine-line">every belief append-only, hash-chained to the entry before it. Tampering, deletion, or a broken interval is detected by verification, which identifies the exact affected row.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">02</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Knowledge time</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Disentangling transaction occurrence from systemic awareness. Knowledge clock k establishes unshakeable causality.</p>
+<p class="font-body-sm text-body-sm text-engine-line">a third clock: not when an event happened, and not when it arrived, but when it was known, and at what authority.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">03</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Authority that falls without erasing</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Discrediting an assertion drops its weight to zero while preserving the entire historical record for forensic audit.</p>
+<p class="font-body-sm text-body-sm text-engine-line">a wrong belief remains in the record while its authority collapses. The system learns without rewriting its history.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">04</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Born registered</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Every active agent, topic, and socket is instantiated with immutable provenance boundaries from clock tick zero.</p>
+<p class="font-body-sm text-body-sm text-engine-line">every kernel is assigned a Kernel ID at birth. No KID, no read, no write. What is not yet understood runs as null: registered, present, and unassigned — never invisible.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">05</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">The poison proof</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Hostile or corrupted assertions cannot corrupt the core chain; validation invariants isolate toxic tokens automatically.</p>
+<p class="font-body-sm text-body-sm text-engine-line">the record verifies its own integrity against tampering, deletion, and interval attacks, and produces proof of each catch.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">06</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">The firewall</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Strict separation between raw sensory ingress and downstream policy promotion gates preventing hallucinated state leaks.</p>
+<p class="font-body-sm text-body-sm text-engine-line">each source carries a damage accumulator. Past a threshold, the source continues to be recorded in full and ceases to have any effect. The attack is preserved as evidence.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">07</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">The self-healing loop</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Adaptive calibration dampens transient oscillation and restores baseline authority without manual administrative resets.</p>
+<p class="font-body-sm text-body-sm text-engine-line">the machine reads its own record, identifies a deficiency, constructs the missing component, and integrates it.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">08</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Parameters as deeds</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Thresholds, attack ratios, and decay weights are treated as legally attestable artifacts signed into the evidence store.</p>
+<p class="font-body-sm text-body-sm text-engine-line">a change to a kernel's parameters is recorded as a versioned event on the same identity. No component receives a new identity to escape its history.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">09</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Snapshots, not state</h3>
-<p class="font-body-sm text-body-sm text-engine-line">O(1) historical inspection via zero-overhead temporal slicing without executing costly retroactive rollbacks.</p>
+<p class="font-body-sm text-body-sm text-engine-line">any view of the present is derived from the ledger and can be re-derived identically at any time. Where a snapshot and the ledger disagree, the ledger governs.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
 <span class="font-telemetry-code text-primary font-bold">10</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Pressure-pot attention</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Dynamic triage allocating computational focus strictly proportional to anomaly volatility and legal risk profile.</p>
+<p class="font-body-sm text-body-sm text-engine-line">influence the system cannot consolidate accumulates per kind until it crosses an attention threshold. Attention discharges it.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5 md:col-span-2 lg:col-span-1">
 <span class="font-telemetry-code text-primary font-bold">11</span>
 <h3 class="font-headline-md text-body-md text-paper-light font-semibold">Debt and the curve</h3>
-<p class="font-body-sm text-body-sm text-engine-line">Formal quantification of epistemic latency; slow-trace debt tracks exactly what the machine has promised versus validated.</p>
+<p class="font-body-sm text-body-sm text-engine-line">outstanding deficit removes options from the injured component until it heals; a component's position on the response curve is set by design, as protection, as a sensor, or for deliberate retention.</p>
 </div>
 </div>
 </div>
@@ -357,7 +347,7 @@
 <span class="text-engine-line">INTENSITY (I)</span>
 <span class="font-telemetry-code text-primary" id="valIntensity">0.80</span>
 </div>
-<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderIntensity" max="1.00" min="0.10" oninput="updateScarSim()" step="0.05" type="range" value="0.80">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderIntensity" max="1" min="0" oninput="updateScarSim()" step="0.01" type="range" value="0.80">
 </div>
 <!-- Slider 2: Duration -->
 <div class="flex flex-col gap-1">
@@ -365,7 +355,7 @@
 <span class="text-engine-line">DURATION (ticks)</span>
 <span class="font-telemetry-code text-primary" id="valDuration">27</span>
 </div>
-<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDuration" max="100" min="5" oninput="updateScarSim()" step="1" type="range" value="27">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDuration" max="450" min="1" oninput="updateScarSim()" step="1" type="range" value="27">
 </div>
 <!-- Slider 3: DECAY -->
 <div class="flex flex-col gap-1">
@@ -373,7 +363,7 @@
 <span class="text-engine-line">DECAY FACTOR (γ)</span>
 <span class="font-telemetry-code text-primary" id="valDecay">0.70</span>
 </div>
-<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDecay" max="0.99" min="0.10" oninput="updateScarSim()" step="0.02" type="range" value="0.70">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDecay" max="1.50" min="0.05" oninput="updateScarSim()" step="0.01" type="range" value="0.70">
 </div>
 <!-- Slider 4: Recovery -->
 <div class="flex flex-col gap-1">
@@ -381,17 +371,24 @@
 <span class="text-engine-line">RECOVERY RATE (ticks)</span>
 <span class="font-telemetry-code text-primary" id="valRecovery">2000</span>
 </div>
-<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderRecovery" max="5000" min="500" oninput="updateScarSim()" step="100" type="range" value="2000">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderRecovery" max="4000" min="200" oninput="updateScarSim()" step="50" type="range" value="2000">
 </div>
 <!-- Slider 5: Slow τ -->
 
 <!-- Slider 6: Injury Authority -->
 <div class="flex flex-col gap-1">
 <div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">SLOW τ (consolidation)</span>
+<span class="font-telemetry-code text-primary" id="valSlowTau">500</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderSlowTau" max="2000" min="100" oninput="updateScarSim()" step="10" type="range" value="500">
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
 <span class="text-engine-line">INJURY AUTHORITY</span>
 <span class="font-telemetry-code text-ruby" id="valInjuryAuth">0.30</span>
 </div>
-<input class="w-full accent-ruby h-1 bg-surface-container-highest rounded" id="sliderInjuryAuth" max="0.95" min="0.05" oninput="updateScarSim()" step="0.05" type="range" value="0.30">
+<input class="w-full accent-ruby h-1 bg-surface-container-highest rounded" id="sliderInjuryAuth" max="1" min="0" oninput="updateScarSim()" step="0.05" type="range" value="0.30">
 </div>
 <!-- Live Output Pills -->
 <div class="mt-2 grid grid-cols-2 gap-3 pt-3 border-t border-line-subtle">
@@ -424,12 +421,12 @@
 <line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="40" y2="40"></line>
 <line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="110" y2="110"></line>
 <line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="180" y2="180"></line>
-<line stroke="#232220" stroke-dasharray="3 3" stroke-width="1" x1="180" x2="180" y1="0" y2="220"></line>
-<text fill="#4F5F5A" font-family="monospace" font-size="10" x="185" y="20">INJURY INJECTION (k=180)</text>
+<line id="svgInjuryLine" stroke="#232220" stroke-dasharray="3 3" stroke-width="1" x1="180" x2="180" y1="0" y2="220"></line>
+<text fill="#4F5F5A" font-family="monospace" font-size="10" id="svgInjuryLabel" x="185" y="20">INJURY</text>
 <!-- Scar Gap Area Fill -->
 <path d="M 180 140 Q 240 180 340 160 T 560 125 L 560 100 Q 380 95 240 100 Z" fill="rgba(239, 23, 76, 0.12)" id="svgScarArea"></path>
 <!-- Slow Control Reference (dashed) -->
-<path d="M 0 100 L 180 100 Q 320 95 600 90" fill="none" stroke="#A8B6B1" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<path d="M 0 100 L 180 100 Q 320 95 600 90" fill="none" id="svgSlowControl" stroke="#A8B6B1" stroke-dasharray="4 4" stroke-width="1.5"></path>
 <!-- Slow Injured (Ruby) -->
 <path d="M 0 100 L 180 100 Q 240 180 340 160 T 600 120" fill="none" id="svgSlowInjured" stroke="#EF174C" stroke-width="2.5"></path>
 <!-- Fast Injured (Gold) -->
@@ -437,31 +434,29 @@
 </svg>
 </div>
 <div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-engine-muted pt-1">
-<span>k = 0 ticks</span>
+<span>800 CLEAN</span>
 <span class="text-ruby-hot font-medium">SHADED DEFICIT = SCAR RETENTION AREA</span>
-<span>k = 1000 ticks</span>
+<span>RECOVERY</span>
 </div>
 </div>
 <!-- Chart 2: Closed Form Hump across DECAY -->
 <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-3">
 <div class="flex items-center justify-between">
 <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Chart 2: v1.8 Closed-Form Hump across DECAY</span>
-<span class="font-telemetry-code text-telemetry-cell text-engine-muted">f(γ) = γ(1 - γ)^τ</span>
+<span class="font-telemetry-code text-telemetry-cell text-engine-muted" id="decayBadge">DECAY .70</span>
 </div>
 <div class="w-full h-44 bg-surface-container-lowest rounded relative overflow-hidden flex items-end">
 <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 600 180">
 <!-- Resonance Hump -->
-<path d="M 30 170 C 120 170 180 20 320 30 C 420 40 500 160 580 170" fill="none" stroke="#C9A84C" stroke-width="2.5"></path>
+<path d="M 30 170 C 120 170 180 20 320 30 C 420 40 500 160 580 170" fill="none" id="svgHumpPath" stroke="#C9A84C" stroke-width="2.5"></path>
 <!-- Peak marker line -->
-<line stroke="#EF174C" stroke-dasharray="3 3" stroke-width="1.5" x1="280" x2="280" y1="20" y2="175"></line>
-<circle cx="280" cy="27" fill="#EF174C" r="4"></circle>
-<text fill="#FF4D70" font-family="monospace" font-size="11" x="290" y="32">γ_crit = 0.692 (Maximum Scarring)</text>
+<line id="svgDecayGuide" stroke="#EF174C" stroke-dasharray="3 3" stroke-width="1.5" x1="280" x2="280" y1="20" y2="175"></line>
+<circle cx="280" cy="27" fill="#EF174C" id="svgHumpMarker" r="4"></circle>
+
 </svg>
 </div>
 <div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
-<span>Low Coupling (γ → 0.1)</span>
-<span>Critical Resonance Threshold</span>
-<span>High Stiffening (γ → 0.99)</span>
+<span>.05</span> <span>.50</span> <span>1.0</span> <span>1.5</span>
 </div>
 </div>
 </div>
@@ -1061,17 +1056,12 @@
  function fireEngineEvent() {
  currentK += 1;
  const subject = document.getElementById('engineSubjectSelect').value;
- const hashSpan = document.getElementById('depHashPreview');
  const authVal = document.getElementById('engineAuthorityValue');
  const authBar = document.getElementById('engineAuthBar');
  const kBadge = document.getElementById('activeKBadge');
  const scrubber = document.getElementById('katieScrubber');
  const scrubberLabel = document.getElementById('scrubberKLabel');
  const ledgerBody = document.getElementById('ledgerTableBody');
-
- // Random hex update
- const randomHex = Math.random().toString(16).substring(2, 6) + '…' + Math.random().toString(16).substring(2, 6);
- hashSpan.textContent = randomHex;
 
  kBadge.textContent = 'k = ' + currentK;
  scrubber.value = currentK;
@@ -1085,15 +1075,21 @@
  authScore = '0.00';
  tagClass = 'bg-ruby/10 text-ruby';
  } else if (currentDepositType === 'challenge') {
- authScore = '0.35';
+ authScore = '0.40';
  tagClass = 'bg-ruby/10 text-ruby';
  } else if (currentDepositType === 'confirm') {
- authScore = '0.92';
+ authScore = '0.80';
  tagClass = 'bg-status-lime/10 text-status-lime';
  } else if (currentDepositType === 'unknown') {
- authScore = '0.10';
+ authScore = '0.20';
  tagClass = 'bg-status-orange/10 text-status-orange';
  typeLabel = 'WILD';
+ } else if (currentDepositType === 'known') {
+ authScore = '0.70';
+ tagClass = 'bg-primary/10 text-primary';
+ } else if (currentDepositType === 'policy') {
+ authScore = '0.90';
+ tagClass = 'bg-primary/10 text-primary';
  }
 
  authVal.textContent = authScore;
@@ -1121,30 +1117,91 @@
  }
 
  // Tab 02: Scar Lab Dynamics
- function updateScarSim() {
- const intensity = parseFloat(document.getElementById('sliderIntensity').value);
- const duration = parseInt(document.getElementById('sliderDuration').value);
- const decay = parseFloat(document.getElementById('sliderDecay').value);
- const recovery = parseInt(document.getElementById('sliderRecovery').value);
- const slowTau = parseInt(document.getElementById('sliderSlowTau').value);
- const injuryAuth = parseFloat(document.getElementById('sliderInjuryAuth').value);
+ // Scar Lab — real v1.8 dynamics, ported from the original KT Scar Lab.
+var SCAR_TAU_C = 13.5, SCAR_G = 0.70, SCAR_KAPPA = 0.095, SCAR_SLOW_W = 8, SCAR_WIN = 500, SCAR_THR = 5 * Math.PI / 180, SCAR_N_A = 800;
+function scarClosedForm(dec, L) {
+  var tau = SCAR_TAU_C / dec, expK = Math.exp(SCAR_KAPPA), betas = [], sumSin = 0, sumCos = 0, k;
+  for (k = 0; k < L; k++) {
+    var recency = Math.exp(-k / tau), z = recency + expK * (1 - recency), fkx = recency / z, fky = expK * (1 - recency) / z;
+    var beta = Math.atan2(1 + SCAR_G * (fky + SCAR_SLOW_W * (sumSin / SCAR_WIN)), SCAR_G * fkx);
+    betas.push(beta); sumSin += Math.sin(beta); sumCos += Math.cos(beta);
+  }
+  var aSum = 0;
+  for (var a = L + 1; a <= L + SCAR_N_A; a++) aSum += Math.exp(-a / tau);
+  var bw = 0, bx = 0, by = 0;
+  for (k = 0; k < L; k++) {
+    var w = Math.exp(-(L - k) / tau) * Math.exp(SCAR_KAPPA * Math.cos(betas[k]));
+    bw += w; bx += w * Math.cos(betas[k]); by += w * Math.sin(betas[k]);
+  }
+  var wTot = expK * aSum + bw, fy0 = by / wTot, fx0 = (expK * aSum + bx) / wTot;
+  function returnTicks(authority) {
+    var sx = ((SCAR_WIN - L) * authority + sumCos) / SCAR_WIN, d = 1 + SCAR_G * (fx0 + SCAR_SLOW_W * sx), arg = SCAR_G * fy0 / (SCAR_THR * d);
+    return arg > 1 ? tau * Math.log(arg) : 0;
+  }
+  return Math.max(0, returnTicks(0.3)) - Math.max(0, returnTicks(1));
+}
+function scarTraces(i, L, dec, recTicks, slowTau, injAuth) {
+  var tau = SCAR_TAU_C / dec, alpha = Math.exp(-1 / tau), sl = 1 - Math.exp(-1 / slowTau), fastI = 0, fastC = 0, slowI = 0, slowC = 0, fastPoints = [], controlFastPoints = [], slowPoints = [], controlPoints = [];
+  var clean = 800, total = clean + L + recTicks;
+  for (var n = 0; n <= total; n++) {
+    var inInjury = n >= clean && n < clean + L, authorityI = inInjury ? injAuth : 1, sI = i * authorityI, sC = i;
+    fastI = alpha * fastI + (1 - alpha) * sI; fastC = alpha * fastC + (1 - alpha) * sC;
+    slowI = (1 - sl) * slowI + sl * (authorityI * sI);
+    slowC = (1 - sl) * slowC + sl * sC;
+    fastPoints.push(fastI); controlFastPoints.push(fastC); slowPoints.push(slowI); controlPoints.push(slowC);
+  }
+  return { fast: fastPoints, controlFast: controlFastPoints, slow: slowPoints, control: controlPoints, total: total, clean: clean };
+}
+function scarLinePath(points, w, h, x0, y0, yMax) {
+  return points.map(function (v, i) { var x = x0 + i * (w / (points.length - 1)); var y = y0 - (v / yMax) * h; return (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }).join(' ');
+}
+function scarAreaPath(top, bottom, w, h, x0, y0, yMax) {
+  var a = top.map(function (v, i) { return [(x0 + i * w / (top.length - 1)), (y0 - v / yMax * h)]; });
+  var b = bottom.map(function (v, i) { return [(x0 + i * w / (bottom.length - 1)), (y0 - v / yMax * h)]; }).reverse();
+  return a.concat(b).map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' Z';
+}
+function updateScarSim() {
+  var intensity = parseFloat(document.getElementById('sliderIntensity').value);
+  var duration = parseInt(document.getElementById('sliderDuration').value, 10);
+  var decay = parseFloat(document.getElementById('sliderDecay').value);
+  var recovery = parseInt(document.getElementById('sliderRecovery').value, 10);
+  var slowTau = parseInt(document.getElementById('sliderSlowTau').value, 10);
+  var injuryAuth = parseFloat(document.getElementById('sliderInjuryAuth').value);
+  document.getElementById('valIntensity').textContent = intensity.toFixed(2);
+  document.getElementById('valDuration').textContent = duration;
+  document.getElementById('valDecay').textContent = decay.toFixed(2);
+  document.getElementById('valRecovery').textContent = recovery;
+  document.getElementById('valSlowTau').textContent = slowTau;
+  document.getElementById('valInjuryAuth').textContent = injuryAuth.toFixed(2);
+  var tau = SCAR_TAU_C / decay, scar = scarClosedForm(decay, duration);
+  document.getElementById('outTimeConstant').textContent = tau.toFixed(1);
+  document.getElementById('outScarTicks').textContent = scar.toFixed(1);
+  var badge = document.getElementById('decayBadge');
+  if (badge) badge.textContent = 'DECAY ' + decay.toFixed(2);
+  var traces = scarTraces(intensity, duration, decay, recovery, slowTau, injuryAuth);
+  document.getElementById('svgScarArea').setAttribute('d', scarAreaPath(traces.control, traces.slow, 600, 120, 0, 210, 1));
+  document.getElementById('svgSlowControl').setAttribute('d', scarLinePath(traces.control, 600, 120, 0, 210, 1));
+  document.getElementById('svgSlowInjured').setAttribute('d', scarLinePath(traces.slow, 600, 120, 0, 210, 1));
+  document.getElementById('svgFastInjured').setAttribute('d', scarLinePath(traces.fast, 600, 120, 0, 210, 1));
+  var injuryX = 800 / traces.total * 600;
+  var line = document.getElementById('svgInjuryLine');
+  line.setAttribute('x1', injuryX.toFixed(1)); line.setAttribute('x2', injuryX.toFixed(1));
+  document.getElementById('svgInjuryLabel').setAttribute('x', (injuryX + 5).toFixed(1));
+  var sliderDecay = document.getElementById('sliderDecay');
+  var dMin = parseFloat(sliderDecay.min), dMax = parseFloat(sliderDecay.max);
+  var steps = Math.round((dMax - dMin) / 0.01), humpValues = [], m;
+  for (m = 0; m <= steps; m++) humpValues.push(scarClosedForm(dMin + m * 0.01, duration));
+  var humpMax = Math.max.apply(null, humpValues.concat([0.001])), plotMax = humpMax * 1.08;
+  document.getElementById('svgHumpPath').setAttribute('d', scarLinePath(humpValues, 600, 150, 0, 175, plotMax));
+  var mx = (decay - dMin) / (dMax - dMin) * 600, my = 175 - scar / plotMax * 150;
+  var marker = document.getElementById('svgHumpMarker');
+  marker.setAttribute('cx', mx.toFixed(1)); marker.setAttribute('cy', my.toFixed(1));
+  var guide = document.getElementById('svgDecayGuide');
+  guide.setAttribute('x1', mx.toFixed(1)); guide.setAttribute('x2', mx.toFixed(1));
+}
+updateScarSim();
 
- document.getElementById('valIntensity').textContent = intensity.toFixed(2);
- document.getElementById('valDuration').textContent = duration;
- document.getElementById('valDecay').textContent = decay.toFixed(2);
- document.getElementById('valRecovery').textContent = recovery;
- document.getElementById('valSlowTau').textContent = slowTau;
- document.getElementById('valInjuryAuth').textContent = injuryAuth.toFixed(2);
-
- // Real formulas
- const timeConstant = ((1 / (1 - decay)) * (slowTau / 1000) * 5.8).toFixed(1);
- const scarTicks = (intensity * duration * (1 - injuryAuth) * 0.76).toFixed(1);
-
- document.getElementById('outTimeConstant').textContent = timeConstant;
- document.getElementById('outScarTicks').textContent = scarTicks;
- }
-
- function resetScarDefaults() {
+function resetScarDefaults() {
  document.getElementById('sliderIntensity').value = 0.80;
  document.getElementById('sliderDuration').value = 27;
  document.getElementById('sliderDecay').value = 0.70;
