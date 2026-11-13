@@ -16,5 +16,47 @@
     "bytes": 479096,
     "mime": "image/png",
     "source": "supplied by Darren 2026-11-13 (V mark, for the favicon)"
+  },
+  {
+    "file": "bg-swirl.webp",
+    "bytes": 101322,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/volshiswirlbkgd.png), converted to webp"
+  },
+  {
+    "file": "bg-star.webp",
+    "bytes": 86506,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/volshistarbkgd.png), converted to webp"
+  },
+  {
+    "file": "bg-contact.webp",
+    "bytes": 426160,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/art/media-generation-contact-volshi-impression-0-c6b3bb89-3455-402f-973a-dc3b5782f040.webp)"
+  },
+  {
+    "file": "future-machine-core.webp",
+    "bytes": 613510,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/art/media-generation-future-machine-plexiglass-core-0-b763edd3-5226-4571-8292-220a794c1176.webp)"
+  },
+  {
+    "file": "glass-box-machine.webp",
+    "bytes": 459000,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/art/media-generation-hero-glass-box-machine-0-012c5810-8485-49d3-a035-cd2b16bd1744.webp)"
+  },
+  {
+    "file": "future-machine-interior.webp",
+    "bytes": 771026,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/art/media-generation-future-machine-vast-interior-0-e5f6f4a3-2521-44b4-bd54-0f9431bada86.webp)"
+  },
+  {
+    "file": "nc-map-star.webp",
+    "bytes": 233552,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp)"
   }
 ]
