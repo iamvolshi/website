@@ -51,6 +51,13 @@
  .flip-inner { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform-style: preserve-3d; }
  .flip-card:hover .flip-inner, .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
  .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+ .flip-back-glass {
+ background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 45%, rgba(201,168,76,0.08) 100%);
+ backdrop-filter: blur(14px) saturate(140%);
+ -webkit-backdrop-filter: blur(14px) saturate(140%);
+ border: 1px solid rgba(255,255,255,0.22);
+ box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25), 0 0 20px rgba(201,168,76,0.12);
+ }
  </style>
 <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
 </head>
@@ -196,7 +203,7 @@
  <span>Unmonitored runtime</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">settings</span>
  <span class="uppercase tracking-wider font-semibold">Execution Monitoring</span>
@@ -226,7 +233,7 @@
  <span>Silent inferences</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">psychology</span>
  <span class="uppercase tracking-wider font-semibold">Belief Capture</span>
@@ -256,7 +263,7 @@
  <span>Unvetted execution</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">shield</span>
  <span class="uppercase tracking-wider font-semibold">Policy Enforcement</span>
@@ -286,7 +293,7 @@
  <span>Untracked sources</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">alt_route</span>
  <span class="uppercase tracking-wider font-semibold">Provenance</span>
@@ -316,7 +323,7 @@
  <span>Unlinked assertions</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">link</span>
  <span class="uppercase tracking-wider font-semibold">Evidence Chain</span>
@@ -346,7 +353,7 @@
  <span>Non-reproducible</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">history</span>
  <span class="uppercase tracking-wider font-semibold">Reconstruction</span>
@@ -376,7 +383,7 @@
  <span>Manual audits</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">assignment_turned_in</span>
  <span class="uppercase tracking-wider font-semibold">Regulator Export</span>
@@ -406,7 +413,7 @@
  <span>Mutable records</span>
  </div>
  </div>
- <div class="absolute inset-0 rounded-xl bg-[#1d1d24] border border-primary/50 p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden shadow-[0_0_20px_rgba(201,168,76,0.15)]">
+ <div class="absolute inset-0 rounded-xl flip-back-glass p-5 flex flex-col justify-between [transform:rotateY(180deg)] backface-hidden">
  <div class="flex justify-between items-center text-primary font-mono text-xs">
  <span class="material-symbols-outlined text-[18px]">lock</span>
  <span class="uppercase tracking-wider font-semibold">Immutable Record</span>
