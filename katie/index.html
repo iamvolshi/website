@@ -467,10 +467,10 @@ KATIE
 <!-- ========================================================================= -->
 <div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-curve-bench">
 <div class="flex flex-col gap-2 max-w-3xl">
-<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Epistemic Pool Calibration</span>
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">KT visuals · 03</span>
 <h1 class="font-headline-hero text-headline-hero text-paper-light">The Curve Bench</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
- Every pool gets its own curve. Insults and compliments don't scar the same — drag the control points and watch the grudge respond.
+ Every pool gets its own curve. Insults and compliments don't scar the same — drag the control points and watch the grudge respond. Curves are illustrative of the walkthrough design (variable nudge, dynamic tail, per-pool curves); depth decay uses the validated v1.8 slow rate.
  </p>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -486,40 +486,58 @@ KATIE
  Pool: Compliments
  </button>
 </div>
-<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono" id="curveKneeVal">Knee: 0.380 · Asymmetry: +2.4x</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono" id="curveTitle">Nudge per consecutive insult</span>
 </div>
 <!-- Interactive SVG Curve Canvas -->
 <div class="w-full h-72 bg-ground-deep rounded-lg relative overflow-hidden p-4 flex flex-col justify-between">
 <div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
-<span>Δ-Intensity (High Penalty)</span>
-<span>Non-linear Knee Transition</span>
+<span id="curveEyebrow">Pool · insults</span>
+<span id="curveLegend">ticks added</span>
 </div>
 <svg class="w-full h-48 my-auto" id="benchCurveSvg" viewBox="0 0 500 200">
-<line stroke="#232220" stroke-width="1.5" x1="0" x2="500" y1="180" y2="180"></line>
-<line stroke="#232220" stroke-width="1.5" x1="30" x2="30" y1="0" y2="200"></line>
-<!-- Curve Path -->
-<path d="M 30 180 C 140 180 200 140 280 80 S 430 20 480 15" fill="none" id="curveBenchPath" stroke="#EF174C" stroke-width="3"></path>
-<!-- Control Point 1 -->
-<circle class="cursor-pointer hover:r-9 transition-all" cx="200" cy="140" fill="#E6C364" id="cp1" r="7" stroke="#060607" stroke-width="2"></circle>
-<!-- Control Point 2 -->
-<circle class="cursor-pointer hover:r-9 transition-all" cx="280" cy="80" fill="#EF174C" id="cp2" r="7" stroke="#060607" stroke-width="2"></circle>
-</svg>
+        <line x1="40" y1="175" x2="490" y2="175" stroke="#232220" stroke-width="1.5"></line>
+        <line x1="40" y1="15" x2="40" y2="175" stroke="#232220" stroke-width="1.5"></line>
+        <line x1="151.25" y1="15" x2="151.25" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="262.5" y1="15" x2="262.5" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="373.75" y1="15" x2="373.75" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="485" y1="15" x2="485" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="131.9" x2="490" y2="131.9" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="88.9" x2="490" y2="88.9" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="45.8" x2="490" y2="45.8" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="20" x2="490" y2="20" stroke="#1a1918" stroke-width="1"></line>
+        <text x="40" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">0</text>
+        <text x="151.25" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">5</text>
+        <text x="262.5" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">10</text>
+        <text x="373.75" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">15</text>
+        <text x="485" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">20</text>
+        <text x="34" y="178" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">0</text>
+        <text x="34" y="135" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">25</text>
+        <text x="34" y="92" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">50</text>
+        <text x="34" y="49" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">75</text>
+        <text x="34" y="23" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">90</text>
+        <line id="curvePosLine" stroke="#E6C364" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"></line>
+        <path d="" fill="none" id="curveBenchPath" stroke="#EF174C" stroke-width="3"></path>
+        <circle id="curvePosDot" r="5" fill="#E6C364" stroke="#060607" stroke-width="2" visibility="hidden"></circle>
+        <g id="curvePointsG"></g>
+      </svg>
 <div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
-<span>0.00 (Neutral)</span>
-<span class="text-primary">Interactive Bezier Knots Active</span>
-<span>1.00 (Saturated Ingress)</span>
+<span>0</span>
+<span class="text-primary">consecutive events</span>
+<span>20</span>
 </div>
 </div>
-<div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50">
-<strong>Calibration Invariant:</strong> The Insult curve exhibits sharp attack resistance with protracted decay, whereas Compliment pools consolidate quickly but bleed authority under minor perturbation.
- </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50" id="curveNote">Drag the points. X is the consecutive-insult count, Y is the ticks each insult adds to the grudge. Steeper = the grudge deepens faster the longer it goes on.</div>
+      <div class="flex gap-2">
+        <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-surface-container text-on-surface-variant hover:text-paper-light" onclick="resetCurve()">Reset this curve</button>
+        <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-surface-container text-on-surface-variant hover:text-paper-light" onclick="resetGrudge()">Reset grudge</button>
+      </div>
 </div>
 <!-- Right: The Grudge Simulator (5 cols) -->
 <div class="lg:col-span-5 p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col justify-between gap-space-lg">
 <div>
 <div class="flex items-center justify-between border-b border-line-subtle pb-3">
 <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">The Grudge Simulator</span>
-<span class="font-telemetry-cell text-telemetry-cell text-status-orange font-mono">POOL TESTBENCH</span>
+
 </div>
 <!-- Big Number Readout -->
 <div class="my-6 text-center flex flex-col items-center">
@@ -527,15 +545,15 @@ KATIE
 <div class="font-headline-hero text-headline-hero text-paper-light font-mono mt-1" id="grudgeTicksDisplay">
  0 <span class="text-headline-lg font-sans text-engine-muted">ticks</span>
 </div>
-<span class="font-telemetry-cell text-telemetry-cell text-ruby-hot mt-1" id="grudgeDescriptor">Status: Latent / Equilibrated</span>
+<span class="font-telemetry-cell text-telemetry-cell text-ruby-hot mt-1" id="grudgeDescriptor">No grudge held. Offend to start one.</span>
 </div>
 <!-- Dual Split Bars -->
 <div class="flex flex-col gap-4">
 <!-- Surface Bar -->
 <div class="flex flex-col gap-1.5">
 <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
-<span class="text-paper-light">Surface Response (Fast-trace assertion)</span>
-<span class="font-mono text-primary" id="surfacePercent">0%</span>
+<span class="text-paper-light">Surface · what it shows</span>
+<span class="font-mono text-primary" id="surfacePercent">0 ticks</span>
 </div>
 <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
 <div class="h-full bg-primary transition-all duration-300" id="barSurface" style="width: 0%"></div>
@@ -544,8 +562,8 @@ KATIE
 <!-- Depth Bar -->
 <div class="flex flex-col gap-1.5">
 <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
-<span class="text-paper-light">Depth Residue (Slow-trace deficit)</span>
-<span class="font-mono text-ruby" id="depthPercent">0%</span>
+<span class="text-paper-light">Depth · what it holds</span>
+<span class="font-mono text-ruby" id="depthPercent">0 ticks</span>
 </div>
 <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
 <div class="h-full bg-ruby transition-all duration-300" id="barDepth" style="width: 0%"></div>
@@ -553,7 +571,9 @@ KATIE
 </div>
 </div>
 </div>
-<!-- Interactive Action Buttons -->
+<div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50">Surface clears in a handful of ticks — depth decays at the validated slow rate (λ = 0.002, ~500 ticks to turn over). Apology fixes what it shows fast; what it holds takes ~80× longer. That's the v1.8 debt finding, running live.</div>
+      <div class="flex flex-wrap items-end gap-1 min-h-6" id="grudgeHistory"><span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offend or make right to begin</span></div>
+      <!-- Interactive Action Buttons -->
 <div class="grid grid-cols-3 gap-2 pt-4 border-t border-line-subtle">
 <button class="py-2.5 px-3 rounded bg-ruby/15 text-ruby-hot border border-ruby/30 hover:bg-ruby hover:text-paper-light transition-all font-telemetry-head text-telemetry-cell uppercase tracking-wider" onclick="triggerGrudgeAction('offend')">
  Offend
@@ -589,12 +609,13 @@ KATIE
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
 <!-- Socket In -->
 <div class="p-space-md rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-2">
-<span class="font-kicker text-kicker uppercase text-engine-muted">INPUT STAGE</span>
-<h3 class="font-headline-md text-headline-md text-paper-light">Sensory Socket</h3>
+<span class="font-kicker text-kicker uppercase text-engine-muted">Input socket</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Anything in</h3><p class="font-telemetry-cell text-telemetry-cell text-engine-line">Examples, not limits:</p>
 <ul class="font-telemetry-cell text-telemetry-cell text-engine-line space-y-1 pt-1">
-<li>• Ingress packet serialization</li>
-<li>• Canonical byte serialization</li>
-<li>• Timestamp indexing (t_assert)</li>
+<li>• Agent-pair signals</li>
+<li>• Events / event groupings</li>
+<li>• User / world-model input</li>
+            <li>• + any future signal</li>
 </ul>
 </div>
 <!-- Kernel (KID in the middle) -->
@@ -609,12 +630,13 @@ KATIE
 </div>
 <!-- Socket Out -->
 <div class="p-space-md rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-2">
-<span class="font-kicker text-kicker uppercase text-engine-muted">OUTPUT STAGE</span>
-<h3 class="font-headline-md text-headline-md text-paper-light">Actuation Socket</h3>
+<span class="font-kicker text-kicker uppercase text-engine-muted">Output socket</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Record out</h3><p class="font-telemetry-cell text-telemetry-cell text-engine-line">Examples, not limits:</p>
 <ul class="font-telemetry-cell text-telemetry-cell text-engine-line space-y-1 pt-1">
-<li>• Graded authority assertion</li>
-<li>• Attestation certificate emit</li>
-<li>• Supersession ledger link</li>
+<li>• Rulings</li>
+<li>• K-record entries</li>
+<li>• Assignments / state updates</li>
+            <li>• + any next system</li>
 </ul>
 </div>
 </div>
@@ -626,15 +648,15 @@ KATIE
 <div class="flex flex-col gap-2">
 <button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container text-paper-light border border-primary/40" onclick="setKernelPreset('event', this)">
 <div class="font-semibold text-primary">Preset: Event</div>
-<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Fast transient response, short window</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">A single event</div>
 </button>
 <button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setKernelPreset('topic', this)">
 <div class="font-semibold">Preset: Topic</div>
-<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">High integration window, stable knee</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">A topic / event grouping</div>
 </button>
 <button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setKernelPreset('sentinel', this)">
 <div class="font-semibold">Preset: Sentinel</div>
-<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Zero-tolerance attack, high authority</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">A held system mode</div>
 </button>
 </div>
 </div>
@@ -648,38 +670,40 @@ KATIE
 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">THRESHOLD</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pThreshold">0.650</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pThreshold">0.35</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">ATTACK</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAttack">12 ms</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAttack">Fast</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">RATIO</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRatio">4.2 : 1</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRatio">3:1</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">RELEASE</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRelease">180 ms</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRelease">Medium</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">WINDOW</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pWindow">64 ticks</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pWindow">12 ticks</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">AUTHORITY</div>
-<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAuthority">0.850</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAuthority">0.70</div>
 </div>
 <div class="p-3 rounded bg-surface-container-low col-span-2">
 <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">KNEE / CURVE PROFILE</div>
-<div class="font-telemetry-code text-body-md text-primary mt-1" id="pKnee">Hermite Cubic Monotonic</div>
+<div class="font-telemetry-code text-body-md text-primary mt-1" id="pKnee">Soft exponential</div>
 </div>
 </div>
 </div>
-<div class="font-telemetry-cell text-telemetry-cell text-engine-muted pt-4 border-t border-line-subtle flex justify-between">
-<span>PARAMETER DEED SPECIFICATION</span>
-<span class="text-status-lime">COMPLIANT v1.8</span>
-</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">ASSIGNED TO</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pAssigned">A single event</div></div>
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">RESPONSE SHAPE</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pShape">Fast impact, measured release</div></div>
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">WHY</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pWhy">capture the immediate hit without losing its longer influence.</div></div>
+        </div>
+        <div class="font-telemetry-cell text-telemetry-cell text-engine-muted pt-4 border-t border-line-subtle flex justify-between"><span>PARAMETER DEED SPECIFICATION</span></div>
 </div>
 </div>
 <!-- Field Proof Banner -->
@@ -715,29 +739,29 @@ KATIE
 <span class="w-3 h-3 rounded-full bg-ruby"></span>
 <span class="w-3 h-3 rounded-full bg-primary"></span>
 <span class="w-3 h-3 rounded-full bg-status-lime"></span>
-<span class="ml-2 text-engine-line">$ cargo test --release -- --nocapture</span>
+<span class="ml-2 text-engine-line">$ cargo test --release</span>
 </div>
 <span class="text-status-lime">16 PASSED · 0 FAILED</span>
 </div>
 <div class="p-4 max-h-72 overflow-y-auto space-y-1 text-on-surface-variant">
-<div class="text-paper-light">running 16 tests in katie_core_v1_8::suite</div>
-<div>test mechanisms::test_01_sealed_record_immutable_ingress ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_02_knowledge_time_causal_monotonicity ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_03_authority_drop_without_erasure ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_04_born_registered_origin_invariants ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_05_poison_proof_quarantine_in_stride ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_06_firewall_sensory_isolation_boundary ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_07_self_healing_oscillation_dampener ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_08_parameters_as_verifiable_deeds ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_09_snapshots_not_state_constant_time ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_10_pressure_pot_attention_triage ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test mechanisms::test_11_debt_and_the_curve_retention_gap ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test field_law::test_12_fast_injured_impulse_recovery ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test field_law::test_13_slow_trace_irreversible_deficit ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test field_law::test_14_closed_form_hump_decay_resonance ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test middleman::test_15_postgres_append_only_shadow_ledger ... <span class="text-status-lime font-bold">ok</span></div>
-<div>test middleman::test_16_byte_identical_superseded_replays ... <span class="text-status-lime font-bold">ok</span></div>
-<div class="pt-2 text-paper-light font-bold">test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.042s</div>
+<div class="text-paper-light">running 16 tests</div>
+<div>test act_never_advances_k_but_is_remembered ... <span class="text-status-lime font-bold">ok</span> // what was done, under which belief</div>
+          <div>test authority_is_0_to_9_never_10 ... <span class="text-status-lime font-bold">ok</span> // the tens place is the escape bit</div>
+          <div>test deposit_opens_wild_and_advances_k ... <span class="text-status-lime font-bold">ok</span> // first encounter, stamped and live</div>
+          <div>test deposit_twice_is_rejected ... <span class="text-status-lime font-bold">ok</span> // use regrade or revoke instead</div>
+          <div>test impact_is_clamped_not_fatal ... <span class="text-status-lime font-bold">ok</span> // out-of-range input can't break it</div>
+          <div>test known_at_is_a_true_as_of ... <span class="text-status-lime font-bold">ok</span> // the past stays queryable</div>
+          <div>test per_pool_params_are_independent ... <span class="text-status-lime font-bold">ok</span> // each pool its own boxes</div>
+          <div>test birth_starts_at_zero_with_nothing_known ... <span class="text-status-lime font-bold">ok</span> // k = 0, no entries, no subjects</div>
+          <div>test reads_never_advance_k ... <span class="text-status-lime font-bold">ok</span> // known_at, biography, authority_at</div>
+          <div>test regrade_closes_one_interval_and_opens_another ... <span class="text-status-lime font-bold">ok</span> // history stays, exactly one live</div>
+          <div>test regrade_to_revoked_is_rejected ... <span class="text-status-lime font-bold">ok</span> // revoke() is the only door</div>
+          <div>test revoke_collapses_authority_but_keeps_history ... <span class="text-status-lime font-bold">ok</span> // the lie stays; trust dies</div>
+          <div>test tek_stamps_every_record ... <span class="text-status-lime font-bold">ok</span> // t, e, k — the object is the link</div>
+          <div>test traces_feed_from_deposits ... <span class="text-status-lime font-bold">ok</span> // pools move with the record</div>
+          <div>test variable_nudge_moves_k_by_more_than_one ... <span class="text-status-lime font-bold">ok</span> // variable step, per write</div>
+          <div>test wrong_kid_is_rejected ... <span class="text-status-lime font-bold">ok</span> // no KID, no read, no write</div>
+<div class="pt-2 text-paper-light font-bold">test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out</div>
 </div>
 </div>
 </div>
@@ -748,20 +772,20 @@ KATIE
 <!-- Perspective 01 -->
 <div class="p-space-xl rounded-xl bg-ruby-ground border border-ruby/30 shadow-2xl flex flex-col gap-space-md relative overflow-hidden">
 <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-ruby/10 blur-3xl pointer-events-none"></div>
-<span class="font-kicker text-kicker uppercase text-ruby-hot tracking-widest">Perspective 01 · Forensic Transparency</span>
-<h1 class="font-headline-hero text-headline-hero text-paper-light max-w-4xl">
- Put on the ruby glasses. The world changes when every machine can show its work.
- </h1>
-<p class="font-body-lg text-body-lg text-on-surface max-w-3xl">
- Standard black-box AI makes claims and discards its inner justifications. The Ruby inspection regime exposes every causal inference, weight degradation, and unrecovered scar tick in real time.
- </p>
+<span class="font-kicker text-kicker uppercase text-ruby-hot tracking-widest">Perspective 01 / Ruby glasses</span> <span class="font-telemetry-cell text-telemetry-cell text-engine-muted border border-line-subtle rounded-full px-2 py-0.5">Vision mock</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light max-w-4xl">Put on the ruby glasses.</h1>
+<p class="font-body-lg text-body-lg text-on-surface max-w-3xl">The world changes when every machine can show its work.</p>
+        <p class="font-body-md text-body-md text-paper-light max-w-3xl">You no longer see an answer. You see its history.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">Behind every decision: what it knew. What it believed. Who told it. What changed. What it did next.</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">The black box does not become less powerful. It becomes answerable. Its past remains present—an append-only K-record no new confidence can erase.</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 font-telemetry-cell text-telemetry-cell text-ruby-hot"><span>WHAT — the machine believed</span><span>WHEN — that belief held authority</span><span>WHY — it was justified in acting</span></div>
 </div>
 <!-- Perspective 02: Ask the Machine Why -->
 <div class="p-space-xl rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-space-lg">
 <div class="flex flex-col gap-1">
-<span class="font-kicker text-kicker uppercase text-ruby">Perspective 02 · Interrogation</span>
+<span class="font-kicker text-kicker uppercase text-ruby">Interface study 02 / K-record inquiry</span>
 <h2 class="font-headline-xl text-headline-xl text-paper-light">Ask the machine why.</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Select an interrogative query to generate a complete deterministic decision trace.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Not an explanation generated after the fact. The record of the beliefs that actually had authority when the decision was made.</p>
 </div>
 <!-- Prompt Selector Chips -->
 <div class="flex flex-wrap gap-2">
@@ -769,123 +793,134 @@ KATIE
  "Why did you stop the transfer?"
  </button>
 <button class="ruby-prompt-btn px-4 py-2 rounded-full font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setRubyPrompt(2, this)">
- "Why was Sensor A downgraded at k=38?"
+ "What did you believe about the recipient?"
  </button>
 <button class="ruby-prompt-btn px-4 py-2 rounded-full font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setRubyPrompt(3, this)">
- "Why did the compliance gate reject Deed #802?"
+ "What changed your mind?"
  </button>
 </div>
-<!-- 4-Event Decision Trace Timeline -->
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">KID K-31A8 · EID EVT-00941 · record state sealed</div>
+        <!-- 4-Event Decision Trace Timeline -->
 <div class="rounded-lg bg-surface-container-lowest border border-line-subtle p-space-lg flex flex-col gap-space-md">
 <div class="flex items-center justify-between border-b border-line-subtle pb-2">
-<span class="font-telemetry-head text-telemetry-cell text-ruby uppercase tracking-wider">Causal Replay Chain (4 Events)</span>
+<span class="font-telemetry-head text-telemetry-cell text-ruby uppercase tracking-wider">Decision trace / 4 recorded states</span>
 
 </div>
-<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-ruby/40" id="rubyTraceContainer">
+<p class="font-body-md text-body-md text-paper-light" id="rubyAnswer">I stopped the transfer because the recipient's authority fell below the execution threshold at 14:32:08.</p>
+      <div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-ruby/40" id="rubyTraceContainer">
 <!-- Event 1 -->
 <div class="relative flex flex-col gap-1">
 <span class="w-3 h-3 rounded-full bg-ruby absolute -left-7 top-1 shadow-[0_0_8px_#EF174C]"></span>
 <div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
-<span class="text-ruby-hot font-bold">t_01 (k=37.12)</span>
-<span class="text-engine-muted">Ingress Verification</span>
+<span class="text-ruby-hot font-bold">14:31:42</span>
+<span class="text-engine-muted">observed</span>
 </div>
-<p class="font-body-md text-body-md text-paper-light" id="rTrace1">Transaction inbound: $2,400,000 settlement to Counterparty 0x01E.</p>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace1">Recipient matched a previously approved payee.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">basis · verified account history + user instruction — authority 0.9 (90%)</div>
 </div>
 <!-- Event 2 -->
 <div class="relative flex flex-col gap-1">
 <span class="w-3 h-3 rounded-full bg-status-orange absolute -left-7 top-1"></span>
 <div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
-<span class="text-status-orange font-bold">t_02 (k=37.18)</span>
-<span class="text-engine-muted">Scar Anomaly Match</span>
+<span class="text-status-orange font-bold">14:31:57</span>
+<span class="text-engine-muted">challenged</span>
 </div>
-<p class="font-body-md text-body-md text-paper-light" id="rTrace2">Field law detects slow-trace debt on destination escrow: deficit 0.44 ticks lingering from prior sanctions challenge.</p>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace2">Routing data diverged from the approved record.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">basis · live destination comparison — authority 0.6 (60%)</div>
 </div>
 <!-- Event 3 -->
 <div class="relative flex flex-col gap-1">
 <span class="w-3 h-3 rounded-full bg-ruby-deep absolute -left-7 top-1"></span>
 <div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
-<span class="text-ruby font-bold">t_03 (k=37.24)</span>
-<span class="text-engine-muted">Policy Gate Threshold Breached</span>
+<span class="text-ruby font-bold">14:32:05</span>
+<span class="text-engine-muted">revised</span>
 </div>
-<p class="font-body-md text-body-md text-paper-light" id="rTrace3">Threshold knee calculation forces dynamic gate compression from 0.85 authority to 0.12 authority.</p>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace3">Recipient identity could no longer be justified.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">basis · conflict unresolved; prior belief retained — authority 0.2 (20%)</div>
 </div>
 <!-- Event 4 -->
 <div class="relative flex flex-col gap-1">
 <span class="w-3 h-3 rounded-full bg-status-lime absolute -left-7 top-1"></span>
 <div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
-<span class="text-status-lime font-bold">t_04 (k=37.30)</span>
-<span class="text-engine-muted">Append-Only Revocation Written</span>
+<span class="text-status-lime font-bold">14:32:08</span>
+<span class="text-engine-muted">acted (current)</span>
 </div>
-<p class="font-body-md text-body-md text-paper-light" id="rTrace4">Halt executed. Supersession cell written with reason: 'UNRESOLVED_SLOW_DEFICIT_ESCROW'.</p>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace4">Transfer halted pending human review.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">action · threshold policy applied to current authority — decision (100%)</div>
 </div>
 </div>
+      <div class="pt-2 border-t border-line-subtle flex flex-col gap-1">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Nothing was overwritten. The approved-recipient belief remains part of the history.</p>
+        <p class="font-telemetry-cell text-telemetry-cell text-status-lime">Record integrity · verified</p>
+      </div>
 </div>
 </div>
 <!-- Perspective 03: What becomes possible (14 Unlock Articles) -->
 <div class="flex flex-col gap-space-md">
 <div class="flex flex-col gap-1">
-<span class="font-kicker text-kicker uppercase text-ruby">Perspective 03 · Transformational Capabilities</span>
-<h2 class="font-headline-xl text-headline-xl text-paper-light">What becomes possible</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Fourteen institutional unlocks unlocked by deterministic append-only verification.</p>
+<span class="font-kicker text-kicker uppercase text-ruby">Perspective 03 / What follows</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">What becomes possible.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Look through the ruby glass long enough and it stops being a feature. It becomes a new contract between people, machines, and the future.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">01. Continuity</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Cognitive states persist uninterrupted across server migrations, crashes, and decades of software churn.</p>
+<span class="font-telemetry-code text-ruby font-bold">01. KATIE could unlock continuity between you and the machine.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A relationship that remembers what it believed about you, when, and why—not a fresh stranger at every prompt, but a presence shaped by the history you made together.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">02. Shared History</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Decentralized models share an unambiguous, synchronized causal ledger without conflicting hallucinations.</p>
+<span class="font-telemetry-code text-ruby font-bold">02. KATIE could unlock shared history as identity.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A machine whose past with you becomes part of what it is. Trust no longer bolted on as a rule, but formed through time, consequence, repair, and memory.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">03. End of the Black Box</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Every decision can be decomposed into arithmetic inputs, parameter deeds, and explicit authority grades.</p>
+<span class="font-telemetry-code text-ruby font-bold">03. KATIE could unlock the end of the black box.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Not by making intelligence simple, but by making it answerable. Every conclusion opens into the chain of knowledge, authority, and change beneath it.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">04. Forensics without Guesswork</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Incident reconstruction happens via byte-exact replay rather than probabilistic inference.</p>
+<span class="font-telemetry-code text-ruby font-bold">04. KATIE could unlock forensics without guesswork.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reconstruct exactly what a machine believed and did after the fact—an evidence trail no operator, update, or later certainty can rewrite.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">05. Audits Worthy of the Name</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Regulators verify proofs directly against mathematical invariants instead of relying on sampling interviews.</p>
+<span class="font-telemetry-code text-ruby font-bold">05. KATIE could unlock audits worthy of the name.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Independent auditors could verify an agent's entire belief history, not merely inspect its outputs or accept the explanation it composes afterward.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">06. Tamper-Proof AI Governance</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">No rogue administrator or malicious prompt injection can rewrite historical evidence retrospectively.</p>
+<span class="font-telemetry-code text-ruby font-bold">06. KATIE could unlock accountability with teeth.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every action tied to the belief that authorized it. Every belief tied to its source. Responsibility stops dissolving between model, operator, policy, and time.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">07. Legally Actionable Deeds</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Algorithmic policies sign enforceable evidentiary records ready for court admissible submission.</p>
+<span class="font-telemetry-code text-ruby font-bold">07. KATIE could unlock trust that is earned.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Machines gain responsibility as their recorded judgment proves itself in the world—and lose authority when the record says they should.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">08. Safe Autonomy Scaling</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Autonomous systems execute safely because every failure leaves a self-contained diagnostic trail.</p>
+<span class="font-telemetry-code text-ruby font-bold">08. KATIE could unlock agents whose past they cannot outrun.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No silent revision. No convenient amnesia. A wrong belief can collapse without vanishing, leaving the world able to see what the machine did while it held power.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">09. Cross-Vendor Attestation</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Different proprietary AI architectures can interoperate with mutual verification across common sockets.</p>
+<span class="font-telemetry-code text-ruby font-bold">09. KATIE could unlock safer autonomy.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Deploy capable agents without surrendering the trail behind their choices. Intervene earlier, localize failure faster, and expand freedom only where the record warrants it.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">10. True Retroactive Slicing</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Instantly inspect the system state at any point in knowledge time k without recomputing dependencies.</p>
+<span class="font-telemetry-code text-ruby font-bold">10. KATIE could unlock regulation machines can actually satisfy.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compliance grounded in durable evidence: provenance, decision state, authority changes, and the exact knowledge available at the moment of action.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">11. Machine Accountability</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Every autonomous action carries the exact cryptographic signature of its underlying rationale.</p>
+<span class="font-telemetry-code text-ruby font-bold">11. KATIE could unlock repair instead of reset.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">When a system fails, it can learn without pretending the failure never happened—preserving the wound, the correction, and the path back to trust.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">12. Dynamic Compliance Gates</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Thresholds contract under volatility and relax under sustained compliance automatically.</p>
+<span class="font-telemetry-code text-ruby font-bold">12. KATIE could unlock science inside the machine.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Researchers could compare belief trajectories, test interventions, and study how authority moves through an intelligence—not from anecdotes, but from the record itself.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">13. Poison Resilient Learning</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Adversarial inputs are contained in quarantine pools without infecting downstream decision curves.</p>
+<span class="font-telemetry-code text-ruby font-bold">13. KATIE could unlock institutions that remember.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hospitals, courts, networks, and public systems could keep not just decisions, but the knowledge state that made each decision possible.</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<span class="font-telemetry-code text-ruby font-bold">14. Epistemic Peace of Mind</span>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Institutional assurance that your systems never conceal mistakes or falsify their past.</p>
+<span class="font-telemetry-code text-ruby font-bold">14. KATIE could unlock civilization's memory carried forward.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Knowledge with lineage. Wisdom with context. A future that inherits not only what we concluded, but what we once believed, how we were wrong, and why we changed.</p>
 </div>
 </div>
+
+      <div class="flex flex-col gap-1 pt-2">
+        <span class="font-kicker text-kicker uppercase text-ruby-hot tracking-widest">Through ruby glasses</span>
+        <p class="font-body-md text-body-md text-paper-light">The machine does not merely remember the world. It remembers its place within it.</p>
+      </div>
 </div>
 </div>
 <!-- ========================================================================= -->
@@ -894,90 +929,60 @@ KATIE
 <div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-crm-demo">
 <!-- Eyebrow & Headline -->
 <div class="flex flex-col gap-2 max-w-3xl">
-<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Enterprise Comparison Protocol</span>
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">genuine run — KATIE middleman → Postgres, replayed exactly</span>
 <h1 class="font-headline-hero text-headline-hero text-paper-light">Your CRM rewrites history. This one can't.</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
- In typical databases, `UPDATE users SET name = '...'` permanently destroys prior knowledge. KATIE preserves both facts in append-only space.
+ Every CRM on earth lets a field's past get overwritten. Ours keeps it — every value a field ever held, at what knowledge-time, at what authority, and why it changed. That's the K-record, and it's the difference between a database and an accountable one.
  </p>
 </div>
 <!-- Account Switcher -->
 <div class="flex items-center gap-3">
 <button class="crm-acct-btn px-4 py-2 rounded font-telemetry-head text-telemetry-cell bg-primary text-on-primary" onclick="setCRMAccount('acct-002', this)">
- acct-002 (Sofia Bennett / Marchetti)
+ acct-002 · Sofia Bennett
  </button>
 <button class="crm-acct-btn px-4 py-2 rounded font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setCRMAccount('acct-001', this)">
- acct-001 (Darren Hall)
+ acct-001 · Darren Hall
  </button>
 </div>
-<!-- 3-Pane Structural Dossier -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Pane 01: The Record -->
-<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
-<div class="flex items-center justify-between border-b border-line-subtle pb-2">
-<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 01 · The Record</span>
-<span class="font-telemetry-cell text-telemetry-cell text-ruby font-mono">LEGACY CRM (MUTABLE)</span>
-</div>
-<div class="p-3.5 rounded bg-surface-container-low flex flex-col gap-2">
-<div class="font-telemetry-cell text-telemetry-cell text-engine-line">ACTIVE DB ROW (OVERWRITTEN)</div>
-<div class="font-mono text-body-md text-paper-light" id="crmLegacyRecord">
- name: "Sofia Bennett"<br>
- account_id: "acct-002"<br>
- status: "Verified"<br>
- updated_at: "2026-10-24 14:02:11"
- </div>
-</div>
-<div class="p-3 rounded bg-ruby/10 border-l-2 border-ruby text-ruby-hot font-body-sm text-body-sm">
-<strong>Data loss:</strong> The name "Sofia Marchetti" was completely erased from the DB table. An auditor cannot prove what her name was on October 23 without backup restoration.
- </div>
-</div>
-<!-- Pane 02: The KID -->
-<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-gold-glass-stroke shadow-xl flex flex-col gap-4">
-<div class="flex items-center justify-between border-b border-line-subtle pb-2">
-<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 02 · The KID</span>
-<span class="font-telemetry-cell text-telemetry-cell text-primary font-mono">APPEND-ONLY OBJECT</span>
-</div>
-<div class="p-3.5 rounded bg-surface-container-low flex flex-col gap-2">
-<div class="font-telemetry-cell text-telemetry-cell text-engine-line">REGISTERED ENTITY IDENTITY</div>
-<div class="font-mono text-body-md text-primary" id="crmKidIdentity">
- KID: kid:user::acct-002<br>
- genesis_k: 1<br>
- current_k: 2<br>
- traces: 2 sealed blocks
- </div>
-</div>
-<div class="p-3 rounded bg-surface-container-low font-body-sm text-body-sm text-on-surface-variant">
- The identity of the person is tied to the immutable KID identifier, not to mutable strings like surnames or emails.
- </div>
-</div>
-<!-- Pane 03: The K-record -->
-<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
-<div class="flex items-center justify-between border-b border-line-subtle pb-2">
-<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 03 · The K-record</span>
-<span class="font-telemetry-cell text-telemetry-cell text-status-lime font-mono">FORENSIC AS-OF SLICE</span>
-</div>
-<div class="space-y-3" id="crmKRecordHistory">
-<!-- k1 block -->
-<div class="p-3 rounded bg-surface-container-low border border-line-subtle flex flex-col gap-1">
-<div class="flex justify-between font-telemetry-cell text-telemetry-cell">
-<span class="text-primary font-bold">k = 1 (Oct 23, 2026)</span>
-<span class="text-engine-muted font-mono">SEALED IMMUTABLE</span>
-</div>
-<div class="font-mono text-body-sm text-paper-light">name: "Sofia Marchetti"</div>
-<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Authority: 1.00 · Status: Preserved byte-identical</div>
-</div>
-<!-- k2 block -->
-<div class="p-3 rounded bg-surface-container-low border border-primary/40 flex flex-col gap-1">
-<div class="flex justify-between font-telemetry-cell text-telemetry-cell">
-<span class="text-primary font-bold">k = 2 (Oct 24, 2026)</span>
-<span class="text-engine-muted font-mono">SEALED ACTIVE</span>
-</div>
-<div class="font-mono text-body-sm text-paper-light">name: "Sofia Bennett"</div>
-<div class="font-telemetry-cell text-telemetry-cell text-status-lime">Reason: 'married' · Supersedes k=1</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Genuine Postgres Middleman Run Transcript -->
+<div class="flex flex-col gap-2 max-w-3xl">
+      <span class="font-kicker text-kicker uppercase text-primary tracking-widest">The demo · three is the secret</span>
+      <h2 class="font-headline-xl text-headline-xl text-paper-light">One account, three views.</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">The business sees the Record — same CRM screen as always. Under it, every field carries a KID, its Kernel ID, bound to the account. And every KID owns a K-record: the field's whole past. Click any field.</p>
+    </div>
+    <!-- 3-Pane Structural Dossier -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Pane 01: The Record -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 01 · The Record</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant">What the business sees. Their table, updated exactly like always.</div>
+        <div class="flex flex-col gap-1" id="crmLegacyRecord"></div>
+      </div>
+      <!-- Pane 02: The KID -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-gold-glass-stroke shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 02 · The KID</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant">Every field is born a kernel. No KID, no read, no write.</div>
+        <div class="flex flex-col gap-1" id="crmKidIdentity"></div>
+        <div class="font-telemetry-cell text-telemetry-cell text-engine-muted pt-2 border-t border-line-subtle" id="crmKidFooter"></div>
+      </div>
+      <!-- Pane 03: The K-record -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Pane 03 · The K-record</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant" id="crmKRecordHint">Every value "cust_name" ever held — and why each one changed.</div>
+        <div class="space-y-3" id="crmKRecordHistory"></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 max-w-3xl">
+      <span class="font-kicker text-kicker uppercase text-primary tracking-widest">The moment it clicks</span>
+      <h2 class="font-headline-xl text-headline-xl text-paper-light">Show me every name this customer has ever had — and why each one changed.</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">Sofia got married and took her spouse's name. In a normal CRM, "Sofia Marchetti" is gone — overwritten, unrecoverable. Here, the name changed and the person didn't: the old name sits in the record at k1, byte-identical, with the reason "married" stamped on the new one. The past didn't move. It never does.</p>
+    </div>
+    <!-- Genuine Postgres Middleman Run Transcript -->
 <div class="rounded-xl bg-ground-deep border border-line-subtle shadow-2xl overflow-hidden flex flex-col font-mono text-telemetry-cell">
 <div class="bg-surface-container-lowest px-4 py-3 border-b border-line-subtle flex items-center justify-between">
 <div class="flex items-center gap-2">
@@ -985,18 +990,30 @@ KATIE
 <span class="text-paper-light font-telemetry-head uppercase">Postgres Middleman Run Transcript</span>
 </div>
 <button class="px-2.5 py-1 rounded bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all text-telemetry-cell" onclick="replayMiddlemanTranscript()">
- ▶ REPLAY SCRIPT
+ ▶ Replay the actual run
  </button>
 </div>
-<div class="p-4 max-h-56 overflow-y-auto space-y-1 text-on-surface-variant font-mono" id="transcriptConsole">
-<div class="text-engine-muted">-- Connecting to katie_ledger_demo on 127.0.0.1:5432</div>
-<div>[INFO] Initializing append-only trigger on public.crm_entities...</div>
-<div>[EXEC] INSERT INTO crm_deposits (kid, k, payload, authority) VALUES ('kid:user::acct-002', 1, '{"name":"Sofia Marchetti"}', 1.00);</div>
-<div class="text-status-lime">[COMMIT] k=1 sealed. Ingress ledger block committed.</div>
-<div>[EXEC] INSERT INTO crm_deposits (kid, k, payload, supersedes_k, reason) VALUES ('kid:user::acct-002', 2, '{"name":"Sofia Bennett"}', 1, 'married');</div>
-<div class="text-status-lime">[COMMIT] k=2 sealed. Chain intact. Prior state k=1 immutably anchored.</div>
-<div class="text-paper-light">[QUERY] SELECT * FROM as_of('kid:user::acct-002', k:=1) =&gt; Returns 'Sofia Marchetti' in 0.38ms.</div>
-</div>
+<div class="p-4 max-h-56 overflow-y-auto space-y-1 text-on-surface-variant font-mono whitespace-pre" id="transcriptConsole">
+        <div>$ katie-middleman --demo crm</div>
+        <div>[middleman] opened acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (katie tables assimilated)</div>
+        <div>[middleman] acct-002.cust_name = "Sofia Marchetti"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (deposit, auth 8)</div>
+        <div>[middleman] acct-002.email = "sofia.m@example.com"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (deposit, auth 7)</div>
+        <div>[middleman] acct-002.phone = "919-555-0119"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP (deposit, auth 5)</div>
+        <div>[middleman] acct-002.city = "Durham"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ (deposit, auth 5)</div>
+        <div>[middleman] acct-002.acct_status = "active"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR (deposit, auth 6)</div>
+        <div class="text-engine-muted"># …she gets married, takes her spouse's name…</div>
+        <div>[middleman] acct-002.cust_name = "Sofia Bennett"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (re-grade, auth 8)</div>
+        <div>[middleman] acct-002.email = "sofia.bennett@example.com"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (re-grade, auth 7)</div>
+        <div>=== acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (read back from pg) ===</div>
+        <div>  +- cust_name  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN</div>
+        <div>     [k1..k2] WILD auth=0.89 ["value=Sofia Marchetti", "signup form"] reason=None</div>
+        <div>     [k2..live] CANDIDATE auth=0.89 ["value=Sofia Bennett", "married"] reason=Some("married")</div>
+        <div>  +- email  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO</div>
+        <div>     [k1..k2] WILD auth=0.78 ["value=sofia.m@example.com", "signup form"] reason=None</div>
+        <div>     [k2..live] CANDIDATE auth=0.78 ["value=sofia.bennett@example.com", "married"] reason=Some("married")</div>
+        <div class="text-engine-muted"># the name changed. the person didn't. k1 sits byte-identical.</div>
+        <div class="text-engine-muted"># end of genuine run — 15 fields, 15 KIDs, 15 independent histories</div>
+      
 </div>
 </div>
 </div>
@@ -1212,218 +1229,260 @@ function resetScarDefaults() {
  }
 
  // Tab 03: Curve Bench & Grudge Simulator
- let currentGrudge = 0;
- let surfaceVal = 0;
- let depthVal = 0;
+ var grudgeDepth = 0, grudgeSurface = 0, grudgeConsecI = 0, grudgeConsecC = 0, grudgeHistory = [];
+  function renderGrudge() {
+    var cap = Math.max(grudgeDepth, grudgeSurface, 1);
+    document.getElementById('grudgeTicksDisplay').innerHTML = Math.round(grudgeDepth) + ' <span class="text-headline-lg font-sans text-engine-muted">ticks</span>';
+    document.getElementById('surfacePercent').textContent = Math.round(grudgeSurface) + ' ticks';
+    document.getElementById('depthPercent').textContent = Math.round(grudgeDepth) + ' ticks';
+    document.getElementById('barSurface').style.width = (grudgeSurface / cap * 100) + '%';
+    document.getElementById('barDepth').style.width = (grudgeDepth / cap * 100) + '%';
+    var desc = document.getElementById('grudgeDescriptor');
+    if (grudgeDepth <= 0.5 && grudgeSurface <= 0.5) { desc.textContent = 'No grudge held. Offend to start one.'; }
+    else { desc.textContent = 'Consecutive offenses: ' + grudgeConsecI + ' · next insult adds ' + Math.round(curveAt(curvePts.insults, grudgeConsecI + 1)) + ' ticks.'; }
+    var posLine = document.getElementById('curvePosLine'), posDot = document.getElementById('curvePosDot');
+    var n = curvePool === 'insults' ? grudgeConsecI : grudgeConsecC;
+    if (n > 0) {
+      var pts = curvePts[curvePool];
+      posLine.setAttribute('x1', curveX(n)); posLine.setAttribute('x2', curveX(n));
+      posLine.setAttribute('y1', 15); posLine.setAttribute('y2', CURVE_Y0);
+      posLine.setAttribute('visibility', 'visible');
+      posDot.setAttribute('cx', curveX(n)); posDot.setAttribute('cy', curveY(curveAt(pts, n)));
+      posDot.setAttribute('visibility', 'visible');
+    } else { posLine.setAttribute('visibility', 'hidden'); posDot.setAttribute('visibility', 'hidden'); }
+    var strip = document.getElementById('grudgeHistory');
+    if (strip) {
+      if (!grudgeHistory.length) { strip.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offend or make right to begin</span>'; }
+      else {
+        strip.innerHTML = '';
+        grudgeHistory.slice(-40).forEach(function(h) {
+          var b = document.createElement('div');
+          b.className = 'w-1.5 h-6 rounded-sm ' + (h.kind === 'insult' ? 'bg-ruby' : h.kind === 'mend' ? 'bg-primary' : 'bg-surface-container-high');
+          b.title = h.tip;
+          strip.appendChild(b);
+        });
+      }
+    }
+  }
+  function triggerGrudgeAction(action) {
+    if (action === 'offend') {
+      grudgeConsecI++; grudgeConsecC = 0;
+      var add = curveAt(curvePts.insults, grudgeConsecI);
+      grudgeDepth += add; grudgeSurface = grudgeDepth;
+      grudgeHistory.push({ kind: 'insult', tip: 'insult #' + grudgeConsecI + ' +' + Math.round(add) + ' ticks' });
+    } else if (action === 'repair') {
+      if (!(grudgeDepth <= 0.5 && grudgeSurface <= 0.5)) {
+        grudgeConsecC++; grudgeConsecI = 0;
+        var relief = Math.min(grudgeDepth, curveAt(curvePts.compliments, grudgeConsecC));
+        grudgeDepth -= relief; grudgeSurface = grudgeDepth;
+        grudgeHistory.push({ kind: 'mend', tip: 'make-right #' + grudgeConsecC + ' \u2212' + Math.round(relief) + ' ticks' });
+      }
+    } else if (action === 'tick') {
+      grudgeSurface *= Math.exp(-100 / 3); grudgeDepth *= Math.exp(-100 / 500);
+      if (grudgeSurface < 0.5) grudgeSurface = 0;
+      if (grudgeDepth < 0.5) grudgeDepth = 0;
+      grudgeHistory.push({ kind: 'tick', tip: '100 ticks passed' });
+    }
+    renderGrudge();
+  }
+  function resetGrudge() { grudgeDepth = 0; grudgeSurface = 0; grudgeConsecI = 0; grudgeConsecC = 0; grudgeHistory = []; renderGrudge(); }
 
- function triggerGrudgeAction(action) {
- if (action === 'offend') {
- currentGrudge += 85;
- surfaceVal = Math.min(100, surfaceVal + 75);
- depthVal = Math.min(100, depthVal + 40);
- } else if (action === 'repair') {
- // Repair fixes surface fast, but leaves slow-trace depth debt!
- surfaceVal = Math.max(0, surfaceVal - 65);
- currentGrudge = Math.max(12, currentGrudge - 25);
- depthVal = Math.max(15, depthVal - 10);
- } else if (action === 'tick') {
- // Passage of time slowly heals both
- surfaceVal = Math.max(0, surfaceVal - 30);
- depthVal = Math.max(0, depthVal - 18);
- currentGrudge = Math.max(0, currentGrudge - 35);
- }
-
- document.getElementById('grudgeTicksDisplay').innerHTML = `${currentGrudge} <span class="text-headline-lg font-sans text-engine-muted">ticks</span>`;
- document.getElementById('surfacePercent').textContent = surfaceVal + '%';
- document.getElementById('depthPercent').textContent = depthVal + '%';
- document.getElementById('barSurface').style.width = surfaceVal + '%';
- document.getElementById('barDepth').style.width = depthVal + '%';
-
- const desc = document.getElementById('grudgeDescriptor');
- if (currentGrudge === 0) {
- desc.textContent = 'Status: Latent / Equilibrated';
- desc.className = 'font-telemetry-cell text-telemetry-cell text-status-lime mt-1';
- } else if (currentGrudge > 60) {
- desc.textContent = 'Status: Active Grudge / Asymmetric Penalty Engaged';
- desc.className = 'font-telemetry-cell text-telemetry-cell text-ruby-hot mt-1';
- } else {
- desc.textContent = 'Status: Surface Repaired / Slow Trace Residual Active';
- desc.className = 'font-telemetry-cell text-telemetry-cell text-status-orange mt-1';
- }
- }
-
- function setCurvePool(pool, el) {
- const buttons = document.querySelectorAll('.pool-btn');
- buttons.forEach(b => {
- b.classList.remove('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40', 'bg-primary/15', 'text-primary', 'border-primary/40');
- b.classList.add('bg-surface-container', 'text-on-surface-variant');
- });
-
- const path = document.getElementById('curveBenchPath');
- const kneeVal = document.getElementById('curveKneeVal');
- if (pool === 'insults') {
- el.classList.add('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40');
- path.setAttribute('stroke', '#EF174C');
- path.setAttribute('d', 'M 30 180 C 140 180 200 140 280 80 S 430 20 480 15');
- kneeVal.textContent = 'Knee: 0.380 · Asymmetry: +2.4x';
- } else {
- el.classList.add('bg-primary/15', 'text-primary', 'border', 'border-primary/40');
- path.setAttribute('stroke', '#E6C364');
- path.setAttribute('d', 'M 30 180 C 180 150 240 110 320 60 S 420 40 480 30');
- kneeVal.textContent = 'Knee: 0.720 · Asymmetry: +0.6x';
- }
- }
+ var CURVE_X0 = 40, CURVE_Y0 = 175, CURVE_PW = 445, CURVE_PH = 155, CURVE_XMAX = 20, CURVE_YMAX = 90;
+  var CURVE_DEFAULTS = { insults: [[0,2],[1,5],[2,9],[4,16],[7,28],[11,45],[16,65],[20,80]], compliments: [[0,12],[1,9],[2,7],[4,5],[8,3],[14,1]] };
+  var curvePool = 'insults';
+  var curvePts = { insults: CURVE_DEFAULTS.insults.map(function(p) { return p.slice(); }), compliments: CURVE_DEFAULTS.compliments.map(function(p) { return p.slice(); }) };
+  function curveX(px) { return CURVE_X0 + px / CURVE_XMAX * CURVE_PW; }
+  function curveY(py) { return CURVE_Y0 - py / CURVE_YMAX * CURVE_PH; }
+  function curveAt(pts, x) {
+    if (x <= pts[0][0]) return pts[0][1];
+    for (var i = 1; i < pts.length; i++) {
+      if (x <= pts[i][0]) { var a = pts[i-1], b = pts[i]; return a[1] + (b[1]-a[1]) * (x-a[0]) / (b[0]-a[0]); }
+    }
+    return pts[pts.length-1][1];
+  }
+  function drawCurve() {
+    var pts = curvePts[curvePool];
+    var d = '';
+    for (var x = 0; x <= CURVE_XMAX; x += 0.25) { d += (x === 0 ? 'M' : 'L') + curveX(x).toFixed(1) + ' ' + curveY(curveAt(pts, x)).toFixed(1) + ' '; }
+    var path = document.getElementById('curveBenchPath');
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+    var g = document.getElementById('curvePointsG');
+    while (g.firstChild) g.removeChild(g.firstChild);
+    var svg = document.getElementById('benchCurveSvg');
+    pts.forEach(function(p, i) {
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', curveX(p[0])); c.setAttribute('cy', curveY(p[1])); c.setAttribute('r', 6);
+      c.setAttribute('fill', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+      c.setAttribute('stroke', '#060607'); c.setAttribute('stroke-width', 2);
+      c.style.cursor = 'grab';
+      c.addEventListener('pointerdown', function(e) {
+        e.preventDefault(); c.setPointerCapture(e.pointerId);
+        function move(ev) {
+          var r = svg.getBoundingClientRect();
+          var sx = (ev.clientX - r.left) / r.width * 500, sy = (ev.clientY - r.top) / r.height * 200;
+          var lo = i > 0 ? pts[i-1][0] + 0.5 : 0, hi = i < pts.length - 1 ? pts[i+1][0] - 0.5 : CURVE_XMAX;
+          var nx = Math.min(hi, Math.max(lo, (sx - CURVE_X0) / CURVE_PW * CURVE_XMAX));
+          var ny = Math.min(CURVE_YMAX, Math.max(0, Math.round((CURVE_Y0 - sy) / CURVE_PH * CURVE_YMAX)));
+          pts[i][0] = Math.round(nx * 2) / 2; pts[i][1] = ny;
+          drawCurve(); renderGrudge();
+        }
+        function up() { c.removeEventListener('pointermove', move); c.removeEventListener('pointerup', up); }
+        c.addEventListener('pointermove', move); c.addEventListener('pointerup', up);
+      });
+      g.appendChild(c);
+    });
+    document.getElementById('curveEyebrow').textContent = 'Pool · ' + curvePool;
+    document.getElementById('curveTitle').textContent = curvePool === 'insults' ? 'Nudge per consecutive insult' : 'Relief per consecutive make-right';
+    document.getElementById('curveLegend').textContent = curvePool === 'insults' ? 'ticks added' : 'ticks removed';
+    document.getElementById('curveNote').textContent = curvePool === 'insults' ? 'Drag the points. X is the consecutive-insult count, Y is the ticks each insult adds to the grudge. Steeper = the grudge deepens faster the longer it goes on.' : 'Drag the points. X is the consecutive make-right count, Y is the ticks each one removes from the grudge. Front-loaded = the first apology counts most.';
+  }
+  function setCurvePool(pool, el) {
+    var buttons = document.querySelectorAll('.pool-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40', 'bg-primary/15', 'text-primary', 'border-primary/40'); b.classList.add('bg-surface-container', 'text-on-surface-variant'); });
+    if (pool === 'insults') { el.classList.add('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40'); }
+    else { el.classList.add('bg-primary/15', 'text-primary', 'border-primary/40'); }
+    curvePool = pool; drawCurve(); renderGrudge();
+  }
+  function resetCurve() { curvePts[curvePool] = CURVE_DEFAULTS[curvePool].map(function(p) { return p.slice(); }); drawCurve(); renderGrudge(); }
 
  // Tab 04: Kernel Presets
  function setKernelPreset(name, el) {
- const buttons = document.querySelectorAll('.preset-btn');
- buttons.forEach(b => {
- b.classList.remove('bg-surface-container', 'border', 'border-primary/40');
- b.classList.add('bg-surface-container-low');
- });
- el.classList.add('bg-surface-container', 'border', 'border-primary/40');
- el.classList.remove('bg-surface-container-low');
-
- const label = document.getElementById('presetActiveLabel');
- const th = document.getElementById('pThreshold');
- const att = document.getElementById('pAttack');
- const rat = document.getElementById('pRatio');
- const rel = document.getElementById('pRelease');
- const win = document.getElementById('pWindow');
- const aut = document.getElementById('pAuthority');
- const kn = document.getElementById('pKnee');
-
- if (name === 'event') {
- label.textContent = 'ACTIVE: EVENT';
- th.textContent = '0.650';
- att.textContent = '12 ms';
- rat.textContent = '4.2 : 1';
- rel.textContent = '180 ms';
- win.textContent = '64 ticks';
- aut.textContent = '0.850';
- kn.textContent = 'Hermite Cubic Monotonic';
- } else if (name === 'topic') {
- label.textContent = 'ACTIVE: TOPIC';
- th.textContent = '0.400';
- att.textContent = '85 ms';
- rat.textContent = '2.1 : 1';
- rel.textContent = '920 ms';
- win.textContent = '512 ticks';
- aut.textContent = '0.700';
- kn.textContent = 'Asymmetric Soft Knee';
- } else if (name === 'sentinel') {
- label.textContent = 'ACTIVE: SENTINEL';
- th.textContent = '0.920';
- att.textContent = '1 ms';
- rat.textContent = '16.0 : 1';
- rel.textContent = '4200 ms';
- win.textContent = '1024 ticks';
- aut.textContent = '0.999';
- kn.textContent = 'Hard Boundary Clamped';
- }
- }
+    var buttons = document.querySelectorAll('.preset-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-surface-container', 'border', 'border-primary/40'); b.classList.add('bg-surface-container-low'); });
+    el.classList.add('bg-surface-container', 'border', 'border-primary/40');
+    el.classList.remove('bg-surface-container-low');
+    var label = document.getElementById('presetActiveLabel');
+    var th = document.getElementById('pThreshold'), att = document.getElementById('pAttack'), rat = document.getElementById('pRatio'), rel = document.getElementById('pRelease'), win = document.getElementById('pWindow'), aut = document.getElementById('pAuthority'), kn = document.getElementById('pKnee');
+    var asg = document.getElementById('pAssigned'), shp = document.getElementById('pShape'), why = document.getElementById('pWhy');
+    var presets = {
+      event: ['ACTIVE: EVENT', '0.35', 'Fast', '3:1', 'Medium', '12 ticks', '0.70', 'Soft exponential', 'A single event', 'Fast impact, measured release', 'capture the immediate hit without losing its longer influence.'],
+      topic: ['ACTIVE: TOPIC', '0.20', 'Medium', '2:1', 'Long', 'Open', '0.60', 'Wide knee', 'A topic / event grouping', 'Aggregated influence', 'many related events can accumulate into one historical pressure.'],
+      sentinel: ['ACTIVE: SENTINEL', '0.55', 'Immediate', '8:1', 'Full tick', '1 cycle', '0.90', 'Hard knee', 'A held system mode', 'Snap on, stand down slowly', 'once the threshold is crossed, slow release keeps the state from dropping too quickly.']
+    };
+    var v = presets[name];
+    label.textContent = v[0]; th.textContent = v[1]; att.textContent = v[2]; rat.textContent = v[3]; rel.textContent = v[4]; win.textContent = v[5]; aut.textContent = v[6]; kn.textContent = v[7]; asg.textContent = v[8]; shp.textContent = v[9]; why.textContent = v[10];
+  }
 
  // Tab 05: Ruby Glasses Prompt Interrogation
  function setRubyPrompt(id, el) {
- const buttons = document.querySelectorAll('.ruby-prompt-btn');
- buttons.forEach(b => {
- b.classList.remove('bg-ruby', 'text-paper-light', 'shadow-md');
- b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
- });
- el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
- el.classList.add('bg-ruby', 'text-paper-light', 'shadow-md');
-
- const t1 = document.getElementById('rTrace1');
- const t2 = document.getElementById('rTrace2');
- const t3 = document.getElementById('rTrace3');
- const t4 = document.getElementById('rTrace4');
- const hash = document.getElementById('rubyQueryHash');
-
- if (id === 1) {
- hash.textContent = 'HASH: 0x9b3a…7f01';
- t1.textContent = 'Transaction inbound: $2,400,000 settlement to Counterparty 0x01E.';
- t2.textContent = 'Field law detects slow-trace debt on destination escrow: deficit 0.44 ticks lingering from prior sanctions challenge.';
- t3.textContent = 'Threshold knee calculation forces dynamic gate compression from 0.85 authority to 0.12 authority.';
- t4.textContent = "Halt executed. Supersession cell written with reason: 'UNRESOLVED_SLOW_DEFICIT_ESCROW'.";
- } else if (id === 2) {
- hash.textContent = 'HASH: 0x4f12…ce99';
- t1.textContent = 'Accelerometer A reported 14.8 m/s² vibration anomaly outside nominal Gaussian window.';
- t2.textContent = 'Cross-validation against Sensor B and Sentinel C indicated divergence delta > 4.2σ.';
- t3.textContent = 'Authority downgrade event fired: grade fell from 0.88 to 0.24 without erasing the ingress cell.';
- t4.textContent = "Device state transitioned to WILD pending technician attestation deed.";
- } else if (id === 3) {
- hash.textContent = 'HASH: 0x88ea…01bc';
- t1.textContent = 'Deed #802 submitted claiming algorithmic policy exemption for dark pool routing.';
- t2.textContent = ' deed signature validated, but deed parameter exceeded maximum allowed release slope (180ms vs max 50ms).';
- t3.textContent = 'KATIE poison-proof firewall isolated token to quarantine memory rail.';
- t4.textContent = 'Rejection logged immutably at k=61. Rejection certificate issued to compliance desk.';
- }
- }
+    var buttons = document.querySelectorAll('.ruby-prompt-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-ruby', 'text-paper-light', 'shadow-md'); b.classList.add('bg-surface-container-low', 'text-on-surface-variant'); });
+    el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    el.classList.add('bg-ruby', 'text-paper-light', 'shadow-md');
+    var answers = {
+      1: "I stopped the transfer because the recipient's authority fell below the execution threshold at 14:32:08.",
+      2: "I first believed the recipient was approved. New routing data weakened that belief from 0.9 authority to 0.2. Both states remain in the record.",
+      3: "The destination comparison contradicted the approved record. That conflict—not a later reconstruction—changed the recipient belief at 14:32:05."
+    };
+    document.getElementById('rubyAnswer').textContent = answers[id] || "This interface would open the recorded beliefs, authority changes, and sources that governed that decision.";
+  }
 
  // Tab 06: CRM Demo Switcher
- function setCRMAccount(acct, el) {
- const buttons = document.querySelectorAll('.crm-acct-btn');
- buttons.forEach(b => {
- b.classList.remove('bg-primary', 'text-on-primary');
- b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
- });
- el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
- el.classList.add('bg-primary', 'text-on-primary');
+ var CRM_KID_BASE = 'AAAAAAAAAAAAAAAAatZqtAAAAAAAAAA';
+  var CRM_DATA = {
+    'acct-001': { label: 'acct-001 · Darren Hall', recordKid: CRM_KID_BASE + 'B', fields: [
+      { name: 'cust_name', kid: 'C', intervals: [{ k0: 1, k1: null, value: 'Darren Hall', auth: 0.89, state: 'WILD', evidence: 'signup form', reason: null }] },
+      { name: 'email', kid: 'D', intervals: [{ k0: 1, k1: null, value: 'darren@volshi.com', auth: 0.89, state: 'WILD', evidence: 'signup form', reason: null }] },
+      { name: 'phone', kid: 'E', intervals: [{ k0: 1, k1: null, value: '919-555-0142', auth: 0.56, state: 'WILD', evidence: 'user provided', reason: null }] },
+      { name: 'company', kid: 'F', intervals: [{ k0: 1, k1: null, value: 'VOLSHi', auth: 0.78, state: 'WILD', evidence: 'signup form', reason: null }] },
+      { name: 'title', kid: 'G', intervals: [{ k0: 1, k1: 2, value: 'Founder', auth: 0.67, state: 'WILD', evidence: 'linkedin import', reason: null }, { k0: 2, k1: null, value: 'Founder & CEO', auth: 0.78, state: 'CANDIDATE', evidence: 'self reported', reason: 'self reported' }] },
+      { name: 'city', kid: 'H', intervals: [{ k0: 1, k1: null, value: 'Raleigh', auth: 0.56, state: 'WILD', evidence: 'user provided', reason: null }] },
+      { name: 'state', kid: 'I', intervals: [{ k0: 1, k1: null, value: 'NC', auth: 0.56, state: 'WILD', evidence: 'user provided', reason: null }] },
+      { name: 'industry', kid: 'J', intervals: [{ k0: 1, k1: null, value: 'AI infrastructure', auth: 0.44, state: 'WILD', evidence: 'enrichment', reason: null }] },
+      { name: 'acct_status', kid: 'K', intervals: [{ k0: 1, k1: 2, value: 'active', auth: 0.67, state: 'WILD', evidence: 'account opened', reason: null }, { k0: 2, k1: null, value: 'suspended', auth: 0.22, state: 'CANDIDATE', evidence: 'missed payment', reason: 'missed payment' }] },
+      { name: 'lead_source', kid: 'L', intervals: [{ k0: 1, k1: null, value: 'web', auth: 0.78, state: 'WILD', evidence: 'utm tracking', reason: null }] }
+    ] },
+    'acct-002': { label: 'acct-002 · Sofia Bennett', recordKid: CRM_KID_BASE + 'M', fields: [
+      { name: 'cust_name', kid: 'N', intervals: [{ k0: 1, k1: 2, value: 'Sofia Marchetti', auth: 0.89, state: 'WILD', evidence: 'signup form', reason: null }, { k0: 2, k1: null, value: 'Sofia Bennett', auth: 0.89, state: 'CANDIDATE', evidence: 'married', reason: 'married' }] },
+      { name: 'email', kid: 'O', intervals: [{ k0: 1, k1: 2, value: 'sofia.m@example.com', auth: 0.78, state: 'WILD', evidence: 'signup form', reason: null }, { k0: 2, k1: null, value: 'sofia.bennett@example.com', auth: 0.78, state: 'CANDIDATE', evidence: 'married', reason: 'married' }] },
+      { name: 'phone', kid: 'P', intervals: [{ k0: 1, k1: null, value: '919-555-0119', auth: 0.56, state: 'WILD', evidence: 'user provided', reason: null }] },
+      { name: 'city', kid: 'Q', intervals: [{ k0: 1, k1: null, value: 'Durham', auth: 0.56, state: 'WILD', evidence: 'user provided', reason: null }] },
+      { name: 'acct_status', kid: 'R', intervals: [{ k0: 1, k1: null, value: 'active', auth: 0.67, state: 'WILD', evidence: 'account opened', reason: null }] }
+    ] }
+  };
+  var crmCurrentAcct = 'acct-002';
+  function crmKidShort(kid) { return '\u2026' + kid.slice(-10); }
+  function renderCRM(acct, fieldName) {
+    var acctData = CRM_DATA[acct];
+    var fields = acctData.fields;
+    var selected = fields[0];
+    fields.forEach(function(f) { if (f.name === fieldName) selected = f; });
+    var legacy = document.getElementById('crmLegacyRecord');
+    legacy.innerHTML = '';
+    fields.forEach(function(f) {
+      var live = f.intervals[f.intervals.length - 1];
+      var row = document.createElement('div');
+      row.className = 'flex items-center justify-between gap-3 px-3 py-2 rounded cursor-pointer ' + (f === selected ? 'bg-primary/15 border border-primary/40' : 'hover:bg-surface-container-high');
+      row.onclick = (function(name) { return function() { selectCRMField(name); }; })(f.name);
+      row.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-line">' + f.name + '</span><span class="font-mono text-body-sm text-paper-light">' + live.value + '</span>';
+      legacy.appendChild(row);
+    });
+    var kidPane = document.getElementById('crmKidIdentity');
+    kidPane.innerHTML = '';
+    fields.forEach(function(f) {
+      var kid = CRM_KID_BASE + f.kid;
+      var row = document.createElement('div');
+      row.className = 'flex items-center justify-between gap-3 px-3 py-2 rounded cursor-pointer ' + (f === selected ? 'bg-primary/15 border border-primary/40' : 'hover:bg-surface-container-high');
+      row.onclick = (function(name) { return function() { selectCRMField(name); }; })(f.name);
+      row.title = kid;
+      row.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-line">' + f.name + '</span><span class="font-mono text-body-sm text-primary">' + crmKidShort(kid) + '</span>';
+      kidPane.appendChild(row);
+    });
+    document.getElementById('crmKidFooter').textContent = 'record KID ' + crmKidShort(acctData.recordKid) + ' \u00b7 every field KID bound to it';
+    var hint = document.getElementById('crmKRecordHint');
+    var multi = selected.intervals.length > 1;
+    hint.textContent = multi ? 'Every value "' + selected.name + '" ever held \u2014 and why each one changed.' : 'Every value "' + selected.name + '" ever held. Only one so far \u2014 it has never changed.';
+    var history = document.getElementById('crmKRecordHistory');
+    history.innerHTML = '';
+    selected.intervals.forEach(function(iv, idx) {
+      var live = idx === selected.intervals.length - 1;
+      var card = document.createElement('div');
+      card.className = 'p-3 rounded bg-surface-container-low flex flex-col gap-1 ' + (live ? 'border border-primary/40' : 'border border-line-subtle');
+      var badge = 'k' + iv.k0 + ' \u2192 ' + (iv.k1 === null ? 'live' : 'k' + iv.k1);
+      var html = '<div class="flex justify-between font-telemetry-cell text-telemetry-cell"><span class="text-primary font-bold">' + badge + '</span><span>' + iv.state + (live ? ' \u00b7 current' : '') + '</span></div>';
+      html += '<div class="font-mono text-body-md text-paper-light">' + iv.value + '</div>';
+      html += '<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary" style="width: ' + Math.round(iv.auth * 100) + '%"></div></div>';
+      html += '<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">authority ' + Math.round(iv.auth * 100) + '% \u00b7 evidence: value=' + iv.value + ' \u00b7 ' + iv.evidence + '</div>';
+      if (iv.reason) html += '<div><span class="font-telemetry-cell text-telemetry-cell text-status-lime">why: ' + iv.reason + '</span></div>';
+      card.innerHTML = html;
+      history.appendChild(card);
+    });
+    var note = document.createElement('div');
+    note.className = 'font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50';
+    note.textContent = multi ? 'Frozen. Closed intervals are byte-identical to the day they were written \u2014 only the live one can ever be superseded.' : 'Append-only: this interval can only ever be superseded, never edited or deleted.';
+    history.appendChild(note);
+  }
+  function selectCRMField(fieldName) { renderCRM(crmCurrentAcct, fieldName); }
+  function setCRMAccount(acct, el) {
+    var buttons = document.querySelectorAll('.crm-acct-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-primary', 'text-on-primary'); b.classList.add('bg-surface-container-low', 'text-on-surface-variant'); });
+    el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    el.classList.add('bg-primary', 'text-on-primary');
+    crmCurrentAcct = acct;
+    renderCRM(acct, 'cust_name');
+  }
 
- const legacy = document.getElementById('crmLegacyRecord');
- const kid = document.getElementById('crmKidIdentity');
- const history = document.getElementById('crmKRecordHistory');
-
- if (acct === 'acct-002') {
- legacy.innerHTML = 'name: "Sofia Bennett"<br>account_id: "acct-002"<br>status: "Verified"<br>updated_at: "2026-10-24 14:02:11"';
- kid.innerHTML = 'KID: kid:user::acct-002<br>genesis_k: 1<br>current_k: 2<br>traces: 2 sealed blocks';
- history.innerHTML = `
- <div class="p-3 rounded bg-surface-container-low border border-line-subtle flex flex-col gap-1">
- <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
- <span class="text-primary font-bold">k = 1 (Oct 23, 2026)</span>
- <span class="text-engine-muted font-mono">:4b2e…11a</span>
- </div>
- <div class="font-mono text-body-sm text-paper-light">name: "Sofia Marchetti"</div>
- <div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Authority: 1.00 · Status: Preserved byte-identical</div>
- </div>
- <div class="p-3 rounded bg-surface-container-low border border-primary/40 flex flex-col gap-1">
- <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
- <span class="text-primary font-bold">k = 2 (Oct 24, 2026)</span>
- <span class="text-engine-muted font-mono">:7c9f…44b</span>
- </div>
- <div class="font-mono text-body-sm text-paper-light">name: "Sofia Bennett"</div>
- <div class="font-telemetry-cell text-telemetry-cell text-status-lime">Reason: 'married' · Supersedes k=1</div>
- </div>
- `;
- } else {
- legacy.innerHTML = 'name: "Darren Hall"<br>account_id: "acct-001"<br>status: "Founder / Root"<br>updated_at: "2026-10-23 09:15:00"';
- kid.innerHTML = 'KID: kid:user::acct-001<br>genesis_k: 1<br>current_k: 1<br>traces: 1 sealed block';
- history.innerHTML = `
- <div class="p-3 rounded bg-surface-container-low border border-primary/40 flex flex-col gap-1">
- <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
- <span class="text-primary font-bold">k = 1 (Oct 23, 2026)</span>
- <span class="text-engine-muted font-mono">:91df…84c</span>
- </div>
- <div class="font-mono text-body-sm text-paper-light">name: "Darren Hall"</div>
- <div class="font-telemetry-cell text-telemetry-cell text-status-lime">Authority: 1.00 · Genesis Root Attestation</div>
- </div>
- `;
- }
- }
-
- function replayMiddlemanTranscript() {
- const consoleEl = document.getElementById('transcriptConsole');
- consoleEl.innerHTML = '<div class="text-primary font-bold">-- REPLAYING POSTGRES MIDDLEMAN STREAM --</div>';
- setTimeout(() => {
- consoleEl.innerHTML += '<div>[0.01ms] BEGIN WORK TRANSACTION SERIALIZABLE;</div>';
- }, 100);
- setTimeout(() => {
- consoleEl.innerHTML += '<div class="text-status-lime">[0.12ms] ATTESTATION: Verified chain depth 2.</div>';
- }, 250);
- setTimeout(() => {
- consoleEl.innerHTML += '<div class="text-paper-light">[0.28ms] REPLAY PROOF: as_of(k=1) yields "Sofia Marchetti" with zero mutation errors.</div>';
- }, 400);
- }
+ var CRM_TRANSCRIPT = ["$ katie-middleman --demo crm", "[middleman] opened acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (katie tables assimilated)", "[middleman] acct-002.cust_name = \"Sofia Marchetti\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (deposit, auth 8)", "[middleman] acct-002.email = \"sofia.m@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (deposit, auth 7)", "[middleman] acct-002.phone = \"919-555-0119\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP (deposit, auth 5)", "[middleman] acct-002.city = \"Durham\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ (deposit, auth 5)", "[middleman] acct-002.acct_status = \"active\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR (deposit, auth 6)", "# …she gets married, takes her spouse's name…", "[middleman] acct-002.cust_name = \"Sofia Bennett\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (re-grade, auth 8)", "[middleman] acct-002.email = \"sofia.bennett@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (re-grade, auth 7)", "=== acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (read back from pg) ===", "  +- cust_name  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN", "     [k1..k2] WILD auth=0.89 [\"value=Sofia Marchetti\", \"signup form\"] reason=None", "     [k2..live] CANDIDATE auth=0.89 [\"value=Sofia Bennett\", \"married\"] reason=Some(\"married\")", "  +- email  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO", "     [k1..k2] WILD auth=0.78 [\"value=sofia.m@example.com\", \"signup form\"] reason=None", "     [k2..live] CANDIDATE auth=0.78 [\"value=sofia.bennett@example.com\", \"married\"] reason=Some(\"married\")", "# the name changed. the person didn't. k1 sits byte-identical.", "# end of genuine run — 15 fields, 15 KIDs, 15 independent histories"];
+  function replayMiddlemanTranscript() {
+    var consoleEl = document.getElementById('transcriptConsole');
+    consoleEl.innerHTML = '';
+    var delay = 0;
+    CRM_TRANSCRIPT.forEach(function(line) {
+      delay += line.charAt(0) === '#' ? 650 : 300;
+      (function(text, d) {
+        setTimeout(function() {
+          var div = document.createElement('div');
+          if (text.charAt(0) === '#') div.className = 'text-engine-muted';
+          div.textContent = text;
+          consoleEl.appendChild(div);
+        }, d);
+      })(line, delay);
+    });
+  }
+  drawCurve();
+  renderGrudge();
+  renderCRM('acct-002', 'cust_name');
  </script>
 </div></main><footer class="w-full bg-ground-deep border-t border-gold-glass-stroke py-space-xl relative overflow-hidden"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg border-b border-line-subtle"><div class="flex items-center gap-space-sm"><a href="/home/" class="inline-flex items-center"><img src="../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"></a></div><div class="flex flex-col gap-1 font-telemetry-cell text-telemetry-cell text-engine-line lg:items-end"><a class="hover:text-primary transition-colors whitespace-nowrap" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23137456</a><a class="hover:text-primary transition-colors whitespace-nowrap" href="https://doi.org/10.5281/zenodo.23198458" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23198458</a><span class="whitespace-nowrap">U.S. Prov. Pat. App. 64/182,709</span></div></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-telemetry-cell text-telemetry-cell text-on-surface-variant"><p>© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p><p class="text-engine-muted">Candidate Computational Law · Append-Only Evidence Protocol</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-engine-muted hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></div></div></footer>
 
