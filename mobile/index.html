@@ -7,8 +7,10 @@
  <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
 </head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex flex-col"><div class="flex items-center gap-1.5"><img src="../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-8 w-auto object-contain"></div></div></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">10.5281/zenodo.23198458</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="px-space-sm pt-space-xs"><div class="flex items-center justify-between py-space-xs"><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-widest text-on-surface-variant/70">SECURE NODE // ARCHIVE VIEW</span><span class="font-telemetry-code text-telemetry-code text-primary/80 uppercase">Home</span></div></div><div class="flex flex-col w-full">
 <!-- SECTION 1: HERO -->
-<section class="flex flex-col px-space-sm pt-space-md pb-space-lg">
-<div class="flex flex-col gap-space-xs">
+<section class="relative overflow-hidden flex flex-col px-space-sm pt-space-md pb-space-lg">
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image:url('../assets/img/hero-face.jpg');background-size:cover;background-repeat:no-repeat;background-position:center 12%;"></div>
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:linear-gradient(180deg,rgba(6,6,8,.85) 0%,rgba(6,6,8,.50) 32%,rgba(6,6,8,.12) 58%,rgba(6,6,8,.08) 100%);"></div>
+<div class="relative z-10 flex flex-col gap-space-xs">
 <div class="inline-flex items-center gap-1.5 self-start px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-telemetry-cell text-telemetry-cell tracking-wider uppercase">
 <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
 <span>VOLSHi / COMPLIANCE INFRASTRUCTURE</span>
@@ -35,7 +37,7 @@
 <div class="grid grid-cols-3 gap-2 text-center py-1"><div class="flex flex-col rounded bg-surface-container p-1.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">OBSERVATION</span><span class="font-telemetry-head text-telemetry-head text-primary font-semibold">CONTINUOUS</span></div><div class="flex flex-col rounded bg-surface-container p-1.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">PROVENANCE</span><span class="font-telemetry-head text-telemetry-head text-on-surface font-semibold">EPISTEMIC</span></div><div class="flex flex-col rounded bg-surface-container p-1.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">ENFORCEMENT</span><span class="font-telemetry-head text-telemetry-head text-status-lime font-semibold">PRE-EXEC</span></div></div>
 </div>
 <!-- CTAs -->
-<div class="flex flex-col gap-2.5 mt-space-md">
+<div class="relative z-10 flex flex-col gap-2.5 mt-space-md">
 <a class="w-full flex items-center justify-center gap-2 py-3 px-space-md rounded-lg bg-primary text-on-primary font-headline-md text-[15px] font-semibold tracking-wide transition-transform active:scale-[0.98] shadow-lg shadow-primary/10" href="#trifecta">
 <span>Explore The Span</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -46,7 +48,7 @@
 </a>
 </div>
 <!-- Ticker Stream -->
-<div class="mt-space-md rounded-lg bg-surface-container-lowest p-2 overflow-x-auto scrollbar-none">
+<div class="relative z-10 mt-space-md rounded-lg bg-surface-container-lowest p-2 overflow-x-auto scrollbar-none">
 <div class="flex items-center gap-2 whitespace-nowrap font-telemetry-cell text-telemetry-cell text-on-surface-variant">
 <span class="text-primary font-semibold">FLOW:</span>
 <span class="text-on-surface">Human Experience</span>

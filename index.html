@@ -25,17 +25,18 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   @keyframes cue-pulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
   .landing-fade { animation: landing-in 900ms ease-out both; }
   @keyframes landing-in { from { opacity: 0; } to { opacity: 1; } }
+  .landing-img { animation: face-slide 4s cubic-bezier(.22,.61,.36,1) both; will-change: transform; }
+  @keyframes face-slide { from { transform: scale(1.7) translateX(16%); } to { transform: scale(1) translateX(0); } }
   a.landing-link:focus-visible { outline: 2px solid #e6c364; outline-offset: -2px; }
   @media (prefers-reduced-motion: reduce) {
-    .landing-enter, .landing-fade { animation: none; }
-    .landing-img { transition: none !important; }
+    .landing-enter, .landing-fade, .landing-img { animation: none; }
   }
 </style>
 <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
 </head>
 <body class="bg-ground-deep">
 <a href="/home/" class="landing-link landing-fade group relative block w-full overflow-hidden" style="height:100vh; height:100dvh;" aria-label="Enter the VOLSHi site — compliance infrastructure for AI agents">
-  <img src="assets/img/hero-face.jpg" alt="" fetchpriority="high" class="landing-img absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]" style="object-position:60% 30%;">
+  <img src="assets/img/hero-face.jpg" alt="" fetchpriority="high" class="landing-img absolute inset-0 h-full w-full object-cover" style="object-position:60% 30%;">
   <div class="landing-scrim absolute inset-0" aria-hidden="true"></div>
   <div class="absolute inset-0 flex flex-col justify-between p-6 md:p-12">
     <div class="flex items-center justify-between">
