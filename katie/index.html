@@ -1318,7 +1318,8 @@ function resetScarDefaults() {
       nc.style.cursor = 'grab';
       nc.addEventListener('pointerdown', function(e) {
         var c = e.currentTarget;
-        e.preventDefault(); c.setPointerCapture(e.pointerId);
+        e.preventDefault();
+        try { c.setPointerCapture(e.pointerId); } catch (err) {}
         function move(ev) {
           var live = curvePts[curvePool]; var i = c._curveIdx;
           var r = svg.getBoundingClientRect();
@@ -1329,8 +1330,10 @@ function resetScarDefaults() {
           live[i][0] = Math.round(nx * 2) / 2; live[i][1] = ny;
           drawCurve(); renderGrudge();
         }
-        function up() { c.removeEventListener('pointermove', move); c.removeEventListener('pointerup', up); }
-        c.addEventListener('pointermove', move); c.addEventListener('pointerup', up);
+        function up() { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up); }
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+        window.addEventListener('pointercancel', up);
       });
       g.appendChild(nc);
       curveCircles.push(nc);
