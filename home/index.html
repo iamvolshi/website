@@ -64,7 +64,7 @@
  </style>
 <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
 </head>
-<body class="bg-ground-deep font-sans text-[#e5e2e1] antialiased selection:bg-primary selection:text-black min-h-screen relative overflow-x-hidden"><script>if(window.innerWidth<768){location.replace('/mobile/');}</script>
+<body class="bg-ground-deep font-sans text-[#e5e2e1] antialiased selection:bg-primary selection:text-black min-h-screen relative overflow-x-hidden"><script>if(window.innerWidth<768){location.replace('/mobile/'+location.hash);}</script>
 
  <div class="fixed inset-0 pointer-events-none bg-grid opacity-60 z-0"></div>
  <div class="fixed top-0 left-0 right-0 h-[800px] pointer-events-none gold-glow z-0"></div>
@@ -937,6 +937,7 @@ function syncHomeNav(){
     var el=document.getElementById(order[i]);
     if(el && links[order[i]] && el.getBoundingClientRect().top<=120) current=order[i];
   }
+  if((window.innerHeight+window.scrollY)>=(document.documentElement.scrollHeight-2)) current='contact';
   var ACTIVE=['text-primary','relative','font-medium','after:absolute','after:bottom-0','after:left-0','after:w-full','after:h-[2px]','after:bg-primary'];
   var INACTIVE=['text-on-surface-variant','hover:text-paper-light','transition-colors'];
   Object.keys(links).forEach(function(key){

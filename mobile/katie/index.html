@@ -115,7 +115,7 @@
 </div>
 <div class="flex items-center justify-between text-[11px] font-telemetry-cell text-on-surface-variant/50 pt-0.5 px-0.5">
 <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">swipe</span> Swipe left / right to navigate tabs</span>
-<span class="text-primary/70 font-mono" id="tab-index-hint">1 / 6</span>
+<span class="text-primary/70 font-mono" id="tab-index-hint">2 / 6</span>
 </div>
 </section>
 <!-- Interactive Suite Container with Overflow Hidden Viewport -->
@@ -629,7 +629,7 @@
 </div>
 <script>
  const SUITE_TABS = ['01', '02', '03', '04', '05', '06'];
- let currentActiveTab = '01';
+ let currentActiveTab = '02';
  let activeDepositType = 'CONFIRM';
  let currentK = 40;
  let isTransitioning = false;
@@ -706,7 +706,7 @@
 
  const animDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 150 : 290;
  setTimeout(() => {
- currentView.classList.add('hidden');
+ document.querySelectorAll('.suite-view').forEach(v => { if (v !== targetView) v.classList.add('hidden'); });
  currentView.classList.remove(outAnimClass);
  targetView.classList.remove(inAnimClass);
  isTransitioning = false;
@@ -1038,6 +1038,7 @@
    renderGrudge();
  }
  function resetGrudge() { mGrudgeDepth = 0; mGrudgeSurface = 0; mGrudgeConsecI = 0; mGrudgeConsecC = 0; mGrudgeHistory = []; renderGrudge(); }
+ var curveCircles = [];
  function drawCurve() {
    var pts = curvePts[curvePool];
    var d = '';
@@ -1046,30 +1047,40 @@
    path.setAttribute('d', d);
    path.setAttribute('stroke', curvePool === 'insults' ? '#EF174C' : '#E6C364');
    var g = document.getElementById('mCurvePointsG');
-   while (g.firstChild) g.removeChild(g.firstChild);
    var svg = document.getElementById('mBenchSvg');
-   pts.forEach(function(p, i) {
-     var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-     c.setAttribute('cx', curveX(p[0])); c.setAttribute('cy', curveY(p[1])); c.setAttribute('r', 9);
-     c.setAttribute('fill', curvePool === 'insults' ? '#EF174C' : '#E6C364');
-     c.setAttribute('stroke', '#060607'); c.setAttribute('stroke-width', 2);
-     c.style.cursor = 'grab';
-     c.style.touchAction = 'none';
-     c.addEventListener('pointerdown', function(e) {
+   // Persistent circles: recreating them on every redraw kills the pointer
+   // capture mid-drag, so the dragged point never follows the pointer.
+   while (curveCircles.length < pts.length) {
+     var nc = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+     nc.setAttribute('r', 9);
+     nc.setAttribute('stroke', '#060607'); nc.setAttribute('stroke-width', 2);
+     nc.style.cursor = 'grab';
+     nc.style.touchAction = 'none';
+     nc.addEventListener('pointerdown', function(e) {
+       var c = e.currentTarget;
        e.preventDefault(); c.setPointerCapture(e.pointerId);
        function move(ev) {
+         var live = curvePts[curvePool]; var i = c._curveIdx;
          var r = svg.getBoundingClientRect();
          var sx = (ev.clientX - r.left) / r.width * 320, sy = (ev.clientY - r.top) / r.height * 200;
-         var lo = i > 0 ? pts[i-1][0] + 0.5 : 0, hi = i < pts.length - 1 ? pts[i+1][0] - 0.5 : CURVE_XMAX;
+         var lo = i > 0 ? live[i-1][0] + 0.5 : 0, hi = i < live.length - 1 ? live[i+1][0] - 0.5 : CURVE_XMAX;
          var nx = Math.min(hi, Math.max(lo, (sx - CURVE_X0) / CURVE_PW * CURVE_XMAX));
          var ny = Math.min(CURVE_YMAX, Math.max(0, Math.round((CURVE_Y0 - sy) / CURVE_PH * CURVE_YMAX)));
-         pts[i][0] = Math.round(nx * 2) / 2; pts[i][1] = ny;
+         live[i][0] = Math.round(nx * 2) / 2; live[i][1] = ny;
          drawCurve(); renderGrudge();
        }
        function up() { c.removeEventListener('pointermove', move); c.removeEventListener('pointerup', up); }
        c.addEventListener('pointermove', move); c.addEventListener('pointerup', up);
      });
-     g.appendChild(c);
+     g.appendChild(nc);
+     curveCircles.push(nc);
+   }
+   while (curveCircles.length > pts.length) { g.removeChild(curveCircles.pop()); }
+   pts.forEach(function(p, i) {
+     var c = curveCircles[i];
+     c._curveIdx = i;
+     c.setAttribute('cx', curveX(p[0])); c.setAttribute('cy', curveY(p[1]));
+     c.setAttribute('fill', curvePool === 'insults' ? '#EF174C' : '#E6C364');
    });
    document.getElementById('mCurveEyebrow').textContent = 'Pool · ' + curvePool;
    document.getElementById('mCurveTitle').textContent = curvePool === 'insults' ? 'Nudge per consecutive insult' : 'Relief per consecutive make-right';
@@ -1089,4 +1100,4 @@
 </script><footer class="mt-space-xl px-space-sm pb-28 text-center flex flex-col items-center gap-space-xs"><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. All rights reserved. · Research Triangle Park, North Carolina</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-on-surface-variant/70 hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="/mobile/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="the-system" href="/mobile/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">System</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="katie" href="/mobile/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/mobile/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Research</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/mobile/research/#invest"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Invest</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/mobile/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
 
 
-<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Your connection</span><button onclick="closeConnPanel()" aria-label="Close" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Status</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Network</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Downlink</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Page load</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Re-check</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Measured locally in your browser. Nothing is sent anywhere.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'Online':'Offline';pg.textContent='measuring\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'unknown')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'not reported');}else{nt.textContent='not reported by this browser';dl.textContent='not reported by this browser';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms to first byte \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms loaded';}else{ld.textContent='not reported by this browser';}}catch(e){ld.textContent='not reported by this browser';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'unreachable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('offline',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Offline';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='offline';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script></body></html>
+<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Your connection</span><button onclick="closeConnPanel()" aria-label="Close" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Status</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Network</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Downlink</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Page load</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Re-check</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Measured locally in your browser. Nothing is sent anywhere.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'Online':'Offline';pg.textContent='measuring\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'unknown')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'not reported');}else{nt.textContent='not reported by this browser';dl.textContent='not reported by this browser';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms to first byte \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms loaded';}else{ld.textContent='not reported by this browser';}}catch(e){ld.textContent='not reported by this browser';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'unreachable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('offline',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Offline';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='offline';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script><script>(function(){var map={engine:'01','scar-lab':'02','curve-bench':'03',kernel:'04','ruby-glasses':'05','crm-demo':'06'};function tabFromHash(){var t=(location.hash||'').replace('#','');if(map[t]&&typeof switchSuiteTab==='function'){switchSuiteTab(map[t]);}}document.addEventListener('DOMContentLoaded',tabFromHash);window.addEventListener('hashchange',tabFromHash);})();</script></body></html>

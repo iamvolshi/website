@@ -309,6 +309,24 @@
  Every agent action observed in real time. Every belief, every decision, every handoff — issued a receipt and written to the K-record.
  </p>
 </div>
+<!-- 02 ERIE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-tertiary uppercase font-bold tracking-wider">02 // ERIE — Verifies</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-tertiary font-telemetry-cell text-telemetry-cell">GROUNDING</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ Retrieval without hallucination. What comes back is grounded in the record — no invented answers, no confident fiction.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary inline-block"></span>
+ Verified Retrieval
+ </span>
+<span class="text-on-surface-variant">ZERO-HALLUCINATION</span>
+</div>
+</div>
 <!-- 03 ELLE -->
 <div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
 <div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
@@ -680,7 +698,8 @@ function syncMobileHomeNav(){
   var contactLink=document.querySelector('nav a[data-path="contact"]');
   if(!contact||!home||!contactLink) return;
   var r=contact.getBoundingClientRect();
-  var onContact=r.top<=96 && r.bottom>96;
+  var atBottom=(window.innerHeight+window.scrollY)>=(document.documentElement.scrollHeight-2);
+  var onContact=(r.top<=96 && r.bottom>96)||atBottom;
   var ACTIVE=['text-primary','font-semibold'];
   var INACTIVE=['text-on-surface-variant','hover:text-on-surface'];
   var set=function(a,on){
