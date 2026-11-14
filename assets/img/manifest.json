@@ -58,5 +58,11 @@
     "bytes": 233552,
     "mime": "image/webp",
     "source": "carried from old site (old/assets/art/media-generation-company-nc-map-v3-0-003095ea-b501-410f-94bb-8f5d72e4d9cc.webp)"
+  },
+  {
+    "file": "bg-monolith.webp",
+    "bytes": 60694,
+    "mime": "image/webp",
+    "source": "carried from old site (old/assets/volshitechbkgd.png), converted to webp"
   }
 ]
