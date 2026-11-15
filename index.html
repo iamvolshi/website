@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VOLSHi — Compliance Infrastructure for AI Agents</title>
-<meta name="description" content="Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.">
+<title>VOLSHi — The accountability layer for AI agents</title>
+<meta name="description" content="The accountability layer for AI agents.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,6 +27,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   @keyframes landing-in { from { opacity: 0; } to { opacity: 1; } }
   .landing-img { animation: face-slide 4s cubic-bezier(.22,.61,.36,1) both; will-change: transform; }
   @keyframes face-slide { from { transform: scale(1.7) translateX(16%); } to { transform: scale(1) translateX(0); } }
+  .landing-headline { text-shadow: 0 2px 28px rgba(6,6,7,.55); }
   a.landing-link:focus-visible { outline: 2px solid #e6c364; outline-offset: -2px; }
   @media (prefers-reduced-motion: reduce) {
     .landing-enter, .landing-fade, .landing-img { animation: none; }
@@ -35,7 +36,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
 <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
 </head>
 <body class="bg-ground-deep">
-<a href="/home/" class="landing-link landing-fade group relative block w-full overflow-hidden" style="height:100vh; height:100dvh;" aria-label="Enter the VOLSHi site — compliance infrastructure for AI agents">
+<a href="/home/" class="landing-link landing-fade group relative block w-full overflow-hidden" style="height:100vh; height:100dvh;" aria-label="Enter the VOLSHi site — the accountability layer for AI agents">
   <img src="assets/img/hero-face.jpg" alt="" fetchpriority="high" class="landing-img absolute inset-0 h-full w-full object-cover" style="object-position:60% 30%;">
   <div class="landing-scrim absolute inset-0" aria-hidden="true"></div>
   <div class="absolute inset-0 flex flex-col justify-between p-6 md:p-12">
@@ -43,11 +44,11 @@ tailwind.config = { darkMode: "class", theme: { extend: {
       <img src="assets/img/volshilogowhite.png" alt="VOLSHi" class="h-10 md:h-12 w-auto object-contain">
       <span class="hidden sm:block font-telemetry text-[11px] tracking-[0.14em] uppercase text-on-surface-variant/80">Research Triangle Park · NC</span>
     </div>
-    <div class="max-w-xl">
-      <p class="font-body text-[17px] md:text-[19px] leading-relaxed text-on-surface">
-        Compliance infrastructure for the AI agent era — audit trails, evidence, and accountability for autonomous systems.
-      </p>
-      <p class="landing-enter mt-5 flex items-center gap-3 font-telemetry text-[12px] tracking-[0.22em] uppercase text-primary">
+    <div class="flex flex-1 items-center">
+      <h1 class="landing-headline max-w-2xl font-headline text-[42px] leading-[1.04] md:text-[68px] text-paper-light">The accountability layer for AI agents.</h1>
+    </div>
+    <div>
+      <p class="landing-enter flex items-center gap-3 font-telemetry text-[12px] tracking-[0.22em] uppercase text-primary">
         <span class="inline-block h-px w-10 bg-primary/80"></span>
         <span>Click to enter</span>
         <span aria-hidden="true">→</span>
