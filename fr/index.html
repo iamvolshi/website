@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+<head><script>(function(){try{if(localStorage.getItem('volshi-lang')==='en'){location.replace('/'+location.search+location.hash);}}catch(e){}})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOLSHi</title>
+<meta name="description" content="Pas de fantasme, pas de rêve. Juste la réalité — avec des reçus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: {
+  colors: { "primary": "#e6c364", "ground-deep": "#060607", "paper-light": "#F5F2ED", "on-surface": "#e5e2e1", "on-surface-variant": "#d0c5b2" },
+  fontFamily: { "headline": ["Newsreader", "serif"], "body": ["Inter", "sans-serif"], "telemetry": ["IBM Plex Mono", "monospace"] }
+} } };
+</script>
+<style>
+  html, body { height: 100%; background: #060607; }
+  .landing-scrim { background: linear-gradient(to top, rgba(6,6,7,.92) 0%, rgba(6,6,7,.45) 34%, rgba(6,6,7,0) 58%); }
+  @media (min-width: 768px) {
+    .landing-scrim { background: linear-gradient(to right, rgba(6,6,7,.90) 0%, rgba(6,6,7,.55) 34%, rgba(6,6,7,0) 62%); }
+  }
+  .landing-enter { animation: cue-pulse 2.6s ease-in-out infinite; }
+  @keyframes cue-pulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+  .landing-fade { animation: landing-in 900ms ease-out both; }
+  @keyframes landing-in { from { opacity: 0; } to { opacity: 1; } }
+  .landing-img { animation: face-slide 4s cubic-bezier(.22,.61,.36,1) both; will-change: transform; }
+  @keyframes face-slide { from { transform: scale(1.7) translateX(16%); } to { transform: scale(1) translateX(0); } }
+  .landing-headline { text-shadow: 0 2px 28px rgba(6,6,7,.55); }
+  .landing-headline .w { display: inline-block; white-space: nowrap; }
+  .landing-headline .ltr { display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(8px); transition: opacity .5s ease, filter .5s ease, transform .5s ease; }
+  .landing-headline.in .ltr { opacity: 1; filter: blur(0); transform: none; }
+  #sparkle-canvas { position: absolute; inset: 0; pointer-events: none; }
+  .digital-scan { display: none; }
+  .digital-start .landing-img-base { filter: grayscale(0.9) contrast(1.3) brightness(0.85); }
+  .digital-start .digital-scan { display: block; background-color: rgba(20,40,80,.14); background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px); }
+  .landing-img-human { display: none; clip-path: url(#face-reveal); }
+  .digital-start .landing-img-human { display: block; }
+  a.landing-link:focus-visible { outline: 2px solid #e6c364; outline-offset: -2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .landing-enter, .landing-fade, .landing-img { animation: none; }
+  }
+</style>
+<link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
+</head>
+<body class="bg-ground-deep">
+<a href="/home/fr/" class="landing-link landing-fade group relative block w-full overflow-hidden" style="height:100vh; height:100dvh;" aria-label="Entrer sur le site VOLSHi">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="face-reveal" clipPathUnits="objectBoundingBox"></clipPath></defs></svg>
+  <img src="../assets/img/hero-face.jpg" alt="" fetchpriority="high" class="landing-img landing-img-base absolute inset-0 h-full w-full object-cover" style="object-position:60% 30%;">
+  <div class="digital-scan absolute inset-0" aria-hidden="true"></div>
+  <img src="../assets/img/hero-face.jpg" alt="" aria-hidden="true" class="landing-img landing-img-human absolute inset-0 h-full w-full object-cover" style="object-position:60% 30%;">
+  <div class="landing-scrim absolute inset-0" aria-hidden="true"></div>
+  <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
+  <div class="absolute inset-0 flex flex-col justify-between p-6 md:p-12">
+    <div class="flex items-center justify-between">
+      <img src="../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-10 md:h-12 w-auto object-contain">
+      <span class="hidden sm:block font-telemetry text-[11px] tracking-[0.14em] uppercase text-on-surface-variant/80">Research Triangle Park · NC</span>
+    </div>
+    <div class="flex flex-1 items-center">
+      <h1 class="landing-headline max-w-2xl font-headline text-[42px] leading-[1.04] md:text-[68px] text-paper-light">Pas de fantasme, pas de rêve. Juste la réalité — avec des reçus.</h1>
+    </div>
+    <div>
+      <p class="landing-enter flex items-center gap-3 font-telemetry text-[12px] tracking-[0.22em] uppercase text-primary">
+        <span class="inline-block h-px w-10 bg-primary/80"></span>
+        <span>Cliquez pour entrer</span>
+        <span aria-hidden="true">→</span>
+      </p>
+    </div>
+  </div>
+</a><button id="lang-switch" type="button" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){};location.href='/';" class="fixed bottom-6 right-6 z-50 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md font-telemetry text-[11px] tracking-[0.14em] uppercase text-paper-light hover:text-primary transition-colors" aria-label="English version" lang="en">EN</button>
+<script>
+(function(){
+  var LINES = [
+    "Pas de fantasme, pas de rêve. Juste la réalité — avec des reçus.",
+    "La machine qui ne peut pas oublier leurs actions passées.",
+    "Rien n'est effacé. C'est le but.",
+    "Je ne fais pas dans le faux.",
+    "Nous sommes la singularité."
+  ];
+  var h = document.querySelector('.landing-headline');
+  if(!h) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced) return; // first line stays static: no particles, no rotation
+  // Machine-to-human puzzle: the face starts fully digital; each slogan's
+  // words fly to the face and reveal 5 of 25 tiles. After all five lines,
+  // the face is fully human.
+  var link = document.querySelector('.landing-link');
+  link.classList.add('digital-start');
+  var clip = document.querySelector('#face-reveal');
+  var tileQueue = [];
+  (function(){
+    var order = [];
+    for(var i = 0; i < 25; i++) order.push(i);
+    for(var j = order.length - 1; j > 0; j--){
+      var k = (Math.random() * (j + 1)) | 0;
+      var tmp = order[j]; order[j] = order[k]; order[k] = tmp;
+    }
+    var NS = 'http://www.w3.org/2000/svg';
+    order.forEach(function(n){
+      var r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', ((n % 5) * 0.2).toFixed(2));
+      r.setAttribute('y', (((n / 5) | 0) * 0.2).toFixed(2));
+      r.setAttribute('width', '0.2');
+      r.setAttribute('height', '0.2');
+      r.style.display = 'none';
+      clip.appendChild(r);
+      tileQueue.push({ rect: r, cx: ((n % 5) + 0.5) * 0.2, cy: (((n / 5) | 0) + 0.5) * 0.2 });
+    });
+  })();
+  function cycleTargets(){
+    var pts = [];
+    var batch = tileQueue.splice(0, 5);
+    if(batch.length){
+      batch.forEach(function(t){
+        pts.push({ x: t.cx * window.innerWidth, y: t.cy * window.innerHeight, rect: t.rect });
+      });
+    } else {
+      for(var i = 0; i < 5; i++){
+        pts.push({ x: window.innerWidth * (0.55 + Math.random() * 0.35), y: window.innerHeight * (0.25 + Math.random() * 0.5), rect: null });
+      }
+    }
+    return pts;
+  }
+  var canvas = document.getElementById('sparkle-canvas');
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, parts = [], bursts = [];
+  var GOLD = ['#e6c364', '#c9a84c', '#f5e6b8'];
+  function resize(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function newPart(x, y, burst){
+    return { x: x != null ? x : W * (0.04 + Math.random() * 0.56),
+      y: y != null ? y : H * (0.22 + Math.random() * 0.56),
+      r: 0.8 + Math.random() * 1.7,
+      c: GOLD[(Math.random() * GOLD.length) | 0],
+      ph: Math.random() * Math.PI * 2,
+      sp: 0.4 + Math.random() * 0.9,
+      vy: -(0.05 + Math.random() * 0.16),
+      vx: (Math.random() - 0.5) * 0.08,
+      life: burst ? 1 : Infinity, decay: burst ? 0.012 + Math.random() * 0.01 : 0 };
+  }
+  function seed(){
+    parts = [];
+    var n = W < 768 ? 26 : 55;
+    for(var i = 0; i < n; i++) parts.push(newPart());
+  }
+  function burst(){
+    var r = h.getBoundingClientRect();
+    for(var i = 0; i < 26; i++){
+      bursts.push(newPart(r.left + Math.random() * r.width, r.top + Math.random() * r.height, true));
+    }
+  }
+  var t = 0;
+  function frame(){
+    t += 0.016;
+    ctx.clearRect(0, 0, W, H);
+    var i, p, a;
+    for(i = 0; i < parts.length; i++){
+      p = parts[i];
+      p.y += p.vy; p.x += p.vx;
+      if(p.y < H * 0.18) p.y = H * 0.78;
+      a = 0.25 + 0.55 * (0.5 + 0.5 * Math.sin(t * p.sp * 2 + p.ph));
+      ctx.globalAlpha = a;
+      ctx.fillStyle = p.c;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = a * 0.25;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3, 0, 6.2832); ctx.fill();
+    }
+    for(i = bursts.length - 1; i >= 0; i--){
+      p = bursts[i];
+      p.life -= p.decay; p.y += p.vy * 2; p.x += p.vx * 2;
+      if(p.life <= 0){ bursts.splice(i, 1); continue; }
+      ctx.globalAlpha = Math.min(1, p.life) * 0.9;
+      ctx.fillStyle = p.c;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r + 0.6, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  function split(text){
+    h.textContent = '';
+    var words = text.split(' ');
+    var li = 0;
+    words.forEach(function(word, wi){
+      var w = document.createElement('span');
+      w.className = 'w';
+      for(var ci = 0; ci < word.length; ci++){
+        var s = document.createElement('span');
+        s.className = 'ltr';
+        s.textContent = word[ci];
+        s.style.transitionDelay = Math.min(li * 28, 1000) + 'ms';
+        w.appendChild(s);
+        li++;
+      }
+      h.appendChild(w);
+      if(wi < words.length - 1) h.appendChild(document.createTextNode(' '));
+    });
+  }
+  var idx = 0, swapping = false;
+  function show(i){
+    idx = i;
+    split(LINES[idx]);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ h.classList.add('in'); }); });
+  }
+  function next(){
+    if(swapping) return;
+    swapping = true;
+    var targets = cycleTargets();
+    var words = Array.prototype.slice.call(h.querySelectorAll('.w'));
+    words.forEach(function(w){
+      var r = w.getBoundingClientRect();
+      w.style.position = 'fixed';
+      w.style.left = r.left + 'px';
+      w.style.top = r.top + 'px';
+      w.style.width = r.width + 'px';
+      w.style.zIndex = '30';
+      w.style.margin = '0';
+    });
+    void h.offsetWidth;
+    words.forEach(function(w, i){
+      var r = w.getBoundingClientRect();
+      var t = targets[i % targets.length];
+      w.style.transition = 'transform .7s ease-in, opacity .7s ease-in, filter .7s ease-in';
+      w.style.transform = 'translate(' + (t.x - r.left - r.width / 2) + 'px,' + (t.y - r.top - r.height / 2) + 'px) scale(.45)';
+      w.style.opacity = '0';
+      w.style.filter = 'blur(4px)';
+    });
+    targets.forEach(function(t, i){
+      if(t.rect) setTimeout(function(){ t.rect.style.display = 'block'; }, 480 + i * 80);
+    });
+    setTimeout(function(){
+      h.classList.remove('in');
+      show((idx + 1) % LINES.length);
+      burst();
+      swapping = false;
+    }, 750);
+  }
+  resize();
+  window.addEventListener('resize', function(){ resize(); seed(); });
+  seed();
+  frame();
+  show(0);
+  setTimeout(function(){ h.classList.add('in'); }, 3000); // safety: never leave the headline invisible
+  setInterval(next, 5000);
+})();
+</script>
+</body>
+</html>

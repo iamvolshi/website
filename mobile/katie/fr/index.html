@@ -1,0 +1,1106 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head><script>(function(){try{if(localStorage.getItem('volshi-lang')==='en'){location.replace('/mobile/katie/'+location.search+location.hash);}}catch(e){}})();</script><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Infrastructure de conformité</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+
+/* Directional Tab Animation Keyframes */
+@keyframes slideInFromRight {
+ 0% {
+ opacity: 0;
+ transform: translate3d(24px, 0, 0);
+ }
+ 100% {
+ opacity: 1;
+ transform: translate3d(0, 0, 0);
+ }
+}
+
+@keyframes slideInFromLeft {
+ 0% {
+ opacity: 0;
+ transform: translate3d(-24px, 0, 0);
+ }
+ 100% {
+ opacity: 1;
+ transform: translate3d(0, 0, 0);
+ }
+}
+
+@keyframes slideOutToLeft {
+ 0% {
+ opacity: 1;
+ transform: translate3d(0, 0, 0);
+ }
+ 100% {
+ opacity: 0;
+ transform: translate3d(-24px, 0, 0);
+ }
+}
+
+@keyframes slideOutToRight {
+ 0% {
+ opacity: 1;
+ transform: translate3d(0, 0, 0);
+ }
+ 100% {
+ opacity: 0;
+ transform: translate3d(24px, 0, 0);
+ }
+}
+
+.anim-slide-in-right {
+ animation: slideInFromRight 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+ will-change: transform, opacity;
+}
+
+.anim-slide-in-left {
+ animation: slideInFromLeft 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+ will-change: transform, opacity;
+}
+
+.anim-slide-out-left {
+ animation: slideOutToLeft 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+ will-change: transform, opacity;
+ pointer-events: none;
+}
+
+.anim-slide-out-right {
+ animation: slideOutToRight 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+ will-change: transform, opacity;
+ pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .anim-slide-in-right,
+ .anim-slide-in-left,
+ .anim-slide-out-left,
+ .anim-slide-out-right {
+ animation: simpleFade 150ms ease-in-out forwards !important;
+ transform: none !important;
+ }
+ @keyframes simpleFade {
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
+ }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "#FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
+</head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><a class="inline-flex items-center" data-path="home" href="/mobile/"><img alt="VOLSHi" class="h-8 w-auto object-contain" src="../../../assets/img/volshilogowhite.png"></a></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">DOI: 10.5281/zenodo.23198458</span></div><a id="lang-switch" href="/mobile/katie/" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){}" class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md font-telemetry-cell text-telemetry-cell text-primary" aria-label="English version" lang="en">EN</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="flex flex-col w-full text-on-surface">
+<!-- Top Spec Dossier Header -->
+<section class="px-space-sm pt-space-xs pb-space-md flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-kicker text-kicker uppercase tracking-widest text-primary">LOI COMPUTATIONNELLE CANDIDATE</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-paper-light font-serif tracking-tight leading-tight">
+ La loi de champ tritemporelle
+ </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ La consolidation graduée par autorité laisse un déficit de trace lente qui persiste après le rétablissement de la confiance.
+ </p>
+<!-- Horizontal Engine Suite Sub-Nav -->
+<div class="mt-space-xs -mx-space-sm px-space-sm overflow-x-auto flex gap-1.5 pb-1 scroll-smooth no-scrollbar" id="suite-tab-rail" style="display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; max-width: 100%; gap: 0.5rem; padding-bottom: 0.25rem;">
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-on-surface transition-all focus:outline-none" id="tab-btn-01" onclick="switchSuiteTab('01', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;"><span>01 Moteur</span></button>
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-primary text-on-primary font-telemetry-head text-telemetry-head font-bold shadow-sm transition-all focus:outline-none" id="tab-btn-02" onclick="switchSuiteTab('02', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;"><span class="w-1.5 h-1.5 rounded-full bg-ground-deep"></span><span>02 Scar Lab</span></button>
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-on-surface transition-all focus:outline-none" id="tab-btn-03" onclick="switchSuiteTab('03', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+<span>03 Curve Bench</span>
+</button>
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-on-surface transition-all focus:outline-none" id="tab-btn-04" onclick="switchSuiteTab('04', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+<span>04 Kernel</span>
+</button>
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-on-surface transition-all focus:outline-none" id="tab-btn-05" onclick="switchSuiteTab('05', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+<span class="w-1.5 h-1.5 rounded-full bg-ruby"></span>
+<span>05 Ruby Glasses</span>
+</button>
+<button class="suite-tab-btn shrink-0 flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container text-on-surface-variant font-telemetry-head text-telemetry-head hover:text-on-surface transition-all focus:outline-none" id="tab-btn-06" onclick="switchSuiteTab('06', this)" style="white-space: nowrap; flex-shrink: 0; font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+<span>06 Preuve CRM</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-[11px] font-telemetry-cell text-on-surface-variant/50 pt-0.5 px-0.5">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">swipe</span> Glissez à gauche / à droite pour naviguer entre les onglets</span>
+<span class="text-primary/70 font-mono" id="tab-index-hint">2 / 6</span>
+</div>
+</section>
+<!-- Interactive Suite Container with Overflow Hidden Viewport -->
+<div class="px-space-sm overflow-hidden relative" id="tab-content-container">
+<!-- TAB 01: ENGINE (ACTIVE BY DEFAULT) -->
+<div class="suite-view flex flex-col gap-space-md hidden" id="suite-view-01">
+<!-- Section Tag -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-telemetry-cell text-telemetry-cell text-primary font-semibold uppercase tracking-wider">MOTEUR DE TÉLÉMÉTRIE CENTRAL</span>
+
+
+</div>
+
+</div>
+<!-- Card A: Event Console -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Console de dépôt d'événements</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Étape : k+1</span>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Vecteur du sujet cible</label>
+<div class="relative w-full">
+<select class="w-full bg-ground-deep text-on-surface font-telemetry-code text-telemetry-code rounded-lg px-space-sm py-2 appearance-none focus:outline-none focus:bg-surface-container-high" id="engine-subject-select"><option selected="" value="bridge_status">Statut du pont</option><option value="sensor_a">Capteur A</option><option value="response_policy">Politique de réponse</option></select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-2.5 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Type de dépôt</label>
+<div class="grid grid-cols-3 gap-1.5">
+<button class="deposit-chip py-1.5 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase text-center transition-colors" onclick="setDepositType('WILD', this)">INCONNU</button>
+<button class="deposit-chip py-1.5 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase text-center transition-colors" onclick="setDepositType('KNOWN', this)">CONNU</button>
+<button class="deposit-chip py-1.5 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase text-center transition-colors" onclick="setDepositType('POLICY', this)">POLITIQUE</button>
+<button class="deposit-chip py-1.5 rounded bg-primary text-on-primary font-semibold font-telemetry-cell text-telemetry-cell uppercase text-center transition-colors" onclick="setDepositType('CONFIRM', this)">CONFIRMER</button>
+<button class="deposit-chip py-1.5 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase text-center transition-colors" onclick="setDepositType('CHALLENGE', this)">CONTESTER</button>
+<button class="deposit-chip py-1.5 rounded bg-surface-container-high text-ruby text-center font-telemetry-cell text-telemetry-cell uppercase transition-colors" onclick="setDepositType('REVOKE', this)">RÉVOQUER</button>
+</div>
+</div>
+<button class="mt-1 w-full py-2.5 px-space-md rounded-lg bg-primary text-on-primary font-telemetry-head text-telemetry-head uppercase flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-md" id="fire-event-btn" onclick="fireEventDeposit()">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span>DÉCLENCHER L'ÉVÉNEMENT ↳ K+</span>
+</button>
+</div>
+<!-- Card B: Live Belief Inspection Card -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell uppercase text-on-surface-variant">Substrat actif</span>
+<span class="font-headline-md text-headline-md text-paper-light">Statut du pont</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-status-lime/10">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+<span class="font-telemetry-cell text-telemetry-cell uppercase text-status-lime font-semibold">TRUSTED</span>
+</div>
+</div>
+<!-- Metrics Gauge Matrix -->
+<div class="grid grid-cols-1 gap-space-sm pt-1">
+<!-- Authority Gauge -->
+<div class="rounded-lg bg-ground-deep p-space-sm flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant">
+<span>AUTHORITY (A)</span>
+<span class="text-primary font-semibold" id="authority-metric">0.80</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" id="authority-bar" style="width: 80%"></div>
+</div>
+
+</div>
+
+</div>
+<!-- Inline Historical Sparkline (SVG) -->
+<div class="flex flex-col gap-1 pt-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant/70">
+<span>AUTORITÉ PAR TEMPS DE CONNAISSANCE</span>
+<span>k: 1 ➔ 61</span>
+</div>
+<svg class="w-full h-10 text-primary overflow-visible" fill="none" viewBox="0 0 320 40">
+<path d="M0,30.8 L58.7,30.8 L58.7,23.6 L122.7,23.6 L122.7,12.8 L208,12.8 L208,9.2 L320,9.2" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+
+<circle id="sparkDot" cx="208" cy="9.2" fill="#e6c364" r="3"></circle>
+</svg>
+</div>
+</div>
+<!-- Card C: K-Record Scrubber Controls -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">Parcourir l'époque du K-record</span>
+<div class="flex items-center gap-1 font-telemetry-code text-telemetry-code">
+<span class="text-on-surface-variant">Étape :</span>
+<span class="text-paper-light font-bold bg-surface-container-high px-2 py-0.5 rounded" id="scrub-label">k=40</span>
+<span class="text-on-surface-variant/60">/ 61</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" id="k-slider" max="61" min="1" oninput="updateScrubber(this.value)" type="range" value="40">
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell text-on-surface-variant/60 px-0.5">
+<span>k=1 (Genèse)</span>
+<span>k=30</span>
+<span>k=61 (Frontière)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase flex items-center gap-1 active:bg-primary active:text-on-primary" onclick="stepK(-1)">
+<span class="material-symbols-outlined text-[14px]">chevron_left</span> Tick précédent
+ </button>
+
+<button class="px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-telemetry-cell text-telemetry-cell uppercase flex items-center gap-1 active:bg-primary active:text-on-primary" onclick="stepK(1)">
+ Tick suivant <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card D: Append-Only Evidence Ledger -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">history_edu</span>
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">K-record</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">Registre en ajout seul</span>
+</div>
+<!-- Compact Responsive Ledger List -->
+<div class="flex flex-col gap-1.5">
+<!-- Row 1 -->
+<div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">k=40</span>
+<span class="px-1.5 py-0.5 rounded bg-status-lime/20 text-status-lime font-semibold">TRUSTED</span>
+<span class="text-on-surface truncate max-w-[110px]">Statut du pont</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-status-lime font-mono">autorité : 0.80</span>
+<span class="material-symbols-outlined text-status-lime text-[14px]">verified</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-bold">k=24</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary font-semibold">VALIDATED</span>
+<span class="text-on-surface truncate max-w-[110px]">Statut du pont</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-paper-light font-mono">autorité : 0.70</span>
+<span class="material-symbols-outlined text-outline text-[14px]">check</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-bold">k=12</span>
+<span class="px-1.5 py-0.5 rounded bg-ruby/20 text-ruby font-semibold">CONTESTED</span>
+<span class="text-on-surface truncate max-w-[110px]">Statut du pont</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-ruby font-mono">autorité : 0.40</span>
+<span class="material-symbols-outlined text-ruby text-[14px]">priority_high</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="rounded-lg bg-ground-deep p-2.5 flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-bold">k=1</span>
+<span class="px-1.5 py-0.5 rounded bg-status-orange/20 text-status-orange font-semibold">WILD</span>
+<span class="text-on-surface truncate max-w-[110px]">Statut du pont</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-status-orange font-mono">autorité : 0.20</span>
+<span class="material-symbols-outlined text-status-orange text-[14px]">error_outline</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<!-- TAB 02: SCAR LAB (Preview / Content) -->
+<div class="suite-view flex flex-col gap-space-md" id="suite-view-02"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="font-telemetry-cell text-telemetry-cell text-primary font-semibold uppercase tracking-wider">LE SCAR LAB</span><span class="w-1 h-1 rounded-full bg-outline-variant"></span><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Loi computationnelle candidate</span></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">biotech</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Déclin du déficit en forme fermée</span></div></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Envoyez des blessures dans la loi de champ et regardez la cicatrice se former — vraie dynamique v1.8.</p><div class="grid grid-cols-2 gap-space-sm pt-1"><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">CONSTANTE DE TEMPS τ</span><div class="flex items-baseline gap-1"><span id="mOutTau" class="font-headline-md text-headline-md text-primary font-mono">19.3</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Constante en forme fermée</span></div><div class="bg-ground-deep p-space-sm rounded-lg flex flex-col gap-0.5"><span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">CICATRICE · TICKS</span><div class="flex items-baseline gap-1"><span id="mOutScar" class="font-headline-md text-headline-md text-status-orange font-mono">12.8</span><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">ticks</span></div><span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Persistance du déficit</span></div></div><div class="p-space-sm rounded-lg bg-ground-deep font-telemetry-code text-telemetry-code text-primary/90 overflow-x-auto flex items-center justify-between"><span id="mTauNote">τ = 13.5 / DECAY — à DECAY 0.70, τ = 19.3</span><span class="material-symbols-outlined text-primary/60 text-[16px]">calculate</span></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">tune</span><span class="font-telemetry-head text-telemetry-head text-primary uppercase">Contrôles du signal</span></div></div><div class="flex flex-col gap-space-sm pt-1"><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Intensité</span><span class="text-primary font-mono font-semibold" id="val-intensity">0.80</span></div><input id="mSliderIntensity" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.01" type="range" value="0.80"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Durée</span><span class="text-primary font-mono font-semibold" id="val-duration">27</span></div><input id="mSliderDuration" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="450" min="1" step="1" type="range" value="27"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">DECAY</span><span class="text-status-orange font-mono font-semibold" id="val-decay">0.70</span></div><input id="mSliderDecay" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1.50" min="0.05" step="0.01" type="range" value="0.70"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Récupération</span><span class="text-primary font-mono font-semibold" id="val-recovery">2000</span></div><input id="mSliderRecovery" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="4000" min="200" step="50" type="range" value="2000"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Tau lent</span><span class="text-primary font-mono font-semibold" id="val-slowtau">500</span></div><input id="mSliderSlowTau" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="2000" min="100" step="10" type="range" value="500"></div><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell"><span class="text-on-surface-variant uppercase">Autorité de la blessure</span><span class="text-ruby font-mono font-semibold" id="val-injury">0.30</span></div><input id="mSliderInjuryAuth" oninput="updateScarSim()" class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg cursor-pointer" max="1" min="0" step="0.05" type="range" value="0.30"></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">show_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Séquence de dépôts</span></div><span id="mDepositSpan" class="font-telemetry-cell text-[10px] text-on-surface-variant font-mono">k: 0 ➔ 120</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">Trace rapide, noyau lent, cicatrice résiduelle</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="15" y2="15"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="45" y2="45"></line><line opacity="0.2" stroke="#4d4637" stroke-dasharray="3 3" x1="0" x2="320" y1="75" y2="75"></line><line id="mShockGuide" opacity="0.4" stroke="#EF174C" stroke-dasharray="2 2" x1="90" x2="90" y1="5" y2="85"></line><path id="mDepositFast" d="M0,20 L35,20 L45,78 L65,22 L120,20 L200,20 L320,20" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path id="mDepositSlow" d="M0,80 L35,80 L45,25 L100,38 L160,55 L240,72 L320,80" opacity="0.9" stroke="#F08A4B" stroke-dasharray="2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path><path id="mDepositScar" d="M45,25 C70,30 90,65 140,78 L200,80 L320,80" opacity="0.75" stroke="#EF174C" stroke-width="1.5"></path><circle id="mShockDotR" cx="45" cy="78" fill="#EF174C" r="3.5"></circle><circle id="mShockDotG" cx="65" cy="22" fill="#e6c364" r="3"></circle><text id="mShockLabel" fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="48" y="86">k_shock</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell pt-1 border-t border-surface-container-high/60"><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-primary"></span><span class="text-primary">Trace rapide</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-status-orange"></span><span class="text-status-orange">Noyau lent</span></div><div class="flex items-center gap-1"><span class="w-2 h-0.5 bg-ruby"></span><span class="text-ruby">Cicatrice résiduelle</span></div></div></div></div><div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">stacked_line_chart</span><span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Coupe transversale · forme fermée v1.8</span></div><span class="font-telemetry-cell text-[10px] text-status-lime font-mono">PROFIL DE LA BOSSE</span></div><span class="font-telemetry-cell text-[11px] text-on-surface-variant/80">La bosse selon DECAY</span><div class="rounded-lg bg-ground-deep p-2.5 flex flex-col gap-2"><svg class="w-full h-28 overflow-visible" fill="none" preserveAspectRatio="xMidYMid meet" viewBox="0 0 320 90"><path id="mHumpPath" d="M10,80 C60,78 110,65 150,22 C185,22 220,50 310,78" stroke="#e6c364" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><path d="M10,80 C70,79 130,72 165,40 C195,42 235,60 310,79" opacity="0.6" stroke="#F08A4B" stroke-dasharray="3 3" stroke-width="1.5"></path><line id="mHumpGuide" opacity="0.4" stroke="#EF174C" stroke-dasharray="2 2" x1="150" x2="150" y1="10" y2="85"></line><circle id="mHumpMarker" cx="150" cy="22" fill="#e6c364" r="4"></circle><circle id="mHumpMarkerRing" cx="150" cy="22" fill="none" r="6" stroke="#e6c364" stroke-width="1"></circle><text id="mHumpLabel" fill="#e5e2e1" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="158" y="20">Déficit maximal (DECAY=0.70)</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="10" y="88">γ .05</text><text fill="#99907e" font-family="IBM Plex Mono" font-size="9" x="260" y="88">γ 1.5</text></svg><div class="flex items-center justify-between text-[10px] font-telemetry-cell text-on-surface-variant/80 pt-1 border-t border-surface-container-high/60"><span>γ .05 · .50 · 1.0 · 1.5</span><span id="mDecayBadge" class="text-primary font-mono font-semibold">DECAY .70</span></div></div></div></div>
+<!-- TAB 03: CURVE BENCH (Preview / Content) -->
+<div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-03">
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="font-kicker text-kicker uppercase text-primary">Visuels KT · 03</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">Le Curve Bench</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Chaque pool a sa propre courbe. Les insultes et les compliments ne cicatrisent pas pareil — glissez les points de contrôle et regardez la rancune répondre. Les courbes illustrent le design de la visite guidée (poussée variable, queue dynamique, courbes par pool) ; la décroissance de la profondeur utilise le taux lent validé v1.8.
+ </p>
+</div>
+ <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+ <div class="flex items-center justify-between gap-2">
+ <div class="flex items-center gap-2">
+ <button class="m-pool-btn px-3 py-1.5 rounded-full bg-ruby/15 text-ruby-hot border border-ruby/40 font-telemetry-head text-telemetry-head" onclick="setCurvePool('insults', this)">Pool : Insultes</button>
+ <button class="m-pool-btn px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-telemetry-head text-telemetry-head" onclick="setCurvePool('compliments', this)">Pool : Compliments</button>
+ </div>
+ <span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono text-right" id="mCurveTitle">Poussée par insulte consécutive</span>
+ </div>
+ <div class="w-full bg-ground-deep rounded-lg p-2.5 flex flex-col gap-1">
+ <div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+ <span id="mCurveEyebrow">Pool · insultes</span>
+ <span id="mCurveLegend">ticks ajoutés</span>
+ </div>
+ <svg class="w-full h-52" id="mBenchSvg" viewBox="0 0 320 200" style="touch-action: none;">
+ <line x1="30" y1="170" x2="310" y2="170" stroke="#232220" stroke-width="1.5"></line>
+ <line x1="30" y1="25" x2="30" y2="170" stroke="#232220" stroke-width="1.5"></line>
+ <line x1="100" y1="25" x2="100" y2="170" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="170" y1="25" x2="170" y2="170" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="240" y1="25" x2="240" y2="170" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="310" y1="25" x2="310" y2="170" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="30" y1="130" x2="310" y2="130" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="30" y1="89" x2="310" y2="89" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="30" y1="49" x2="310" y2="49" stroke="#1a1918" stroke-width="1"></line>
+ <line x1="30" y1="25" x2="310" y2="25" stroke="#1a1918" stroke-width="1"></line>
+ <text x="30" y="185" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">0</text>
+ <text x="100" y="185" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">5</text>
+ <text x="170" y="185" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">10</text>
+ <text x="240" y="185" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">15</text>
+ <text x="310" y="185" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">20</text>
+ <text x="24" y="173" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">0</text>
+ <text x="24" y="133" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">25</text>
+ <text x="24" y="92" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">50</text>
+ <text x="24" y="52" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">75</text>
+ <text x="24" y="28" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">90</text>
+ <line id="mCurvePosLine" stroke="#E6C364" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"></line>
+ <path d="" fill="none" id="mCurvePath" stroke="#EF174C" stroke-width="3"></path>
+ <circle id="mCurvePosDot" r="5" fill="#E6C364" stroke="#060607" stroke-width="2" visibility="hidden"></circle>
+ <g id="mCurvePointsG"></g>
+ </svg>
+ <div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+ <span>0</span>
+ <span class="text-primary">événements consécutifs</span>
+ <span>20</span>
+ </div>
+ </div>
+ <div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-ground-deep" id="mCurveNote">Glissez les points. X est le nombre d’insultes consécutives, Y est le nombre de ticks que chaque insulte ajoute à la rancune. Plus raide = la rancune s’approfondit plus vite au fil du temps.</div>
+ <div class="flex gap-2">
+ <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-head bg-surface-container-high text-on-surface-variant" onclick="resetCurve()">Réinitialiser cette courbe</button>
+ <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-head bg-surface-container-high text-on-surface-variant" onclick="resetGrudge()">Réinitialiser la rancune</button>
+ </div>
+ </div>
+ <div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-md">
+ <div class="flex items-center justify-between">
+ <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Le simulateur de rancune</span>
+ </div>
+ <div class="text-center flex flex-col items-center">
+ <span class="font-kicker text-kicker uppercase text-engine-line">Rancune retenue calculée</span>
+ <div class="font-headline-md text-headline-md text-paper-light font-mono mt-1" id="mGrudgeDisplay">0 <span class="text-body-sm font-sans text-engine-muted">ticks</span></div>
+ <span class="font-telemetry-cell text-telemetry-cell text-ruby-hot mt-1" id="mGrudgeDescriptor">Aucune rancune. Offensez pour en commencer une.</span>
+ </div>
+ <div class="flex flex-col gap-3">
+ <div class="flex flex-col gap-1.5">
+ <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
+ <span class="text-paper-light">Surface · ce qu'elle montre</span>
+ <span class="font-mono text-primary" id="mSurfaceTicks">0 ticks</span>
+ </div>
+ <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+ <div class="h-full bg-primary transition-all duration-300" id="mBarSurface" style="width: 0%"></div>
+ </div>
+ </div>
+ <div class="flex flex-col gap-1.5">
+ <div class="flex justify-between font-telemetry-cell text-telemetry-cell">
+ <span class="text-paper-light">Profondeur · ce qu'elle retient</span>
+ <span class="font-mono text-ruby" id="mDepthTicks">0 ticks</span>
+ </div>
+ <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+ <div class="h-full bg-ruby transition-all duration-300" id="mBarDepth" style="width: 0%"></div>
+ </div>
+ </div>
+ </div>
+ <div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-ground-deep">La surface s'efface en quelques ticks — la profondeur décroît au taux lent validé (λ = 0.002, ~500 ticks pour se renouveler). L'excuse répare vite ce qu'elle montre ; ce qu'elle retient prend ~80× plus longtemps. C'est la découverte de la dette v1.8, en direct.</div>
+ <div class="flex flex-wrap items-end gap-1 min-h-6" id="mGrudgeHistory"><span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offenser ou réparer pour commencer</span></div>
+ <div class="grid grid-cols-3 gap-2 pt-3 border-t border-white/[0.08]">
+ <button class="py-2.5 px-2 rounded bg-ruby/15 text-ruby-hot border border-ruby/30 font-telemetry-head text-telemetry-head uppercase tracking-wider" onclick="triggerGrudgeAction('offend')">Offenser</button>
+ <button class="py-2.5 px-2 rounded bg-primary/15 text-primary border border-primary/30 font-telemetry-head text-telemetry-head uppercase tracking-wider" onclick="triggerGrudgeAction('repair')">Réparer</button>
+ <button class="py-2.5 px-2 rounded bg-surface-container-high text-paper-light font-telemetry-head text-telemetry-head uppercase tracking-wider" onclick="triggerGrudgeAction('tick')">Passer 100t</button>
+ </div>
+ </div>
+</div>
+<!-- TAB 04: KERNEL (Preview / Content) -->
+<div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-04">
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="font-kicker text-kicker uppercase text-primary">Preuve de terrain</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">Ça tourne sur un téléphone.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Tout le noyau KATIE — registre, les deux traces, diagnostics de cicatrice et de dette — compilé depuis la source sur un téléphone d'entrée de gamme et benché là. Pas de Pi, pas de datacenter, pas d'excuses.
+ </p>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-ground-deep p-space-sm rounded-lg flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">DÉBIT</span>
+<span class="font-headline-md text-headline-md text-status-lime font-mono">27,074</span>
+<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">asserts/s (téléphone d'entrée de gamme)</span>
+</div>
+<div class="bg-ground-deep p-space-sm rounded-lg flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">PROMESSES DE TEST</span>
+<span class="font-headline-md text-headline-md text-primary font-mono">16 / 16</span>
+<span class="font-telemetry-cell text-[10px] text-on-surface-variant/70">Seize promesses. Toutes tenues.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 05: RUBY GLASSES (Preview / Content) -->
+<div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-05">
+<div class="rounded-xl bg-ruby-ground p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-ruby"></span>
+<span class="font-kicker text-kicker uppercase text-ruby">Ruby Glasses — Maquettes de vision KATIE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">Mettez les lunettes rubis.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Le monde change quand chaque machine peut montrer son travail. Vous ne voyez plus une réponse. Vous voyez son histoire.
+ </p>
+<div class="p-space-sm rounded-lg bg-ground-deep flex flex-col gap-2 font-telemetry-cell text-telemetry-cell">
+        <div class="flex justify-between items-center"><span class="text-ruby">QUOI</span><span class="text-on-surface-variant">ce que la machine croyait</span></div>
+        <div class="flex justify-between items-center"><span class="text-ruby">QUAND</span><span class="text-on-surface-variant">cette croyance détenait l'autorité</span></div>
+        <div class="flex justify-between items-center"><span class="text-ruby">POURQUOI</span><span class="text-on-surface-variant">elle était justifiée d'agir</span></div>
+      </div>
+</div>
+</div>
+<!-- TAB 06: CRM PROOF (Preview / Content) -->
+<div class="suite-view hidden flex flex-col gap-space-md" id="suite-view-06">
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="font-kicker text-kicker uppercase text-primary">VOLSHi / KATIE / démo CRM</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-light">Votre CRM réécrit l'histoire. Celui-ci ne peut pas.</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Chaque CRM sur terre laisse le passé d'un champ se faire écraser. Le nôtre le garde — chaque valeur qu'un champ a jamais eue, à quel temps de connaissance, à quelle autorité, et pourquoi elle a changé. C'est le K-record, et c'est la différence entre une base de données et une base de données responsable.
+ </p>
+<div class="p-space-sm rounded-lg bg-ground-deep flex flex-col gap-2 font-telemetry-cell text-telemetry-cell">
+<div class="flex flex-col gap-0.5"><div class="flex items-center gap-2"><span class="text-on-surface-variant">k1 → k2</span><span class="text-paper-light">Sofia Marchetti</span><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">WILD</span></div><span class="text-[11px] text-on-surface-variant/70">autorité 89 % · preuves : value=Sofia Marchetti · formulaire d’inscription</span></div>
+<div class="flex flex-col gap-0.5"><div class="flex items-center gap-2"><span class="text-primary">k2 → live</span><span class="text-primary font-bold">Sofia Bennett</span><span class="px-1.5 py-0.5 rounded bg-primary/20 text-primary">CANDIDATE</span></div><span class="text-[11px] text-on-surface-variant/70">autorité 89 % · preuves : value=Sofia Bennett · mariée · pourquoi : mariée</span></div>
+<div class="mt-1 text-[11px] text-status-lime">
+ Gelés. Les intervalles fermés sont identiques à l’octet près au jour où ils ont été écrits — seul celui en direct peut un jour être remplacé.
+ </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Artifacts / Dossier Divider -->
+<div class="px-space-sm flex items-center gap-space-sm my-space-xs">
+<div class="flex-1 h-[1px] bg-outline-variant/40"></div>
+<span class="font-telemetry-cell text-telemetry-cell uppercase text-primary/70">JURIDIQUE &amp; FONDEMENTS RÉGLEMENTAIRES</span>
+<div class="flex-1 h-[1px] bg-outline-variant/40"></div>
+</div>
+<!-- PATENT SECTION: All 11 Mechanisms Verbatim -->
+<section class="px-space-sm flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">verified_user</span>
+<span class="font-kicker text-kicker uppercase text-primary">BREVET EN ATTENTE<br>DÉPOSÉ LE 23 OCTOBRE 2026</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-paper-light font-serif">
+ Demande de brevet provisoire américaine n° 64/182,709
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Inventeur : Darren Patrick Hall · Le dépôt couvre onze mécanismes :
+ </p>
+</div>
+<!-- 11 Mechanisms Stacked Accordion/Cards -->
+<div class="flex flex-col gap-2">
+<!-- Mechanism 01 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">01</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Le registre scellé</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ chaque croyance en ajout seul, chaînée par hachage à l'entrée précédente. La falsification, la suppression ou un intervalle brisé sont détectés par la vérification, qui identifie la ligne exacte concernée.
+ </div>
+</details>
+<!-- Mechanism 02 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">02</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Temps de connaissance</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ une troisième horloge : pas quand un événement est arrivé, ni quand il est parvenu, mais quand il a été connu, et à quelle autorité.
+ </div>
+</details>
+<!-- Mechanism 03 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">03</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">L'autorité qui tombe sans effacer</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ une croyance fausse reste dans le registre pendant que son autorité s'effondre. Le système apprend sans réécrire son histoire.
+ </div>
+</details>
+<!-- Mechanism 04 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">04</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Né enregistré</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ chaque noyau se voit assigner un Kernel ID à la naissance. Pas de KID, pas de lecture, pas d'écriture. Ce qui n'est pas encore compris tourne comme null : enregistré, présent et non assigné — jamais invisible.
+ </div>
+</details>
+<!-- Mechanism 05 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">05</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">La preuve du poison</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ le registre vérifie sa propre intégrité contre la falsification, la suppression et les attaques par intervalle, et produit la preuve de chaque détection.
+ </div>
+</details>
+<!-- Mechanism 06 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">06</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Le pare-feu</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ chaque source porte un accumulateur de dégâts. Passé un seuil, la source continue d'être enregistrée intégralement et cesse d'avoir tout effet. L'attaque est préservée comme preuve.
+ </div>
+</details>
+<!-- Mechanism 07 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">07</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">La boucle d'auto-guérison</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ la machine lit son propre registre, identifie une déficience, construit le composant manquant et l'intègre.
+ </div>
+</details>
+<!-- Mechanism 08 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">08</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Les paramètres comme actes</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ un changement des paramètres d'un noyau est enregistré comme un événement versionné sur la même identité. Aucun composant ne reçoit une nouvelle identité pour échapper à son histoire.
+ </div>
+</details>
+<!-- Mechanism 09 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">09</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">Des instantanés, pas l'état</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ toute vue du présent est dérivée du registre et peut être re-dérivée identiquement à tout moment. Là où un instantané et le registre divergent, le registre gouverne.
+ </div>
+</details>
+<!-- Mechanism 10 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">10</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">L'attention cocotte-minute</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ l'influence que le système ne peut pas consolider s'accumule par type jusqu'à franchir un seuil d'attention. L'attention la décharge.
+ </div>
+</details>
+<!-- Mechanism 11 -->
+<details class="group rounded-xl bg-surface-container-low p-space-sm transition-all open:bg-surface-container">
+<summary class="flex items-center justify-between cursor-pointer list-none select-none">
+<div class="flex items-center gap-2">
+<span class="font-telemetry-code text-telemetry-code text-primary font-bold">11</span>
+<span class="font-headline-md text-[15px] text-paper-light font-semibold">La dette et la courbe</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform text-[18px]">expand_more</span>
+</summary>
+<div class="pt-2 font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ le déficit en cours retire des options au composant blessé jusqu'à sa guérison ; la position d'un composant sur la courbe de réponse est fixée par design, comme protection, comme capteur, ou pour une rétention délibérée.
+ </div>
+</details>
+</div>
+</section>
+
+</div>
+<script>
+ const SUITE_TABS = ['01', '02', '03', '04', '05', '06'];
+ let currentActiveTab = '02';
+ let activeDepositType = 'CONFIRM';
+ let currentK = 40;
+ let isTransitioning = false;
+
+ function updateTabHint(tabId) {
+ const hint = document.getElementById('tab-index-hint');
+ if (hint) {
+ const idx = SUITE_TABS.indexOf(tabId);
+ if (idx !== -1) {
+ hint.innerText = (idx + 1) + ' / ' + SUITE_TABS.length;
+ }
+ }
+ }
+
+ function centerTabElement(tabElement) {
+ if (!tabElement) return;
+ const rail = document.getElementById('suite-tab-rail');
+ if (rail) {
+ const railRect = rail.getBoundingClientRect();
+ const tabRect = tabElement.getBoundingClientRect();
+ const scrollOffset = (tabRect.left + tabRect.width / 2) - (railRect.left + railRect.width / 2);
+ rail.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+ } else if (typeof tabElement.scrollIntoView === 'function') {
+ tabElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+ }
+ }
+
+ function switchSuiteTab(tabId, clickedBtn, explicitDirection) {
+ if (isTransitioning || tabId === currentActiveTab) return;
+
+ const oldIndex = SUITE_TABS.indexOf(currentActiveTab);
+ const newIndex = SUITE_TABS.indexOf(tabId);
+ if (newIndex === -1) return;
+
+ const isForward = explicitDirection ? explicitDirection === 'next' : (newIndex > oldIndex);
+ const prevActiveTab = currentActiveTab;
+ currentActiveTab = tabId;
+ updateTabHint(tabId);
+
+ // Update Tab Buttons UI
+ document.querySelectorAll('.suite-tab-btn').forEach(btn => {
+ btn.classList.remove('bg-primary', 'text-on-primary', 'font-medium', 'shadow-sm');
+ btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+ });
+
+ const activeBtn = clickedBtn || document.getElementById('tab-btn-' + tabId);
+ if (activeBtn) {
+ activeBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+ activeBtn.classList.add('bg-primary', 'text-on-primary', 'font-medium', 'shadow-sm');
+ centerTabElement(activeBtn);
+ }
+
+ const currentView = document.getElementById('suite-view-' + prevActiveTab);
+ const targetView = document.getElementById('suite-view-' + tabId);
+
+ if (currentView && targetView) {
+ isTransitioning = true;
+
+ // Animate out previous tab
+ const outAnimClass = isForward ? 'anim-slide-out-left' : 'anim-slide-out-right';
+ const inAnimClass = isForward ? 'anim-slide-in-right' : 'anim-slide-in-left';
+
+ // Clear existing anim classes
+ [currentView, targetView].forEach(view => {
+ view.classList.remove('anim-slide-in-right', 'anim-slide-in-left', 'anim-slide-out-left', 'anim-slide-out-right');
+ });
+
+ // Target enters
+ targetView.classList.remove('hidden');
+ targetView.classList.add(inAnimClass);
+
+ // Current exits
+ currentView.classList.add(outAnimClass);
+
+ const animDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 150 : 290;
+ setTimeout(() => {
+ document.querySelectorAll('.suite-view').forEach(v => { if (v !== targetView) v.classList.add('hidden'); });
+ currentView.classList.remove(outAnimClass);
+ targetView.classList.remove(inAnimClass);
+ isTransitioning = false;
+ }, animDuration);
+ } else if (targetView) {
+ targetView.classList.remove('hidden');
+ }
+ }
+
+ function navigateTabRelative(direction) {
+ const currentIndex = SUITE_TABS.indexOf(currentActiveTab);
+ if (currentIndex === -1) return;
+ const nextIndex = currentIndex + direction;
+ if (nextIndex >= 0 && nextIndex < SUITE_TABS.length) {
+ if (navigator.vibrate) {
+ try { navigator.vibrate(10); } catch (e) {}
+ }
+ const dirName = direction > 0 ? 'next' : 'prev';
+ switchSuiteTab(SUITE_TABS[nextIndex], null, dirName);
+ }
+ }
+
+ // Setup Mobile Touch Swipe Listeners
+ function initSwipeGestures() {
+ const swipeContainer = document.getElementById('tab-content-container') || document.querySelector('main');
+ if (!swipeContainer) return;
+
+ let touchStartX = 0;
+ let touchStartY = 0;
+ let touchEndX = 0;
+ let touchEndY = 0;
+ let isIgnoredTarget = false;
+
+ swipeContainer.addEventListener('touchstart', (e) => {
+ const target = e.target;
+ // Ignore interactive sliders, canvases, SVG curve editors or input elements
+ if (
+ target.closest('input[type="range"]') ||
+ target.closest('select') ||
+ target.closest('button') ||
+ target.closest('svg') ||
+ target.closest('details') ||
+ target.tagName === 'INPUT' ||
+ target.tagName === 'SELECT'
+ ) {
+ isIgnoredTarget = true;
+ return;
+ }
+ isIgnoredTarget = false;
+ const touch = e.touches[0];
+ touchStartX = touch.clientX;
+ touchStartY = touch.clientY;
+ touchEndX = touch.clientX;
+ touchEndY = touch.clientY;
+ }, { passive: true });
+
+ swipeContainer.addEventListener('touchmove', (e) => {
+ if (isIgnoredTarget) return;
+ const touch = e.touches[0];
+ touchEndX = touch.clientX;
+ touchEndY = touch.clientY;
+ }, { passive: true });
+
+ swipeContainer.addEventListener('touchend', () => {
+ if (isIgnoredTarget) return;
+ const deltaX = touchEndX - touchStartX;
+ const deltaY = touchEndY - touchStartY;
+ const absDeltaX = Math.abs(deltaX);
+ const absDeltaY = Math.abs(deltaY);
+
+ // Horizontal gesture threshold & ratio check
+ if (absDeltaX > 45 && absDeltaX > 1.4 * absDeltaY) {
+ if (deltaX < -45) {
+ // Swipe left -> navigate forward to next tab
+ navigateTabRelative(1);
+ } else if (deltaX > 45) {
+ // Swipe right -> navigate backward to previous tab
+ navigateTabRelative(-1);
+ }
+ }
+ }, { passive: true });
+ }
+
+ window.addEventListener('DOMContentLoaded', () => {
+ const defaultTab = document.getElementById('tab-btn-01');
+ if (defaultTab) {
+ setTimeout(() => {
+ centerTabElement(defaultTab);
+ }, 100);
+ }
+ initSwipeGestures();
+ updateTabHint('01');
+ });
+
+ function setDepositType(type, buttonEl) {
+ activeDepositType = type;
+ document.querySelectorAll('.deposit-chip').forEach(btn => {
+ btn.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+ btn.classList.add('bg-surface-container-high', 'text-on-surface');
+ if (btn.innerText.includes('RÉVOQUER')) {
+ btn.classList.add('text-ruby');
+ }
+ });
+
+ buttonEl.classList.remove('bg-surface-container-high', 'text-on-surface', 'text-ruby');
+ buttonEl.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+ }
+
+ function updateScrubber(val) {
+ currentK = parseInt(val, 10);
+ document.getElementById('scrub-label').innerText = 'k=' + currentK;
+ // Stepped authority from the seed ledger: k1-12 WILD .20, k12-24 CONTESTED .40, k24-40 VALIDATED .70, k40+ TRUSTED .80
+ let computedAuth;
+ if (currentK < 12) computedAuth = 0.20;
+ else if (currentK < 24) computedAuth = 0.40;
+ else if (currentK < 40) computedAuth = 0.70;
+ else computedAuth = 0.80;
+ const authMetric = document.getElementById('authority-metric');
+ const authBar = document.getElementById('authority-bar');
+ if (authMetric && authBar) {
+ authMetric.innerText = computedAuth.toFixed(2);
+ authBar.style.width = (computedAuth * 100) + '%';
+ }
+ const dot = document.getElementById('sparkDot');
+ if (dot) {
+ dot.setAttribute('cx', ((currentK - 1) / 60 * 320).toFixed(1));
+ dot.setAttribute('cy', (38 - computedAuth * 36).toFixed(1));
+ }
+}
+
+ function stepK(delta) {
+ const slider = document.getElementById('k-slider');
+ let nextVal = parseInt(slider.value, 10) + delta;
+ if (nextVal < 1) nextVal = 1;
+ if (nextVal > 61) nextVal = 61;
+ slider.value = nextVal;
+ updateScrubber(nextVal);
+ }
+
+ function fireEventDeposit() {
+ const slider = document.getElementById('k-slider');
+ let nextVal = parseInt(slider.value, 10) + 1;
+ if (nextVal > 61) nextVal = 61;
+ slider.value = nextVal;
+ updateScrubber(nextVal);
+
+ const btn = document.getElementById('fire-event-btn');
+ btn.classList.add('scale-95');
+ setTimeout(() => {
+ btn.classList.remove('scale-95');
+ }, 150);
+ }
+
+ // Scar Lab (mobile): same v1.8 closed form as the desktop KATIE page.
+ // Constants per the brief: TAU_C=13.5, G=.70, KAPPA=.095, SLOW_W=8, WIN=500, THR=5deg, N_A=800.
+ var SCAR_TAU_C = 13.5, SCAR_G = 0.70, SCAR_KAPPA = 0.095, SCAR_SLOW_W = 8, SCAR_WIN = 500, SCAR_THR = 5 * Math.PI / 180, SCAR_N_A = 800;
+ function scarClosedForm(dec, L) {
+   var tau = SCAR_TAU_C / dec, expK = Math.exp(SCAR_KAPPA), betas = [], sumSin = 0, sumCos = 0, k;
+   for (k = 0; k < L; k++) {
+     var recency = Math.exp(-k / tau), z = recency + expK * (1 - recency), fkx = recency / z, fky = expK * (1 - recency) / z;
+     var beta = Math.atan2(1 + SCAR_G * (fky + SCAR_SLOW_W * (sumSin / SCAR_WIN)), SCAR_G * fkx);
+     betas.push(beta); sumSin += Math.sin(beta); sumCos += Math.cos(beta);
+   }
+   var aSum = 0;
+   for (var a = L + 1; a <= L + SCAR_N_A; a++) aSum += Math.exp(-a / tau);
+   var bw = 0, bx = 0, by = 0;
+   for (k = 0; k < L; k++) {
+     var w = Math.exp(-(L - k) / tau) * Math.exp(SCAR_KAPPA * Math.cos(betas[k]));
+     bw += w; bx += w * Math.cos(betas[k]); by += w * Math.sin(betas[k]);
+   }
+   var wTot = expK * aSum + bw, fy0 = by / wTot, fx0 = (expK * aSum + bx) / wTot;
+   function returnTicks(authority) {
+     var sx = ((SCAR_WIN - L) * authority + sumCos) / SCAR_WIN, d = 1 + SCAR_G * (fx0 + SCAR_SLOW_W * sx), arg = SCAR_G * fy0 / (SCAR_THR * d);
+     return arg > 1 ? tau * Math.log(arg) : 0;
+   }
+   return Math.max(0, returnTicks(0.3)) - Math.max(0, returnTicks(1));
+ }
+ function scarLinePath(points, w, h, x0, y0, yMax) {
+   return points.map(function (v, i) { var x = x0 + i * (w / (points.length - 1)); var y = y0 - (v / yMax) * h; return (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }).join(' ');
+ }
+ function scarTraces(i, L, dec, recTicks, slowTau, injAuth) {
+   var tau = SCAR_TAU_C / dec, alpha = Math.exp(-1 / tau), sl = 1 - Math.exp(-1 / slowTau), fastI = 0, fastC = 0, slowI = 0, slowC = 0, fastPoints = [], controlFastPoints = [], slowPoints = [], controlPoints = [];
+   var clean = 800, total = clean + L + recTicks;
+   for (var n = 0; n <= total; n++) {
+     var inInjury = n >= clean && n < clean + L, authorityI = inInjury ? injAuth : 1, sI = i * authorityI, sC = i;
+     fastI = alpha * fastI + (1 - alpha) * sI; fastC = alpha * fastC + (1 - alpha) * sC;
+     slowI = (1 - sl) * slowI + sl * (authorityI * sI);
+     slowC = (1 - sl) * slowC + sl * sC;
+     fastPoints.push(fastI); controlFastPoints.push(fastC); slowPoints.push(slowI); controlPoints.push(slowC);
+   }
+   return { fast: fastPoints, controlFast: controlFastPoints, slow: slowPoints, control: controlPoints, total: total, clean: clean };
+ }
+ function downsample(points, n) {
+   if (points.length <= n) return points.slice();
+   var step = (points.length - 1) / (n - 1), out = [];
+   for (var i = 0; i < n; i++) out.push(points[Math.round(i * step)]);
+   return out;
+ }
+ function updateScarSim() {
+   var intensity = parseFloat(document.getElementById('mSliderIntensity').value);
+   var duration = parseInt(document.getElementById('mSliderDuration').value, 10);
+   var decay = parseFloat(document.getElementById('mSliderDecay').value);
+   var recovery = parseInt(document.getElementById('mSliderRecovery').value, 10);
+   var slowTau = parseInt(document.getElementById('mSliderSlowTau').value, 10);
+   var injuryAuth = parseFloat(document.getElementById('mSliderInjuryAuth').value);
+   document.getElementById('val-intensity').textContent = intensity.toFixed(2);
+   document.getElementById('val-duration').textContent = duration;
+   document.getElementById('val-decay').textContent = decay.toFixed(2);
+   document.getElementById('val-recovery').textContent = recovery;
+   document.getElementById('val-slowtau').textContent = slowTau;
+   document.getElementById('val-injury').textContent = injuryAuth.toFixed(2);
+   var tau = SCAR_TAU_C / decay, scar = scarClosedForm(decay, duration);
+   document.getElementById('mOutTau').textContent = tau.toFixed(1);
+   document.getElementById('mOutScar').textContent = scar.toFixed(1);
+   document.getElementById('mTauNote').textContent = 'τ = 13.5 / DECAY — à DECAY ' + decay.toFixed(2) + ', τ = ' + tau.toFixed(1);
+   document.getElementById('mDecayBadge').textContent = 'DECAY ' + decay.toFixed(2);
+   var sliderDecay = document.getElementById('mSliderDecay');
+   var dMin = parseFloat(sliderDecay.min), dMax = parseFloat(sliderDecay.max);
+   var steps = Math.round((dMax - dMin) / 0.01), humpValues = [], m;
+   for (m = 0; m <= steps; m++) humpValues.push(scarClosedForm(dMin + m * 0.01, duration));
+   var humpMax = Math.max.apply(null, humpValues.concat([0.001])), plotMax = humpMax * 1.08;
+   document.getElementById('mHumpPath').setAttribute('d', scarLinePath(humpValues, 300, 58, 10, 80, plotMax));
+   var mx = 10 + (decay - dMin) / (dMax - dMin) * 300, my = 80 - scar / plotMax * 58;
+   var marker = document.getElementById('mHumpMarker');
+   marker.setAttribute('cx', mx.toFixed(1)); marker.setAttribute('cy', my.toFixed(1));
+   var ring = document.getElementById('mHumpMarkerRing');
+   ring.setAttribute('cx', mx.toFixed(1)); ring.setAttribute('cy', my.toFixed(1));
+   var guide = document.getElementById('mHumpGuide');
+   guide.setAttribute('x1', mx.toFixed(1)); guide.setAttribute('x2', mx.toFixed(1));
+   var label = document.getElementById('mHumpLabel');
+   label.setAttribute('x', (mx + 8).toFixed(1));
+   label.textContent = 'Déficit maximal (DECAY=' + decay.toFixed(2) + ')';
+   var traces = scarTraces(intensity, duration, decay, recovery, slowTau, injuryAuth);
+   var NP = 160;
+   var fast = downsample(traces.fast, NP);
+   var slow = downsample(traces.slow, NP);
+   var control = downsample(traces.control, NP);
+   var deficit = slow.map(function (v, i) { return Math.max(0, control[i] - v); });
+   document.getElementById('mDepositFast').setAttribute('d', scarLinePath(fast, 320, 60, 0, 80, 1));
+   document.getElementById('mDepositSlow').setAttribute('d', scarLinePath(slow, 320, 60, 0, 80, 1));
+   document.getElementById('mDepositScar').setAttribute('d', scarLinePath(deficit, 320, 60, 0, 80, 1));
+   var shockX = traces.clean / traces.total * 320;
+   var shockGuide = document.getElementById('mShockGuide');
+   shockGuide.setAttribute('x1', shockX.toFixed(1)); shockGuide.setAttribute('x2', shockX.toFixed(1));
+   var shockLabel = document.getElementById('mShockLabel');
+   shockLabel.setAttribute('x', (shockX + 3).toFixed(1));
+   document.getElementById('mDepositSpan').textContent = 'k: 0 ➔ ' + traces.total;
+   var peakIdx = 0;
+   for (var p = 1; p < deficit.length; p++) if (deficit[p] > deficit[peakIdx]) peakIdx = p;
+   var dotR = document.getElementById('mShockDotR');
+   dotR.setAttribute('cx', (peakIdx / (NP - 1) * 320).toFixed(1));
+   dotR.setAttribute('cy', (80 - deficit[peakIdx] * 60).toFixed(1));
+   var shockIdx = Math.round(traces.clean / traces.total * (NP - 1));
+   var dotG = document.getElementById('mShockDotG');
+   dotG.setAttribute('cx', (shockIdx / (NP - 1) * 320).toFixed(1));
+   dotG.setAttribute('cy', (80 - fast[shockIdx] * 60).toFixed(1));
+ }
+ updateScarSim();
+
+ // Curve Bench & Grudge Simulator (mobile): same machine as the desktop KATIE page.
+ // Geometry is the mobile viewBox (320x200); the math, defaults and grudge rules are identical.
+ var mGrudgeDepth = 0, mGrudgeSurface = 0, mGrudgeConsecI = 0, mGrudgeConsecC = 0, mGrudgeHistory = [];
+ var CURVE_X0 = 30, CURVE_Y0 = 170, CURVE_PW = 280, CURVE_PH = 145, CURVE_XMAX = 20, CURVE_YMAX = 90;
+ var CURVE_DEFAULTS = { insults: [[0,2],[1,5],[2,9],[4,16],[7,28],[11,45],[16,65],[20,80]], compliments: [[0,12],[1,9],[2,7],[4,5],[8,3],[14,1]] };
+ var curvePool = 'insults';
+ var curvePts = { insults: CURVE_DEFAULTS.insults.map(function(p) { return p.slice(); }), compliments: CURVE_DEFAULTS.compliments.map(function(p) { return p.slice(); }) };
+ function curveX(px) { return CURVE_X0 + px / CURVE_XMAX * CURVE_PW; }
+ function curveY(py) { return CURVE_Y0 - py / CURVE_YMAX * CURVE_PH; }
+ function curveAt(pts, x) {
+   if (x <= pts[0][0]) return pts[0][1];
+   for (var i = 1; i < pts.length; i++) {
+     if (x <= pts[i][0]) { var a = pts[i-1], b = pts[i]; return a[1] + (b[1]-a[1]) * (x-a[0]) / (b[0]-a[0]); }
+   }
+   return pts[pts.length-1][1];
+ }
+ function renderGrudge() {
+   var cap = Math.max(mGrudgeDepth, mGrudgeSurface, 1);
+   document.getElementById('mGrudgeDisplay').innerHTML = Math.round(mGrudgeDepth) + ' <span class="text-body-sm font-sans text-engine-muted">ticks</span>';
+   document.getElementById('mSurfaceTicks').textContent = Math.round(mGrudgeSurface) + ' ticks';
+   document.getElementById('mDepthTicks').textContent = Math.round(mGrudgeDepth) + ' ticks';
+   document.getElementById('mBarSurface').style.width = (mGrudgeSurface / cap * 100) + '%';
+   document.getElementById('mBarDepth').style.width = (mGrudgeDepth / cap * 100) + '%';
+   var desc = document.getElementById('mGrudgeDescriptor');
+   if (mGrudgeDepth <= 0.5 && mGrudgeSurface <= 0.5) { desc.textContent = 'Aucune rancune. Offensez pour en commencer une.'; }
+   else { desc.textContent = 'Offenses consécutives : ' + mGrudgeConsecI + ' · la prochaine insulte ajoute ' + Math.round(curveAt(curvePts.insults, mGrudgeConsecI + 1)) + ' ticks.'; }
+   var posLine = document.getElementById('mCurvePosLine'), posDot = document.getElementById('mCurvePosDot');
+   var n = curvePool === 'insults' ? mGrudgeConsecI : mGrudgeConsecC;
+   if (n > 0) {
+     var pts = curvePts[curvePool];
+     posLine.setAttribute('x1', curveX(n)); posLine.setAttribute('x2', curveX(n));
+     posLine.setAttribute('y1', 25); posLine.setAttribute('y2', CURVE_Y0);
+     posLine.setAttribute('visibility', 'visible');
+     posDot.setAttribute('cx', curveX(n)); posDot.setAttribute('cy', curveY(curveAt(pts, n)));
+     posDot.setAttribute('visibility', 'visible');
+   } else { posLine.setAttribute('visibility', 'hidden'); posDot.setAttribute('visibility', 'hidden'); }
+   var strip = document.getElementById('mGrudgeHistory');
+   if (strip) {
+     if (!mGrudgeHistory.length) { strip.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offenser ou réparer pour commencer</span>'; }
+     else {
+       strip.innerHTML = '';
+       mGrudgeHistory.slice(-40).forEach(function(h) {
+         var b = document.createElement('div');
+         b.className = 'w-1.5 h-6 rounded-sm ' + (h.kind === 'insult' ? 'bg-ruby' : h.kind === 'mend' ? 'bg-primary' : 'bg-surface-container-high');
+         b.title = h.tip;
+         strip.appendChild(b);
+       });
+     }
+   }
+ }
+ function triggerGrudgeAction(action) {
+   if (action === 'offend') {
+     mGrudgeConsecI++; mGrudgeConsecC = 0;
+     var add = curveAt(curvePts.insults, mGrudgeConsecI);
+     mGrudgeDepth += add; mGrudgeSurface = mGrudgeDepth;
+     mGrudgeHistory.push({ kind: 'insult', tip: 'insulte n°' + mGrudgeConsecI + ' +' + Math.round(add) + ' ticks' });
+   } else if (action === 'repair') {
+     if (!(mGrudgeDepth <= 0.5 && mGrudgeSurface <= 0.5)) {
+       mGrudgeConsecC++; mGrudgeConsecI = 0;
+       var relief = Math.min(mGrudgeDepth, curveAt(curvePts.compliments, mGrudgeConsecC));
+       mGrudgeDepth -= relief; mGrudgeSurface = mGrudgeDepth;
+       mGrudgeHistory.push({ kind: 'mend', tip: 'réparation n°' + mGrudgeConsecC + ' \u2212' + Math.round(relief) + ' ticks' });
+     }
+   } else if (action === 'tick') {
+     mGrudgeSurface *= Math.exp(-100 / 3); mGrudgeDepth *= Math.exp(-100 / 500);
+     if (mGrudgeSurface < 0.5) mGrudgeSurface = 0;
+     if (mGrudgeDepth < 0.5) mGrudgeDepth = 0;
+     mGrudgeHistory.push({ kind: 'tick', tip: '100 ticks écoulés' });
+   }
+   renderGrudge();
+ }
+ function resetGrudge() { mGrudgeDepth = 0; mGrudgeSurface = 0; mGrudgeConsecI = 0; mGrudgeConsecC = 0; mGrudgeHistory = []; renderGrudge(); }
+ var curveCircles = [];
+ function drawCurve() {
+   var pts = curvePts[curvePool];
+   var d = '';
+   for (var x = 0; x <= CURVE_XMAX; x += 0.25) { d += (x === 0 ? 'M' : 'L') + curveX(x).toFixed(1) + ' ' + curveY(curveAt(pts, x)).toFixed(1) + ' '; }
+   var path = document.getElementById('mCurvePath');
+   path.setAttribute('d', d);
+   path.setAttribute('stroke', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+   var g = document.getElementById('mCurvePointsG');
+   var svg = document.getElementById('mBenchSvg');
+   // Persistent circles: recreating them on every redraw kills the pointer
+   // capture mid-drag, so the dragged point never follows the pointer.
+   while (curveCircles.length < pts.length) {
+     var nc = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+     nc.setAttribute('r', 9);
+     nc.setAttribute('stroke', '#060607'); nc.setAttribute('stroke-width', 2);
+     nc.style.cursor = 'grab';
+     nc.style.touchAction = 'none';
+     nc.addEventListener('pointerdown', function(e) {
+       var c = e.currentTarget;
+       e.preventDefault();
+       try { c.setPointerCapture(e.pointerId); } catch (err) {}
+       function move(ev) {
+         var live = curvePts[curvePool]; var i = c._curveIdx;
+         var r = svg.getBoundingClientRect();
+         var sx = (ev.clientX - r.left) / r.width * 320, sy = (ev.clientY - r.top) / r.height * 200;
+         var lo = i > 0 ? live[i-1][0] + 0.5 : 0, hi = i < live.length - 1 ? live[i+1][0] - 0.5 : CURVE_XMAX;
+         var nx = Math.min(hi, Math.max(lo, (sx - CURVE_X0) / CURVE_PW * CURVE_XMAX));
+         var ny = Math.min(CURVE_YMAX, Math.max(0, Math.round((CURVE_Y0 - sy) / CURVE_PH * CURVE_YMAX)));
+         live[i][0] = Math.round(nx * 2) / 2; live[i][1] = ny;
+         drawCurve(); renderGrudge();
+       }
+       function up() { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up); }
+       window.addEventListener('pointermove', move);
+       window.addEventListener('pointerup', up);
+       window.addEventListener('pointercancel', up);
+     });
+     g.appendChild(nc);
+     curveCircles.push(nc);
+   }
+   while (curveCircles.length > pts.length) { g.removeChild(curveCircles.pop()); }
+   pts.forEach(function(p, i) {
+     var c = curveCircles[i];
+     c._curveIdx = i;
+     c.setAttribute('cx', curveX(p[0])); c.setAttribute('cy', curveY(p[1]));
+     c.setAttribute('fill', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+   });
+   document.getElementById('mCurveEyebrow').textContent = 'Pool · ' + (curvePool === 'insults' ? 'insultes' : 'compliments');
+   document.getElementById('mCurveTitle').textContent = curvePool === 'insults' ? 'Poussée par insulte consécutive' : 'Soulagement par réparation consécutive';
+   document.getElementById('mCurveLegend').textContent = curvePool === 'insults' ? 'ticks ajoutés' : 'ticks retirés';
+   document.getElementById('mCurveNote').textContent = curvePool === 'insults' ? 'Glissez les points. X est le nombre d’insultes consécutives, Y est le nombre de ticks que chaque insulte ajoute à la rancune. Plus raide = la rancune s’approfondit plus vite au fil du temps.' : 'Glissez les points. X est le nombre de réparations consécutives, Y est le nombre de ticks que chacune retire à la rancune. Concentré au début = la première excuse compte le plus.';
+ }
+ function setCurvePool(pool, el) {
+   var buttons = document.querySelectorAll('.m-pool-btn');
+   buttons.forEach(function(b) { b.classList.remove('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40', 'bg-primary/15', 'text-primary', 'border-primary/40'); b.classList.add('bg-surface-container-high', 'text-on-surface-variant'); });
+   if (pool === 'insults') { el.classList.add('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40'); el.classList.remove('bg-surface-container-high', 'text-on-surface-variant'); }
+   else { el.classList.add('bg-primary/15', 'text-primary', 'border-primary/40'); el.classList.remove('bg-surface-container-high', 'text-on-surface-variant'); }
+   curvePool = pool; drawCurve(); renderGrudge();
+ }
+ function resetCurve() { curvePts[curvePool] = CURVE_DEFAULTS[curvePool].map(function(p) { return p.slice(); }); drawCurve(); renderGrudge(); }
+ drawCurve();
+ renderGrudge();
+</script><footer class="mt-space-xl px-space-sm pb-28 text-center flex flex-col items-center gap-space-xs"><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. Tous droits réservés. · Research Triangle Park, Caroline du Nord</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-on-surface-variant/70 hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="/mobile/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Accueil</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="the-system" href="/mobile/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Système</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="katie" href="/mobile/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/mobile/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Recherche</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/mobile/research/#invest"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Investir</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/mobile/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+
+<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Votre connexion</span><button onclick="closeConnPanel()" aria-label="Fermer" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Statut</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Réseau</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Débit descendant</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Chargement de la page</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Revérifier</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Mesuré localement dans votre navigateur. Rien n'est envoyé.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'En ligne':'Hors ligne';pg.textContent='mesure\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'inconnu')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'non signalé');}else{nt.textContent='non signalé par ce navigateur';dl.textContent='non signalé par ce navigateur';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms au premier octet \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms chargée';}else{ld.textContent='non signalé par ce navigateur';}}catch(e){ld.textContent='non signalé par ce navigateur';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'injoignable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('offline',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Hors ligne';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='hors ligne';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script><script>(function(){var map={engine:'01','scar-lab':'02','curve-bench':'03',kernel:'04','ruby-glasses':'05','crm-demo':'06'};function tabFromHash(){var t=(location.hash||'').replace('#','');if(map[t]&&typeof switchSuiteTab==='function'){switchSuiteTab(map[t]);}}document.addEventListener('DOMContentLoaded',tabFromHash);window.addEventListener('hashchange',tabFromHash);})();</script></body></html>

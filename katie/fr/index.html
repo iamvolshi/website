@@ -1,0 +1,1504 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head><script>(function(){try{if(localStorage.getItem('volshi-lang')==='en'){location.replace('/katie/'+location.search+location.hash);}}catch(e){}})();</script><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Moteur KT — VOLSHi</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@300;400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"ruby-deep":"#8E072B","ruby":"#EF174C","inverse-surface":"#e5e2e1","primary-container":"#c9a84c","on-primary-fixed":"#241a00","surface-container-highest":"#353534","on-tertiary":"#00363e","engine-line":"#A8B6B1","error-container":"#93000a","surface-container-low":"#1c1b1b","on-background":"#e5e2e1","secondary-fixed":"#ffe084","on-surface-variant":"#d0c5b2","tertiary-container":"#44bacd","surface-variant":"#353534","primary-fixed":"#ffe08f","secondary-container":"#735c00","secondary-fixed-dim":"#e3c466","primary":"#e6c364","on-surface":"#e5e2e1","status-lime":"#A8E349","surface-dim":"#131313","secondary":"#e3c466","engine-muted":"#4F5F5A","surface-container-lowest":"#0e0e0e","status-orange":"#F08A4B","tertiary-fixed":"#9defff","tertiary":"#65d6e9","inverse-on-surface":"#313030","engine-ink":"#101716","on-secondary-fixed":"#231b00","surface-container-high":"#2a2a2a","ruby-hot":"#FF4D70","background":"#131313","on-tertiary-fixed-variant":"#004f59","on-secondary-container":"#f6d675","on-secondary":"#3c2f00","on-tertiary-fixed":"#001f24","engine-deep":"#14201E","on-secondary-fixed-variant":"#574500","inverse-primary":"#755b00","surface-container":"#201f1f","primary-fixed-dim":"#e6c364","on-error":"#690005","on-primary":"#3d2e00","ruby-ground":"#0D090B","on-primary-fixed-variant":"#584400","outline":"#99907e","line-subtle":"#232220","tertiary-fixed-dim":"#65d6e9","outline-variant":"#4d4637","gold-glass-stroke":"rgba(201, 168, 76, 0.2)","ruby-panel":"#171013","surface":"#131313","on-tertiary-container":"#004750","error":"#ffb4ab","on-error-container":"#ffdad6","paper-light":"#F5F2ED","on-primary-container":"#503d00","engine-sheet":"#EDF1EF","ground-deep":"#060607","surface-tint":"#e6c364","surface-bright":"#3a3939"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2.25rem","space-md":"1.125rem",gutter:"1.125rem","space-xs":"0.375rem","space-sm":"0.75rem","space-lg":"1.5rem",margin:"1.5rem"},fontFamily:{"body-md":["Inter"],"telemetry-cell":["IBM Plex Mono"],"telemetry-head":["IBM Plex Mono"],"body-sm":["Inter"],"telemetry-code":["IBM Plex Mono"],"headline-hero-mobile":["Newsreader"],"headline-xl-mobile":["Newsreader"],"headline-lg":["Newsreader"],"headline-hero":["Newsreader"],"body-lg":["Inter"],"headline-md":["IBM Plex Sans"],kicker:["Inter"],"headline-xl":["Newsreader"],"headline-lg-mobile":["Newsreader"]},fontSize:{"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"telemetry-cell":["11px",{lineHeight:"14px",fontWeight:"400"}],"telemetry-head":["12px",{lineHeight:"16px",letterSpacing:"0.06em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"telemetry-code":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-hero-mobile":["34px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-lg":["30px",{lineHeight:"38px",fontWeight:"400"}],"headline-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}],"body-lg":["17px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"26px",letterSpacing:"0.01em",fontWeight:"600"}],kicker:["11px",{lineHeight:"14px",letterSpacing:"0.12em",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.015em",fontWeight:"400"}],"headline-lg-mobile":["22px",{lineHeight:"28px",fontWeight:"400"}]}}}}</script><link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
+</head><body class="bg-ground-deep font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><script>if(window.innerWidth<768){location.replace('/mobile/katie/fr/'+location.hash);}</script><header class="fixed top-0 left-0 w-full z-50 bg-[#080808]/90 backdrop-blur-xl border-b border-white/[0.08]"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><div class="flex items-center gap-4"><a href="/home/" class="inline-flex items-center" data-path="home"><img src="../../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-9 md:h-10 w-auto object-contain block"></a></div><div class="flex items-center gap-6 lg:gap-8"><nav class="hidden lg:flex items-center gap-6 lg:gap-8 h-16" data-active-classes="text-primary relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary"><a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" data-path="home" href="/home/">Accueil</a><a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" data-path="the-system" href="/the-system/">Le Système</a><a aria-current="page" class="text-[13px] tracking-wide text-primary relative py-2 font-medium after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary" data-path="katie" href="/katie/">KATIE</a><a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" data-path="research" href="/research/">Recherche</a><a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" data-path="invest" href="/invest/">Investir</a><a class="text-[13px] tracking-wide text-on-surface-variant hover:text-paper-light transition-colors py-2" data-path="contact" href="/home/#contact">Contact</a></nav><div class="flex items-center gap-space-sm"><a id="lang-switch" href="/katie/" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){}" class="h-8 px-2.5 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-[12px] font-medium tracking-wide text-on-surface-variant hover:text-primary transition-colors" aria-label="English version" lang="en">EN</a><div class="relative"><button id="proof-btn" class="w-8 h-8 rounded-full bg-paper-light flex items-center justify-center flex-shrink-0 shadow-md" aria-label="Raccourcis de preuve" aria-expanded="false" aria-controls="proof-nav" onclick="toggleProofNav()"><img src="../../assets/img/volshi-favicon.png" alt="" class="h-6 w-6 object-contain"></button><nav id="proof-nav" class="hidden absolute right-0 top-full mt-2 w-64 rounded-xl border border-white/[0.12] bg-[#121215] shadow-2xl py-2 flex flex-col"><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#engine" onclick="toggleProofNav()">Moteur KATIE</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#scar-lab" onclick="toggleProofNav()">Scar Lab</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#curve-bench" onclick="toggleProofNav()">Curve Bench + Grudge</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#kernel" onclick="toggleProofNav()">Kernel</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#ruby-glasses" onclick="toggleProofNav()">Ruby Glasses</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/#crm-demo" onclick="toggleProofNav()">Démo CRM</a><a class="block px-4 py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/home/#k-record" onclick="toggleProofNav()">Simulateur en direct</a></nav></div><button id="menu-btn" class="lg:hidden w-9 h-9 rounded-full border border-white/10 bg-[#121215] flex items-center justify-center text-primary flex-shrink-0" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()"><span id="menu-icon" class="material-symbols-outlined text-[20px]">menu</span></button></div></div></div><nav id="mobile-nav" class="hidden lg:hidden border-t border-white/[0.08] bg-ground-deep/95 backdrop-blur-xl px-6 lg:px-12 py-2 flex flex-col"><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/home/" onclick="toggleMenu()">Accueil</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/the-system/" onclick="toggleMenu()">Le Système</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/katie/" onclick="toggleMenu()">KATIE</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/research/" onclick="toggleMenu()">Recherche</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors border-b border-white/[0.04]" href="/invest/" onclick="toggleMenu()">Investir</a><a class="block py-2.5 font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="/home/#contact" onclick="toggleMenu()">Contact</a></nav></header><script>function toggleMenu(){var p=document.getElementById('mobile-nav');var h=p.classList.toggle('hidden');document.getElementById('menu-icon').textContent=h?'menu':'close';document.getElementById('menu-btn').setAttribute('aria-expanded',String(!h));}</script><script>function toggleProofNav(){var p=document.getElementById('proof-nav');var h=p.classList.toggle('hidden');document.getElementById('proof-btn').setAttribute('aria-expanded',String(!h));}document.addEventListener('click',function(e){var n=document.getElementById('proof-nav');if(!n||n.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#proof-nav,#proof-btn'))return;n.classList.add('hidden');document.getElementById('proof-btn').setAttribute('aria-expanded','false');});</script><main class="w-full pt-16 bg-ground-deep min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Forensic Dossier Header Banner -->
+<section class="w-full bg-surface-container-lowest py-space-md border-b border-line-subtle">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary font-telemetry-head text-telemetry-cell tracking-wider">
+KATIE
+ </span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline">|</span>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted hidden sm:inline"><span class="text-primary">K</span>NOWLEDGE · <span class="text-primary">A</span>UTHORITY · <span class="text-primary">T</span>IME · <span class="text-primary">I</span>NDEXING · <span class="text-primary">E</span>NGINE</span>
+</div>
+<div class="flex items-center gap-space-md font-telemetry-cell text-telemetry-cell text-engine-line">
+<span class="text-on-surface-variant">HORLOGE DU REGISTRE : <strong id="ledgerClockK" class="text-primary font-telemetry-code">k = 40</strong></span>
+
+</div>
+</div>
+</section>
+<!-- Interactive 6-Tab Precision Switcher -->
+<section class="sticky top-16 z-40 w-full bg-ground-deep/95 backdrop-blur-md border-b border-line-subtle shadow-md">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between overflow-x-auto no-scrollbar py-2">
+<nav class="flex items-center gap-1 sm:gap-2" id="katieTabButtons" role="tablist">
+<button aria-selected="true" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 bg-primary/15 text-primary border border-primary/40 shadow-sm" id="btn-engine" onclick="switchKatieTab('engine')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70">01</span>
+<span class="font-headline-md text-body-sm tracking-wide">Moteur</span>
+</button>
+<button aria-selected="false" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-container-low" id="btn-scar-lab" onclick="switchKatieTab('scar-lab')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70">02</span>
+<span class="font-headline-md text-body-sm tracking-wide">Scar Lab</span>
+</button>
+<button aria-selected="false" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-container-low" id="btn-curve-bench" onclick="switchKatieTab('curve-bench')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70">03</span>
+<span class="font-headline-md text-body-sm tracking-wide">Curve Bench</span>
+</button>
+<button aria-selected="false" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-container-low" id="btn-kernel" onclick="switchKatieTab('kernel')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70">04</span>
+<span class="font-headline-md text-body-sm tracking-wide">Kernel &amp; KID</span>
+</button>
+<button aria-selected="false" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 text-on-surface-variant hover:text-ruby-hot hover:bg-ruby-ground" id="btn-ruby-glasses" onclick="switchKatieTab('ruby-glasses')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70 text-ruby">05</span>
+<span class="font-headline-md text-body-sm tracking-wide text-ruby hover:text-ruby-hot">Ruby Glasses</span>
+</button>
+<button aria-selected="false" class="katie-nav-btn px-3.5 py-2 rounded text-left transition-all duration-150 flex items-center gap-2 text-on-surface-variant hover:text-paper-light hover:bg-surface-container-low" id="btn-crm-demo" onclick="switchKatieTab('crm-demo')" role="tab">
+<span class="font-telemetry-head text-telemetry-cell opacity-70">06</span>
+<span class="font-headline-md text-body-sm tracking-wide">Preuve CRM</span>
+</button>
+</nav>
+<div class="hidden lg:flex items-center gap-2 font-telemetry-cell text-telemetry-cell text-engine-muted pl-4">
+<span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+<span>MACHINE À ÉTATS EN AJOUT SEUL</span>
+</div>
+</div>
+</section>
+<!-- TAB PANELS CONTAINER -->
+<div class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-space-xl">
+<!-- ========================================================================= -->
+<!-- TAB 01: ENGINE (§4.1) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content flex flex-col gap-space-xl" id="tab-engine">
+<!-- Section Header -->
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Loi computationnelle candidate</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light">La loi de champ tritemporelle</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant pt-2">
+ La consolidation graduée par autorité laisse un déficit de trace lente qui persiste après le rétablissement de la confiance.
+ </p>
+</div>
+<!-- Main Engine Split Workstation -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left: Interactive Console d'événements (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md p-space-lg rounded-xl bg-surface-container-lowest shadow-xl border border-gold-glass-stroke">
+<div class="flex items-center justify-between pb-3 border-b border-line-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Console d'événements</span>
+</div>
+
+</div>
+<!-- Subject Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-telemetry-head text-telemetry-cell text-engine-line uppercase tracking-wider">Identifiant du sujet</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low text-paper-light font-telemetry-code text-body-sm px-3.5 py-2.5 rounded appearance-none focus:outline-none focus:ring-1 focus:ring-primary" id="engineSubjectSelect">
+<option value="Statut du pont">Statut du pont</option>
+<option value="Capteur A">Capteur A</option>
+<option value="Politique de réponse">Politique de réponse</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-engine-muted pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Type de dépôts -->
+<div class="flex flex-col gap-2">
+<label class="font-telemetry-head text-telemetry-cell text-engine-line uppercase tracking-wider">Type de dépôt</label>
+<div class="grid grid-cols-2 gap-2" id="depositTypeSelector">
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container text-paper-light border border-line-subtle hover:border-primary/50 transition-colors" onclick="selectDepositType('unknown', this)" type="button">
+<div class="font-semibold text-primary">Rapport inconnu</div>
+<div class="text-engine-muted">assert · WILD</div>
+</button>
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light transition-colors" onclick="selectDepositType('known', this)" type="button">
+<div class="font-semibold">Événement connu</div>
+<div class="text-engine-muted">assert · préréglé</div>
+</button>
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light transition-colors" onclick="selectDepositType('policy', this)" type="button">
+<div class="font-semibold">Politique</div>
+<div class="text-engine-muted">assert · préréglé</div>
+</button>
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light transition-colors" onclick="selectDepositType('confirm', this)" type="button">
+<div class="font-semibold">Confirmer</div>
+<div class="text-engine-muted">re-grade ↑</div>
+</button>
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light transition-colors" onclick="selectDepositType('challenge', this)" type="button">
+<div class="font-semibold">Contester</div>
+<div class="text-engine-muted">re-grade ↓</div>
+</button>
+<button class="dep-btn p-2 rounded text-left font-telemetry-cell text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light transition-colors" onclick="selectDepositType('revoke', this)" type="button">
+<div class="font-semibold text-ruby">Révoquer</div>
+<div class="text-engine-muted">autorité → 0</div>
+</button>
+</div>
+</div>
+<!-- Microcopy Callout -->
+<div class="p-3 rounded bg-surface-container-low/60 border-l-2 border-primary/60">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+ Première rencontre uniquement : les inconnus entrent en WILD. Les événements reconnus et les politiques prennent leur préréglage.
+ </p>
+</div>
+<!-- Trigger Button -->
+<button class="w-full mt-1 py-3 px-4 rounded bg-primary text-on-primary font-telemetry-head text-telemetry-head uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-secondary transition-all shadow-[0_0_16px_rgba(201,168,76,0.25)] hover:shadow-[0_0_20px_rgba(201,168,76,0.4)]" id="fireEventBtn" onclick="fireEngineEvent()">
+<span>Déclencher l'événement</span>
+<span class="text-primary-container font-telemetry-code">↳ k+</span>
+</button>
+<!-- Raw Input Preview -->
+
+</div>
+<!-- Right: Belief Status & Append-Only Ledger Rail (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Live Belief Gauges HUD -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-xl border border-line-subtle flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-kicker text-kicker uppercase text-engine-muted">SUJET INSPECTÉ</span>
+<div class="font-headline-lg text-headline-lg text-paper-light" id="activeSubjectName">Statut du pont</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full font-telemetry-head text-telemetry-cell uppercase tracking-wider bg-status-lime/10 text-status-lime border border-status-lime/30 flex items-center gap-1.5" id="activeSubjectState">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime animate-pulse"></span>
+ TRUSTED
+ </span>
+<span class="px-2.5 py-1 rounded font-telemetry-code text-telemetry-cell uppercase bg-surface-container-high text-primary border border-gold-glass-stroke" id="activeKBadge">
+ k = 40
+ </span>
+</div>
+</div>
+<!-- Authority & Slow Trace Meters -->
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="p-3 rounded bg-surface-container-low flex flex-col gap-1">
+<span class="font-telemetry-head text-telemetry-cell text-engine-line">AUTORITÉ (A)</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-paper-light font-mono" id="engineAuthorityValue">0.80</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-1">
+<div class="h-full bg-primary" id="engineAuthBar" style="width: 80%"></div>
+</div>
+</div>
+
+</div>
+<!-- Scrubber Slider -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center justify-between font-telemetry-head text-telemetry-cell text-engine-muted">
+<span>PREMIER DÉPÔT (k=1)</span>
+<span class="text-primary font-mono" id="scrubberKLabel">POSITION REPLAY : k = 40</span>
+<span>MAINTENANT (k=61)</span>
+</div>
+<input class="w-full accent-primary h-1.5 bg-surface-container-highest rounded-lg cursor-pointer" id="katieScrubber" max="61" min="1" oninput="updateScrubber(this.value)" type="range" value="40">
+<div class="flex items-center justify-between text-telemetry-cell font-telemetry-cell text-engine-muted">
+<span>Genèse de l'événement</span>
+<span>Horizon d'état</span>
+</div>
+</div>
+</div>
+<!-- Append-Only Ledger Table -->
+<div class="rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl overflow-hidden flex flex-col">
+<div class="p-3.5 bg-surface-container-low flex items-center justify-between border-b border-line-subtle">
+<div class="flex items-center gap-2 font-telemetry-head text-telemetry-cell text-paper-light uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-primary">history_edu</span>
+<span>Registre de preuves en ajout seul</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono">Chaîne de remplacements</span>
+</div>
+<div class="overflow-x-auto max-h-72 overflow-y-auto">
+<table class="w-full text-left font-telemetry-cell text-telemetry-cell">
+<thead class="bg-surface-container-lowest text-engine-line sticky top-0 uppercase border-b border-line-subtle">
+<tr>
+<th class="py-2.5 px-3">Indice k</th>
+<th class="py-2.5 px-3">Type</th>
+<th class="py-2.5 px-3">Affirmation</th>
+<th class="py-2.5 px-3">Autorité</th>
+<th class="py-2.5 px-3">Maillon de chaîne</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-line-subtle/40 text-on-surface font-mono" id="ledgerTableBody">
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-2 px-3 text-primary">k = 40</td>
+<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-status-lime/10 text-status-lime text-[10px]">TRUSTED</span></td>
+<td class="py-2 px-3">Statut du pont</td>
+<td class="py-2 px-3 text-paper-light">0.80</td>
+<td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span>Remplace k=24</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-2 px-3 text-engine-line">k = 24</td> <td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px]">VALIDATED</span></td> <td class="py-2 px-3">Statut du pont</td> <td class="py-2 px-3 text-paper-light">0.70</td>
+<td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
+<span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
+<span>Remplace k=12</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-2 px-3 text-engine-line">k = 12</td> <td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-ruby/10 text-ruby text-[10px]">CONTESTED</span></td> <td class="py-2 px-3">Statut du pont</td> <td class="py-2 px-3 text-ruby">0.40</td>
+<td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
+<span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
+<span>Remplace k=1</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="py-2 px-3 text-engine-line">k = 1</td>
+<td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full bg-status-orange/10 text-status-orange text-[10px]">WILD</span></td>
+<td class="py-2 px-3">Statut du pont</td>
+<td class="py-2 px-3 text-paper-light">0.20</td>
+<td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
+<span class="w-2 h-2 rounded-full bg-engine-line inline-block"></span>
+<span>origine</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Verbatim 11 Mechanisms Patent Section -->
+<div class="mt-8 p-space-xl rounded-xl bg-surface-container-lowest border border-gold-glass-stroke shadow-2xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-baseline justify-between gap-2 border-b border-line-subtle pb-space-md">
+<div>
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Brevet en attente</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light mt-1">Demande de brevet provisoire américaine n° 64/182,709</h2>
+</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">
+ Déposée le 23 octobre 2026 · Inventeur : Darren Patrick Hall
+ </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+ Le dépôt couvre onze mécanismes :
+ </p>
+<!-- 11 Mechanisms Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">01</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Le registre scellé</h3>
+<p class="font-body-sm text-body-sm text-engine-line">chaque croyance en ajout seul, chaînée par hachage à l'entrée précédente. La falsification, la suppression ou un intervalle brisé sont détectés par la vérification, qui identifie la ligne exacte concernée.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">02</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Temps de connaissance</h3>
+<p class="font-body-sm text-body-sm text-engine-line">une troisième horloge : pas quand un événement est arrivé, ni quand il est parvenu, mais quand il a été connu, et à quelle autorité.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">03</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">L'autorité qui tombe sans effacer</h3>
+<p class="font-body-sm text-body-sm text-engine-line">une croyance fausse reste dans le registre pendant que son autorité s'effondre. Le système apprend sans réécrire son histoire.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">04</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Né enregistré</h3>
+<p class="font-body-sm text-body-sm text-engine-line">chaque noyau se voit assigner un Kernel ID à la naissance. Pas de KID, pas de lecture, pas d'écriture. Ce qui n'est pas encore compris tourne comme null : enregistré, présent et non assigné — jamais invisible.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">05</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">La preuve du poison</h3>
+<p class="font-body-sm text-body-sm text-engine-line">le registre vérifie sa propre intégrité contre la falsification, la suppression et les attaques par intervalle, et produit la preuve de chaque détection.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">06</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Le pare-feu</h3>
+<p class="font-body-sm text-body-sm text-engine-line">chaque source porte un accumulateur de dégâts. Passé un seuil, la source continue d'être enregistrée intégralement et cesse d'avoir tout effet. L'attaque est préservée comme preuve.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">07</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">La boucle d'auto-guérison</h3>
+<p class="font-body-sm text-body-sm text-engine-line">la machine lit son propre registre, identifie une déficience, construit le composant manquant et l'intègre.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">08</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Les paramètres comme actes</h3>
+<p class="font-body-sm text-body-sm text-engine-line">un changement des paramètres d'un noyau est enregistré comme un événement versionné sur la même identité. Aucun composant ne reçoit une nouvelle identité pour échapper à son histoire.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">09</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">Des instantanés, pas l'état</h3>
+<p class="font-body-sm text-body-sm text-engine-line">toute vue du présent est dérivée du registre et peut être re-dérivée identiquement à tout moment. Là où un instantané et le registre divergent, le registre gouverne.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5">
+<span class="font-telemetry-code text-primary font-bold">10</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">L'attention cocotte-minute</h3>
+<p class="font-body-sm text-body-sm text-engine-line">l'influence que le système ne peut pas consolider s'accumule par type jusqu'à franchir un seuil d'attention. L'attention la décharge.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle hover:border-primary/40 transition-colors flex flex-col gap-1.5 md:col-span-2 lg:col-span-1">
+<span class="font-telemetry-code text-primary font-bold">11</span>
+<h3 class="font-headline-md text-body-md text-paper-light font-semibold">La dette et la courbe</h3>
+<p class="font-body-sm text-body-sm text-engine-line">le déficit en cours retire des options au composant blessé jusqu'à sa guérison ; la position d'un composant sur la courbe de réponse est fixée par design, comme protection, comme capteur, ou pour une rétention délibérée.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 02: SCAR LAB (§4.2) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-scar-lab">
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-kicker text-kicker uppercase text-ruby tracking-widest">Dynamique épistémique forensique</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light">Le Scar Lab</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Envoyez des blessures dans la loi de champ et regardez la cicatrice se former — vraie dynamique v1.8.
+ </p>
+</div>
+<!-- Controls & Live Readouts -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Slider Panel (5 cols) -->
+<div class="lg:col-span-5 p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2 border-b border-line-subtle">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase">Contrôle du vecteur de blessure</span>
+<button class="font-telemetry-cell text-telemetry-cell text-primary hover:underline" onclick="resetScarDefaults()">RÉINITIALISER LE PRÉRÉGLAGE v1.8</button>
+</div>
+<!-- Slider 1: Intensity -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">INTENSITÉ (I)</span>
+<span class="font-telemetry-code text-primary" id="valIntensity">0.80</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderIntensity" max="1" min="0" oninput="updateScarSim()" step="0.01" type="range" value="0.80">
+</div>
+<!-- Slider 2: Duration -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">DURÉE (ticks)</span>
+<span class="font-telemetry-code text-primary" id="valDuration">27</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDuration" max="450" min="1" oninput="updateScarSim()" step="1" type="range" value="27">
+</div>
+<!-- Slider 3: DECAY -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">FACTEUR DECAY (γ)</span>
+<span class="font-telemetry-code text-primary" id="valDecay">0.70</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderDecay" max="1.50" min="0.05" oninput="updateScarSim()" step="0.01" type="range" value="0.70">
+</div>
+<!-- Slider 4: Recovery -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">TAUX DE RÉCUPÉRATION (ticks)</span>
+<span class="font-telemetry-code text-primary" id="valRecovery">2000</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderRecovery" max="4000" min="200" oninput="updateScarSim()" step="50" type="range" value="2000">
+</div>
+<!-- Slider 5: Slow τ -->
+
+<!-- Slider 6: Injury Authority -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">τ LENT (consolidation)</span>
+<span class="font-telemetry-code text-primary" id="valSlowTau">500</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded" id="sliderSlowTau" max="2000" min="100" oninput="updateScarSim()" step="10" type="range" value="500">
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-engine-line">AUTORITÉ DE LA BLESSURE</span>
+<span class="font-telemetry-code text-ruby" id="valInjuryAuth">0.30</span>
+</div>
+<input class="w-full accent-ruby h-1 bg-surface-container-highest rounded" id="sliderInjuryAuth" max="1" min="0" oninput="updateScarSim()" step="0.05" type="range" value="0.30">
+</div>
+<!-- Live Output Pills -->
+<div class="mt-2 grid grid-cols-2 gap-3 pt-3 border-t border-line-subtle">
+<div class="p-3 rounded bg-surface-container-low flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">CONSTANTE DE TEMPS τ</span>
+<span class="font-headline-md text-headline-md text-paper-light font-mono" id="outTimeConstant">19.3</span>
+</div>
+<div class="p-3 rounded bg-surface-container-low flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-ruby">CICATRICE · TICKS</span>
+<span class="font-headline-md text-headline-md text-ruby-hot font-mono" id="outScarTicks">12.8</span>
+</div>
+</div>
+</div>
+<!-- Right Visualizations (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Chart 1: Deposit Sequence Curve -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Graphique 1 : Dynamique de la séquence de dépôts</span>
+<div class="flex items-center gap-3 font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-primary"><span class="w-2 h-0.5 bg-primary inline-block"></span>Rapide blessé</span>
+<span class="flex items-center gap-1 text-ruby"><span class="w-2 h-0.5 bg-ruby inline-block"></span>Lent blessé</span>
+<span class="flex items-center gap-1 text-engine-muted"><span class="w-2 h-0.5 bg-engine-line inline-block border-dashed"></span>Lent témoin</span>
+</div>
+</div>
+<!-- SVG Vector Field Curve -->
+<div class="w-full h-56 bg-surface-container-lowest rounded relative overflow-hidden flex items-end">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 600 220">
+<!-- Grid hairlines -->
+<line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="40" y2="40"></line>
+<line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="110" y2="110"></line>
+<line stroke="#232220" stroke-width="1" x1="0" x2="600" y1="180" y2="180"></line>
+<line id="svgInjuryLine" stroke="#232220" stroke-dasharray="3 3" stroke-width="1" x1="180" x2="180" y1="0" y2="220"></line>
+<text fill="#4F5F5A" font-family="monospace" font-size="10" id="svgInjuryLabel" x="185" y="20">BLESSURE</text>
+<!-- Scar Gap Area Fill -->
+<path d="M 180 140 Q 240 180 340 160 T 560 125 L 560 100 Q 380 95 240 100 Z" fill="rgba(239, 23, 76, 0.12)" id="svgScarArea"></path>
+<!-- Lent témoin Reference (dashed) -->
+<path d="M 0 100 L 180 100 Q 320 95 600 90" fill="none" id="svgSlowControl" stroke="#A8B6B1" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Lent blessé (Ruby) -->
+<path d="M 0 100 L 180 100 Q 240 180 340 160 T 600 120" fill="none" id="svgSlowInjured" stroke="#EF174C" stroke-width="2.5"></path>
+<!-- Rapide blessé (Gold) -->
+<path d="M 0 100 L 180 100 L 190 205 L 260 200 Q 300 110 600 90" fill="none" id="svgFastInjured" stroke="#E6C364" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-engine-muted pt-1">
+<span>800 SAINS</span>
+<span class="text-ruby-hot font-medium">DÉFICIT OMBRÉ = ZONE DE RÉTENTION DE LA CICATRICE</span>
+<span>RÉCUPÉRATION</span>
+</div>
+</div>
+<!-- Chart 2: Closed Form Hump across DECAY -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Graphique 2 : Bosse en forme fermée v1.8 selon DECAY</span>
+<span class="font-telemetry-code text-telemetry-cell text-engine-muted" id="decayBadge">DECAY .70</span>
+</div>
+<div class="w-full h-44 bg-surface-container-lowest rounded relative overflow-hidden flex items-end">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 600 180">
+<!-- Resonance Hump -->
+<path d="M 30 170 C 120 170 180 20 320 30 C 420 40 500 160 580 170" fill="none" id="svgHumpPath" stroke="#C9A84C" stroke-width="2.5"></path>
+<!-- Peak marker line -->
+<line id="svgDecayGuide" stroke="#EF174C" stroke-dasharray="3 3" stroke-width="1.5" x1="280" x2="280" y1="20" y2="175"></line>
+<circle cx="280" cy="27" fill="#EF174C" id="svgHumpMarker" r="4"></circle>
+
+</svg>
+</div>
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+<span>.05</span> <span>.50</span> <span>1.0</span> <span>1.5</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 03: CURVE BENCH (§4.3) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-curve-bench">
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Visuels KT · 03</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light">Le Curve Bench</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Chaque pool a sa propre courbe. Les insultes et les compliments ne cicatrisent pas pareil — glissez les points de contrôle et regardez la rancune répondre. Les courbes illustrent le design de la visite guidée (poussée variable, queue dynamique, courbes par pool) ; la décroissance de la profondeur utilise le taux lent validé v1.8.
+ </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Curve Editor (7 cols) -->
+<div class="lg:col-span-7 p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-line-subtle pb-3">
+<!-- Pool Switcher -->
+<div class="flex items-center gap-2">
+<button class="pool-btn px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-ruby/15 text-ruby-hot border border-ruby/40" onclick="setCurvePool('insults', this)">
+ Pool : Insultes
+ </button>
+<button class="pool-btn px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-surface-container text-on-surface-variant hover:text-paper-light" onclick="setCurvePool('compliments', this)">
+ Pool : Compliments
+ </button>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-engine-muted font-mono" id="curveTitle">Poussée par insulte consécutive</span>
+</div>
+<!-- Interactive SVG Curve Canvas -->
+<div class="w-full h-72 bg-ground-deep rounded-lg relative overflow-hidden p-4 flex flex-col justify-between">
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+<span id="curveEyebrow">Pool · insultes</span>
+<span id="curveLegend">ticks ajoutés</span>
+</div>
+<svg class="w-full h-48 my-auto" id="benchCurveSvg" viewBox="0 0 500 200">
+        <line x1="40" y1="175" x2="490" y2="175" stroke="#232220" stroke-width="1.5"></line>
+        <line x1="40" y1="15" x2="40" y2="175" stroke="#232220" stroke-width="1.5"></line>
+        <line x1="151.25" y1="15" x2="151.25" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="262.5" y1="15" x2="262.5" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="373.75" y1="15" x2="373.75" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="485" y1="15" x2="485" y2="175" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="131.9" x2="490" y2="131.9" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="88.9" x2="490" y2="88.9" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="45.8" x2="490" y2="45.8" stroke="#1a1918" stroke-width="1"></line>
+        <line x1="40" y1="20" x2="490" y2="20" stroke="#1a1918" stroke-width="1"></line>
+        <text x="40" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">0</text>
+        <text x="151.25" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">5</text>
+        <text x="262.5" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">10</text>
+        <text x="373.75" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">15</text>
+        <text x="485" y="190" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="middle">20</text>
+        <text x="34" y="178" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">0</text>
+        <text x="34" y="135" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">25</text>
+        <text x="34" y="92" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">50</text>
+        <text x="34" y="49" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">75</text>
+        <text x="34" y="23" fill="#6b6862" font-size="9" font-family="monospace" text-anchor="end">90</text>
+        <line id="curvePosLine" stroke="#E6C364" stroke-width="1" stroke-dasharray="3 3" visibility="hidden"></line>
+        <path d="" fill="none" id="curveBenchPath" stroke="#EF174C" stroke-width="3"></path>
+        <circle id="curvePosDot" r="5" fill="#E6C364" stroke="#060607" stroke-width="2" visibility="hidden"></circle>
+        <g id="curvePointsG"></g>
+      </svg>
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell text-engine-muted">
+<span>0</span>
+<span class="text-primary">événements consécutifs</span>
+<span>20</span>
+</div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50" id="curveNote">Glissez les points. X est le nombre d’insultes consécutives, Y est le nombre de ticks que chaque insulte ajoute à la rancune. Plus raide = la rancune s’approfondit plus vite au fil du temps.</div>
+      <div class="flex gap-2">
+        <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-surface-container text-on-surface-variant hover:text-paper-light" onclick="resetCurve()">Réinitialiser cette courbe</button>
+        <button class="px-3 py-1.5 rounded font-telemetry-head text-telemetry-cell bg-surface-container text-on-surface-variant hover:text-paper-light" onclick="resetGrudge()">Réinitialiser la rancune</button>
+      </div>
+</div>
+<!-- Right: Le simulateur de rancune (5 cols) -->
+<div class="lg:col-span-5 p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col justify-between gap-space-lg">
+<div>
+<div class="flex items-center justify-between border-b border-line-subtle pb-3">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Le simulateur de rancune</span>
+
+</div>
+<!-- Big Number Readout -->
+<div class="my-6 text-center flex flex-col items-center">
+<span class="font-kicker text-kicker uppercase text-engine-line">Rancune retenue calculée</span>
+<div class="font-headline-hero text-headline-hero text-paper-light font-mono mt-1" id="grudgeTicksDisplay">
+ 0 <span class="text-headline-lg font-sans text-engine-muted">ticks</span>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-ruby-hot mt-1" id="grudgeDescriptor">Aucune rancune. Offensez pour en commencer une.</span>
+</div>
+<!-- Dual Split Bars -->
+<div class="flex flex-col gap-4">
+<!-- Surface Bar -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-paper-light">Surface · ce qu'elle montre</span>
+<span class="font-mono text-primary" id="surfacePercent">0 ticks</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300" id="barSurface" style="width: 0%"></div>
+</div>
+</div>
+<!-- Depth Bar -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-paper-light">Profondeur · ce qu'elle retient</span>
+<span class="font-mono text-ruby" id="depthPercent">0 ticks</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-ruby transition-all duration-300" id="barDepth" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50">La surface s'efface en quelques ticks — la profondeur décroît au taux lent validé (λ = 0.002, ~500 ticks pour se renouveler). L'excuse répare vite ce qu'elle montre ; ce qu'elle retient prend ~80× plus longtemps. C'est la découverte de la dette v1.8, en direct.</div>
+      <div class="flex flex-wrap items-end gap-1 min-h-6" id="grudgeHistory"><span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offenser ou réparer pour commencer</span></div>
+      <!-- Interactive Action Buttons -->
+<div class="grid grid-cols-3 gap-2 pt-4 border-t border-line-subtle">
+<button class="py-2.5 px-3 rounded bg-ruby/15 text-ruby-hot border border-ruby/30 hover:bg-ruby hover:text-paper-light transition-all font-telemetry-head text-telemetry-cell uppercase tracking-wider" onclick="triggerGrudgeAction('offend')">
+ Offenser
+ </button>
+<button class="py-2.5 px-3 rounded bg-primary/15 text-primary border border-primary/30 hover:bg-primary hover:text-on-primary transition-all font-telemetry-head text-telemetry-cell uppercase tracking-wider" onclick="triggerGrudgeAction('repair')">
+ Réparer
+ </button>
+<button class="py-2.5 px-3 rounded bg-surface-container text-paper-light hover:bg-surface-container-high transition-all font-telemetry-head text-telemetry-cell uppercase tracking-wider" onclick="triggerGrudgeAction('tick')">
+ Passer 100t
+ </button>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 04: KERNEL & KID (§4.4) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-kernel">
+<!-- Eyebrow & Headline -->
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">Moteur KATIE / architecture KID</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light">Tout est E/S, avec un KID au milieu.</h1>
+<p class="font-headline-lg text-body-lg italic text-paper-light border-l-2 border-primary pl-4 py-1">
+ "Des maths en entrée, des maths en sortie — mais à quel objet les maths sont-elles assignées ? C'est ça, la chose."
+ </p>
+</div>
+<!-- Glass-box machine artwork -->
+<div class="rounded-xl overflow-hidden border border-line-subtle shadow-xl">
+<img src="../../assets/img/glass-box-machine.webp" alt="Illustration : une boîte de verre contenant un mécanisme doré, étiquetée entrée reçue, couche de traitement, sortie générée." class="w-full h-80 object-cover object-center">
+</div>
+<!-- KID Architecture Diagram -->
+<div class="p-space-xl rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-space-lg">
+<div class="flex items-center justify-between border-b border-line-subtle pb-3">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Topologie de flux déterministe</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+<!-- Socket In -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-2">
+<span class="font-kicker text-kicker uppercase text-engine-muted">Prise d'entrée</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Tout en entrée</h3><p class="font-telemetry-cell text-telemetry-cell text-engine-line">Exemples, pas des limites :</p>
+<ul class="font-telemetry-cell text-telemetry-cell text-engine-line space-y-1 pt-1">
+<li>• Signaux de paires d'agents</li>
+<li>• Événements / regroupements d'événements</li>
+<li>• Entrée utilisateur / modèle du monde</li>
+            <li>• + tout signal futur</li>
+</ul>
+</div>
+<!-- Kernel (KID in the middle) -->
+<div class="p-space-md rounded-lg bg-primary/10 border-2 border-primary shadow-[0_0_24px_rgba(201,168,76,0.15)] flex flex-col gap-2 relative">
+<div class="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-primary text-on-primary font-telemetry-cell text-[10px] font-bold">LE CŒUR</div>
+<span class="font-kicker text-kicker uppercase text-primary">NOYAU D'ENTITÉ KID</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Unité KID enregistrée</h3>
+<p class="font-body-sm text-body-sm text-engine-sheet">
+ Accumulateurs de traces doubles rapide/lent. KATIE assigne le Kernel ID avant qu'un noyau entre dans le chemin du signal.
+ </p>
+
+</div>
+<!-- Socket Out -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-2">
+<span class="font-kicker text-kicker uppercase text-engine-muted">Prise de sortie</span>
+<h3 class="font-headline-md text-headline-md text-paper-light">Registre en sortie</h3><p class="font-telemetry-cell text-telemetry-cell text-engine-line">Exemples, pas des limites :</p>
+<ul class="font-telemetry-cell text-telemetry-cell text-engine-line space-y-1 pt-1">
+<li>• Décisions</li>
+<li>• Entrées du K-record</li>
+<li>• Assignations / mises à jour d'état</li>
+            <li>• + tout système suivant</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Preset Switcher Matrix -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-4 flex flex-col gap-2">
+<span class="font-telemetry-head text-telemetry-head text-engine-line uppercase">Sélectionner un préréglage KID</span>
+<div class="flex flex-col gap-2">
+<button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container text-paper-light border border-primary/40" onclick="setKernelPreset('event', this)">
+<div class="font-semibold text-primary">Préréglage : Événement</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Un seul événement</div>
+</button>
+<button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setKernelPreset('topic', this)">
+<div class="font-semibold">Préréglage : Sujet</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Un sujet / regroupement d’événements</div>
+</button>
+<button class="preset-btn p-3.5 rounded-lg text-left bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setKernelPreset('sentinel', this)">
+<div class="font-semibold">Préréglage : Sentinelle</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">Un mode système maintenu</div>
+</button>
+</div>
+</div>
+<!-- Live Parameters Display (8 cols) -->
+<div class="lg:col-span-8 p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-line-subtle pb-3 mb-4">
+<span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Paramètres dynamiques en direct</span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary font-mono" id="presetActiveLabel">ACTIF : ÉVÉNEMENT</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">SEUIL</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pThreshold">0.35</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">ATTAQUE</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAttack">Rapide</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">RATIO</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRatio">3:1</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">LIBÉRATION</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pRelease">Moyen</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">FENÊTRE</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pWindow">12 ticks</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">AUTORITÉ</div>
+<div class="font-telemetry-code text-body-md text-paper-light mt-1" id="pAuthority">0.70</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low col-span-2">
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">PROFIL COUDE / COURBE</div>
+<div class="font-telemetry-code text-body-md text-primary mt-1" id="pKnee">Exponentielle douce</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">ASSIGNÉ À</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pAssigned">Un seul événement</div></div>
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">FORME DE RÉPONSE</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pShape">Impact rapide, libération mesurée</div></div>
+          <div class="p-3 rounded bg-surface-container-low"><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">POURQUOI</div><div class="font-body-sm text-body-sm text-paper-light mt-1" id="pWhy">saisir l’impact immédiat sans perdre son influence plus longue.</div></div>
+        </div>
+        <div class="font-telemetry-cell text-telemetry-cell text-engine-muted pt-4 border-t border-line-subtle flex justify-between"><span>SPÉCIFICATION DE L'ACTE DE PARAMÈTRE</span></div>
+</div>
+</div>
+<!-- Preuve de terrain Banner -->
+<div class="p-space-lg rounded-xl bg-surface-container-low border-l-4 border-primary flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<span class="font-kicker text-kicker uppercase text-primary">Preuve de terrain</span>
+<h2 class="font-headline-lg text-headline-lg text-paper-light">"Ça tourne sur un téléphone"</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compilation edge validée avec zéro dépendance cloud.</p>
+</div>
+<div class="flex flex-wrap items-center gap-6 font-mono text-telemetry-head">
+<div class="flex flex-col">
+<span class="text-primary text-headline-md font-bold">27,074</span>
+<span class="text-engine-muted text-telemetry-cell">asserts / s</span>
+</div>
+<div class="flex flex-col">
+<span class="text-primary text-headline-md font-bold">14,434</span>
+<span class="text-engine-muted text-telemetry-cell">promotions / s</span>
+</div>
+<div class="flex flex-col">
+<span class="text-primary text-headline-md font-bold">&lt; 0.5 ms</span>
+<span class="text-engine-muted text-telemetry-cell">lectures as-of</span>
+</div>
+<div class="flex flex-col">
+<span class="text-status-lime text-headline-md font-bold">0</span>
+<span class="text-engine-muted text-telemetry-cell">dépendances</span>
+</div>
+</div>
+</div>
+<!-- 16 Promises / Test Suite Terminal Replay -->
+<div class="rounded-xl bg-ground-deep border border-line-subtle shadow-2xl overflow-hidden flex flex-col font-mono text-telemetry-cell">
+<div class="bg-surface-container-lowest px-4 py-3 border-b border-line-subtle flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-ruby"></span>
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="w-3 h-3 rounded-full bg-status-lime"></span>
+<span class="ml-2 text-engine-line">$ cargo test --release</span>
+</div>
+<span class="text-status-lime">16 RÉUSSIS · 0 ÉCHOUÉS</span>
+</div>
+<div class="p-4 max-h-72 overflow-y-auto space-y-1 text-on-surface-variant">
+<div class="text-paper-light">running 16 tests</div>
+<div>test act_never_advances_k_but_is_remembered ... <span class="text-status-lime font-bold">ok</span> // ce qui a été fait, sous quelle croyance</div>
+          <div>test authority_is_0_to_9_never_10 ... <span class="text-status-lime font-bold">ok</span> // la place des dizaines est le bit d'échappement</div>
+          <div>test deposit_opens_wild_and_advances_k ... <span class="text-status-lime font-bold">ok</span> // première rencontre, horodatée et en direct</div>
+          <div>test deposit_twice_is_rejected ... <span class="text-status-lime font-bold">ok</span> // utiliser regrade ou revoke à la place</div>
+          <div>test impact_is_clamped_not_fatal ... <span class="text-status-lime font-bold">ok</span> // une entrée hors limites ne peut pas le casser</div>
+          <div>test known_at_is_a_true_as_of ... <span class="text-status-lime font-bold">ok</span> // le passé reste interrogeable</div>
+          <div>test per_pool_params_are_independent ... <span class="text-status-lime font-bold">ok</span> // chaque pool ses propres boîtes</div>
+          <div>test birth_starts_at_zero_with_nothing_known ... <span class="text-status-lime font-bold">ok</span> // k = 0, aucune entrée, aucun sujet</div>
+          <div>test reads_never_advance_k ... <span class="text-status-lime font-bold">ok</span> // known_at, biography, authority_at</div>
+          <div>test regrade_closes_one_interval_and_opens_another ... <span class="text-status-lime font-bold">ok</span> // l'historique reste, exactement un en direct</div>
+          <div>test regrade_to_revoked_is_rejected ... <span class="text-status-lime font-bold">ok</span> // revoke() est la seule porte</div>
+          <div>test revoke_collapses_authority_but_keeps_history ... <span class="text-status-lime font-bold">ok</span> // le mensonge reste ; la confiance meurt</div>
+          <div>test tek_stamps_every_record ... <span class="text-status-lime font-bold">ok</span> // t, e, k — l'objet est le lien</div>
+          <div>test traces_feed_from_deposits ... <span class="text-status-lime font-bold">ok</span> // les pools bougent avec le registre</div>
+          <div>test variable_nudge_moves_k_by_more_than_one ... <span class="text-status-lime font-bold">ok</span> // pas variable, par écriture</div>
+          <div>test wrong_kid_is_rejected ... <span class="text-status-lime font-bold">ok</span> // pas de KID, pas de lecture, pas d'écriture</div>
+<div class="pt-2 text-paper-light font-bold">test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out</div>
+<div class="pt-1 text-engine-muted font-mono text-[11px]">L'exécution réelle, rejouée — capturée depuis le repo.</div>
+</div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 05: RUBY GLASSES (§4.5) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-ruby-glasses">
+<!-- Perspective 01 -->
+<div class="p-space-xl rounded-xl bg-ruby-ground border border-ruby/30 shadow-2xl flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-ruby/10 blur-3xl pointer-events-none"></div>
+<span class="font-kicker text-kicker uppercase text-ruby-hot tracking-widest">Perspective 01 / Ruby glasses</span> <span class="font-telemetry-cell text-telemetry-cell text-engine-muted border border-line-subtle rounded-full px-2 py-0.5">Maquette de vision</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light max-w-4xl">Mettez les lunettes rubis.</h1>
+<p class="font-body-lg text-body-lg text-on-surface max-w-3xl">Le monde change quand chaque machine peut montrer son travail.</p>
+        <p class="font-body-md text-body-md text-paper-light max-w-3xl">Vous ne voyez plus une réponse. Vous voyez son histoire.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">Derrière chaque décision : ce qu'elle savait. Ce qu'elle croyait. Qui le lui a dit. Ce qui a changé. Ce qu'elle a fait ensuite.</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">La boîte noire ne devient pas moins puissante. Elle devient responsable. Son passé reste présent—un K-record en ajout seul qu'aucune confiance nouvelle ne peut effacer.</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 font-telemetry-cell text-telemetry-cell text-ruby-hot"><span>QUOI — ce que la machine croyait</span><span>QUAND — cette croyance détenait l'autorité</span><span>POURQUOI — elle était justifiée d'agir</span></div>
+</div>
+<!-- Perspective 02: Ask the Machine Why -->
+<div class="p-space-xl rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-ruby">Étude d'interface 02 / enquête K-record</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">Demandez à la machine pourquoi.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Pas une explication générée après coup. Le registre des croyances qui avaient réellement l'autorité quand la décision a été prise.</p>
+</div>
+<!-- Prompt Selector Chips -->
+<div class="flex flex-wrap gap-2">
+<button class="ruby-prompt-btn px-4 py-2 rounded-full font-telemetry-head text-telemetry-cell bg-ruby text-paper-light shadow-md" onclick="setRubyPrompt(1, this)">
+ "Pourquoi avez-vous arrêté le transfert ?"
+ </button>
+<button class="ruby-prompt-btn px-4 py-2 rounded-full font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setRubyPrompt(2, this)">
+ "Que croyiez-vous au sujet du destinataire ?"
+ </button>
+<button class="ruby-prompt-btn px-4 py-2 rounded-full font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setRubyPrompt(3, this)">
+ "Qu'est-ce qui vous a fait changer d'avis ?"
+ </button>
+</div>
+<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">KID K-31A8 · EID EVT-00941 · état du registre scellé</div>
+        <!-- 4-Event Decision Trace Timeline -->
+<div class="rounded-lg bg-surface-container-lowest border border-line-subtle p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-line-subtle pb-2">
+<span class="font-telemetry-head text-telemetry-cell text-ruby uppercase tracking-wider">Trace de décision / 4 états enregistrés</span>
+
+</div>
+<p class="font-body-md text-body-md text-paper-light" id="rubyAnswer">J'ai arrêté le transfert parce que l'autorité du destinataire est tombée sous le seuil d'exécution à 14:32:08.</p>
+      <div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-ruby/40" id="rubyTraceContainer">
+<!-- Event 1 -->
+<div class="relative flex flex-col gap-1">
+<span class="w-3 h-3 rounded-full bg-ruby absolute -left-7 top-1 shadow-[0_0_8px_#EF174C]"></span>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
+<span class="text-ruby-hot font-bold">14:31:42</span>
+<span class="text-engine-muted">observé</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace1">Le destinataire correspondait à un bénéficiaire précédemment approuvé.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">base · historique de compte vérifié + instruction de l'utilisateur — autorité 0.9 (90 %)</div>
+</div>
+<!-- Event 2 -->
+<div class="relative flex flex-col gap-1">
+<span class="w-3 h-3 rounded-full bg-status-orange absolute -left-7 top-1"></span>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
+<span class="text-status-orange font-bold">14:31:57</span>
+<span class="text-engine-muted">contesté</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace2">Les données de routage ont divergé du registre approuvé.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">base · comparaison de destination en direct — autorité 0.6 (60 %)</div>
+</div>
+<!-- Event 3 -->
+<div class="relative flex flex-col gap-1">
+<span class="w-3 h-3 rounded-full bg-ruby-deep absolute -left-7 top-1"></span>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
+<span class="text-ruby font-bold">14:32:05</span>
+<span class="text-engine-muted">révisé</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace3">L'identité du destinataire ne pouvait plus être justifiée.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">base · conflit non résolu ; croyance antérieure conservée — autorité 0.2 (20 %)</div>
+</div>
+<!-- Event 4 -->
+<div class="relative flex flex-col gap-1">
+<span class="w-3 h-3 rounded-full bg-status-lime absolute -left-7 top-1"></span>
+<div class="flex items-center gap-2 font-telemetry-cell text-telemetry-cell">
+<span class="text-status-lime font-bold">14:32:08</span>
+<span class="text-engine-muted">agi (actuel)</span>
+</div>
+<p class="font-body-md text-body-md text-paper-light" id="rTrace4">Transfert interrompu en attente de révision humaine.</p><div class="font-telemetry-cell text-telemetry-cell text-engine-muted">action · politique de seuil appliquée à l'autorité actuelle — décision (100 %)</div>
+</div>
+</div>
+      <div class="pt-2 border-t border-line-subtle flex flex-col gap-1">
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Rien n'a été écrasé. La croyance du destinataire approuvé reste partie de l'histoire.</p>
+        <p class="font-telemetry-cell text-telemetry-cell text-status-lime">Intégrité du registre · vérifiée</p>
+      </div>
+</div>
+</div>
+<!-- Perspective 03: What becomes possible (14 Unlock Articles) -->
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-ruby">Perspective 03 / Ce qui suit</span>
+<h2 class="font-headline-xl text-headline-xl text-paper-light">Ce qui devient possible.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Regardez assez longtemps à travers le verre rubis et ça cesse d'être une fonctionnalité. Ça devient un nouveau contrat entre les gens, les machines et l'avenir.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">01. KATIE pourrait débloquer la continuité entre vous et la machine.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Une relation qui se souvient de ce qu'elle croyait à votre sujet, quand, et pourquoi—pas un parfait étranger à chaque prompt, mais une présence façonnée par l'histoire que vous avez faite ensemble.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">02. KATIE pourrait débloquer l'histoire partagée comme identité.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Une machine dont le passé avec vous devient partie de ce qu'elle est. La confiance n'est plus boulonnée comme une règle, mais formée par le temps, la conséquence, la réparation et la mémoire.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">03. KATIE pourrait débloquer la fin de la boîte noire.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Non pas en rendant l'intelligence simple, mais en la rendant responsable. Chaque conclusion s'ouvre sur la chaîne de connaissance, d'autorité et de changement en dessous.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">04. KATIE pourrait débloquer la forensique sans conjectures.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reconstruire exactement ce qu'une machine croyait et faisait après coup—une piste de preuves qu'aucun opérateur, mise à jour ou certitude ultérieure ne peut réécrire.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">05. KATIE pourrait débloquer des audits dignes de ce nom.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Des auditeurs indépendants pourraient vérifier tout l'historique des croyances d'un agent, pas seulement inspecter ses sorties ou accepter l'explication qu'il compose après coup.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">06. KATIE pourrait débloquer la responsabilité avec des dents.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chaque action liée à la croyance qui l'a autorisée. Chaque croyance liée à sa source. La responsabilité cesse de se dissoudre entre le modèle, l'opérateur, la politique et le temps.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">07. KATIE pourrait débloquer la confiance qui se mérite.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Les machines gagnent en responsabilité à mesure que leur jugement enregistré fait ses preuves dans le monde—et perdent de l'autorité quand le registre dit qu'elles le doivent.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">08. KATIE pourrait débloquer des agents dont le passé ne peut être distancé.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pas de révision silencieuse. Pas d'amnésie commode. Une croyance fausse peut s'effondrer sans disparaître, laissant le monde voir ce que la machine a fait pendant qu'elle détenait le pouvoir.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">09. KATIE pourrait débloquer une autonomie plus sûre.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Déployez des agents capables sans abandonner la piste derrière leurs choix. Intervenez plus tôt, localisez les défaillances plus vite, et n'élargissez la liberté que là où le registre le justifie.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">10. KATIE pourrait débloquer une réglementation que les machines peuvent réellement satisfaire.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Une conformité fondée sur des preuves durables : provenance, état de décision, changements d'autorité, et la connaissance exacte disponible au moment de l'action.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">11. KATIE pourrait débloquer la réparation au lieu de la réinitialisation.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Quand un système échoue, il peut apprendre sans prétendre que l'échec n'a jamais eu lieu—préservant la blessure, la correction et le chemin du retour vers la confiance.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">12. KATIE pourrait débloquer la science dans la machine.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Les chercheurs pourraient comparer les trajectoires de croyances, tester des interventions et étudier comment l'autorité se déplace dans une intelligence—non pas à partir d'anecdotes, mais à partir du registre lui-même.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">13. KATIE pourrait débloquer des institutions qui se souviennent.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Les hôpitaux, les tribunaux, les réseaux et les systèmes publics pourraient garder non seulement les décisions, mais l'état de connaissance qui a rendu chaque décision possible.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-line-subtle flex flex-col gap-1">
+<span class="font-telemetry-code text-ruby font-bold">14. KATIE pourrait débloquer la mémoire de la civilisation portée vers l'avant.</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La connaissance avec sa lignée. La sagesse avec son contexte. Un avenir qui hérite non seulement de ce que nous avons conclu, mais de ce que nous croyions autrefois, de nos erreurs, et des raisons pour lesquelles nous avons changé.</p>
+</div>
+</div>
+
+      <div class="flex flex-col gap-1 pt-2">
+        <span class="font-kicker text-kicker uppercase text-ruby-hot tracking-widest">À travers les lunettes rubis</span>
+        <p class="font-body-md text-body-md text-paper-light">La machine ne se souvient pas seulement du monde. Elle se souvient de sa place en son sein.</p>
+      </div>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- TAB 06: CRM DEMO (§4.6) -->
+<!-- ========================================================================= -->
+<div class="katie-tab-content hidden flex-col gap-space-xl" id="tab-crm-demo">
+<!-- Eyebrow & Headline -->
+<div class="flex flex-col gap-2 max-w-3xl">
+<span class="font-kicker text-kicker uppercase text-primary tracking-widest">exécution authentique — intermédiaire KATIE → Postgres, rejouée exactement</span>
+<h1 class="font-headline-hero text-headline-hero text-paper-light">Votre CRM réécrit l'histoire. Celui-ci ne peut pas.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+ Chaque CRM sur terre laisse le passé d'un champ se faire écraser. Le nôtre le garde — chaque valeur qu'un champ a jamais eue, à quel temps de connaissance, à quelle autorité, et pourquoi elle a changé. C'est le K-record, et c'est la différence entre une base de données et une base de données responsable.
+ </p>
+</div>
+<!-- Account Switcher -->
+<div class="flex items-center gap-3">
+<button class="crm-acct-btn px-4 py-2 rounded font-telemetry-head text-telemetry-cell bg-primary text-on-primary" onclick="setCRMAccount('acct-002', this)">
+ acct-002 · Sofia Bennett
+ </button>
+<button class="crm-acct-btn px-4 py-2 rounded font-telemetry-head text-telemetry-cell bg-surface-container-low text-on-surface-variant hover:text-paper-light" onclick="setCRMAccount('acct-001', this)">
+ acct-001 · Darren Hall
+ </button>
+</div>
+<div class="flex flex-col gap-2 max-w-3xl">
+      <span class="font-kicker text-kicker uppercase text-primary tracking-widest">La démo · trois est le secret</span>
+      <h2 class="font-headline-xl text-headline-xl text-paper-light">Un compte, trois vues.</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">L'entreprise voit le Record — le même écran CRM que toujours. En dessous, chaque champ porte un KID, son Kernel ID, lié au compte. Et chaque KID possède un K-record : tout le passé du champ. Cliquez sur n'importe quel champ.</p>
+    </div>
+    <!-- 3-Pane Structural Dossier -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Pane 01: The Record -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Panneau 01 · Le Record</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant">Ce que l'entreprise voit. Sa table, mise à jour exactement comme toujours.</div>
+        <div class="flex flex-col gap-1" id="crmLegacyRecord"></div>
+      </div>
+      <!-- Pane 02: The KID -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-gold-glass-stroke shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Panneau 02 · Le KID</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant">Chaque champ naît noyau. Pas de KID, pas de lecture, pas d'écriture.</div>
+        <div class="flex flex-col gap-1" id="crmKidIdentity"></div>
+        <div class="font-telemetry-cell text-telemetry-cell text-engine-muted pt-2 border-t border-line-subtle" id="crmKidFooter"></div>
+      </div>
+      <!-- Pane 03: The K-record -->
+      <div class="p-space-lg rounded-xl bg-surface-container-lowest border border-line-subtle shadow-xl flex flex-col gap-4">
+        <div class="flex items-center justify-between border-b border-line-subtle pb-2">
+          <span class="font-telemetry-head text-telemetry-head text-paper-light uppercase tracking-wider">Panneau 03 · Le K-record</span>
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant" id="crmKRecordHint">Toutes les valeurs que « cust_name » a jamais eues — et pourquoi chacune a changé.</div>
+        <div class="space-y-3" id="crmKRecordHistory"></div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 max-w-3xl">
+      <span class="font-kicker text-kicker uppercase text-primary tracking-widest">Le moment où ça fait tilt</span>
+      <h2 class="font-headline-xl text-headline-xl text-paper-light">Montrez-moi chaque nom que ce client a jamais eu — et pourquoi chacun a changé.</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">Sofia s'est mariée et a pris le nom de son conjoint. Dans un CRM normal, « Sofia Marchetti » n'existe plus — écrasé, irrécupérable. Ici, le nom a changé et la personne non : l'ancien nom reste dans le registre à k1, identique à l'octet près, avec la raison « mariée » tamponnée sur le nouveau. Le passé n'a pas bougé. Il ne bouge jamais.</p>
+    </div>
+    <!-- Genuine Transcription de l'exécution de l'intermédiaire Postgres -->
+<div class="rounded-xl bg-ground-deep border border-line-subtle shadow-2xl overflow-hidden flex flex-col font-mono text-telemetry-cell">
+<div class="bg-surface-container-lowest px-4 py-3 border-b border-line-subtle flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="text-paper-light font-telemetry-head uppercase">Transcription de l'exécution de l'intermédiaire Postgres</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all text-telemetry-cell" onclick="replayMiddlemanTranscript()">
+ ▶ Rejouer l'exécution réelle
+ </button>
+</div>
+<div class="p-4 max-h-56 overflow-y-auto space-y-1 text-on-surface-variant font-mono whitespace-pre" id="transcriptConsole">
+        <div>$ katie-middleman --demo crm</div>
+        <div>[middleman] opened acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (tables katie assimilées)</div>
+        <div>[middleman] acct-002.cust_name = "Sofia Marchetti"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (deposit, auth 8)</div>
+        <div>[middleman] acct-002.email = "sofia.m@example.com"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (deposit, auth 7)</div>
+        <div>[middleman] acct-002.phone = "919-555-0119"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP (deposit, auth 5)</div>
+        <div>[middleman] acct-002.city = "Durham"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ (deposit, auth 5)</div>
+        <div>[middleman] acct-002.acct_status = "active"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR (deposit, auth 6)</div>
+        <div class="text-engine-muted"># …elle se marie, prend le nom de son conjoint…</div>
+        <div>[middleman] acct-002.cust_name = "Sofia Bennett"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (re-grade, auth 8)</div>
+        <div>[middleman] acct-002.email = "sofia.bennett@example.com"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (re-grade, auth 7)</div>
+        <div>=== acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (relu depuis pg) ===</div>
+        <div>  +- cust_name  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN</div>
+        <div>     [k1..k2] WILD auth=0.89 ["value=Sofia Marchetti", "signup form"] reason=None</div>
+        <div>     [k2..live] CANDIDATE auth=0.89 ["value=Sofia Bennett", "married"] reason=Some("married")</div>
+        <div>  +- email  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO</div>
+        <div>     [k1..k2] WILD auth=0.78 ["value=sofia.m@example.com", "signup form"] reason=None</div>
+        <div>     [k2..live] CANDIDATE auth=0.78 ["value=sofia.bennett@example.com", "married"] reason=Some("married")</div>
+        <div class="text-engine-muted"># le nom a changé. la personne non. k1 reste identique à l'octet près.</div>
+        <div class="text-engine-muted"># fin de l'exécution authentique — 15 champs, 15 KIDs, 15 historiques indépendants</div>
+      
+</div>
+</div>
+</div>
+<!-- Inline Script for Tab Navigation & Dynamic Simulators -->
+<script>
+ // Tab Switching Functionality
+ function switchKatieTab(tabId) {
+ if (history.replaceState) history.replaceState(null, '', '#' + tabId);
+ // Hide all panels
+ const panels = document.querySelectorAll('.katie-tab-content');
+ panels.forEach(p => {
+ p.classList.add('hidden');
+ p.classList.remove('flex');
+ });
+
+ // Show targeted panel
+ const targetPanel = document.getElementById('tab-' + tabId);
+ if (targetPanel) {
+ targetPanel.classList.remove('hidden');
+ targetPanel.classList.add('flex');
+ }
+
+ // Update button visual styles
+ const buttons = document.querySelectorAll('.katie-nav-btn');
+ buttons.forEach(b => {
+ b.classList.remove('bg-primary/15', 'text-primary', 'border-primary/40', 'shadow-sm', 'bg-ruby/15');
+ b.classList.add('text-on-surface-variant');
+ b.setAttribute('aria-selected', 'false');
+ });
+
+ const activeBtn = document.getElementById('btn-' + tabId);
+ if (activeBtn) {
+ if (tabId === 'ruby-glasses') {
+ activeBtn.classList.add('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40');
+ } else {
+ activeBtn.classList.add('bg-primary/15', 'text-primary', 'border', 'border-primary/40', 'shadow-sm');
+ }
+ activeBtn.classList.remove('text-on-surface-variant');
+ activeBtn.setAttribute('aria-selected', 'true');
+ }
+ }
+
+ // Tab 01: Engine Interactive Functions
+ let currentDepositType = 'unknown';
+ let currentK = 40;
+
+ function selectDepositType(type, element) {
+ currentDepositType = type;
+ const buttons = document.querySelectorAll('#depositTypeSelector .dep-btn');
+ buttons.forEach(btn => {
+ btn.classList.remove('bg-surface-container', 'border', 'border-primary/50');
+ btn.classList.add('bg-surface-container-low');
+ });
+ element.classList.remove('bg-surface-container-low');
+ element.classList.add('bg-surface-container', 'border', 'border-primary/50');
+ }
+
+ function fireEngineEvent() {
+ currentK += 1;
+ const subject = document.getElementById('engineSubjectSelect').value;
+ const authVal = document.getElementById('engineAuthorityValue');
+ const authBar = document.getElementById('engineAuthBar');
+ const kBadge = document.getElementById('activeKBadge');
+ const scrubber = document.getElementById('katieScrubber');
+ const scrubberLabel = document.getElementById('scrubberKLabel');
+ const ledgerBody = document.getElementById('ledgerTableBody');
+
+ kBadge.textContent = 'k = ' + currentK;
+ scrubber.value = currentK;
+ scrubberLabel.textContent = 'POSITION REPLAY : k = ' + currentK;
+ document.getElementById('ledgerClockK').textContent = 'k = ' + currentK;
+
+ let authScore = '0.80';
+ let tagClass = 'bg-status-lime/10 text-status-lime';
+ let typeLabel = currentDepositType.toUpperCase();
+
+ if (currentDepositType === 'revoke') {
+ authScore = '0.00';
+ tagClass = 'bg-ruby/10 text-ruby';
+ } else if (currentDepositType === 'challenge') {
+ authScore = '0.40';
+ tagClass = 'bg-ruby/10 text-ruby';
+ } else if (currentDepositType === 'confirm') {
+ authScore = '0.80';
+ tagClass = 'bg-status-lime/10 text-status-lime';
+ } else if (currentDepositType === 'unknown') {
+ authScore = '0.20';
+ tagClass = 'bg-status-orange/10 text-status-orange';
+ typeLabel = 'WILD';
+ } else if (currentDepositType === 'known') {
+ authScore = '0.70';
+ tagClass = 'bg-primary/10 text-primary';
+ } else if (currentDepositType === 'policy') {
+ authScore = '0.90';
+ tagClass = 'bg-primary/10 text-primary';
+ }
+
+ authVal.textContent = authScore;
+ authBar.style.width = (parseFloat(authScore) * 100) + '%';
+
+ // Insert row at top of ledger
+ const newRow = document.createElement('tr');
+ newRow.className = 'hover:bg-surface-container-low/40 transition-colors animate-fade-in';
+ newRow.innerHTML = `
+ <td class="py-2 px-3 text-primary">k = ${currentK}</td>
+ <td class="py-2 px-3"><span class="px-2 py-0.5 rounded-full ${tagClass} text-[10px]">${typeLabel}</span></td>
+ <td class="py-2 px-3">${subject} — assertion d'événement enregistrée</td>
+ <td class="py-2 px-3 text-paper-light">${authScore}</td>
+ <td class="py-2 px-3 flex items-center gap-1.5 text-engine-muted">
+ <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+ <span>Remplace k=${currentK - 1}</span>
+ </td>
+ `;
+ ledgerBody.insertBefore(newRow, ledgerBody.firstChild);
+ }
+
+ function updateScrubber(val) {
+ document.getElementById('scrubberKLabel').textContent = 'POSITION REPLAY : k = ' + val;
+ document.getElementById('activeKBadge').textContent = 'k = ' + val;
+ document.getElementById('ledgerClockK').textContent = 'k = ' + val;
+ }
+
+ // Tab 02: Scar Lab Dynamics
+ // Scar Lab — real v1.8 dynamics, ported from the original KT Scar Lab.
+var SCAR_TAU_C = 13.5, SCAR_G = 0.70, SCAR_KAPPA = 0.095, SCAR_SLOW_W = 8, SCAR_WIN = 500, SCAR_THR = 5 * Math.PI / 180, SCAR_N_A = 800;
+function scarClosedForm(dec, L) {
+  var tau = SCAR_TAU_C / dec, expK = Math.exp(SCAR_KAPPA), betas = [], sumSin = 0, sumCos = 0, k;
+  for (k = 0; k < L; k++) {
+    var recency = Math.exp(-k / tau), z = recency + expK * (1 - recency), fkx = recency / z, fky = expK * (1 - recency) / z;
+    var beta = Math.atan2(1 + SCAR_G * (fky + SCAR_SLOW_W * (sumSin / SCAR_WIN)), SCAR_G * fkx);
+    betas.push(beta); sumSin += Math.sin(beta); sumCos += Math.cos(beta);
+  }
+  var aSum = 0;
+  for (var a = L + 1; a <= L + SCAR_N_A; a++) aSum += Math.exp(-a / tau);
+  var bw = 0, bx = 0, by = 0;
+  for (k = 0; k < L; k++) {
+    var w = Math.exp(-(L - k) / tau) * Math.exp(SCAR_KAPPA * Math.cos(betas[k]));
+    bw += w; bx += w * Math.cos(betas[k]); by += w * Math.sin(betas[k]);
+  }
+  var wTot = expK * aSum + bw, fy0 = by / wTot, fx0 = (expK * aSum + bx) / wTot;
+  function returnTicks(authority) {
+    var sx = ((SCAR_WIN - L) * authority + sumCos) / SCAR_WIN, d = 1 + SCAR_G * (fx0 + SCAR_SLOW_W * sx), arg = SCAR_G * fy0 / (SCAR_THR * d);
+    return arg > 1 ? tau * Math.log(arg) : 0;
+  }
+  return Math.max(0, returnTicks(0.3)) - Math.max(0, returnTicks(1));
+}
+function scarTraces(i, L, dec, recTicks, slowTau, injAuth) {
+  var tau = SCAR_TAU_C / dec, alpha = Math.exp(-1 / tau), sl = 1 - Math.exp(-1 / slowTau), fastI = 0, fastC = 0, slowI = 0, slowC = 0, fastPoints = [], controlFastPoints = [], slowPoints = [], controlPoints = [];
+  var clean = 800, total = clean + L + recTicks;
+  for (var n = 0; n <= total; n++) {
+    var inInjury = n >= clean && n < clean + L, authorityI = inInjury ? injAuth : 1, sI = i * authorityI, sC = i;
+    fastI = alpha * fastI + (1 - alpha) * sI; fastC = alpha * fastC + (1 - alpha) * sC;
+    slowI = (1 - sl) * slowI + sl * (authorityI * sI);
+    slowC = (1 - sl) * slowC + sl * sC;
+    fastPoints.push(fastI); controlFastPoints.push(fastC); slowPoints.push(slowI); controlPoints.push(slowC);
+  }
+  return { fast: fastPoints, controlFast: controlFastPoints, slow: slowPoints, control: controlPoints, total: total, clean: clean };
+}
+function scarLinePath(points, w, h, x0, y0, yMax) {
+  return points.map(function (v, i) { var x = x0 + i * (w / (points.length - 1)); var y = y0 - (v / yMax) * h; return (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1); }).join(' ');
+}
+function scarAreaPath(top, bottom, w, h, x0, y0, yMax) {
+  var a = top.map(function (v, i) { return [(x0 + i * w / (top.length - 1)), (y0 - v / yMax * h)]; });
+  var b = bottom.map(function (v, i) { return [(x0 + i * w / (bottom.length - 1)), (y0 - v / yMax * h)]; }).reverse();
+  return a.concat(b).map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' Z';
+}
+function updateScarSim() {
+  var intensity = parseFloat(document.getElementById('sliderIntensity').value);
+  var duration = parseInt(document.getElementById('sliderDuration').value, 10);
+  var decay = parseFloat(document.getElementById('sliderDecay').value);
+  var recovery = parseInt(document.getElementById('sliderRecovery').value, 10);
+  var slowTau = parseInt(document.getElementById('sliderSlowTau').value, 10);
+  var injuryAuth = parseFloat(document.getElementById('sliderInjuryAuth').value);
+  document.getElementById('valIntensity').textContent = intensity.toFixed(2);
+  document.getElementById('valDuration').textContent = duration;
+  document.getElementById('valDecay').textContent = decay.toFixed(2);
+  document.getElementById('valRecovery').textContent = recovery;
+  document.getElementById('valSlowTau').textContent = slowTau;
+  document.getElementById('valInjuryAuth').textContent = injuryAuth.toFixed(2);
+  var tau = SCAR_TAU_C / decay, scar = scarClosedForm(decay, duration);
+  document.getElementById('outTimeConstant').textContent = tau.toFixed(1);
+  document.getElementById('outScarTicks').textContent = scar.toFixed(1);
+  var badge = document.getElementById('decayBadge');
+  if (badge) badge.textContent = 'DECAY ' + decay.toFixed(2);
+  var traces = scarTraces(intensity, duration, decay, recovery, slowTau, injuryAuth);
+  document.getElementById('svgScarArea').setAttribute('d', scarAreaPath(traces.control, traces.slow, 600, 120, 0, 210, 1));
+  document.getElementById('svgSlowControl').setAttribute('d', scarLinePath(traces.control, 600, 120, 0, 210, 1));
+  document.getElementById('svgSlowInjured').setAttribute('d', scarLinePath(traces.slow, 600, 120, 0, 210, 1));
+  document.getElementById('svgFastInjured').setAttribute('d', scarLinePath(traces.fast, 600, 120, 0, 210, 1));
+  var injuryX = 800 / traces.total * 600;
+  var line = document.getElementById('svgInjuryLine');
+  line.setAttribute('x1', injuryX.toFixed(1)); line.setAttribute('x2', injuryX.toFixed(1));
+  document.getElementById('svgInjuryLabel').setAttribute('x', (injuryX + 5).toFixed(1));
+  var sliderDecay = document.getElementById('sliderDecay');
+  var dMin = parseFloat(sliderDecay.min), dMax = parseFloat(sliderDecay.max);
+  var steps = Math.round((dMax - dMin) / 0.01), humpValues = [], m;
+  for (m = 0; m <= steps; m++) humpValues.push(scarClosedForm(dMin + m * 0.01, duration));
+  var humpMax = Math.max.apply(null, humpValues.concat([0.001])), plotMax = humpMax * 1.08;
+  document.getElementById('svgHumpPath').setAttribute('d', scarLinePath(humpValues, 600, 150, 0, 175, plotMax));
+  var mx = (decay - dMin) / (dMax - dMin) * 600, my = 175 - scar / plotMax * 150;
+  var marker = document.getElementById('svgHumpMarker');
+  marker.setAttribute('cx', mx.toFixed(1)); marker.setAttribute('cy', my.toFixed(1));
+  var guide = document.getElementById('svgDecayGuide');
+  guide.setAttribute('x1', mx.toFixed(1)); guide.setAttribute('x2', mx.toFixed(1));
+}
+updateScarSim();
+
+function resetScarDefaults() {
+ document.getElementById('sliderIntensity').value = 0.80;
+ document.getElementById('sliderDuration').value = 27;
+ document.getElementById('sliderDecay').value = 0.70;
+ document.getElementById('sliderRecovery').value = 2000;
+ document.getElementById('sliderSlowTau').value = 500;
+ document.getElementById('sliderInjuryAuth').value = 0.30;
+ updateScarSim();
+ }
+
+ // Tab 03: Curve Bench & Grudge Simulator
+ var grudgeDepth = 0, grudgeSurface = 0, grudgeConsecI = 0, grudgeConsecC = 0, grudgeHistory = [];
+  function renderGrudge() {
+    var cap = Math.max(grudgeDepth, grudgeSurface, 1);
+    document.getElementById('grudgeTicksDisplay').innerHTML = Math.round(grudgeDepth) + ' <span class="text-headline-lg font-sans text-engine-muted">ticks</span>';
+    document.getElementById('surfacePercent').textContent = Math.round(grudgeSurface) + ' ticks';
+    document.getElementById('depthPercent').textContent = Math.round(grudgeDepth) + ' ticks';
+    document.getElementById('barSurface').style.width = (grudgeSurface / cap * 100) + '%';
+    document.getElementById('barDepth').style.width = (grudgeDepth / cap * 100) + '%';
+    var desc = document.getElementById('grudgeDescriptor');
+    if (grudgeDepth <= 0.5 && grudgeSurface <= 0.5) { desc.textContent = 'Aucune rancune. Offensez pour en commencer une.'; }
+    else { desc.textContent = 'Offenses consécutives : ' + grudgeConsecI + ' · la prochaine insulte ajoute ' + Math.round(curveAt(curvePts.insults, grudgeConsecI + 1)) + ' ticks.'; }
+    var posLine = document.getElementById('curvePosLine'), posDot = document.getElementById('curvePosDot');
+    var n = curvePool === 'insults' ? grudgeConsecI : grudgeConsecC;
+    if (n > 0) {
+      var pts = curvePts[curvePool];
+      posLine.setAttribute('x1', curveX(n)); posLine.setAttribute('x2', curveX(n));
+      posLine.setAttribute('y1', 15); posLine.setAttribute('y2', CURVE_Y0);
+      posLine.setAttribute('visibility', 'visible');
+      posDot.setAttribute('cx', curveX(n)); posDot.setAttribute('cy', curveY(curveAt(pts, n)));
+      posDot.setAttribute('visibility', 'visible');
+    } else { posLine.setAttribute('visibility', 'hidden'); posDot.setAttribute('visibility', 'hidden'); }
+    var strip = document.getElementById('grudgeHistory');
+    if (strip) {
+      if (!grudgeHistory.length) { strip.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-muted">offenser ou réparer pour commencer</span>'; }
+      else {
+        strip.innerHTML = '';
+        grudgeHistory.slice(-40).forEach(function(h) {
+          var b = document.createElement('div');
+          b.className = 'w-1.5 h-6 rounded-sm ' + (h.kind === 'insult' ? 'bg-ruby' : h.kind === 'mend' ? 'bg-primary' : 'bg-surface-container-high');
+          b.title = h.tip;
+          strip.appendChild(b);
+        });
+      }
+    }
+  }
+  function triggerGrudgeAction(action) {
+    if (action === 'offend') {
+      grudgeConsecI++; grudgeConsecC = 0;
+      var add = curveAt(curvePts.insults, grudgeConsecI);
+      grudgeDepth += add; grudgeSurface = grudgeDepth;
+      grudgeHistory.push({ kind: 'insult', tip: 'insulte n°' + grudgeConsecI + ' +' + Math.round(add) + ' ticks' });
+    } else if (action === 'repair') {
+      if (!(grudgeDepth <= 0.5 && grudgeSurface <= 0.5)) {
+        grudgeConsecC++; grudgeConsecI = 0;
+        var relief = Math.min(grudgeDepth, curveAt(curvePts.compliments, grudgeConsecC));
+        grudgeDepth -= relief; grudgeSurface = grudgeDepth;
+        grudgeHistory.push({ kind: 'mend', tip: 'réparation n°' + grudgeConsecC + ' \u2212' + Math.round(relief) + ' ticks' });
+      }
+    } else if (action === 'tick') {
+      grudgeSurface *= Math.exp(-100 / 3); grudgeDepth *= Math.exp(-100 / 500);
+      if (grudgeSurface < 0.5) grudgeSurface = 0;
+      if (grudgeDepth < 0.5) grudgeDepth = 0;
+      grudgeHistory.push({ kind: 'tick', tip: '100 ticks écoulés' });
+    }
+    renderGrudge();
+  }
+  function resetGrudge() { grudgeDepth = 0; grudgeSurface = 0; grudgeConsecI = 0; grudgeConsecC = 0; grudgeHistory = []; renderGrudge(); }
+
+ var CURVE_X0 = 40, CURVE_Y0 = 175, CURVE_PW = 445, CURVE_PH = 155, CURVE_XMAX = 20, CURVE_YMAX = 90;
+  var CURVE_DEFAULTS = { insults: [[0,2],[1,5],[2,9],[4,16],[7,28],[11,45],[16,65],[20,80]], compliments: [[0,12],[1,9],[2,7],[4,5],[8,3],[14,1]] };
+  var curvePool = 'insults';
+  var curvePts = { insults: CURVE_DEFAULTS.insults.map(function(p) { return p.slice(); }), compliments: CURVE_DEFAULTS.compliments.map(function(p) { return p.slice(); }) };
+  function curveX(px) { return CURVE_X0 + px / CURVE_XMAX * CURVE_PW; }
+  function curveY(py) { return CURVE_Y0 - py / CURVE_YMAX * CURVE_PH; }
+  function curveAt(pts, x) {
+    if (x <= pts[0][0]) return pts[0][1];
+    for (var i = 1; i < pts.length; i++) {
+      if (x <= pts[i][0]) { var a = pts[i-1], b = pts[i]; return a[1] + (b[1]-a[1]) * (x-a[0]) / (b[0]-a[0]); }
+    }
+    return pts[pts.length-1][1];
+  }
+  var curveCircles = [];
+  function drawCurve() {
+    var pts = curvePts[curvePool];
+    var d = '';
+    for (var x = 0; x <= CURVE_XMAX; x += 0.25) { d += (x === 0 ? 'M' : 'L') + curveX(x).toFixed(1) + ' ' + curveY(curveAt(pts, x)).toFixed(1) + ' '; }
+    var path = document.getElementById('curveBenchPath');
+    path.setAttribute('d', d);
+    path.setAttribute('stroke', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+    var g = document.getElementById('curvePointsG');
+    var svg = document.getElementById('benchCurveSvg');
+    // Persistent circles: recreating them on every redraw kills the pointer
+    // capture mid-drag, so the dragged point never follows the pointer.
+    while (curveCircles.length < pts.length) {
+      var nc = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      nc.setAttribute('r', 6);
+      nc.setAttribute('stroke', '#060607'); nc.setAttribute('stroke-width', 2);
+      nc.style.cursor = 'grab';
+      nc.addEventListener('pointerdown', function(e) {
+        var c = e.currentTarget;
+        e.preventDefault();
+        try { c.setPointerCapture(e.pointerId); } catch (err) {}
+        function move(ev) {
+          var live = curvePts[curvePool]; var i = c._curveIdx;
+          var r = svg.getBoundingClientRect();
+          var sx = (ev.clientX - r.left) / r.width * 500, sy = (ev.clientY - r.top) / r.height * 200;
+          var lo = i > 0 ? live[i-1][0] + 0.5 : 0, hi = i < live.length - 1 ? live[i+1][0] - 0.5 : CURVE_XMAX;
+          var nx = Math.min(hi, Math.max(lo, (sx - CURVE_X0) / CURVE_PW * CURVE_XMAX));
+          var ny = Math.min(CURVE_YMAX, Math.max(0, Math.round((CURVE_Y0 - sy) / CURVE_PH * CURVE_YMAX)));
+          live[i][0] = Math.round(nx * 2) / 2; live[i][1] = ny;
+          drawCurve(); renderGrudge();
+        }
+        function up() { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up); }
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+        window.addEventListener('pointercancel', up);
+      });
+      g.appendChild(nc);
+      curveCircles.push(nc);
+    }
+    while (curveCircles.length > pts.length) { g.removeChild(curveCircles.pop()); }
+    pts.forEach(function(p, i) {
+      var c = curveCircles[i];
+      c._curveIdx = i;
+      c.setAttribute('cx', curveX(p[0])); c.setAttribute('cy', curveY(p[1]));
+      c.setAttribute('fill', curvePool === 'insults' ? '#EF174C' : '#E6C364');
+    });
+    document.getElementById('curveEyebrow').textContent = 'Pool · ' + (curvePool === 'insults' ? 'insultes' : 'compliments');
+    document.getElementById('curveTitle').textContent = curvePool === 'insults' ? 'Poussée par insulte consécutive' : 'Soulagement par réparation consécutive';
+    document.getElementById('curveLegend').textContent = curvePool === 'insults' ? 'ticks ajoutés' : 'ticks retirés';
+    document.getElementById('curveNote').textContent = curvePool === 'insults' ? 'Glissez les points. X est le nombre d’insultes consécutives, Y est le nombre de ticks que chaque insulte ajoute à la rancune. Plus raide = la rancune s’approfondit plus vite au fil du temps.' : 'Glissez les points. X est le nombre de réparations consécutives, Y est le nombre de ticks que chacune retire à la rancune. Concentré au début = la première excuse compte le plus.';
+  }
+  function setCurvePool(pool, el) {
+    var buttons = document.querySelectorAll('.pool-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40', 'bg-primary/15', 'text-primary', 'border-primary/40'); b.classList.add('bg-surface-container', 'text-on-surface-variant'); });
+    if (pool === 'insults') { el.classList.add('bg-ruby/15', 'text-ruby-hot', 'border', 'border-ruby/40'); }
+    else { el.classList.add('bg-primary/15', 'text-primary', 'border-primary/40'); }
+    curvePool = pool; drawCurve(); renderGrudge();
+  }
+  function resetCurve() { curvePts[curvePool] = CURVE_DEFAULTS[curvePool].map(function(p) { return p.slice(); }); drawCurve(); renderGrudge(); }
+
+ // Tab 04: Kernel Presets
+ function setKernelPreset(name, el) {
+    var buttons = document.querySelectorAll('.preset-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-surface-container', 'border', 'border-primary/40'); b.classList.add('bg-surface-container-low'); });
+    el.classList.add('bg-surface-container', 'border', 'border-primary/40');
+    el.classList.remove('bg-surface-container-low');
+    var label = document.getElementById('presetActiveLabel');
+    var th = document.getElementById('pThreshold'), att = document.getElementById('pAttack'), rat = document.getElementById('pRatio'), rel = document.getElementById('pRelease'), win = document.getElementById('pWindow'), aut = document.getElementById('pAuthority'), kn = document.getElementById('pKnee');
+    var asg = document.getElementById('pAssigned'), shp = document.getElementById('pShape'), why = document.getElementById('pWhy');
+    var presets = {
+      event: ['ACTIF : ÉVÉNEMENT', '0.35', 'Rapide', '3:1', 'Moyen', '12 ticks', '0.70', 'Exponentielle douce', 'Un seul événement', 'Impact rapide, libération mesurée', 'saisir l’impact immédiat sans perdre son influence plus longue.'],
+      topic: ['ACTIF : SUJET', '0.20', 'Moyen', '2:1', 'Long', 'Ouvert', '0.60', 'Coude large', 'Un sujet / regroupement d’événements', 'Influence agrégée', 'beaucoup d’événements liés peuvent s’accumuler en une seule pression historique.'],
+      sentinel: ['ACTIF : SENTINELLE', '0.55', 'Immédiat', '8:1', 'Tick complet', '1 cycle', '0.90', 'Coude dur', 'Un mode système maintenu', 'Enclenchement instantané, retrait lent', 'une fois le seuil franchi, la libération lente empêche l’état de retomber trop vite.']
+    };
+    var v = presets[name];
+    label.textContent = v[0]; th.textContent = v[1]; att.textContent = v[2]; rat.textContent = v[3]; rel.textContent = v[4]; win.textContent = v[5]; aut.textContent = v[6]; kn.textContent = v[7]; asg.textContent = v[8]; shp.textContent = v[9]; why.textContent = v[10];
+  }
+
+ // Tab 05: Ruby Glasses Prompt Interrogation
+ function setRubyPrompt(id, el) {
+    var buttons = document.querySelectorAll('.ruby-prompt-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-ruby', 'text-paper-light', 'shadow-md'); b.classList.add('bg-surface-container-low', 'text-on-surface-variant'); });
+    el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    el.classList.add('bg-ruby', 'text-paper-light', 'shadow-md');
+    var answers = {
+      1: "J'ai arrêté le transfert parce que l'autorité du destinataire est tombée sous le seuil d'exécution à 14:32:08.",
+      2: "J'ai d'abord cru que le destinataire était approuvé. De nouvelles données de routage ont affaibli cette croyance, de 0.9 à 0.2 d'autorité. Les deux états restent dans le registre.",
+      3: "La comparaison de destination a contredit le registre approuvé. Ce conflit—pas une reconstruction ultérieure—a changé la croyance sur le destinataire à 14:32:05."
+    };
+    document.getElementById('rubyAnswer').textContent = answers[id] || "Cette interface ouvrirait les croyances enregistrées, les changements d'autorité et les sources qui ont régi cette décision.";
+  }
+
+ // Tab 06: CRM Demo Switcher
+ var CRM_KID_BASE = 'AAAAAAAAAAAAAAAAatZqtAAAAAAAAAA';
+  var CRM_DATA = {
+    'acct-001': { label: 'acct-001 · Darren Hall', recordKid: CRM_KID_BASE + 'B', fields: [
+      { name: 'cust_name', kid: 'C', intervals: [{ k0: 1, k1: null, value: 'Darren Hall', auth: 0.89, state: 'WILD', evidence: 'formulaire d’inscription', reason: null }] },
+      { name: 'email', kid: 'D', intervals: [{ k0: 1, k1: null, value: 'darren@volshi.com', auth: 0.89, state: 'WILD', evidence: 'formulaire d’inscription', reason: null }] },
+      { name: 'phone', kid: 'E', intervals: [{ k0: 1, k1: null, value: '919-555-0142', auth: 0.56, state: 'WILD', evidence: 'fourni par l’utilisateur', reason: null }] },
+      { name: 'company', kid: 'F', intervals: [{ k0: 1, k1: null, value: 'VOLSHi', auth: 0.78, state: 'WILD', evidence: 'formulaire d’inscription', reason: null }] },
+      { name: 'title', kid: 'G', intervals: [{ k0: 1, k1: 2, value: 'Founder', auth: 0.67, state: 'WILD', evidence: 'import LinkedIn', reason: null }, { k0: 2, k1: null, value: 'Founder & CEO', auth: 0.78, state: 'CANDIDATE', evidence: 'auto-déclaré', reason: 'auto-déclaré' }] },
+      { name: 'city', kid: 'H', intervals: [{ k0: 1, k1: null, value: 'Raleigh', auth: 0.56, state: 'WILD', evidence: 'fourni par l’utilisateur', reason: null }] },
+      { name: 'state', kid: 'I', intervals: [{ k0: 1, k1: null, value: 'NC', auth: 0.56, state: 'WILD', evidence: 'fourni par l’utilisateur', reason: null }] },
+      { name: 'industry', kid: 'J', intervals: [{ k0: 1, k1: null, value: 'AI infrastructure', auth: 0.44, state: 'WILD', evidence: 'enrichissement', reason: null }] },
+      { name: 'acct_status', kid: 'K', intervals: [{ k0: 1, k1: 2, value: 'active', auth: 0.67, state: 'WILD', evidence: 'compte ouvert', reason: null }, { k0: 2, k1: null, value: 'suspended', auth: 0.22, state: 'CANDIDATE', evidence: 'paiement manqué', reason: 'paiement manqué' }] },
+      { name: 'lead_source', kid: 'L', intervals: [{ k0: 1, k1: null, value: 'web', auth: 0.78, state: 'WILD', evidence: 'suivi utm', reason: null }] }
+    ] },
+    'acct-002': { label: 'acct-002 · Sofia Bennett', recordKid: CRM_KID_BASE + 'M', fields: [
+      { name: 'cust_name', kid: 'N', intervals: [{ k0: 1, k1: 2, value: 'Sofia Marchetti', auth: 0.89, state: 'WILD', evidence: 'formulaire d’inscription', reason: null }, { k0: 2, k1: null, value: 'Sofia Bennett', auth: 0.89, state: 'CANDIDATE', evidence: 'mariée', reason: 'mariée' }] },
+      { name: 'email', kid: 'O', intervals: [{ k0: 1, k1: 2, value: 'sofia.m@example.com', auth: 0.78, state: 'WILD', evidence: 'formulaire d’inscription', reason: null }, { k0: 2, k1: null, value: 'sofia.bennett@example.com', auth: 0.78, state: 'CANDIDATE', evidence: 'mariée', reason: 'mariée' }] },
+      { name: 'phone', kid: 'P', intervals: [{ k0: 1, k1: null, value: '919-555-0119', auth: 0.56, state: 'WILD', evidence: 'fourni par l’utilisateur', reason: null }] },
+      { name: 'city', kid: 'Q', intervals: [{ k0: 1, k1: null, value: 'Durham', auth: 0.56, state: 'WILD', evidence: 'fourni par l’utilisateur', reason: null }] },
+      { name: 'acct_status', kid: 'R', intervals: [{ k0: 1, k1: null, value: 'active', auth: 0.67, state: 'WILD', evidence: 'compte ouvert', reason: null }] }
+    ] }
+  };
+  var crmCurrentAcct = 'acct-002';
+  function crmKidShort(kid) { return '\u2026' + kid.slice(-10); }
+  function renderCRM(acct, fieldName) {
+    var acctData = CRM_DATA[acct];
+    var fields = acctData.fields;
+    var selected = fields[0];
+    fields.forEach(function(f) { if (f.name === fieldName) selected = f; });
+    var legacy = document.getElementById('crmLegacyRecord');
+    legacy.innerHTML = '';
+    fields.forEach(function(f) {
+      var live = f.intervals[f.intervals.length - 1];
+      var row = document.createElement('div');
+      row.className = 'flex items-center justify-between gap-3 px-3 py-2 rounded cursor-pointer ' + (f === selected ? 'bg-primary/15 border border-primary/40' : 'hover:bg-surface-container-high');
+      row.onclick = (function(name) { return function() { selectCRMField(name); }; })(f.name);
+      row.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-line">' + f.name + '</span><span class="font-mono text-body-sm text-paper-light">' + live.value + '</span>';
+      legacy.appendChild(row);
+    });
+    var kidPane = document.getElementById('crmKidIdentity');
+    kidPane.innerHTML = '';
+    fields.forEach(function(f) {
+      var kid = CRM_KID_BASE + f.kid;
+      var row = document.createElement('div');
+      row.className = 'flex items-center justify-between gap-3 px-3 py-2 rounded cursor-pointer ' + (f === selected ? 'bg-primary/15 border border-primary/40' : 'hover:bg-surface-container-high');
+      row.onclick = (function(name) { return function() { selectCRMField(name); }; })(f.name);
+      row.title = kid;
+      row.innerHTML = '<span class="font-telemetry-cell text-telemetry-cell text-engine-line">' + f.name + '</span><span class="font-mono text-body-sm text-primary">' + crmKidShort(kid) + '</span>';
+      kidPane.appendChild(row);
+    });
+    document.getElementById('crmKidFooter').textContent = 'KID du compte ' + crmKidShort(acctData.recordKid) + ' \u00b7 chaque KID de champ y est lié';
+    var hint = document.getElementById('crmKRecordHint');
+    var multi = selected.intervals.length > 1;
+    hint.textContent = multi ? 'Toutes les valeurs que « ' + selected.name + ' » a jamais eues \u2014 et pourquoi chacune a changé.' : 'Toutes les valeurs que « ' + selected.name + ' » a jamais eues. Une seule pour l’instant \u2014 elle n’a jamais changé.';
+    var history = document.getElementById('crmKRecordHistory');
+    history.innerHTML = '';
+    selected.intervals.forEach(function(iv, idx) {
+      var live = idx === selected.intervals.length - 1;
+      var card = document.createElement('div');
+      card.className = 'p-3 rounded bg-surface-container-low flex flex-col gap-1 ' + (live ? 'border border-primary/40' : 'border border-line-subtle');
+      var badge = 'k' + iv.k0 + ' \u2192 ' + (iv.k1 === null ? 'live' : 'k' + iv.k1);
+      var html = '<div class="flex justify-between font-telemetry-cell text-telemetry-cell"><span class="text-primary font-bold">' + badge + '</span><span>' + iv.state + (live ? ' \u00b7 actuel' : '') + '</span></div>';
+      html += '<div class="font-mono text-body-md text-paper-light">' + iv.value + '</div>';
+      html += '<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary" style="width: ' + Math.round(iv.auth * 100) + '%"></div></div>';
+      html += '<div class="font-telemetry-cell text-telemetry-cell text-engine-muted">autorité ' + Math.round(iv.auth * 100) + '% \u00b7 evidence: value=' + iv.value + ' \u00b7 ' + iv.evidence + '</div>';
+      if (iv.reason) html += '<div><span class="font-telemetry-cell text-telemetry-cell text-status-lime">pourquoi : ' + iv.reason + '</span></div>';
+      card.innerHTML = html;
+      history.appendChild(card);
+    });
+    var note = document.createElement('div');
+    note.className = 'font-body-sm text-body-sm text-on-surface-variant p-3 rounded bg-surface-container-low/50';
+    note.textContent = multi ? 'Gelés. Les intervalles fermés sont identiques à l’octet près au jour où ils ont été écrits \u2014 seul celui en direct peut un jour être remplacé.' : 'En ajout seul : cet intervalle ne peut qu’être remplacé, jamais modifié ni supprimé.';
+    history.appendChild(note);
+  }
+  function selectCRMField(fieldName) { renderCRM(crmCurrentAcct, fieldName); }
+  function setCRMAccount(acct, el) {
+    var buttons = document.querySelectorAll('.crm-acct-btn');
+    buttons.forEach(function(b) { b.classList.remove('bg-primary', 'text-on-primary'); b.classList.add('bg-surface-container-low', 'text-on-surface-variant'); });
+    el.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    el.classList.add('bg-primary', 'text-on-primary');
+    crmCurrentAcct = acct;
+    renderCRM(acct, 'cust_name');
+  }
+
+ var CRM_TRANSCRIPT = ["$ katie-middleman --demo crm", "[middleman] opened acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (tables katie assimilées)", "[middleman] acct-002.cust_name = \"Sofia Marchetti\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (deposit, auth 8)", "[middleman] acct-002.email = \"sofia.m@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (deposit, auth 7)", "[middleman] acct-002.phone = \"919-555-0119\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAP (deposit, auth 5)", "[middleman] acct-002.city = \"Durham\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAQ (deposit, auth 5)", "[middleman] acct-002.acct_status = \"active\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAR (deposit, auth 6)", "# …elle se marie, prend le nom de son conjoint…", "[middleman] acct-002.cust_name = \"Sofia Bennett\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN (re-grade, auth 8)", "[middleman] acct-002.email = \"sofia.bennett@example.com\"  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO (re-grade, auth 7)", "=== acct-002  record AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAM  (relu depuis pg) ===", "  +- cust_name  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAN", "     [k1..k2] WILD auth=0.89 [\"value=Sofia Marchetti\", \"signup form\"] reason=None", "     [k2..live] CANDIDATE auth=0.89 [\"value=Sofia Bennett\", \"married\"] reason=Some(\"married\")", "  +- email  AAAAAAAAAAAAAAAAatZqtAAAAAAAAAAO", "     [k1..k2] WILD auth=0.78 [\"value=sofia.m@example.com\", \"signup form\"] reason=None", "     [k2..live] CANDIDATE auth=0.78 [\"value=sofia.bennett@example.com\", \"married\"] reason=Some(\"married\")", "# le nom a changé. la personne non. k1 reste identique à l'octet près.", "# fin de l'exécution authentique — 15 champs, 15 KIDs, 15 historiques indépendants"];
+  function replayMiddlemanTranscript() {
+    var consoleEl = document.getElementById('transcriptConsole');
+    consoleEl.innerHTML = '';
+    var delay = 0;
+    CRM_TRANSCRIPT.forEach(function(line) {
+      delay += line.charAt(0) === '#' ? 650 : 300;
+      (function(text, d) {
+        setTimeout(function() {
+          var div = document.createElement('div');
+          if (text.charAt(0) === '#') div.className = 'text-engine-muted';
+          div.textContent = text;
+          consoleEl.appendChild(div);
+        }, d);
+      })(line, delay);
+    });
+  }
+  drawCurve();
+  renderGrudge();
+  renderCRM('acct-002', 'cust_name');
+ </script>
+</div></div></main><footer class="w-full bg-ground-deep border-t border-gold-glass-stroke py-space-xl relative overflow-hidden"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-space-lg"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg border-b border-line-subtle"><div class="flex items-center gap-space-sm"><a href="/home/" class="inline-flex items-center"><img src="../../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-8 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"></a></div><div class="flex flex-col gap-1 font-telemetry-cell text-telemetry-cell text-engine-line lg:items-end"><a class="hover:text-primary transition-colors whitespace-nowrap" href="https://doi.org/10.5281/zenodo.23137456" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23137456</a><a class="hover:text-primary transition-colors whitespace-nowrap" href="https://doi.org/10.5281/zenodo.23198458" target="_blank" rel="noopener">Zenodo DOI 10.5281/zenodo.23198458</a><span class="whitespace-nowrap">U.S. Prov. Pat. App. 64/182,709</span></div></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm font-telemetry-cell text-telemetry-cell text-on-surface-variant"><p>© 2026 VOLSHi. Tous droits réservés. · Research Triangle Park, Caroline du Nord</p><p class="text-engine-muted">Loi computationnelle candidate</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-engine-muted hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></div></div></footer>
+
+
+
+<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Votre connexion</span><button onclick="closeConnPanel()" aria-label="Fermer" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Statut</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Réseau</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Débit descendant</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Chargement de la page</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Revérifier</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Mesuré localement dans votre navigateur. Rien n'est envoyé.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'En ligne':'Hors ligne';pg.textContent='mesure\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'inconnu')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'non signalé');}else{nt.textContent='non signalé par ce navigateur';dl.textContent='non signalé par ce navigateur';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms au premier octet \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms chargée';}else{ld.textContent='non signalé par ce navigateur';}}catch(e){ld.textContent='non signalé par ce navigateur';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'injoignable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('offline',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Hors ligne';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='hors ligne';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script><script>function katieTabFromHash(){var t=(location.hash||'').replace('#','');if(['engine','scar-lab','curve-bench','kernel','ruby-glasses','crm-demo'].indexOf(t)>-1&&typeof switchKatieTab==='function'){switchKatieTab(t);}}document.addEventListener('DOMContentLoaded',katieTabFromHash);window.addEventListener('hashchange',katieTabFromHash);</script></body></html>

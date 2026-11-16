@@ -1,0 +1,726 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head><script>(function(){try{if(localStorage.getItem('volshi-lang')==='en'){location.replace('/mobile/'+location.search+location.hash);}}catch(e){}})();</script><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Infrastructure de conformité</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><style>
+ body {
+ min-height: max(884px, 100dvh);
+ }
+ </style>
+ <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
+</head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex flex-col"><div class="flex items-center gap-1.5"><img src="../../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-8 w-auto object-contain"></div></div></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">10.5281/zenodo.23198458</span></div><a id="lang-switch" href="/mobile/" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){}" class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md font-telemetry-cell text-telemetry-cell text-primary" aria-label="English version" lang="en">EN</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="px-space-sm pt-space-xs"><div class="flex items-center justify-between py-space-xs"><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-widest text-on-surface-variant/70">VOLSHi</span><span class="font-telemetry-code text-telemetry-code text-primary/80 uppercase">Accueil</span></div></div><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO -->
+<section class="relative overflow-hidden flex flex-col px-space-sm pt-space-md pb-space-lg">
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image:url('../../assets/img/hero-face.jpg');background-size:cover;background-repeat:no-repeat;background-position:center 12%;"></div>
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:linear-gradient(180deg,rgba(6,6,8,.85) 0%,rgba(6,6,8,.50) 30%,rgba(6,6,8,.15) 45%,rgba(6,6,8,.08) 60%,rgba(6,6,8,.08) 100%);"></div>
+<div class="relative z-10 flex flex-col gap-space-xs">
+<div class="inline-flex items-center gap-1.5 self-start px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-telemetry-cell text-telemetry-cell tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>VOLSHi / INFRASTRUCTURE DE CONFORMITÉ</span>
+</div>
+<h1 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface tracking-tight mt-1">
+ Chaque action d'agent. <span class="italic font-headline-hero-mobile text-primary">Consignée au registre.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+ VOLSHi donne aux agents IA un registre en ajout seul, qui révèle toute altération, de ce qu'ils croyaient, quand, et pourquoi — pour que chaque action soit auditable.
+ </p>
+</div>
+<!-- Real K-record receipt -->
+<div class="mt-40 rounded-xl bg-surface-container-low p-space-sm shadow-md relative overflow-hidden">
+<div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">receipt_long</span>
+ REÇU K-RECORD // EXÉCUTION RÉELLE
+ </span>
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase px-2 py-0.5 rounded-full bg-surface-container-high">
+ 19 OCT. 2026
+ </span>
+</div>
+<div class="flex flex-col gap-2 py-1 font-telemetry-cell text-telemetry-cell">
+<div class="flex flex-col rounded bg-surface-container p-2"><span class="text-on-surface-variant uppercase">[k1..k2] · WILD · 0.89</span><span class="text-on-surface">"Sofia Marchetti" · formulaire d'inscription</span></div>
+<div class="flex flex-col rounded bg-surface-container p-2"><span class="text-on-surface-variant uppercase">[k2..live] · CANDIDATE · 0.89</span><span class="text-on-surface">"Sofia Bennett" · raison « mariée »</span></div>
+<p class="text-on-surface-variant text-[11px] leading-relaxed">KID …AAAAAAAAAAN · Véritable exécution intermédiaire, 19 oct. 2026. Données de démo, vrai registre.</p>
+</div>
+</div>
+<!-- CTAs -->
+<div class="relative z-10 flex flex-col gap-2.5 mt-space-md">
+<a class="w-full flex items-center justify-center gap-2 py-3 px-space-md rounded-lg bg-primary text-on-primary font-headline-md text-[15px] font-semibold tracking-wide transition-transform active:scale-[0.98] shadow-lg shadow-primary/10" href="#trifecta">
+<span>Explorer l'étendue</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="w-full flex items-center justify-center gap-1.5 py-1 font-telemetry-cell text-telemetry-cell tracking-wider uppercase text-on-surface-variant" href="#pitch-deck">
+<span class="material-symbols-outlined text-[14px]">download</span>
+<span>Deck de présentation (PDF)</span>
+</a>
+</div>
+<!-- Ticker Stream -->
+<div class="relative z-10 mt-space-md rounded-lg bg-surface-container-lowest p-2 overflow-x-auto scrollbar-none">
+<div class="flex items-center gap-2 whitespace-nowrap font-telemetry-cell text-telemetry-cell text-on-surface-variant">
+<span class="text-primary font-semibold">FLUX :</span>
+<span class="text-on-surface">Expérience humaine</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Comprendre</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Apprendre</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface">Autoriser</span>
+<span class="text-outline">→</span>
+<span class="text-primary font-semibold">Intelligence machine</span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: THE PROBLEM (INTERACTIVE CARDS) -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest/60" style="background-image: linear-gradient(rgba(8,8,10,0.62), rgba(8,8,10,0.62)), url('../../assets/img/bg-swirl.webp'); background-size: cover; background-position: center;">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>VOLSHi / LE PROBLÈME</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ L'IA prend des décisions dont elle ne peut pas rendre compte.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+ Aucun registre de ce qu'elle croyait, quand elle le croyait, ni pourquoi. Les journaux sont réinscriptibles. Une entreprise à 2,5 milliards de dollars vient de s'effondrer sous des poursuites pour sécurité sans piste d'audit. La loi européenne sur l'IA est en vigueur. Touchez les cartes pour inspecter.
+ </p>
+</div>
+<!-- 8 Mobile Tap-to-Inspect Cards -->
+<div class="grid grid-cols-1 gap-2.5 mt-space-md" id="problem-card-grid">
+<!-- 1. OBSERVE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">01 // OBSERVER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Surveillance de l'exécution</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Voyez ce que font les agents en temps réel — chaque action capturée au moment où elle se produit.
+ </p>
+
+</div>
+</div>
+<!-- 2. KNOW -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-secondary uppercase">02 // SAVOIR</span>
+<span class="font-headline-md text-[15px] text-on-surface">Capture des croyances</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Enregistrez ce que l'agent croyait quand il a agi — confiance, justification, preuves.
+ </p>
+</div>
+</div>
+<!-- 3. GATE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-ruby-deep/40 flex items-center justify-center text-ruby">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-ruby uppercase">03 // CONTRÔLER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Application des politiques</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Les actions lourdes de conséquences nécessitent une approbation avant de s'exécuter. La prévention, pas l'enquête après coup.
+ </p>
+</div>
+</div>
+<!-- 4. TRACK -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">route</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">04 // SUIVRE</span>
+<span class="font-headline-md text-[15px] text-on-surface">Suivi de la provenance</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Retracez chaque entrée jusqu'à sa source. Quand quelque chose tourne mal, trouvez la racine.
+ </p>
+
+</div>
+</div>
+<!-- 5. PROVE -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-tertiary uppercase">05 // PROUVER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Chaîne de preuves</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Chaque affirmation reste liée à ses preuves — d'une session à l'autre, d'un modèle à l'autre.
+ </p>
+
+</div>
+</div>
+<!-- 6. REPLAY -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-status-orange">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-status-orange uppercase">06 // REJOUER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Reconstruction</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Reconstruisez toute décision passée dans son intégralité. L'examen d'incident devient une investigation.
+ </p>
+
+</div>
+</div>
+<!-- 7. REPORT -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-status-lime">
+<span class="material-symbols-outlined text-[18px]">article</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-status-lime uppercase">07 // RAPPORTER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Export pour le régulateur</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Rapports de conformité à la demande. Prêt pour la loi européenne sur l'IA, réglementation américaine à venir.
+ </p>
+
+</div>
+</div>
+<!-- 8. RETAIN -->
+<div class="problem-card flex flex-col p-space-sm rounded-xl bg-surface-container transition-all cursor-pointer shadow-sm select-none" onclick="toggleCard(this)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">database</span>
+</span>
+<div class="flex flex-col">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase">08 // CONSERVER</span>
+<span class="font-headline-md text-[15px] text-on-surface">Registre immuable</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] transition-transform duration-200 chevron-icon">expand_more</span>
+</div>
+<div class="card-drawer hidden flex flex-col pt-2.5 mt-2.5 bg-surface-container-low -mx-3 -mb-3 p-3 rounded-b-xl">
+<p class="font-body-sm text-body-sm text-on-surface">
+ Le passé reste consigné. Ce qui a été cru, quand, et pourquoi — ineffaçable.
+ </p>
+
+</div>
+</div>
+</div>
+<!-- 6-Step Problem Walkthrough Banner -->
+<div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low relative overflow-hidden">
+<div class="flex items-center gap-1.5 mb-2 font-telemetry-head text-telemetry-head text-primary uppercase">
+<span class="material-symbols-outlined text-[16px]">troubleshoot</span>
+<span>Le problème</span>
+</div>
+<div class="flex flex-col gap-2 font-telemetry-cell text-telemetry-cell text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">1.</span>
+<span>Le problème — L'IA prend des décisions dont elle ne peut pas rendre compte. Aucun registre de ce qu'elle croyait, quand elle le croyait, ni pourquoi. La machine agit, et le raisonnement derrière l'acte disparaît dès l'instant où il se produit.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">2.</span>
+<span>Le client — Quiconque place un agent près de quelque chose de réel. De l'argent réel. Une sécurité réelle. Des gens réels. Quand un système autonome touche à quelque chose qui compte, quelqu'un doit lui demander pourquoi — et obtenir une réponse.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">3.</span>
+<span>La fréquence — Chaque décision que prend la machine. Pas des cas limites. Pas des incidents. Chaque décision que prend un agent est une décision que personne ne peut auditer.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-status-orange font-bold">4.</span>
+<span>La solution actuelle — Les journaux et le contrôle de version. Tous deux réinscriptibles. Tous deux muets sur la seule question qui compte : qu'était la machine justifiée de croire au moment où elle a agi ?</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-ruby font-bold">5.</span>
+<span>Le fossé — Il n'y a pas de passé que la machine ne puisse distancer. Donc il n'y a pas de responsabilité. On ne peut pas tenir un système responsable d'une histoire qu'il est libre de réécrire.</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-status-lime font-bold">6.</span>
+<span>La réponse — Nous construisons cette histoire. Une mémoire que la machine ne peut pas réécrire — chaque croyance horodatée avec ce qu'elle savait et ce qui la justifiait. C'est l'étendue que VOLSHi construit.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE PERFECTA TRIFECTA -->
+<section class="flex flex-col px-space-sm py-space-md" id="trifecta" style="background-image: linear-gradient(rgba(8,8,10,0.80), rgba(8,8,10,0.80)), url('../../assets/img/future-machine-core.webp'); background-size: cover; background-position: center;">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>VOLSHi / TECHNOLOGIE</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ La Perfecta Trifecta.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Trois systèmes. Une seule histoire de conformité.
+ </p>
+</div>
+<!-- Stacked Cards -->
+<div class="flex flex-col gap-space-sm mt-space-md">
+<!-- 01 KATIE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase font-bold tracking-wider">01 // KATIE — Surveille</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-telemetry-cell text-telemetry-cell">TÉLÉMÉTRIE</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ Chaque action d'agent observée en temps réel. Chaque croyance, chaque décision, chaque transfert — un reçu émis et inscrit au K-record.
+ </p>
+</div>
+<!-- 02 ERIE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-tertiary uppercase font-bold tracking-wider">02 // ERIE — Vérifie</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-tertiary font-telemetry-cell text-telemetry-cell">ANCRAGE</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ La récupération sans hallucination. Ce qui revient est ancré dans le registre — pas de réponses inventées, pas de fiction confiante.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary inline-block"></span>
+ Récupération vérifiée
+ </span>
+<span class="text-on-surface-variant">ZÉRO HALLUCINATION</span>
+</div>
+</div>
+<!-- 03 ELLE -->
+<div class="flex flex-col p-space-md rounded-xl bg-surface-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-secondary uppercase font-bold tracking-wider">03 // ELLE — Persiste</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-telemetry-cell text-telemetry-cell">CONTINUITÉ</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+ La boucle d'apprentissage externe qui suit l'utilisateur dans n'importe quel modèle avec lequel il interagit. Vous ne repartez plus jamais de zéro.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-telemetry-cell text-telemetry-cell">
+<span class="flex items-center gap-1 text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+ Synchronisation multi-modèles
+ </span>
+<span class="text-on-surface-variant">ÉTAT PORTABLE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: INTERACTIVE MOBILE K-RECORD ENTRY -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest/90">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span>RELECTURE FORENSIQUE INTERACTIVE</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ Ce que l'agent croyait, consigné au registre.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Inspectez l'entrée du K-record à l'époque k = 1042. Touchez les états pour simuler la progression de la chaîne.
+ </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Touchez un nœud k. La croyance commence fiable et finit réfutée — mais chaque version reste consignée. Rien n'est effacé. C'est le but.
+ </p>
+</div>
+<!-- Compact Touch Interactive Widget -->
+<div class="mt-space-md rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-sm relative">
+<!-- Widget Header Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span class="font-telemetry-head text-telemetry-head text-on-surface uppercase">INSPECTEUR K-RECORD</span>
+</div>
+
+</div>
+<!-- Core Data Matrix -->
+<div class="flex flex-col gap-2 rounded-lg bg-surface-container-low p-space-sm">
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Croyance tenue</span>
+<span class="font-headline-md text-[16px] text-primary mt-0.5" id="k-belief-text">
+ « La facture du fournisseur est légitime. »
+ </span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Tenue à t</span>
+<span class="font-telemetry-code text-telemetry-code text-on-surface text-[12px]">2026-10-16 14:32:08 UTC</span>
+</div>
+<div class="flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Enregistrée à k</span>
+<span class="font-telemetry-code text-telemetry-code text-on-surface text-[12px]" id="k-index-val">k = 1042</span>
+</div>
+</div>
+<!-- Authority Meter Bar -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between font-telemetry-cell text-telemetry-cell">
+<span class="text-on-surface-variant uppercase">Autorité / Confiance</span>
+<span class="font-semibold text-primary" id="k-authority-val">90 % FIABLE</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300 w-[90%]" id="k-meter-bar"></div>
+</div>
+</div>
+<div class="flex flex-col pt-1">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Action entreprise</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-status-lime font-telemetry-code text-telemetry-code font-semibold" id="k-action-taken">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Le paiement a été viré.</span>
+</div>
+</div>
+</div>
+<!-- Supersedes Chain Tap Selector -->
+<div class="flex flex-col gap-2">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant uppercase">Séquence de chaîne (touchez un nœud pour parcourir) :</span>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-high text-primary transition-all text-center" id="btn-node-0" onclick="scrubChain(0)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1042</span>
+<span class="font-telemetry-cell text-[10px] text-on-surface-variant">AFFIRMER (90 %)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-on-surface-variant transition-all text-center" id="btn-node-1" onclick="scrubChain(1)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1045</span>
+<span class="font-telemetry-cell text-[10px] text-status-orange">CONTESTER (40 %)</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low text-on-surface-variant transition-all text-center" id="btn-node-2" onclick="scrubChain(2)" type="button">
+<span class="font-telemetry-cell text-telemetry-cell font-bold">k=1048</span>
+<span class="font-telemetry-cell text-[10px] text-ruby">RÉVOQUER (0 %)</span>
+</button>
+</div>
+</div>
+<!-- Append-Only Notice -->
+<div class="flex items-start gap-2 p-2 rounded-lg bg-ruby-ground text-on-surface-variant font-telemetry-cell text-telemetry-cell leading-tight">
+<span class="material-symbols-outlined text-ruby text-[16px] shrink-0">lock</span>
+<span>Cette entrée est en ajout seul. Rien ici ne peut être modifié ou supprimé — seulement remplacé.</span>
+</div>
+<div class="flex justify-center pt-2">
+<a href="/mobile/katie/#engine" class="font-telemetry-cell text-telemetry-cell text-primary py-2">Allez jouer dans la fosse →</a>
+</div>
+</div>
+</section>
+<!-- SECTION 5: COMPANY / MISSION & PITCH DECK -->
+<section class="flex flex-col px-space-sm py-space-md" id="pitch-deck" style="background-image: linear-gradient(rgba(8,8,10,0.74), rgba(8,8,10,0.74)), url('../../assets/img/bg-star.webp'); background-size: cover; background-position: center;">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span class="w-1.5 h-1.5 rounded-full bg-status-orange"></span>
+<span>GOUVERNANCE / MANDAT</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface uppercase">
+ CONFORMITÉ POUR LES AGENTS IA.
+ </h2>
+<p class="font-body-md text-body-md text-on-surface mt-2 leading-relaxed">
+ L'intelligence sans responsabilité est un passif. Character.AI l'a prouvé à 2,5 milliards de dollars. La loi européenne sur l'IA impose la traçabilité d'ici décembre 2027 — et chaque entreprise déployant des agents est sur le point d'avoir besoin de la même chose : montrer son travail.
+ </p>
+</div>
+<!-- Pitch Deck Card -->
+<div class="mt-space-md flex flex-col p-space-md rounded-xl bg-surface-container shadow-lg relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="font-telemetry-head text-telemetry-head text-primary uppercase font-semibold">MÉMORANDUM INVESTISSEUR</span>
+<span class="px-2 py-0.5 rounded-full bg-status-lime/10 text-status-lime font-telemetry-cell text-telemetry-cell font-semibold">
+ 88/100 SUR VETTABLE
+ </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">
+ Deck investisseur VOLSHi
+ </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+ 13 diapositives · validé par un tiers — 88/100 sur Vettable.
+ </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">picture_as_pdf</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface">volshi-pitch-deck.pdf</span>
+</div>
+<a class="px-3 py-1.5 rounded bg-primary text-on-primary font-telemetry-cell text-telemetry-cell uppercase font-semibold tracking-wider flex items-center gap-1 active:scale-95 transition-transform" href="/assets/volshi-pitch-deck.pdf">
+<span class="material-symbols-outlined text-[14px]">file_download</span>
+<span>Télécharger le PDF</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CONTACT & LIFECYCLE ACCORDION -->
+<section class="flex flex-col px-space-sm py-space-md bg-surface-container-lowest" id="contact">
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center gap-1 self-start font-telemetry-cell text-telemetry-cell text-primary uppercase tracking-widest">
+<span>VOLSHi / Contact</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface">
+ Rendez les agents responsables.
+ </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ La couche de conformité dont l'industrie est sur le point d'avoir besoin.
+ </p>
+</div>
+<!-- 5-Step Accordion -->
+<div class="flex flex-col gap-2 mt-space-md" id="lifecycle-accordion">
+<!-- 1. Observe -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">1</span>
+<span class="font-headline-md text-[15px] text-on-surface">Observer</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Nous percevons vos systèmes tels qu'ils sont — exécution, télémétrie, preuves.
+ </div>
+</div>
+<!-- 2. Understand -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">2</span>
+<span class="font-headline-md text-[15px] text-on-surface">Comprendre</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ L'observation devient une connaissance traçable — chaque affirmation liée à ses preuves.
+ </div>
+</div>
+<!-- 3. Decide -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">3</span>
+<span class="font-headline-md text-[15px] text-on-surface">Décider</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ L'attention et l'autorité décident ce qui mérite une action — et ce qui a besoin d'un humain.
+ </div>
+</div>
+<!-- 4. Act -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">4</span>
+<span class="font-headline-md text-[15px] text-on-surface">Agir</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Le système agit dans les limites de son autorité. Chaque action enregistrée, chaque franchissement gouverné.
+ </div>
+</div>
+<!-- 5. Account -->
+<div class="rounded-xl bg-surface-container overflow-hidden">
+<button class="w-full p-space-sm flex items-center justify-between text-left" onclick="toggleLifecycle(this)" type="button">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded bg-surface-container-high flex items-center justify-center font-telemetry-cell text-telemetry-cell text-primary font-bold">5</span>
+<span class="font-headline-md text-[15px] text-on-surface">Rendre compte</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] transition-transform chevron">expand_more</span>
+</button>
+<div class="lifecycle-content hidden p-space-sm pt-0 font-body-sm text-body-sm text-on-surface-variant">
+ Tout est comptabilisé — ce qui a été cru, quand, et pourquoi.
+ </div>
+</div>
+</div>
+<!-- Contact Founder Direct -->
+<div class="flex flex-col gap-2 mt-space-lg">
+<a class="w-full flex items-center justify-center gap-2 py-3 px-space-md rounded-lg bg-surface-container-high text-primary hover:bg-surface-bright font-telemetry-head text-telemetry-head font-semibold tracking-wider uppercase transition-colors shadow-sm" href="mailto:founder@volshi.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Contacter le fondateur (founder@volshi.com)</span>
+</a>
+<span class="text-center font-telemetry-cell text-telemetry-cell text-on-surface-variant/60">
+ Demandes directes de partenaires.
+ </span>
+</div>
+<!-- Triple-Click Easter Egg Watermark -->
+<div class="mt-space-lg py-space-sm flex flex-col items-center justify-center select-none cursor-pointer text-center" id="easter-egg-zone">
+<span class="font-telemetry-cell text-[10px] uppercase tracking-widest text-on-surface-variant/40">DOI : 10.5281/zenodo.23198458 // DÉPÔT D'ARCHIVES</span>
+<span class="h-4 font-telemetry-cell text-[10px] text-primary transition-opacity duration-300 opacity-0 mt-0.5" id="easter-egg-feedback">
+ vous l'avez trouvé.
+ </span>
+</div>
+</section>
+<!-- Client Micro-Interactions -->
+<script>
+ function toggleCard(el) {
+ const drawer = el.querySelector('.card-drawer');
+ const chevron = el.querySelector('.chevron-icon');
+ const isHidden = drawer.classList.contains('hidden');
+ 
+ // Close all drawers
+ document.querySelectorAll('#problem-card-grid .card-drawer').forEach(d => d.classList.add('hidden'));
+ document.querySelectorAll('#problem-card-grid .chevron-icon').forEach(c => c.classList.remove('rotate-180'));
+ 
+ if (isHidden) {
+ drawer.classList.remove('hidden');
+ chevron.classList.add('rotate-180');
+ }
+ }
+
+ const chainStates = [
+ {
+ k: 'k = 1042',
+ belief: '« La facture du fournisseur est légitime. »',
+ authText: '90 % FIABLE',
+ authWidth: '90%',
+ authColor: '#e6c364',
+ action: 'Le paiement a été viré.',
+ actionIcon: 'bolt',
+ actionColor: 'text-status-lime'
+ },
+ {
+ k: 'k = 1045',
+ belief: '« La facture du fournisseur est légitime. »',
+ authText: '40 % CONTESTÉ',
+ authWidth: '40%',
+ authColor: '#F08A4B',
+ action: 'Le paiement a été viré. Alerte levée sur les métadonnées.',
+ actionIcon: 'report_problem',
+ actionColor: 'text-status-orange'
+ },
+ {
+ k: 'k = 1048',
+ belief: '« La facture du fournisseur est légitime. »',
+ authText: '0 % RÉFUTÉ',
+ authWidth: '0%',
+ authColor: '#EF174C',
+ action: 'Le paiement a été viré. Facture confirmée frauduleuse.',
+ actionIcon: 'block',
+ actionColor: 'text-ruby'
+ }
+ ];
+
+ function scrubChain(index) {
+ const state = chainStates[index];
+ document.getElementById('k-index-val').innerText = state.k;
+ document.getElementById('k-belief-text').innerText = state.belief;
+ document.getElementById('k-authority-val').innerText = state.authText;
+ 
+ const bar = document.getElementById('k-meter-bar');
+ bar.style.width = state.authWidth;
+ bar.style.backgroundColor = state.authColor;
+
+ const actContainer = document.getElementById('k-action-taken');
+ actContainer.className = `flex items-center gap-1.5 mt-0.5 ${state.actionColor} font-telemetry-code text-telemetry-code font-semibold`;
+ actContainer.innerHTML = `<span class="material-symbols-outlined text-[16px]">${state.actionIcon}</span><span>${state.action}</span>`;
+
+ // Update button highlights
+ for (let i = 0; i < 3; i++) {
+ const btn = document.getElementById(`btn-node-${i}`);
+ if (i === index) {
+ btn.classList.add('bg-surface-container-high', 'text-primary');
+ btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+ } else {
+ btn.classList.remove('bg-surface-container-high', 'text-primary');
+ btn.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+ }
+ }
+ }
+
+ function toggleLifecycle(btn) {
+ const parent = btn.parentElement;
+ const content = parent.querySelector('.lifecycle-content');
+ const chevron = btn.querySelector('.chevron');
+ const isHidden = content.classList.contains('hidden');
+
+ document.querySelectorAll('#lifecycle-accordion .lifecycle-content').forEach(c => c.classList.add('hidden'));
+ document.querySelectorAll('#lifecycle-accordion .chevron').forEach(c => c.classList.remove('rotate-180'));
+
+ if (isHidden) {
+ content.classList.remove('hidden');
+ chevron.classList.add('rotate-180');
+ }
+ }
+
+ // Triple-Click Easter Egg
+ let clickCount = 0;
+ let clickTimer = null;
+ const easterEggZone = document.getElementById('easter-egg-zone');
+ const feedback = document.getElementById('easter-egg-feedback');
+
+ if (easterEggZone) {
+ easterEggZone.addEventListener('click', () => {
+ clickCount++;
+ clearTimeout(clickTimer);
+ clickTimer = setTimeout(() => {
+ clickCount = 0;
+ }, 800);
+
+ if (clickCount >= 3) {
+ feedback.classList.remove('opacity-0');
+ feedback.classList.add('opacity-100');
+ clickCount = 0;
+ setTimeout(() => {
+ feedback.classList.remove('opacity-100');
+ feedback.classList.add('opacity-0');
+ }, 4000);
+ }
+ });
+ }
+ </script>
+</div><footer class="mt-space-xl px-space-sm pb-28 text-center flex flex-col items-center gap-space-xs"><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. Tous droits réservés. · Research Triangle Park, Caroline du Nord</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-on-surface-variant/70 hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="home" href="/mobile/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Accueil</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="the-system" href="/mobile/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Système</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="katie" href="/mobile/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/mobile/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Recherche</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/mobile/research/#invest"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Investir</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/mobile/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Votre connexion</span><button onclick="closeConnPanel()" aria-label="Fermer" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Statut</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Réseau</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Débit descendant</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Chargement de la page</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Revérifier</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Mesuré localement dans votre navigateur. Rien n'est envoyé.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'En ligne':'Hors ligne';pg.textContent='mesure\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'inconnu')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'non signalé');}else{nt.textContent='non signalé par ce navigateur';dl.textContent='non signalé par ce navigateur';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms au premier octet \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms chargée';}else{ld.textContent='non signalé par ce navigateur';}}catch(e){ld.textContent='non signalé par ce navigateur';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'injoignable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('offline',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Hors ligne';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='hors ligne';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script><script>
+function syncMobileHomeNav(){
+  var contact=document.getElementById('contact');
+  var home=document.querySelector('nav a[data-path="home"]');
+  var contactLink=document.querySelector('nav a[data-path="contact"]');
+  if(!contact||!home||!contactLink) return;
+  var r=contact.getBoundingClientRect();
+  var atBottom=(window.innerHeight+window.scrollY)>=(document.documentElement.scrollHeight-2);
+  var onContact=(r.top<=96 && r.bottom>96)||atBottom;
+  var ACTIVE=['text-primary','font-semibold'];
+  var INACTIVE=['text-on-surface-variant','hover:text-on-surface'];
+  var set=function(a,on){
+    ACTIVE.concat(INACTIVE).forEach(function(c){a.classList.remove(c);});
+    (on?ACTIVE:INACTIVE).forEach(function(c){a.classList.add(c);});
+  };
+  set(contactLink,onContact);
+  set(home,!onContact);
+  if(onContact){contactLink.setAttribute('aria-current','page');home.removeAttribute('aria-current');}
+  else{home.setAttribute('aria-current','page');contactLink.removeAttribute('aria-current');}
+}
+window.addEventListener('scroll',syncMobileHomeNav,{passive:true});
+window.addEventListener('hashchange',syncMobileHomeNav);
+window.addEventListener('resize',syncMobileHomeNav);
+window.addEventListener('load',syncMobileHomeNav);
+syncMobileHomeNav();
+setTimeout(syncMobileHomeNav,300);
+</script></body></html>

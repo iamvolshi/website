@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
-<head>
+<head><script>(function(){try{if(localStorage.getItem('volshi-lang')==='fr'){location.replace('/fr/'+location.search+location.hash);}}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VOLSHi</title>
@@ -68,7 +68,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
       </p>
     </div>
   </div>
-</a>
+</a><button id="lang-switch" type="button" onclick="try{localStorage.setItem('volshi-lang','fr')}catch(e){};location.href='/fr/';" class="fixed bottom-6 right-6 z-50 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md font-telemetry text-[11px] tracking-[0.14em] uppercase text-paper-light hover:text-primary transition-colors" aria-label="Version française" lang="fr">FR</button>
 <script>
 (function(){
   var LINES = [
