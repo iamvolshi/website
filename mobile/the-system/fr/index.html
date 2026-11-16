@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><title>VOLSHi // Infrastructure de conformité</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=Inter:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#131313;color:#e5e2e1;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "ruby-deep": "#8E072B", "outline": "#99907e", "on-error-container": "#ffdad6", "surface-container-lowest": "#0e0e0e", "surface-container-highest": "#353534", "primary": "#e6c364", "on-secondary-fixed": "#231b00", "on-tertiary-fixed-variant": "#004f59", "error-container": "#93000a", "on-primary-fixed-variant": "#584400", "on-tertiary-fixed": "#001f24", "secondary-container": "#735c00", "primary-container": "#c9a84c", "surface-bright": "#3a3939", "on-primary": "#3d2e00", "tertiary": "#65d6e9", "inverse-primary": "#755b00", "surface-variant": "#353534", "engine-line": "#A8B6B1", "ruby-ground": "#0D090B", "primary-fixed-dim": "#e6c364", "inverse-on-surface": "#313030", "line-subtle": "#232220", "outline-variant": "#4d4637", "on-secondary": "#3c2f00", "error": "#ffb4ab", "secondary-fixed": "#ffe084", "surface": "#131313", "on-secondary-container": "#f6d675", "status-orange": "#F08A4B", "tertiary-fixed-dim": "#65d6e9", "ground-deep": "#060607", "surface-container-high": "#2a2a2a", "status-lime": "#A8E349", "ruby-panel": "#171013", "gold-glass-stroke": "rgba(201, 168, 76, 0.2)", "ruby-hot": "FF4D70", "on-surface-variant": "#d0c5b2", "tertiary-fixed": "#9defff", "on-tertiary": "#00363e", "background": "#131313", "secondary-fixed-dim": "#e3c466", "surface-tint": "#e6c364", "primary-fixed": "#ffe08f", "surface-container-low": "#1c1b1b", "surface-container": "#201f1f", "on-secondary-fixed-variant": "#574500", "inverse-surface": "#e5e2e1", "secondary": "#e3c466", "engine-ink": "#101716", "on-tertiary-container": "#004750", "on-error": "#690005", "tertiary-container": "#44bacd", "on-primary-container": "#503d00", "engine-muted": "#4F5F5A", "on-primary-fixed": "#241a00", "on-surface": "#e5e2e1", "ruby": "#EF174C", "paper-light": "#F5F2ED", "engine-sheet": "#EDF1EF", "engine-deep": "#14201E", "surface-dim": "#131313" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "1.5rem", "space-md": "1.125rem", "space-xl": "2.25rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "gutter": "1.125rem", "space-xs": "0.375rem" }, fontFamily: { "body-md": ["Inter"], "kicker": ["Inter"], "headline-lg": ["Newsreader"], "telemetry-cell": ["IBM Plex Mono"], "headline-xl": ["Newsreader"], "telemetry-code": ["IBM Plex Mono"], "headline-md": ["IBM Plex Sans"], "body-sm": ["Inter"], "headline-lg-mobile": ["Newsreader"], "body-lg": ["Inter"], "headline-hero": ["Newsreader"], "headline-hero-mobile": ["Newsreader"], "telemetry-head": ["IBM Plex Mono"], "headline-xl-mobile": ["Newsreader"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "kicker": ["11px", { "lineHeight": "14px", "letterSpacing": "0.12em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "400" }], "telemetry-cell": ["11px", { "lineHeight": "14px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }], "telemetry-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "400" }], "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "headline-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "headline-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "telemetry-head": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script><style>
+ body {
+ min-height: max(884px, 100dvh);
+ }
+ </style>
+ <link rel="icon" type="image/png" href="/assets/img/volshi-favicon.png">
+</head><body class="bg-ground-deep font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-ground-deep/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 px-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><a href="/mobile/" data-path="home" class="inline-flex items-center"><img src="../../../assets/img/volshilogowhite.png" alt="VOLSHi" class="h-8 w-auto object-contain"></a></div><div class="flex items-center gap-space-xs"><div class="px-2 py-1 rounded bg-surface-container-high/60 backdrop-blur-md flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[14px]">verified</span><span class="font-telemetry-cell text-telemetry-cell text-primary">10.5281/zenodo.23198458</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-20 bg-ground-deep"><div class="flex flex-col w-full text-on-surface">
+<!-- 1. Header Section -->
+<section class="px-space-sm pt-space-xs pb-space-lg flex flex-col gap-space-sm" style="background-image: linear-gradient(rgba(8,8,10,0.80), rgba(8,8,10,0.80)), url('../../../assets/img/future-machine-core.webp'); background-size: cover; background-position: center;">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-primary">VOLSHi / LE SYSTÈME · SUBSTRAT ARCHE</span>
+</div>
+<div class="flex flex-col gap-1">
+<h1 class="font-headline-hero-mobile text-headline-hero-mobile text-on-surface leading-tight font-serif">
+ Construit comme un esprit.<br>
+<span class="italic text-primary">Pas comme une base de données.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant/90 leading-relaxed mt-1">
+ ARCHE — l'Adaptive Relational Cognitive Human Emulator. L'architecture ne stocke pas l'intelligence en ajoutant la mémoire après coup. Elle émule le fonctionnement humain — l'interaction, le comportement et la mémoire dans un seul design. Les moteurs tournent sur ARCHE. Les personas sont construits dessus.
+ </p>
+</div>
+</section>
+<!-- 2. ARCHE Cognitive Vector & Substrate -->
+<section class="px-space-sm pb-space-xl flex flex-col gap-space-md">
+<!-- Live Telemetry Pill -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs shadow-md">
+
+
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">TAXONOMIE DU SUBSTRAT</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-serif">
+ La mémoire n'est pas une fonctionnalité. <span class="italic text-primary">C'est le substrat.</span>
+</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Le travail tritemporel en dessous — temps d'événement, temps de tick, temps de connaissance — tourne sur TEMPE, le moteur du temps.
+ </p>
+<!-- 3 Structured Cards: 01 Input, 02 Attention, 03 Record -->
+<div class="flex flex-col gap-space-sm">
+<!-- 01 Input -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-telemetry-head text-telemetry-head">
+ 01
+ </span>
+<span class="font-headline-md text-headline-md text-on-surface">Entrée</span>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Le monde arrive sous forme d'événements — interactions, observations, transferts. Tout ce que le système saura un jour commence ici.
+ </p>
+
+</div>
+<!-- 02 Attention -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-status-orange/10 text-status-orange flex items-center justify-center font-telemetry-head text-telemetry-head">
+ 02
+ </span>
+<span class="font-headline-md text-headline-md text-on-surface">Attention</span>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Tous les événements ne comptent pas également. ARCHE décide ce qui mérite du poids — ce qu'il faut enregistrer profondément, ce qu'il faut laisser passer. L'attention est le premier acte de la mémoire.
+ </p>
+
+</div>
+<!-- 03 Record -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-2 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-status-lime/10 text-status-lime flex items-center justify-center font-telemetry-head text-telemetry-head">
+ 03
+ </span>
+<span class="font-headline-md text-headline-md text-on-surface">Registre</span>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Ce que l'attention garde est enregistré avec son autorité et son moment — lié par KATIE, récupérable par ERIE, appris par ELLE.
+ </p>
+
+</div>
+</div>
+<!-- Mobile Subsystem Topology Diagram Card -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs shadow-md">
+<div class="flex items-center justify-between mb-1">
+<span class="font-kicker text-kicker uppercase text-primary">SCHÉMA // FLUX D'EXÉCUTION</span>
+
+</div>
+<!-- Visual Inline SVG Flow -->
+<div class="w-full bg-surface-container-highest/40 rounded-lg p-3 flex flex-col items-center">
+<svg class="w-full h-auto" viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Nodes -->
+<rect fill="#201f1f" height="42" rx="6" stroke="#e6c364" stroke-width="1.2" width="130" x="10" y="20"></rect>
+<text fill="#e6c364" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="75" y="38">FLUX D'ÉVÉNEMENTS</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="75" y="52">Entrées multi-agents</text>
+<!-- Arrow 1 to 2 -->
+<path d="M 140 41 L 195 41" stroke="#e6c364" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<polygon fill="#e6c364" points="195,38 202,41 195,44"></polygon>
+<!-- Node 2 -->
+<rect fill="#201f1f" height="42" rx="6" stroke="#F08A4B" stroke-width="1.2" width="128" x="202" y="20"></rect>
+<text fill="#F08A4B" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="266" y="38">PONDÉRATION</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="266" y="52">Filtrage attentionnel</text>
+<!-- Branching Paths down -->
+<path d="M 266 62 L 266 90 L 100 90 L 100 115" fill="none" stroke="#65d6e9" stroke-width="1.5"></path>
+<polygon fill="#65d6e9" points="97,115 100,122 103,115"></polygon>
+<path d="M 266 62 L 266 90 L 255 90 L 255 115" fill="none" stroke="#A8E349" stroke-width="1.5"></path>
+<polygon fill="#A8E349" points="252,115 255,122 258,115"></polygon>
+<!-- Target Node KATIE -->
+<rect fill="#171013" height="46" rx="6" stroke="#e6c364" stroke-width="1.2" width="150" x="25" y="122"></rect>
+<text fill="#e6c364" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="100" y="141">MOTEUR KATIE</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="100" y="156">Surveille et scelle le registre</text>
+<!-- Target Node ERIE -->
+<rect fill="#14201E" height="46" rx="6" stroke="#A8E349" stroke-width="1.2" width="145" x="185" y="122"></rect>
+<text fill="#A8E349" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600" text-anchor="middle" x="257" y="141">ENQUÊTE ERIE</text>
+<text fill="#d0c5b2" font-family="'Inter', sans-serif" font-size="8.5" text-anchor="middle" x="257" y="156">Audit forensique et preuve</text>
+</svg>
+</div>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 text-center">
+ L'état traversant le substrat ARCHE.
+ </span>
+</div>
+</section>
+<!-- 3. The Three Engines on ARCHE -->
+<section class="px-space-sm pb-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">LA PERFECTA TRIFECTA</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-serif">
+ Trois moteurs. <span class="italic text-primary">Un seul substrat cognitif.</span>
+</h2>
+</div>
+<!-- ENGINE A: KATIE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">watch_screentime</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">KATIE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">KNOWLEDGE AUTHORITY TIME INDEXING ENGINE</span>
+</div>
+</div>
+
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Surveille. Chaque action d'agent observée en temps réel. Chaque croyance, chaque décision, chaque transfert — un reçu émis et inscrit au K-record.
+ </p>
+
+</div>
+<!-- ENGINE B: ERIE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[20px]">policy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-tertiary">ERIE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">EPISTEMIC RETRIEVAL &amp; INVESTIGATION ENGINE</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+
+<a class="inline-flex items-center gap-1 font-telemetry-cell text-telemetry-cell text-primary hover:underline" href="https://github.com/volshi-ai/info/tree/main/erie" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[14px]">code</span>
+<span>github.com/volshi-ai/info/tree/main/erie</span>
+</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Quand un robot interroge vos données sur votre utilisateur, tout ce qui revient porte sa provenance. Pas de réponses inventées. Pas de fiction confiante. Et quand les preuves ne sont pas là, elle le dit — explicitement.
+ </p>
+<!-- 3-Stage Inquiry Pipeline -->
+<div class="grid grid-cols-3 gap-1 bg-surface-container-highest/40 p-2 rounded-lg">
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+<span class="font-telemetry-head text-telemetry-head text-primary">01 CIBLE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Entité et champ</span>
+</div>
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+<span class="font-telemetry-head text-telemetry-head text-tertiary">02 PREUVES</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Preuves en chaîne</span>
+</div>
+<div class="flex flex-col items-center text-center p-1 bg-surface-container-low rounded">
+
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/80">Affirmer / Refuser</span>
+</div>
+</div>
+<!-- Live Replay Terminal Card -->
+<div class="bg-ground-deep rounded-lg p-space-sm flex flex-col gap-2 font-telemetry-code text-telemetry-code">
+<div class="flex items-center justify-between pb-1">
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 uppercase">erie.ask — exemple</span>
+<span class="text-tertiary text-telemetry-cell">Forme réelle de sortie du moteur ; les données ci-dessous sont illustratives.</span>
+</div>
+<!-- Case 1: Answered with Provenance -->
+<div class="bg-surface-container-highest/30 rounded p-2 flex flex-col gap-1">
+<div class="text-on-surface-variant text-telemetry-cell">
+ &gt; erie.ask("Pourquoi le nom du compte acct-002 a-t-il changé ?")
+ </div>
+<div class="text-status-lime flex items-start gap-1 font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[14px] shrink-0 text-status-lime">check_circle</span>
+<span>RÉPONDU — preuves : intervalle du k-record [k2..live] · cust_name = « Sofia Bennett » · provenance : katie.entries ligne 47 · raison « mariée » · autorité 89 % · lacunes : aucune.</span>
+</div>
+</div>
+<!-- Case 2: Refused to Hallucinate -->
+<div class="bg-surface-container-highest/30 rounded p-2 flex flex-col gap-1">
+<div class="text-on-surface-variant text-telemetry-cell">
+ &gt; erie.ask("Quel est le nom de jeune fille de la mère du client ?")
+ </div>
+<div class="text-ruby flex items-start gap-1 font-telemetry-cell text-telemetry-cell">
+<span class="material-symbols-outlined text-[14px] shrink-0 text-ruby">block</span>
+<span>SANS RÉPONSE — lacunes : aucune preuve dans les données ne couvre cette question · refus d'inventer.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ENGINE C: ELLE -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-status-orange/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-orange text-[20px]">loop</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-status-orange">ELLE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">EXTERNAL LEARNING LOOP ENGINE</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-status-orange/10 text-status-orange font-telemetry-cell text-telemetry-cell">
+ FORGE
+ </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-orange animate-ping"></span>
+<span class="font-telemetry-cell text-telemetry-cell text-status-orange uppercase tracking-wider">
+ dans la forge — reconstruction du moteur en cours
+ </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ Chaque interaction est une expérience, et l'expérience s'accumule : des leçons apprises, délimitées, attribuées — des règles durables qui survivent au remplacement du modèle et suivent l'utilisateur dans le prochain modèle auquel il parle.
+ </p>
+<!-- 4-step loop visual sequence -->
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase">01 EXPÉRIENCE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Chaque interaction avec l'utilisateur — vécue, pas consignée. Ce qui s'est passé, en contexte.</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-tertiary uppercase">02 LEÇON</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">L'expérience se distille en leçon : ce qui a été appris, délimité là où ça vaut, attribué à sa source.</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-status-orange uppercase">03 RÈGLE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Les leçons mûrissent en règles — durables, portables, survivant à n'importe quel modèle suivant.</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-ruby-hot uppercase">04 RETOUR</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Les règles suivent l'utilisateur dans chaque interaction future. Ne jamais repartir de zéro.</span>
+</div>
+</div>
+<!-- Why External Card -->
+<div class="bg-surface-container-highest/30 rounded-lg p-3 flex flex-col gap-1">
+<span class="font-kicker text-kicker uppercase text-primary">POURQUOI EXTERNE ?</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ Les modèles sont remplacés. Le fine-tuning est effacé. Les fenêtres de contexte sont vidées. La boucle d'ELLE est externe — les leçons vivent en dehors de tout modèle unique, donc l'expérience accumulée de l'utilisateur survit à tout cela. Changez le modèle en dessous ; l'apprentissage reste.
+ </p>
+</div>
+</div>
+</section>
+<!-- TEMPE: THE TIME ENGINE -->
+<section class="px-space-sm pb-space-xl flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[20px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-tertiary">TEMPE</span>
+<span class="font-telemetry-cell text-telemetry-cell text-on-surface-variant">LE MOTEUR DU TEMPS</span>
+</div>
+</div>
+<p class="font-headline-md text-headline-md text-paper-light">
+ Le jour est la seule constante.
+ </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+ TEMPE est le moteur du temps — le mécanisme sur lequel tourne le registre. Chaque horodatage du système vient de lui : quand les choses sont arrivées, et quand le système les a sues.
+ </p>
+<div class="grid grid-cols-1 gap-2">
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-primary uppercase">UNE SEULE CONSTANTE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Le jour est la seule constante. Les semaines, les mois, les trimestres et les années sont des conteneurs faits de jours. Ils peuvent se diviser et déborder. Le compte des jours ne se réinitialise jamais.</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-tertiary uppercase">LE CHRONOMÈTRE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Les horodatages du registre viennent d'une horloge chronomètre : vers l'avant uniquement, reprenant au tick le plus élevé au démarrage, se réinitialisant chaque jour à minuit local. Le temps réel est l'horloge murale. Le temps d'événement est construit dessus. Le temps de connaissance est le chronomètre.</span>
+</div>
+<div class="bg-surface-container-highest/40 p-2 rounded flex flex-col">
+<span class="font-telemetry-cell text-telemetry-cell text-status-lime uppercase">L'ANNÉE FRACTALE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Une année fractale compte 365 jours. Une année bissextile grégorienne est un conteneur de 366 jours, et le jour restant est le jour 365 — il se trouve dans la semaine à cheval sur la frontière de l'année, pas en dehors de la semaine.</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+ TEMPE et Kronos sont la même chose : le moteur du temps, sous l'un ou l'autre nom.
+ </p>
+</div>
+</section>
+<!-- 4. Bottom CTA Section -->
+<section class="px-space-sm pb-space-xl flex flex-col items-center text-center gap-space-md" style="background-image: linear-gradient(rgba(8,8,10,0.80), rgba(8,8,10,0.80)), url('../../../assets/img/bg-swirl.webp'); background-size: cover; background-position: center;">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[32px]">memory</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile font-serif text-on-surface">
+ La machine se souvient.
+ </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+ ARCHE est la fondation : une architecture cognitive avec la mémoire en son cœur, des moteurs pour la responsabilité, la récupération et l'apprentissage — et des personas construits pour tourner dessus.
+ </p>
+</div>
+<!-- Dual Action Buttons -->
+<div class="flex flex-col w-full gap-2 pt-1">
+<a class="w-full py-3 px-4 rounded-lg bg-primary text-on-primary font-headline-md text-headline-md font-semibold text-center hover:bg-primary-fixed-dim active:scale-[0.99] transition-transform shadow-md flex items-center justify-center gap-2" href="mailto:invest@volshi.com?subject=VOLSHi%20—%20Demande%20investisseur">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+<span>Parlez-nous</span>
+</a>
+<a class="w-full py-3 px-4 rounded-lg bg-surface-container-high text-on-surface font-headline-md text-headline-md text-center hover:bg-surface-container-highest active:scale-[0.99] transition-transform shadow-sm flex items-center justify-center gap-2" href="https://github.com/volshi-ai/info" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Docs publiques sur GitHub</span>
+</a>
+</div>
+</section>
+</div><footer class="mt-space-xl px-space-sm pb-28 text-center flex flex-col items-center gap-space-xs"><p class="font-telemetry-cell text-telemetry-cell text-on-surface-variant/70 max-w-xs leading-relaxed">© 2026 VOLSHi. Tous droits réservés. · Research Triangle Park, Caroline du Nord</p><button id="conn-meter-btn" onmouseenter="openConnPanel()" onclick="openConnPanel()" class="inline-flex items-center gap-1.5 font-telemetry-cell text-telemetry-cell uppercase tracking-wider text-on-surface-variant/70 hover:text-primary transition-colors"><span id="conn-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span><span>Ping</span><span id="conn-meter" class="text-paper-light normal-case tracking-normal">—</span></button></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-ground-deep/90 backdrop-blur-xl shadow-[0_-1px_12px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-20 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="/mobile/"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Accueil</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] transition-colors text-primary font-semibold" data-path="the-system" href="/mobile/the-system/"><span class="material-symbols-outlined text-[20px]">account_tree</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Système</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="katie" href="/mobile/katie/"><span class="material-symbols-outlined text-[20px]">terminal</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">KATIE</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="research" href="/mobile/research/"><span class="material-symbols-outlined text-[20px]">science</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Recherche</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="invest" href="/mobile/research/#invest"><span class="material-symbols-outlined text-[20px]">pie_chart</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Investir</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[52px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="/mobile/#contact"><span class="material-symbols-outlined text-[20px]">contact_mail</span><span class="font-telemetry-cell text-telemetry-cell uppercase tracking-tight">Contact</span></a></div></nav>
+
+
+
+<div id="conn-panel" class="hidden fixed bottom-24 lg:bottom-6 right-4 z-[60] w-[300px] max-w-[calc(100vw-2rem)] rounded-xl border border-white/[0.12] bg-[#121215] p-4 shadow-2xl font-mono text-xs text-on-surface-variant"><div class="flex items-center justify-between pb-2 border-b border-white/[0.08]"><span class="text-paper-light font-semibold uppercase tracking-wider text-[11px]">Votre connexion</span><button onclick="closeConnPanel()" aria-label="Fermer" class="text-on-surface-variant hover:text-primary text-base leading-none">&times;</button></div><div class="flex flex-col gap-1.5 pt-3"><div class="flex justify-between"><span>Statut</span><span id="conn-status" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Ping</span><span id="conn-ping" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Réseau</span><span id="conn-net" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Débit descendant</span><span id="conn-down" class="text-paper-light">—</span></div><div class="flex justify-between"><span>Chargement de la page</span><span id="conn-load" class="text-paper-light">—</span></div></div><button onclick="measureConn()" class="mt-3 w-full py-1.5 rounded border border-primary/50 text-primary text-[11px] uppercase tracking-wider hover:bg-primary hover:text-black transition-colors">Revérifier</button><p class="pt-2 text-[10px] text-engine-muted leading-relaxed">Mesuré localement dans votre navigateur. Rien n'est envoyé.</p></div><script>function openConnPanel(){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden')){p.classList.remove('hidden');measureConn();}}function closeConnPanel(){document.getElementById('conn-panel').classList.add('hidden');}async function measureConn(){var st=document.getElementById('conn-status');var pg=document.getElementById('conn-ping');var nt=document.getElementById('conn-net');var dl=document.getElementById('conn-down');var ld=document.getElementById('conn-load');var mt=document.getElementById('conn-meter');var dt=document.getElementById('conn-dot');st.textContent=navigator.onLine?'En ligne':'Hors ligne';pg.textContent='mesure\u2026';var c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(c){nt.textContent=(c.effectiveType||'inconnu')+(c.rtt!=null?' \u00b7 '+c.rtt+' ms rtt':'');dl.textContent=(c.downlink!=null?c.downlink+' Mb/s':'non signalé');}else{nt.textContent='non signalé par ce navigateur';dl.textContent='non signalé par ce navigateur';}try{var nav=performance.getEntriesByType('navigation')[0];if(nav){ld.textContent=Math.round(nav.responseStart)+' ms au premier octet \u00b7 '+Math.round(nav.domContentLoadedEventEnd)+' ms chargée';}else{ld.textContent='non signalé par ce navigateur';}}catch(e){ld.textContent='non signalé par ce navigateur';}var samples=[];for(var i=0;i<3;i++){try{var t0=performance.now();await fetch('/favicon.ico?ping='+Date.now()+'-'+i,{cache:'no-store'});samples.push(Math.round(performance.now()-t0));}catch(e){break;}}var ok=samples.length>0;var val=ok?Math.round(samples.reduce(function(a,b){return a+b;},0)/samples.length)+' ms':'injoignable';pg.textContent=val;if(mt)mt.textContent=val;if(dt)dt.className='w-1.5 h-1.5 rounded-full '+(ok?'bg-emerald-400':'bg-red-500');}window.addEventListener('online',function(){measureConn();});window.addEventListener('hors ligne',function(){var s=document.getElementById('conn-status');if(s)s.textContent='Hors ligne';var mt=document.getElementById('conn-meter');if(mt)mt.textContent='hors ligne';var dt=document.getElementById('conn-dot');if(dt)dt.className='w-1.5 h-1.5 rounded-full bg-red-500';});document.addEventListener('click',function(e){var p=document.getElementById('conn-panel');if(p.classList.contains('hidden'))return;if(e.target.closest&&e.target.closest('#conn-panel,#conn-meter-btn'))return;closeConnPanel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeConnPanel();});measureConn();setInterval(measureConn,60000);</script></body></html>
