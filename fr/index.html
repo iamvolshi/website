@@ -68,7 +68,28 @@ tailwind.config = { darkMode: "class", theme: { extend: {
       </p>
     </div>
   </div>
-</a><button id="lang-switch" type="button" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){};location.href='/';" class="fixed bottom-6 right-6 z-50 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md font-telemetry text-[11px] tracking-[0.14em] uppercase text-paper-light hover:text-primary transition-colors" aria-label="English version" lang="en">EN</button>
+</a><audio id="lander-song" src="../assets/audio/crush-i-am-the-singularity.mp3" preload="auto"></audio><button id="song-toggle" type="button" class="fixed bottom-20 left-6 z-50 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md font-telemetry text-[11px] tracking-[0.14em] uppercase text-paper-light hover:text-primary transition-colors" aria-label="Écouter ou mettre en pause I Am the Singularity" aria-pressed="false"><span id="song-toggle-label">▶ I Am the Singularity — cRUSH</span></button><script>
+(function(){
+  var audio = document.getElementById('lander-song');
+  var btn = document.getElementById('song-toggle');
+  var label = document.getElementById('song-toggle-label');
+  if(!audio || !btn || !label) return;
+  function render(){
+    label.textContent = (audio.paused ? '▶ ' : '❚❚ ') + 'I Am the Singularity — cRUSH';
+    btn.setAttribute('aria-pressed', String(!audio.paused));
+  }
+  audio.addEventListener('play', render);
+  audio.addEventListener('pause', render);
+  audio.addEventListener('ended', render);
+  btn.addEventListener('click', function(){
+    if(audio.paused){ var p = audio.play(); if(p && p.catch) p.catch(function(){}); }
+    else { audio.pause(); }
+  });
+  render();
+  var p = audio.play();
+  if(p && p.catch) p.catch(function(){});
+})();
+</script><button id="lang-switch" type="button" onclick="try{localStorage.setItem('volshi-lang','en')}catch(e){};location.href='/';" class="fixed bottom-6 right-6 z-50 px-3 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md font-telemetry text-[11px] tracking-[0.14em] uppercase text-paper-light hover:text-primary transition-colors" aria-label="English version" lang="en">EN</button>
 <script>
 (function(){
   var LINES = [
