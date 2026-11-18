@@ -268,6 +268,13 @@ tailwind.config = { darkMode: "class", theme: { extend: {
     });
     setTimeout(function(){
       h.classList.remove('in');
+      if(idx >= LINES.length - 1){
+        burst();
+        clearInterval(timer);
+        h.textContent = '';
+        swapping = false;
+        return;
+      }
       show((idx + 1) % LINES.length);
       burst();
       swapping = false;
@@ -279,7 +286,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   frame();
   show(0);
   setTimeout(function(){ h.classList.add('in'); }, 3000); // safety: never leave the headline invisible
-  setInterval(next, 5000);
+  var timer = setInterval(next, 5000);
 })();
 </script>
 </body>
