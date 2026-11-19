@@ -34,6 +34,8 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   @media (min-width: 768px) {
     .landing-scrim { background: linear-gradient(to right, rgba(6,6,7,.90) 0%, rgba(6,6,7,.55) 34%, rgba(6,6,7,0) 62%); }
   }
+  .landing-enter { animation: cue-pulse 2.6s ease-in-out infinite; }
+  @keyframes cue-pulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
   .end-name { position: absolute; left: 50%; top: 47%; width: min(82vw, 860px); z-index: 40; text-align: center; pointer-events: none; opacity: 0; visibility: hidden; transform: translate(-50%, -50%) translateY(-14vh) scale(.55); transition: transform 1.1s cubic-bezier(.22,.61,.36,1), opacity .8s ease, visibility 0s linear 1.1s; }
   .end-name.show { opacity: 1; visibility: visible; transform: translate(-50%, -50%) translateY(0) scale(1); transition: transform 1.1s cubic-bezier(.22,.61,.36,1), opacity .8s ease; }
   .end-name img { display: block; width: 100%; height: auto; }
@@ -46,7 +48,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   .landing-headline .w { display: inline-block; white-space: nowrap; }
   .landing-headline .ltr { display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(8px); transition: opacity .5s ease, filter .5s ease, transform .5s ease; }
   .landing-headline.in .ltr { opacity: 1; filter: blur(0); transform: none; }
-  #sparkle-canvas { position: absolute; inset: 0; pointer-events: none; }
+  #sparkle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
   .digital-scan { display: none; }
   .digital-start .landing-img-base { filter: grayscale(0.9) contrast(1.3) brightness(0.85); }
   .digital-start .digital-scan { display: block; background-color: rgba(20,40,80,.14); background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px); }
@@ -54,7 +56,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   .digital-start .landing-img-human { display: block; }
   a.landing-link:focus-visible { outline: 2px solid #e6c364; outline-offset: -2px; }
   @media (prefers-reduced-motion: reduce) {
-    .landing-fade, .landing-img { animation: none; }
+    .landing-enter, .landing-fade, .landing-img { animation: none; }
     .end-name, .end-name.show { transition: none; }
   }
 </style>
@@ -75,6 +77,13 @@ tailwind.config = { darkMode: "class", theme: { extend: {
     </div>
     <div class="flex flex-1 items-center">
       <h1 class="landing-headline max-w-2xl font-headline text-[42px] leading-[1.04] md:text-[68px] text-paper-light">We build identity.</h1>
+    </div>
+    <div>
+      <p class="landing-enter flex items-center gap-3 font-telemetry text-[12px] tracking-[0.22em] uppercase text-primary">
+        <span class="inline-block h-px w-10 bg-primary/80"></span>
+        <span>Click to enter</span>
+        <span aria-hidden="true">→</span>
+      </p>
     </div>
     <div id="end-name" class="end-name" aria-hidden="true">
       <img src="assets/img/volshilogowhite.png" alt="VOLSHI">
@@ -289,7 +298,7 @@ tailwind.config = { darkMode: "class", theme: { extend: {
   frame();
   show(0);
   setTimeout(function(){ h.classList.add('in'); }, 3000); // safety: never leave the headline invisible
-  var timer = setInterval(next, 5000);
+  var timer = setInterval(next, 4000);
 })();
 </script>
 </body>
